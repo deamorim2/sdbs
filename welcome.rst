@@ -22,11 +22,7 @@ Part II:
 
 **Physical Implementation**
 
-.. note::
-
-Note
-
-Part I of this tutorial was based on the Boundless workshop `Introduction to PostGIS <https://github.com/boundlessgeo/workshops/blob/master/workshops/postgis/source/en/welcome.rst>`__ and is in line with a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+.. footer:: Part I of this tutorial was based on the Boundless workshop `Introduction to PostGIS <https://github.com/boundlessgeo/workshops/blob/master/workshops/postgis/source/en/welcome.rst>`__ and is in line with a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
 Workshop Conventions
 ====================
