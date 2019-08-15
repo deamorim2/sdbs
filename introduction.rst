@@ -204,4 +204,4 @@ Additional Reading
 
 Casanova, M., et. al.: Bancos de Dados Geográficos. Cap. 1, 6, 8 e 11. MundoGEO. 2005
 
-Yeung, A., Hall, G.: Spatial Database Systems. GeoJournal Library, vol 87. Partes 1 e 2. Springer, Heidelberd (2007)
+Yeung, A., Hall, G.: Spatial Database Systems. GeoJournal Library, vol 87. Chapters 1 e 2. Springer, Heidelberd (2007)
