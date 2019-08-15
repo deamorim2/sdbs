@@ -20,7 +20,7 @@ Part II:
 
 **Physical Implementation**
 
-Part I of this tutorial was based on the Boundless workshop [Introduction to PostGIS] (https://github.com/boundlessgeo/workshops/tree/master/workshops/postgis) and is in line with a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+Part I of this tutorial was based on the Boundless workshop [Introduction to PostGIS](https://github.com/boundlessgeo/workshops/tree/master/workshops/postgis) and is in line with a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
 Workshop Conventions
 ====================
