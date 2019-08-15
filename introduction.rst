@@ -134,7 +134,7 @@ A brief history of PostGIS
 
 In the May of 2001, `Refractions Research <http://www.refractions.net/>`_  released the first version of PostGIS. PostGIS 0.1 had objects, indexes and a handful of functions. The result was a database suitable for storage and retrieval, but not analysis.
 
-As the number of functions increased, the need for an organizing principle became clear.  The "Simple Features for SQL" (:term:`SFSQL`) specification from the Open Geospatial Consortium provided such structure with guidelines for function naming and requirements.
+As the number of functions increased, the need for an organizing principle became clear.  The "Simple Features for SQL" (`SFSQL`) specification from the Open Geospatial Consortium provided such structure with guidelines for function naming and requirements.
 
 With PostGIS support for simple analysis and spatial joins, `Mapserver <http://mapserver.org/>`_ became the first external application to provide visualization of data in the database. 
 
