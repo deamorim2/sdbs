@@ -16,14 +16,14 @@ The following briefly covers the evolution of spatial databases, and then review
 
 #. **Spatial data types** refer to shapes such as point, line, and polygon; 
 #. Multi-dimensional **spatial indexing** is used for efficient processing of spatial operations;
-#. **Spatial functions**, posed in :term:`SQL`, are for querying of spatial properties and relationships.
+#. **Spatial functions**, posed in `SQL`, are for querying of spatial properties and relationships.
 
 Combined, spatial data types, indexes, and functions provide a flexible structure for optimized performance and analysis.
 
 In the Beginning
 ----------------
 
-In legacy first-generation :term:`GIS` implementations, all spatial data is stored in flat files and special :term:`GIS` software is required to interpret and manipulate the data.  These first-generation management systems are designed to meet the needs of users where all required data is within the user's organizational domain.  They are proprietary, self-contained systems specifically built for handling spatial data.  
+In legacy first-generation `GIS` implementations, all spatial data is stored in flat files and special `GIS` software is required to interpret and manipulate the data.  These first-generation management systems are designed to meet the needs of users where all required data is within the user's organizational domain.  They are proprietary, self-contained systems specifically built for handling spatial data.  
 
 Second-generation spatial systems store some data in relational databases (usually the "attribute" or non-spatial parts) but still lack the flexibility afforded with direct integration.  
 
@@ -33,6 +33,8 @@ Spatial databases fully integrate spatial data with an object relational databas
 
 .. image:: ./introduction/beginning.png
   :class: inline
+
+(Yeung & Hall, 2007)
 
 .. note:: A spatial database management system may be used in applications besides the geographic world.  Spatial databases are used to manage data related to the anatomy of the human body, large-scale integrated circuits, molecular structures, and electro-magnetic fields, among others.
 
@@ -81,7 +83,7 @@ The majority of all spatial functions can be grouped into one of the following f
 #. **Comparison**: Functions that *compare* two geometries with respect to their spatial relation. 
 #. **Generation**: Functions that *generate* new geometries from others.
 
-The list of possible functions is very large, but a common set of functions is defined by the :term:`OGC` :term:`SFSQL` and implemented (along with additional useful functions) by PostGIS.
+The list of possible functions is very large, but a common set of functions is defined by the `OGC` `SFSQL` and implemented (along with additional useful functions) by PostGIS.
 
 What is PostGIS?
 ================
@@ -138,11 +140,11 @@ With PostGIS support for simple analysis and spatial joins, `Mapserver <http://m
 
 Over the next several years the number of PostGIS functions grew, but its power remained limited. Many of the most interesting functions (e.g., ST_Intersects(), ST_Buffer(), ST_Union()) were very difficult to code.  Writing them from scratch promised years of work.
 
-Fortunately a second project, the "Geometry Engine, Open Source" or `GEOS <http://trac.osgeo.org/geos>`_, came along. The GEOS library provides the necessary algorithms for implementing the :term:`SFSQL` specification. By linking in GEOS, PostGIS provided complete support for :term:`SFSQL` by version 0.8.
+Fortunately a second project, the "Geometry Engine, Open Source" or `GEOS <http://trac.osgeo.org/geos>`_, came along. The GEOS library provides the necessary algorithms for implementing the `SFSQL` specification. By linking in GEOS, PostGIS provided complete support for `SFSQL` by version 0.8.
 
 As PostGIS data capacity grew, another issue surfaced: the representation used to store geometry proved relatively inefficient. For small objects like points and short lines, the metadata in the representation had as much as a 300% overhead. For performance reasons, it was necessary to put the representation on a diet.  By shrinking the metadata header and required dimensions, overhead greatly reduced. In PostGIS 1.0, this new, faster, lightweight representation became the default.
 
-Recent updates of PostGIS have worked on expanding standards compliance, adding support for curve-based geometries and function signatures specified in the ISO :term:`SQL/MM` standard. Through a continued focus on performance,  PostGIS 1.4 significantly improved the speed of geometry testing routines.
+Recent updates of PostGIS have worked on expanding standards compliance, adding support for curve-based geometries and function signatures specified in the ISO `SQL/MM` standard. Through a continued focus on performance,  PostGIS 1.4 significantly improved the speed of geometry testing routines.
 
 Who uses PostGIS?
 -----------------
@@ -197,3 +199,9 @@ The following table shows a list of some of the software that leverages PostGIS:
 |                                                 |                                              |             
 +-------------------------------------------------+----------------------------------------------+
 
+Additional Reading
+------------------
+
+Casanova, M., et. al.: Bancos de Dados Geográficos. Cap. 1, 6, 8 e 11. MundoGEO. 2005
+
+Yeung, A., Hall, G.: Spatial Database Systems. GeoJournal Library, vol 87. Chapters 1 e 2. Springer, Heidelberd (2007)

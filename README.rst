@@ -1,4 +1,4 @@
-SPATIAL DATABASE SYSTEM(SBDS)
+SPATIAL DATABASE SYSTEM(SDBS)
 =============================
 
 Welcome to the **Spatial Database System** courseware version 1.0
@@ -40,8 +40,9 @@ Creation <https://github.com/deamorim2/sdbs/blob/master/logical_scheme_creation.
 `Physical
 Implementation <https://github.com/deamorim2/sdbs/blob/master/physical_implementation.rst>`__
 
-License
+Licence
 =======
 
-Esta obra está licenciada como uma Licença Creative Commons
-Atribuição-NãoComercial-CompartilhaIgual 4.0 Internacional.
+This work is licensed under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).
+To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en .
+
