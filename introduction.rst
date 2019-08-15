@@ -32,6 +32,7 @@ Second-generation spatial systems store some data in relational databases (usual
 Spatial databases fully integrate spatial data with an object relational database.  The orientation changes from GIS-centric to database-centric.     
 
 .. image:: ./introduction/beginning.png
+  :align: center
   :class: inline
 
 (Yeung & Hall, 2007)
