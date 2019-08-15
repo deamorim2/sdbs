@@ -42,6 +42,4 @@ Implementation <https://github.com/deamorim2/sdbs/blob/master/physical_implement
 
 License
 =======
-
-Esta obra está licenciada como uma Licença Creative Commons
-Atribuição-NãoComercial-CompartilhaIgual 4.0 Internacional.
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Esta obra está licenciada como uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Atribuição-NãoComercial-CompartilhaIgual 4.0 Internacional</a>.
