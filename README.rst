@@ -40,7 +40,7 @@ Creation <https://github.com/deamorim2/sdbs/blob/master/logical_scheme_creation.
 `Physical
 Implementation <https://github.com/deamorim2/sdbs/blob/master/physical_implementation.rst>`__
 
-License
+Licence
 =======
 
 This work is licensed under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).
