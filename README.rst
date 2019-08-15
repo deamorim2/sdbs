@@ -43,16 +43,8 @@ Implementation <https://github.com/deamorim2/sdbs/blob/master/physical_implement
 License
 =======
 
-
-   .. image:: ./screenshots/pgshapeloader_02.png
+.. image:: <https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png>
      :class: inline
-
-
-
-   .. image:: <https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png>
-     :class: inline
-
-
 
 <https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png>
 
