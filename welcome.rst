@@ -58,11 +58,11 @@ Notes are used to provide information that is useful but not critical to the ove
 Functions
 ---------
 
-Where function names are defined in the text, they will be rendered in a .. command:: `bold` font.
+Where function names are defined in the text, they will be rendered in a **bold** font.
 
 For example:
 
-   `ST_Touches(geometry A, geometry B)` returns TRUE if either of the geometries' boundaries intersect
+   **ST_Touches(geometry A, geometry B)** returns TRUE if either of the geometries boundaries intersect
 
 Files, Tables and Column Names
 ------------------------------
