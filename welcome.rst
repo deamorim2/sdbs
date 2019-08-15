@@ -11,16 +11,16 @@ This Tutorial presents a complete solution for implementing a Spatial Database S
 Part I:
 -------
 
-**Introduction to PostGIS**
+**-Introduction to PostGIS**
 
 Part II:
 --------
 
-**Conceptual Modeling**
+**-Conceptual Modeling**
 
-**Logical Scheme Creation**
+**-Logical Scheme Creation**
 
-**Physical Implementation**
+**-Physical Implementation**
 
 .. note:: Part I of this tutorial was based on the Boundless workshop `Introduction to PostGIS <https://github.com/boundlessgeo/workshops/blob/master/workshops/postgis/source/en/welcome.rst>`__ and is in line with a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
