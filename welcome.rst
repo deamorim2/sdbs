@@ -10,15 +10,15 @@ This Tutorial presents a complete solution for implementing a Spatial Database S
 
 Part I:
 
-**Introduction to PostGIS**
+**-Introduction to PostGIS**
 
 Part II:
 
-**Conceptual Modeling**
+**-Conceptual Modeling**
 
-**Logical Scheme Creation**
+**-Logical Scheme Creation**
 
-**Physical Implementation**
+**-Physical Implementation**
 
 Part I of this tutorial was based on the Boundless workshop
 `Introduction to PostGIS <https://github.com/boundlessgeo/workshops/blob/master/workshops/postgis/source/en/welcome.rst>`__ and is in line with a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
@@ -62,7 +62,7 @@ Where function names are defined in the text, they will be rendered in a .. comm
 
 For example:
 
-   :command:`ST_Touches(geometry A, geometry B)` returns TRUE if either of the geometries' boundaries intersect
+   `ST_Touches(geometry A, geometry B)` returns TRUE if either of the geometries' boundaries intersect
 
 Files, Tables and Column Names
 ------------------------------
