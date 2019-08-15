@@ -21,7 +21,7 @@ Welcome to the **Spatial Database System** courseware version 1.0
 
 [Tuning PostgreSQL for Spatial](https://github.com/deamorim2/sdbs/blob/master/tuning.rst)
 
-# Part II - Spatial Database Systems Implementation
+## Part II - Spatial Database Systems Implementation
 
 Conceptual Model
 
