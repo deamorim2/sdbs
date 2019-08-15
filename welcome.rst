@@ -58,7 +58,7 @@ Notes are used to provide information that is useful but not critical to the ove
 Functions
 ---------
 
-Where function names are defined in the text, they will be rendered in a :command:`bold` font.
+Where function names are defined in the text, they will be rendered in a .. command:: `bold` font.
 
 For example:
 
