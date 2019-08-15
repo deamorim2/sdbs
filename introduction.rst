@@ -81,7 +81,7 @@ The majority of all spatial functions can be grouped into one of the following f
 #. **Comparison**: Functions that *compare* two geometries with respect to their spatial relation. 
 #. **Generation**: Functions that *generate* new geometries from others.
 
-The list of possible functions is very large, but a common set of functions is defined by the :term:`OGC` :term:`SFSQL` and implemented (along with additional useful functions) by PostGIS.
+The list of possible functions is very large, but a common set of functions is defined by the `OGC` `SFSQL` and implemented (along with additional useful functions) by PostGIS.
 
 What is PostGIS?
 ================
