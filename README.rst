@@ -44,7 +44,7 @@ License
 =======
 
 .. image:: <https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png>
-     :class: inline
+
 
 This work is licensed under the Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0). To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en .
 
