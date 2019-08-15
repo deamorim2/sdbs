@@ -3,7 +3,7 @@
 Welcome
 *******
 
-## About This Tutorial
+##About This Tutorial
 
 This Tutorial presents a complete solution for implementing a Spatial Database System in Object-Relational Database Manager System and is divided into two parts:
 
