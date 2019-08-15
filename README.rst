@@ -1,4 +1,4 @@
-SPATIAL DATABASE SYSTEM(SBDS)
+SPATIAL DATABASE SYSTEM(SDBS)
 =============================
 
 Welcome to the **Spatial Database System** courseware version 1.0
