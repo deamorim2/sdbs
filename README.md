@@ -13,13 +13,13 @@ Welcome to the **Spatial Database System** courseware version 1.0
 
 [Software Installation](https://github.com/deamorim2/sdbs/blob/master/installation.rst)
 
+[Tuning PostgreSQL for Spatial](https://github.com/deamorim2/sdbs/blob/master/tuning.rst)
+
 [Creating a Spatial Database](https://github.com/deamorim2/sdbs/blob/master/creating_db.rst)
 
 [Loading Spatial Data](https://github.com/deamorim2/sdbs/blob/master/loading_data.rst)
 
 [About Our Data](https://github.com/deamorim2/sdbs/blob/master/about_data.rst)
-
-[Tuning PostgreSQL for Spatial](https://github.com/deamorim2/sdbs/blob/master/tuning.rst)
 
 ## Part II - Spatial Database Systems Implementation
 
