@@ -3,16 +3,25 @@
 Welcome
 *******
 
-About Boundless
-===============
+About This Tutorial
+===================
 
-`Boundless <http://boundlessgeo.com/>`_ is bringing the best practices of open source software to governments and other organizations around the world.
+This Tutorial presents a complete solution for implementing a Spatial Database System in Object-Relational Database Manager System and is divided into two parts:
 
-* We provide enterprises with supported, tested, and integrated open source solutions to help open government.
-* We support open source communities by employing key developers for PostGIS, GeoServer, GeoWebCache, GeoExt, and OpenLayers.
-* We have a ten-year history of providing successful consulting services and products to clients like MassGIS, TriMet, Landgate, Google, The Work Bank, and the Open Geospatial Consortium.
-* We believe open and accessible information empowers people to effect real change. Our goal is to make geospatial information more open: publicly available, accessible on compelling platforms that people want to use.
-* We strive to build software that meets and exceeds the desires of clients, because our market success proves the value of our work.
+Part I:
+
+**Introduction to PostGIS**
+
+Part II:
+
+**Conceptual Modeling**
+
+**Logical Scheme Creation**
+
+**Physical Implementation**
+
+Part I of this tutorial was based on the Boundless workshop
+[Introduction to PostGIS](https://github.com/boundlessgeo/workshops/blob/master/workshops/postgis/source/en/welcome.rst) and is in line with a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
 Workshop Conventions
 ====================
@@ -49,7 +58,7 @@ Notes are used to provide information that is useful but not critical to the ove
 Functions
 ---------
 
-Where function names are defined in the text, they will be rendered in a :command:`bold` font.
+Where function names are defined in the text, they will be rendered in a .. command:: `bold` font.
 
 For example:
 
