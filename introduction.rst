@@ -34,6 +34,8 @@ Spatial databases fully integrate spatial data with an object relational databas
 .. image:: ./introduction/beginning.png
   :class: inline
 
+(Yeung & Hall, 2007)
+
 .. note:: A spatial database management system may be used in applications besides the geographic world.  Spatial databases are used to manage data related to the anatomy of the human body, large-scale integrated circuits, molecular structures, and electro-magnetic fields, among others.
 
 
@@ -197,3 +199,9 @@ The following table shows a list of some of the software that leverages PostGIS:
 |                                                 |                                              |             
 +-------------------------------------------------+----------------------------------------------+
 
+Additional Reading
+------------------
+
+Casanova, M., et. al.: Bancos de Dados Geográficos. Cap. 1, 6, 8 e 11. MundoGEO. 2005
+
+Yeung, A., Hall, G.: Spatial Database Systems. GeoJournal Library, vol 87. Partes 1 e 2. Springer, Heidelberd (2007)
