@@ -105,7 +105,8 @@ This is a unit-less value that represents the cost of a random page access from 
 
 .. code-block:: sql
 
-     SET random_page_cost TO 2.0
+SET random_page_cost TO 2.0
+
 
   *Default value*: 4.0
 
