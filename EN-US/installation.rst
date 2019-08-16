@@ -27,11 +27,11 @@ PostgreSQL
 
 --------------
 
-  Set the user password ``postgres`` to **postgres** and click the *Next>* button
+  Set the user password ``postgres`` for **postgres** and click the *Next>* button
   
 .. figure:: ./installation/install_postgresql_04.png
   
-  Set the default port *5432* and click the *Next>* button
+  Set the default port ``5432`` and click the *Next>* button
 
 .. figure:: ./installation/install_postgresql_05.png
 
