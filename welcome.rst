@@ -52,8 +52,14 @@ Notes
 
 Notes are used to provide information that is useful but not critical to the overall understanding of the topic.
 
+
+--------
+
 .. note:: If you haven't eaten an apple today, the doctor may be on the way.
-        
+
+--------
+
+
 Functions
 ---------
 
