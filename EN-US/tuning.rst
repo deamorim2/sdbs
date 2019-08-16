@@ -5,7 +5,7 @@ Tuning PostgreSQL for Spatial
 
 PostgreSQL is a very versatile database system, capable of running efficiently in very low-resource environments and environments shared with a variety of other applications.  In order to ensure it will run properly for many different environments, the default configuration is very conservative and not terribly appropriate for a high-performance production database.  Add the fact that geospatial databases have different usage patterns, and the data tend to consist of fewer, much larger records than non-geospatial databases, and you can see that the default configuration will not be totally appropriate for our purposes.  
 
-All of these configuration parameters can edited in the database configuration file. On Windows, this is ``C:\Program Files\PostgreSQL\9.5\data\postgresql.conf``.  This is a regular text file and can be edited using Notepad or any other text editor.  The changes will not take effect until the server is restarted.
+All of these configuration parameters can edited in the database configuration file. On Windows, this is ``C:\Program Files\PostgreSQL\9.5\data\postgresql.conf`` file.  This is a regular text file and can be edited using Notepad or any other text editor.  The changes will not take effect until the server is restarted.
 
 .. image:: ./tuning/conf01.png
 
