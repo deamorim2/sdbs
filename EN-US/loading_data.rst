@@ -64,7 +64,7 @@ Supported by a wide variety of libraries and applications, PostGIS provides many
 
 -----
 
-   .. tip:: - Use the `Rm` checkbox to remove ``nyc_census_blocks`` since it has already been imported.
+.. tip:: - Use the `Rm` checkbox to remove ``nyc_census_blocks`` since it has already been imported.
    
 -----   
    
