@@ -148,5 +148,3 @@ After these changes are made, save changes and reload the configuration. The eas
   In Windows Services (``services.msc``) right-click **postgresql-x64-9.5** and select *Restart*.
 
 .. image:: ./tuning/conf12.png
-
-  Back in pgAdmin, click the server again select *Disconnect*.
