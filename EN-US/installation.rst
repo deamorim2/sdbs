@@ -23,104 +23,103 @@ PostgreSQL 9.5 release for your operating system.
   
 --------------
 
-.. Note:: - Se possível, instale os arquivos de programa no drive ``C:\`` e os dados do banco no drive ``D:\``.
-          - Utilize para o drive onde estarão os dados *hard drive* do tipo SSD.
+.. Note:: - If possible, install the program files on the drive ``C:\`` and the bank data on the drive ``D:\``.
+          - Use for the drive where the **hard drive** type SSD data will be.
 
 --------------
 
-  Defina a senha do usuário ``postgres`` como *postgres* e clique no botão *Next >*
-
+  Set the user password ``postgres`` to **postgres** and click the **Next>** button
+  
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_04.png
   
-  Defina a porta padrão *5432* e clique no botão *Next >*
+  Set the default port * 5432 * and click the * Next> * button
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_05.png
-  
+  
 
-  Selecione o *locale* com ``C`` e depois clique no botão *Next >*
+  Select * locale * with `` C`` and then click the * Next> * button
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_06.png
-  
-  Clique no botão *Next >* para começar a instalação do PostgreSQL
+  
+  Click the * Next> * Button to Begin PostgreSQL Installation
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_07.png
- 
-  Desmarque a opção para executar o Stack Builder e clique no botão *Finish* para terminar a instalação do PostgreSQL
+ 
+  Uncheck the option to run Stack Builder and click the * Finish * button to finish PostgreSQL installation.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_08.png
 
 --------------
 
-.. note:: Se você deseja instalar a versão mais atual do PostGIS, deixe marcado a opção de executar o *stack builder* e prossiga com a
-instalação marcando a opção da extensão espacial. No nosso caso, nós iremos instalar uma versão específica do PostGIS, por isso desmarcamos essa opção.
+.. note :: If you want to install the latest version of PostGIS, leave the option to run * stack builder * and proceed with
+installation by checking the option of spatial extent. In our case, we will install a specific version of PostGIS, so we uncheck this option.
 
 --------------
 
 PostGIS
 ===========
 
-Vá até o site http://postgis.net/install/ , baixe e instale a versão do PostGIS 2.3 para o PostgreSQL 9.5 para o seu sistema operacional.
+Go to http://postgis.net/install/, download and install the PostGIS 2.3 version for PostgreSQL 9.5 for your operating system.
 
-  Execute o arquivo de instalação
+  Run the installer file
 
-  Clique no botão *I Agree* para prosseguir com a instalação
+  Click the * I Agree * button to proceed with the installation.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgis_01.png
-  
 
-  Deixe marcada a opção *PostGIS* e Clique no botão *Next >*
+  Leave * PostGIS * checked and click the * Next> * button
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgis_02.png
-   
-  Indique o diretório onde está instalado o PostgreSQL e clique no botão *Next >*
+   
+  Enter the directory where PostgreSQL is installed and click the * Next> * button.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgis_03.png
-   
-  Clique no botão *Sim* para prosseguir com a instalação
+   
+  Click the * Yes * button to proceed with the installation.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgis_04.png
-   
-  Clique no botão *Sim* para prosseguir com a instalação
+   
+  Click the * Yes * button to proceed with the installation.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgis_05.png
-  
-  Clique no botão *Sim* para prosseguir com a instalação
+  
+  Click the * Yes * button to proceed with the installation.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgis_06.png
-   
-  Clique no botão *Close* para finalizar a instalação
+   
+  Click the * Close * button to finish the installation.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgis_07.png
    
 QGIS
 ========
 
-  Vá até o site https://www.qgis.org/en/site/index.html , baixe e instale a versão 2.18 para o seu sistema operacional
+  Go to https://www.qgis.org/en/site/index.html, download and install version 2.18 for your operating system.
 
-  Execute o arquivo de instalação
+  Run the installer file
 
-  Clique no botão *Próximo* para prosseguir com a instalação
+  Click the * Next * button to proceed with the installation.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_qgis_01.png
-  
-  Clique no botão *Eu Concordo*
+
+  Click the * I Agree * button
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_qgis_02.png
-   
-  Indique o diretório onde será instalado o QGIS e clique no botão *Próximo >*
+   
+  Enter the directory where QGIS will be installed and click the * Next> * button
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_qgis_03.png
-   
-  Deixe marcada somente a opção *QGIS* e Clique no botão *Instalar* para começar a instalação
+   
+  Leave only * QGIS * checked and Click * Install * button to begin installation
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_qgis_04.png
-   
-  Clique no botão *Terminar* para finalizar a instalação
+   
+  Click the * Finish * button to complete the installation.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_qgis_05.png
-   
+   
 --------------
 
-.. note:: Você pode instalar mais de uma versão do QGIS no seucomputador, não precisando remover a instalação anterior.
+.. note:: You can install more than one version of QGIS on your computer without having to remove the previous installation.
 
 --------------
