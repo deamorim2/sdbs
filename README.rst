@@ -11,34 +11,34 @@ SUMARY
 Part I - Introduction to PostGIS
 --------------------------------
 
-`Introduction <https://github.com/deamorim2/sdbs/blob/master/EN-US/introduction.rst>`__
+`Introduction <./EN-US/introduction.rst>`__
 
 `Software
-Installation <https://github.com/deamorim2/sdbs/blob/master/EN-US/installation.rst>`__
+Installation <./EN-US/installation.rst>`__
 
 `Tuning PostgreSQL for
-Spatial <https://github.com/deamorim2/sdbs/blob/master/EN-US/tuning.rst>`__
+Spatial <./EN-US/tuning.rst>`__
 
 `Creating a Spatial
-Database <https://github.com/deamorim2/sdbs/blob/master/EN-US/creating_db.rst>`__
+Database <./EN-US/creating_db.rst>`__
 
 `Loading Spatial
-Data <https://github.com/deamorim2/sdbs/blob/master/EN-US/loading_data.rst>`__
+Data <./EN-US/loading_data.rst>`__
 
 `About Our
-Data <https://github.com/deamorim2/sdbs/blob/master/EN-US/about_data.rst>`__
+Data <./EN-US/about_data.rst>`__
 
 Part II - Spatial Database Systems Implementation
 -------------------------------------------------
 
 `Conceptual
-Modeling <https://github.com/deamorim2/sdbs/blob/master/EN-US/conceptual_modeling.rst>`__
+Modeling <./EN-US/conceptual_modeling.rst>`__
 
 `Logical Scheme
-Creation <https://github.com/deamorim2/sdbs/blob/master/EN-US/logical_scheme_creation.rst>`__
+Creation <./EN-US/logical_scheme_creation.rst>`__
 
 `Physical
-Implementation <https://github.com/deamorim2/sdbs/blob/master/EN-US/physical_implementation.rst>`__
+Implementation <./EN-US/physical_implementation.rst>`__
 
 License
 =======
