@@ -6,7 +6,7 @@ Welcome to the **Spatial Database System** courseware version 1.0
 SUMARY
 ======
 
-#. `Welcome <./EN-US/welcome.rst>`__
+`Welcome <./EN-US/welcome.rst>`__
 
 Part I - Introduction to PostGIS
 --------------------------------
