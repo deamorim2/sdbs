@@ -20,8 +20,6 @@ Part II:
 - **Logical Scheme Creation**
 - **Physical Implementation**
 
-.. note:: Part I of this tutorial was based on the Boundless workshop `Introduction to PostGIS <https://github.com/boundlessgeo/workshops/blob/master/workshops/postgis/source/en/welcome.rst>`_ and is in line with a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
-
 Workshop Conventions
 ====================
 
