@@ -26,7 +26,7 @@ Supported by a wide variety of libraries and applications, PostGIS provides many
    .. image:: ./screenshots/pgshapeloader_02.png
      :class: inline
 
-#. Download this `file <https://drive.google.com/open?id=1ahaTdsC2-WSwHA7e4H7KxoBWXVts_Ehq>`_ and unzip it in your computer.
+#. Download this `file <https://drive.google.com/open?id=1dmcVfJer0JJgXhj4ADcsEVUtP9nEHH_Z>`_ and unzip it in your computer.
 
 #. Next, open the *Add File* browser and navigate to the data directory, ``\data``. Select the ``nyc_census_blocks.shp`` file. 
 
