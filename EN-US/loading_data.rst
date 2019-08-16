@@ -26,8 +26,9 @@ Supported by a wide variety of libraries and applications, PostGIS provides many
    .. image:: ./screenshots/pgshapeloader_02.png
      :class: inline
 
+#. Download this `file <https://drive.google.com/open?id=1ahaTdsC2-WSwHA7e4H7KxoBWXVts_Ehq>`_ and unzip it in your computer.
 
-#. Next, open the *Add File* browser and navigate to the data directory, file:`\\postgis-workshop\\data`. Select the :file:`nyc_census_blocks.shp` file. 
+#. Next, open the *Add File* browser and navigate to the data directory, ``\data``. Select the ``nyc_census_blocks.shp`` file. 
 
 #. Change the SRID value for the file to **26918**. Note that the schema, table and column name are already filled in using the shapefile, but you can optionally change them (**Don't!** There are steps later in the workshop that expect the default names.) Click out of the fields after you are done editing, to ensure that the changes were entered.
 
@@ -67,7 +68,7 @@ Supported by a wide variety of libraries and applications, PostGIS provides many
    
 -----   
    
-#. When all the files are loaded, click the "Refresh" button in pgAdmin to update the tree view. You should see your four tables show up in the **Databases > nyc > Schemas > public > Tables** section of the tree.
+#. When all the files are loaded, click the *Refresh* button in ``pgAdmin`` to update the tree view. You should see your four tables show up in the **Databases > nyc > Schemas > public > Tables** section of the tree.
 
    .. image:: ./screenshots/refresh.png
  
@@ -109,7 +110,7 @@ or directly inside PostGIS with a query to the ``spatial_ref_sys`` table.
   
 .. note::
 
-  The PostGIS ``spatial_ref_sys`` table is an :term:`OGC`-standard table that defines all the spatial reference systems known to the database. The data shipped with PostGIS, lists over 3000 known spatial reference systems and details needed to transform/re-project between them.  
+  The PostGIS ``spatial_ref_sys`` table is an `OGC`standard table that defines all the spatial reference systems known to the database. The data shipped with PostGIS, lists over 3000 known spatial reference systems and details needed to transform/re-project between them.  
    
 In both cases, you see a textual representation of the **26918** spatial reference system (pretty-printed here for clarity):
 
