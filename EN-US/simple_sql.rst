@@ -3,7 +3,7 @@
 Simple SQL
 ==========
 
-:term:`SQL`, or "Structured Query Language", is a means of asking questions of, and updating data in, relational databases. You have already seen SQL when we created our first database.  Recall:
+`SQL <https://en.wikipedia.org/wiki/SQL>`_, or "Structured Query Language", is a means of asking questions of, and updating data in, relational databases. You have already seen SQL when we created our first database.  Recall:
 
 .. code-block:: sql
 
