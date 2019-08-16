@@ -5,11 +5,11 @@ Tuning PostgreSQL for Spatial
 
 PostgreSQL is a very versatile database system, capable of running efficiently in very low-resource environments and environments shared with a variety of other applications.  In order to ensure it will run properly for many different environments, the default configuration is very conservative and not terribly appropriate for a high-performance production database.  Add the fact that geospatial databases have different usage patterns, and the data tend to consist of fewer, much larger records than non-geospatial databases, and you can see that the default configuration will not be totally appropriate for our purposes.  
 
-All of these configuration parameters can edited in the database configuration file. On Windows, this is ``C:\ProgramData\Boundless\OpenGeo\pgsql\9.3\postgresql.conf``.  This is a regular text file and can be edited using Notepad or any other text editor.  The changes will not take effect until the server is restarted.
+All of these configuration parameters can edited in the database configuration file. On Windows, this is ``C:\Program Files\PostgreSQL\9.5\data\postgresql.conf``.  This is a regular text file and can be edited using Notepad or any other text editor.  The changes will not take effect until the server is restarted.
 
 .. image:: ./tuning/conf01.png
 
-An easier way of editing this configuration is by using the built-in "Backend Configuration Editor".  In pgAdmin, go to *File > Open postgresql.conf...*.  It will ask for the location of the file, and navigate to :file:`C:\\ProgramData\\Boundless\\OpenGeo\\pgsql\\9.3\\` and then select :file:`postgresql.conf`.
+An easier way of editing this configuration is by using the built-in "Backend Configuration Editor".  In pgAdmin, go to *File > Open postgresql.conf...*.  It will ask for the location of the file, and navigate to ``C:\Program Files\PostgreSQL\9.5\data\`` and then select ``postgresql.conf``.
 
 .. image:: ./tuning/conf02.png
 
@@ -17,7 +17,11 @@ An easier way of editing this configuration is by using the built-in "Backend Co
 
 This section describes some of the configuration parameters that should be adjusted for a production-ready geospatial database.  For each section, find the appropriate item in the list, double-click on the line to edit the configuration.  Change the *Value* to the recommended value as described, make sure the item is *Enabled*, the click **OK**.
 
+------
+
 .. note:: These values are recommendations only; each environment will differ and testing is required to determine the optimal configuration.  But this section should get you off to a good start.
+
+------
 
 shared_buffers
 --------------
@@ -46,7 +50,7 @@ As such you must consider how many connections and the complexity of expected qu
 maintenance_work_mem
 --------------------
 
-Defines the amount of memory used for maintenance operations, including vacuuming, index and foreign key creation.  As these operations are not terribly common, the default value may be acceptable.  This parameter can alternately be increased for a single session before the execution of a number of :command:`CREATE INDEX` or :command:`VACUUM` calls as shown below.
+Defines the amount of memory used for maintenance operations, including vacuuming, index and foreign key creation.  As these operations are not terribly common, the default value may be acceptable.  This parameter can alternately be increased for a single session before the execution of a number of ``CREATE INDEX`` or ``VACUUM`` calls as shown below.
 
   .. code-block:: sql
 
@@ -113,6 +117,12 @@ Reload configuration
 
 After these changes are made, save changes and reload the configuration. The easiest way to do this is to restart the PostgreSQL service.
 
-* In pgAdmin, right-click the server **PostGIS (localhost:5432)** and select *Disconnect*.
-* In Windows Services (``services.msc``) right-click **OpenGeo PostgreSQL** and select *Restart*.
-* Back in pgAdmin, click the server again select *Disconnect*.
+  In pgAdmin, right-click the server **PostGIS (localhost:5432)** and select *Disconnect*.
+  
+.. image:: ./tuning/conf11.png
+  
+  In Windows Services (``services.msc``) right-click **postgresql-x64-9.5** and select *Restart*.
+
+.. image:: ./tuning/conf12.png
+
+  Back in pgAdmin, click the server again select *Disconnect*.
