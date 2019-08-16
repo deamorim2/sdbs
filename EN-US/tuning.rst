@@ -9,13 +9,13 @@ All of these configuration parameters can edited in the database configuration f
 
 .. image:: ./tuning/conf01.png
 
-An easier way of editing this configuration is by using the built-in "Backend Configuration Editor".  In pgAdmin, go to *File > Open postgresql.conf...*.  It will ask for the location of the file, and navigate to ``C:\Program Files\PostgreSQL\9.5\data\`` and then select ``postgresql.conf``.
+An easier way of editing this configuration is by using the built-in ``Backend Configuration Editor``.  In pgAdmin, go to *File > Open postgresql.conf...*.  It will ask for the location of the file, and navigate to ``C:\Program Files\PostgreSQL\9.5\data\`` and then select ``postgresql.conf``.
 
 .. image:: ./tuning/conf02.png
 
 .. image:: ./tuning/conf03.png
 
-This section describes some of the configuration parameters that should be adjusted for a production-ready geospatial database.  For each section, find the appropriate item in the list, double-click on the line to edit the configuration.  Change the *Value* to the recommended value as described, make sure the item is *Enabled*, the click **OK**.
+This section describes some of the configuration parameters that should be adjusted for a production-ready geospatial database.  For each section, find the appropriate item in the list, double-click on the line to edit the configuration.  Change the *Value* to the recommended value as described, make sure the item is *Enabled*, the click *OK*.
 
 ------
 
