@@ -60,9 +60,13 @@ Supported by a wide variety of libraries and applications, PostGIS provides many
    * ``nyc_neighborhoods.shp``
    * ``nyc_subway_stations.shp``
    * ``nyc_homicides.shp``
+
+-----
+
+   .. tip:: - Use the `Rm` checkbox to remove ``nyc_census_blocks`` since it has already been imported.
    
-   .. tip:: Use the :guilabel:`Rm` checkbox to remove ``nyc_census_blocks`` since it has already been imported.
- 
+-----   
+   
 #. When all the files are loaded, click the "Refresh" button in pgAdmin to update the tree view. You should see your four tables show up in the **Databases > nyc > Schemas > public > Tables** section of the tree.
 
    .. image:: ./screenshots/refresh.png
