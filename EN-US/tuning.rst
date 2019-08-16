@@ -3,7 +3,9 @@
 Tuning PostgreSQL for Spatial
 =============================
 
-PostgreSQL is a very versatile database system, capable of running efficiently in very low-resource environments and environments shared with a variety of other applications.  In order to ensure it will run properly for many different environments, the default configuration is very conservative and not terribly appropriate for a high-performance production database.  Add the fact that geospatial databases have different usage patterns, and the data tend to consist of fewer, much larger records than non-geospatial databases, and you can see that the default configuration will not be totally appropriate for our purposes.  
+PostgreSQL is a very versatile database system, capable of running efficiently in very low-resource environments and environments shared with a variety of other applications. In order to ensure it will run properly for many different environments, the default configuration is very conservative and not terribly appropriate for a high-performance production database.  Add the fact that geospatial databases have different usage patterns, and the data tend to consist of fewer, much larger records than non-geospatial databases, and you can see that the default configuration will not be totally appropriate for our purposes.
+
+Click in this `link <https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server>`_ for more detailed information.
 
 All of these configuration parameters can edited in the database configuration file. On Windows, this is ``C:\Program Files\PostgreSQL\9.5\data\postgresql.conf`` file.  This is a regular text file and can be edited using Notepad or any other text editor.  The changes will not take effect until the server is restarted.
 
@@ -19,7 +21,7 @@ This section describes some of the configuration parameters that should be adjus
 
 ------
 
-.. note:: These values are recommendations only; each environment will differ and testing is required to determine the optimal configuration.  But this section should get you off to a good start.
+.. note:: - These values are recommendations only; each environment will differ and testing is required to determine the optimal configuration.  But this section should get you off to a good start.
 
 ------
 
@@ -30,7 +32,7 @@ Sets the amount of memory the database server uses for shared memory buffers.  T
 
   *Default value*: typically 32MB
 
-  *Recommended value*: 75% of database memory (500MB)
+  *Recommended value*: 2GB (25% of memory)
 
 .. image:: ./tuning/conf04.png
 
@@ -73,7 +75,7 @@ The size of this buffer only needs to be large enough to hold WAL data for a sin
 
   *Default value*: 64kB
 
-  *Recommended value*: 1MB
+  *Recommended value*: 1MB (1/32 shared_buffer)
 
 .. image:: ./tuning/conf07.png
 
@@ -90,10 +92,20 @@ Because the checkpoint process requires the flushing of all dirty data pages to 
 
 .. image:: ./tuning/conf08.png
 
+--------
+
+.. note:: - If you have trouble restarting the server, uncheck this option.
+
+--------
+
 random_page_cost
 ----------------
 
-This is a unit-less value that represents the cost of a random page access from disk.  This value is relative to a number of other cost parameters including sequential page access, and CPU operation costs.  While there is no magic bullet for this value, the default is generally conservative.  This value can be set on a per-session basis using the ``SET random_page_cost TO 2.0`` command.
+This is a unit-less value that represents the cost of a random page access from disk.  This value is relative to a number of other cost parameters including sequential page access, and CPU operation costs.  While there is no magic bullet for this value, the default is generally conservative.  This value can be set on a per-session basis using the command:
+
+.. code-block:: sql
+
+     SET random_page_cost TO 2.0
 
   *Default value*: 4.0
 
@@ -111,6 +123,18 @@ This is the parameter that controls the cost of a sequential page access.  This 
   *Recommended value*: 1.0
 
 .. image:: ./tuning/conf10.png
+
+effective_cache_size
+--------------------
+
+Effective_cache_size should be set to an estimate of how much memory is available for disk caching by the operating system and within the database itself, after taking into account what's used by the OS itself and other applications. This is a guideline for how much memory you expect to be available in the OS and PostgreSQL buffer caches, not an allocation! This value is used only by the PostgreSQL query planner to figure out whether plans it's considering would be expected to fit in RAM or not. If it's set too low, indexes may not be used for executing queries the way you'd expect. The setting for shared_buffers is not taken into account here--only the effective_cache_size value is, so it should include memory dedicated to the database too.
+
+Setting effective_cache_size to 1/2 of total memory would be a normal conservative setting, and 3/4 of memory is a more aggressive but still reasonable amount. You might find a better estimate by looking at your operating system's statistics. On UNIX-like systems, add the free+cached numbers from free or top to get an estimate. On Windows see the "System Cache" size in the Windows Task Manager's Performance tab. Changing this setting does not require restarting the database (HUP is enough).
+
+
+  *Default value*: -
+
+  *Recommended value*: 4GB (50-75% Memory)
 
 Reload configuration
 --------------------
