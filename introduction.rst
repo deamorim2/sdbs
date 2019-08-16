@@ -6,7 +6,7 @@ Introduction
 What is a Spatial Database?
 ===========================
 
-PostGIS is a spatial database. Oracle Spatial and SQL Server (2008 and later) are also spatial databases. But what does that mean; what is it that makes an ordinary database a spatial database?
+`PostGIS <https://postgis.net/>`_ is a spatial database. Oracle Spatial and SQL Server (2008 and later) are also spatial databases. But what does that mean; what is it that makes an ordinary database a spatial database?
 
 The short answer, is...
 
@@ -87,7 +87,7 @@ The majority of all spatial functions can be grouped into one of the following f
 #. **Comparison**: Functions that *compare* two geometries with respect to their spatial relation. 
 #. **Generation**: Functions that *generate* new geometries from others.
 
-The list of possible functions is very large, but a common set of functions is defined by the `OGC` `SFSQL` and implemented (along with additional useful functions) by PostGIS.
+The list of possible functions is very large, but a common set of functions is defined by the Open Geospatial Consortium (`OGC <http://www.opengeospatial.org/>`_) from the "OpenGIS Implementation Specification for Geographic Information-Simple Feature Access" (`SFSQL <http://www.opengeospatial.org/standards/sfa>`_) specification or the ISO from the "ISO/IEC 13249-3: 2016 Part 3: Spatial "(`SQLMM <https://www.iso.org/standard/60343.html>`_). But nothing prevents spatial database system software from adopting its own spatial functions. In the case of PostGIS, it has several spatial functions implemented by OGC/ISO, as well as its own spatial functions.
 
 What is PostGIS?
 ================
