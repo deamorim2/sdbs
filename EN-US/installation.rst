@@ -12,17 +12,15 @@ PostgreSQL 9.5 release for your operating system.
   Click the *Next>* button to proceed with the installation.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_01.png
-   :alt: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_01.png
-
+   
   Select the directory where the program ** PostgreSQL ** will be installed and then click the *Next>* button
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_02.png
-   : alt: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_02.png
-
+   
   Select the directory where the **database data* and the **database files system setup** will be installed and press the *Next button >*
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_03.png
-   : alt: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_03.png
+  
 
 
 --------------
