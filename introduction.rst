@@ -133,6 +133,17 @@ Most users of PostGIS are setting up systems where multiple applications will be
 
 In summation, the combination of support for multiple users, complex ad hoc queries, and performance on large data sets are what sets spatial databases apart from file-based systems.
 
+Why Geopackage?
+---------------
+
+`GeoPackage <https://www.geopackage.org/>`_ (GPKG) is an open, non-proprietary, platform-independent spatial data format and is based on standards for geographic information system implemented as a SQLite database container. Defined by the Open Geospatial Consortium (OGC) with support from the US military and published in 2014, GeoPackage has received wide support from various government, commercial and open source organizations.
+
+A GeoPackage is built as an extended SQLite 3 database file (*.gpkg) that contains data tables and metadata with specified definitions, integrity constraints, format limitations, and content restrictions. The GeoPackage standard describes a set of conventions (requirements) for storing data in vector and matrix formats at various scales, schemas, and metadata. A GeoPackage can be extended using extension rules as defined in clause 2.3 of the standard. The OGC GeoPackage standard specifies a set of extensions approved by OGC members in Annex F.
+
+GeoPackage is designed to be as light as possible, shared in a single file and ready to use. This makes it suitable for mobile applications in offline mode and for fast sharing through cloud storage, USB drives and etc. Geopackage format has SQLite RTree spatial indexes that improve performance in spatial queries compared to traditional geospatial file formats.
+
+Compared to shapefile, geopackage supports non-spatial data types such as integer, real, text, blob, date, null values, and has no limitation on the length of table column names, which in shapefile has a 10 character limitation. . But one of the main differences between Shapefile and Geopackage is that shapefile has a limit on its storage capacity of 2 GB, while the Geopakcage limit is much higher: 140,000 GB.
+
 A brief history of PostGIS
 --------------------------
 
