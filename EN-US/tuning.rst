@@ -103,9 +103,9 @@ random_page_cost
 
 This is a unit-less value that represents the cost of a random page access from disk.  This value is relative to a number of other cost parameters including sequential page access, and CPU operation costs.  While there is no magic bullet for this value, the default is generally conservative.  This value can be set on a per-session basis using the command:
 
-  .. code-block:: sql
+.. code-block:: sql
 
-    SET random_page_cost TO 2.0
+  SET random_page_cost TO 2.0
 
   *Default value*: 4.0
 
