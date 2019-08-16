@@ -37,8 +37,11 @@ Spatial databases fully integrate spatial data with an object relational databas
 
 (Yeung & Hall, 2007)
 
+-------
+
 .. note:: A spatial database management system may be used in applications besides the geographic world.  Spatial databases are used to manage data related to the anatomy of the human body, large-scale integrated circuits, molecular structures, and electro-magnetic fields, among others.
 
+-------
 
 Spatial Data Types
 ------------------
