@@ -23,15 +23,15 @@ PostgreSQL
 --------------
 
 .. Note:: - If possible, install the program files on the drive ``C:\`` and the database on the drive ``D:\``.
-          - Use a **hard drive** of type *SSD* where the database will be stored.
+          - Use a **hard drive** of type ``SSD`` where the database will be stored.
 
 --------------
 
-  Set the user password ``postgres`` to **postgres** and click the *Next>* button
+  Set the user password ``postgres`` for **postgres** and click the *Next>* button
   
 .. figure:: ./installation/install_postgresql_04.png
   
-  Set the default port *5432* and click the *Next>* button
+  Set the default port ``5432`` and click the *Next>* button
 
 .. figure:: ./installation/install_postgresql_05.png
 
@@ -74,7 +74,7 @@ PostGIS
    
   Click the *Yes* button to proceed with the installation.
 
-.. figure:: ./installation/instal_postgis_04.png
+.. figure:: ./installation/install_postgis_04.png
    
   Click the *Yes* button to proceed with the installation.
 
