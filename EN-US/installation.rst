@@ -10,15 +10,15 @@ PostgreSQL
 
   Click the *Next>* button to proceed with the installation.
 
-.. figure:: https://github.com/deamorim2/sdbs/blob/master/EN-US/installation/install_postgresql_01.png
+.. figure:: ./installation/install_postgresql_01.png
   
   Select the directory where the program **PostgreSQL** will be installed and then click the *Next>* button
   
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgresql_02.png
+.. figure:: ./installation/install_postgresql_02.png
   
   Select the directory where the database data and the database files system setup will be installed and press the *Next>* button
   
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgresql_03.png
+.. figure:: ./installation/install_postgresql_03.png
   
 --------------
 
@@ -29,23 +29,23 @@ PostgreSQL
 
   Set the user password ``postgres`` to **postgres** and click the *Next>* button
   
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgresql_04.png
+.. figure:: ./installation/install_postgresql_04.png
   
   Set the default port *5432* and click the *Next>* button
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgresql_05.png
+.. figure:: ./installation/install_postgresql_05.png
 
   Select *locale* with ``C`` and then click the *Next>* button
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgresql_06.png
+.. figure:: ./installation/install_postgresql_06.png
   
   Click the *Next>* Button to Begin PostgreSQL Installation
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgresql_07.png
+.. figure:: ./installation//install_postgresql_07.png
  
   Uncheck the option to run Stack Builder and click the *Finish* button to finish PostgreSQL installation.
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgresql_08.png
+.. figure:: ./installation/install_postgresql_08.png
 
 --------------
 
@@ -62,31 +62,31 @@ PostGIS
 
   Click the *I Agree* button to proceed with the installation.
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgis_01.png
+.. figure:: ./installation/install_postgis_01.png
 
   Leave *PostGIS* checked and click the *Next>* button
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgis_02.png
+.. figure:: ./installation/install_postgis_02.png
    
   Enter the directory where PostgreSQL is installed and click the *Next>* button.
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgis_03.png
+.. figure:: ./installation/install_postgis_03.png
    
   Click the *Yes* button to proceed with the installation.
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgis_04.png
+.. figure:: ./installation/instal_postgis_04.png
    
   Click the *Yes* button to proceed with the installation.
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgis_05.png
+.. figure:: ./installation/install_postgis_05.png
   
   Click the *Yes* button to proceed with the installation.
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgis_06.png
+.. figure:: ./installation/install_postgis_06.png
    
   Click the *Close* button to finish the installation.
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_postgis_07.png
+.. figure:: ./installation/install_postgis_07.png
    
 QGIS
 ----
@@ -97,23 +97,23 @@ QGIS
 
   Click the *Next* button to proceed with the installation.
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_qgis_01.png
+.. figure:: ./installation/install_qgis_01.png
 
   Click the *I Agree* button
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_qgis_02.png
+.. figure:: ./installation/install_qgis_02.png
    
   Enter the directory where QGIS will be installed and click the *Next>* button
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_qgis_03.png
+.. figure:: ./installation/install_qgis_03.png
    
   Leave only *QGIS* checked and Click *Install* button to begin installation
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_qgis_04.png
+.. figure:: ./installation/install_qgis_04.png
    
   Click the *Finish* button to complete the installation.
 
-.. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/install_qgis_05.png
+.. figure:: ./installation/install_qgis_05.png
    
 --------------
 
