@@ -1,4 +1,4 @@
-.. installation:
+.. _installation:
 
 Software Installation
 =====================
