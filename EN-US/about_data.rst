@@ -44,10 +44,12 @@ Number of records: 36592
    
    *Black population as a percentage of Total Population* 
 
-.. note:: 
+-----
 
-    To get census data into GIS, you need to join two pieces of information: the actual data (text), and the boundary files (spatial).  There are many options for getting the data, including downloading data and boundaries from the Census Bureau's `American FactFinder <http://factfinder.census.gov>`_. 
-    
+.. note:: - To get census data into GIS, you need to join two pieces of information: the actual data (text), and the boundary files (spatial).  There are many options for getting the data, including downloading data and boundaries from the Census Bureau's `American FactFinder <http://factfinder.census.gov>`_. 
+
+-----
+
 nyc_neighborhoods
 -----------------
 
@@ -125,9 +127,11 @@ nyc_census_sociodata
 
 There is a rich collection of social-economic data collected during the census process, but only at the larger geography level of census tract.  Census blocks combine to form census tracts (and block groups). We have collected some social-economic at a census tract level to answer some of these more interesting questions about New York City. 
 
-.. note::
+-----
 
-   The ``nyc_census_sociodata`` is a data table.  We will need to connect it to Census geographies before conducting any spatial analysis. 
+.. note:: - The ``nyc_census_sociodata`` is a data table.  We will need to connect it to Census geographies before conducting any spatial analysis. 
+
+-----
 
 .. list-table::
    :widths: 20 80
