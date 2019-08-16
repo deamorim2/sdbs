@@ -1,3 +1,5 @@
+.. installation:
+
 Software Installation
 =====================
 
