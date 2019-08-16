@@ -141,12 +141,10 @@ Reload configuration
 
 After these changes are made, save changes and reload the configuration. The easiest way to do this is to restart the PostgreSQL service.
 
-  In pgAdmin, right-click the server **PostGIS (localhost:5432)** and select *Disconnect*.
+In pgAdmin, right-click the server **PostGIS (localhost:5432)** and select *Disconnect*.
   
 .. image:: ./tuning/conf11.png
   
-  In Windows Services (``services.msc``) right-click **postgresql-x64-9.5** and select *Restart*.
+In Windows Services (``services.msc``) right-click **postgresql-x64-9.5** and select *Restart*.
 
 .. image:: ./tuning/conf12.png
-
-t4exto
