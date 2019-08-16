@@ -11,15 +11,20 @@ PostgreSQL
   Click the *Next>* button to proceed with the installation.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_01.png
+
   Select the directory where the program **PostgreSQL** will be installed and then click the *Next>* button
+  
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_02.png
+
   Select the directory where the database data and the database files system setup will be installed and press the *Next>* button
+  
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_03.png
   
 --------------
 
-.. Note:: - If possible, install the program files on the drive ``C:\`` and the bank data on the drive ``D:\``. 
-          - Use for the drive where the **hard drive** type *SSD* data will be.
+.. Note::
+- If possible, install the program files on the drive ``C:\`` and the bank data on the drive ``D:\``.
+- Use for the drive where the **hard drive** type *SSD* data will be.
 
 --------------
 
