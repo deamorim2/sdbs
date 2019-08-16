@@ -43,7 +43,7 @@ Implementation <https://github.com/deamorim2/sdbs/blob/master/physical_implement
 License
 =======
 
-Part I of this tutorial was based on the Boundless workshop `Introduction to PostGIS <https://github.com/boundlessgeo/workshops/blob/master/workshops/postgis/source/en/welcome.rst>`_ and is in line with a Creative Commons Attribution-Share Alike, United States License.
+Part I of this tutorial was based on the Boundless workshop `Introduction to PostGIS <https://github.com/boundlessgeo/workshops/blob/master/workshops/postgis/source/en/welcome.rst>`_ and is in line with a `Creative Commons Attribution-Share Alike United States License <http://creativecommons.org/licenses/by-sa/3.0/us/>`_.
 
 This work is licensed under the Creative Commons Attribution-Share Alike, United States License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/us/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
 
