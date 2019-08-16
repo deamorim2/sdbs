@@ -107,11 +107,13 @@ or directly inside PostGIS with a query to the ``spatial_ref_sys`` table.
 .. code-block:: sql
 
   SELECT srtext FROM spatial_ref_sys WHERE srid = 26918;
-  
-.. note::
 
-  The PostGIS ``spatial_ref_sys`` table is an `OGC`standard table that defines all the spatial reference systems known to the database. The data shipped with PostGIS, lists over 3000 known spatial reference systems and details needed to transform/re-project between them.  
-   
+----
+
+.. note:: - The PostGIS ``spatial_ref_sys`` table is an `OGC`standard table that defines all the spatial reference systems known to the database. The data shipped with PostGIS, lists over 3000 known spatial reference systems and details needed to transform/re-project between them.  
+
+----
+
 In both cases, you see a textual representation of the **26918** spatial reference system (pretty-printed here for clarity):
 
 ::
