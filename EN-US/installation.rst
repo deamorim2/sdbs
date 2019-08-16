@@ -74,7 +74,7 @@ PostGIS
    
   Click the *Yes* button to proceed with the installation.
 
-.. figure:: ./installation/instal_postgis_04.png
+.. figure:: ./installation/install_postgis_04.png
    
   Click the *Yes* button to proceed with the installation.
 
