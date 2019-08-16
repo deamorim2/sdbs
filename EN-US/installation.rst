@@ -9,37 +9,30 @@ PostgreSQL 9.5 release for your operating system.
 
   Run the installer file
 
-  Click the * Next> * button to proceed with the installation.
+  Click the *Next>* button to proceed with the installation.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_01.png
    :alt: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_01.png
 
-https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_01.png
-    Select the directory where the program ** PostgreSQL ** will be installed
-    and then click the * Next> * button
+  Select the directory where the program ** PostgreSQL ** will be installed and then click the *Next>* button
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_02.png
    : alt: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_02.png
 
-   https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_02.png
-    Select the directory where the ** database data ** and the ** database files
-    system setup ** will be installed and press the * Next button
-    > *
+  Select the directory where the **database data* and the **database files system setup** will be installed and press the *Next button >*
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_03.png
    : alt: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_03.png
 
-   https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_03.png
 
 --------------
 
-**Dica de brother:**
+.. Note:: - Se possível, instale os arquivos de programa no drive ``C:\`` e os dados do banco no drive ``D:\``.
+Utilize para o drive onde estarão os dados *hard drive* do tipo SSD.
 
-**Dica 1** - Se possível, instale os arquivos de programa no drive
-``C:\`` e os dados do banco no drive ``D:\``.
+--------------
 
-**Dica 2** - Utilize para o drive onde estarão os dados *hard drive* do
-tipo SSD. \*\*\*
+
 
     Defina a senha do usuário ``postgres`` como *postgres* e clique no
     botão *Next >*
@@ -47,32 +40,30 @@ tipo SSD. \*\*\*
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_04.png
    :alt: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_04.png
 
-   https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_04.png
+   
     Defina a porta padrão *5432* e clique no botão *Next >*
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_05.png
    :alt: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_05.png
 
-   https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_05.png
+  
     Selecione o *locale* com ``C`` e depois clique no botão *Next >*
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_06.png
    :alt: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_06.png
 
-   https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_06.png
+  
     Clique no botão *Next >* para começar a instalação do PostgreSQL
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_07.png
    :alt: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_07.png
 
-   https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_07.png
+
     Desmarque a opção para executar o Stack Builder e clique no botão
     *Finish* para terminar a instalação do PostgreSQL
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_08.png
    :alt: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_08.png
-
-   https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_08.png
 
 --------------
 
