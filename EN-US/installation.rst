@@ -7,9 +7,9 @@ PostgreSQL
 Go to https://www.postgresql.org/download/, download and install the
 PostgreSQL 9.5 release for your operating system.
 
-    Run the installer file
+  Run the installer file
 
-    Click the * Next> * button to proceed with the installation.
+  Click the * Next> * button to proceed with the installation.
 
 .. figure:: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal_postgresql_01.png
    :alt: https://github.com/deamorim2/sbde/blob/master/wiki/03/instal\_postgresql\_01.png
