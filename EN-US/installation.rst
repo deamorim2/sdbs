@@ -23,7 +23,7 @@ PostgreSQL
 --------------
 
 .. Note:: - If possible, install the program files on the drive ``C:\`` and the database on the drive ``D:\``.
-          - Use a **hard drive** of type *SSD* where the database will be stored.
+          - Use a **hard drive** of type ``SSD`` where the database will be stored.
 
 --------------
 
