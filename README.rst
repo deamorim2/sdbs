@@ -23,7 +23,7 @@ Spatial <https://github.com/deamorim2/sdbs/blob/master/EN-US/tuning.rst>`__
 Database <https://github.com/deamorim2/sdbs/blob/master/EN-US/creating_db.rst>`__
 
 `Loading Spatial
-Data <https://github.com/deamorim2/sdbs/blob/master/en/loading_data.rst>`__
+Data <https://github.com/deamorim2/sdbs/blob/master/EN-US/loading_data.rst>`__
 
 `About Our
 Data <https://github.com/deamorim2/sdbs/blob/master/EN-US/about_data.rst>`__
