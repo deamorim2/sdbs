@@ -6,7 +6,7 @@ Software Installation
 PostgreSQL
 ----------
 
-  Go to https://www.postgresql.org/download/, download and install the PostgreSQL 9.5 release for your operating system.
+  Go to https://www.postgresql.org/download/, download and install the PostgreSQL 9.5.19 release for your operating system.
 
   Run the installer file
 
@@ -58,7 +58,7 @@ PostgreSQL
 PostGIS
 -------
 
-  Go to http://postgis.net/install/, download and install the PostGIS 2.3 version for PostgreSQL 9.5 for your operating system.
+  Go to http://postgis.net/install/, download and install the PostGIS 2.5.1 version for PostgreSQL 9.5 for your operating system.
 
   Run the installer file
 
