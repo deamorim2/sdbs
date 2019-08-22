@@ -93,7 +93,7 @@ PostGIS
 QGIS
 ----
 
-  Go to https://www.qgis.org/en/site/index.html, download and install version 3.4 for your operating system.
+  Go to https://www.qgis.org/en/site/index.html, download and install version 3.4.11 for your operating system.
 
   Run the installer file
 
