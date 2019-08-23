@@ -18,7 +18,7 @@ To know more about this subject, `Click Here! <https://en.wikipedia.org/wiki/Joi
 Types of JOIN:
 ~~~~~~~~~~~~~~
 
-`ANSI-standard SQL<https://en.wikipedia.org/wiki/American_National_Standards_Institute>`__ specifies five types of ``JOIN``: ``INNER``, ``LEFT OUTER``, ``RIGHT OUTER``, ``FULL OUTER`` and ``CROSS``.
+`ANSI-standard SQL <https://en.wikipedia.org/wiki/American_National_Standards_Institute>`__ specifies five types of ``JOIN``: ``INNER``, ``LEFT OUTER``, ``RIGHT OUTER``, ``FULL OUTER`` and ``CROSS``.
 
 1. **Inner Join** - all rows in one table relate to all rows in other tables if they have at least 1 field in common.
 
