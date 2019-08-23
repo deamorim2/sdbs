@@ -211,7 +211,7 @@ Sometimes we will need to apply a function to the results of our query. For exam
 
   "What is the number of letters in the names of all the neighborhoods in Brooklyn?"
   
-Fortunately, PostgreSQL has a string length function, :command:`char_length(string)`.
+Fortunately, PostgreSQL has a string length function, `char_length(string) <http://www.postgresql.org/docs/current/static/functions-string.html>`_.
 
 .. code-block:: sql
 
@@ -221,7 +221,7 @@ Fortunately, PostgreSQL has a string length function, :command:`char_length(stri
 
 Often, we are less interested in the individual rows than in a statistic that applies to all of them. So knowing the lengths of the neighborhood names might be less interesting than knowing the average length of the names. Functions that take in multiple rows and return a single result are called "aggregate" functions.  
 
-PostgreSQL has a series of built-in aggregate functions, including the general purpose :command:`avg()` for average values and :command:`stddev()` for standard deviations.
+PostgreSQL has a series of built-in aggregate functions, including the general purpose `avg(expression) <http://www.postgresql.org/docs/current/static/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE>`_ for average values and `stddev(expression) <http://www.postgresql.org/docs/current/static/functions-aggregate.html#FUNCTIONS-AGGREGATE-STATISTICS-TABLE>`_ for standard deviations.
 
   "What is the average number of letters and standard deviation of number of letters in the names of all the neighborhoods in Brooklyn?"
   
