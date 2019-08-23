@@ -7,12 +7,12 @@ SQL, or "Structured Query Language", is a means of asking questions and update d
 
 If you want to know a little more about this subject `Click On here! <https://en.wikipedia.org/wiki/SQL>`_
 
-SQL Subsets
------------
+SQL Sublanguages
+----------------
 
-The SQL language is divided into subsets according to operations that we want to perform on a database, such as:
+The SQL language is divided into sublanguages according to operations that we want to perform on a database, such as:
 
-Data Manipulation Language (DML) 
+Data Manipulation Language (DML)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The first group is Data Manipulation Language(DML). DML is a subset of the SQL language that is used to perform data inclusions, changes, and deletions present in records. These tasks can be performed on multiple records from multiple tables at same time.
