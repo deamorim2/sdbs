@@ -1,5 +1,5 @@
 ======================
-Non Spatial Join (SQL) - Wikipedia
+Non Spatial Join (SQL)
 ======================
 
 An `SQL <https://en.wikipedia.org/wiki/SQL>`__ **join** clause - corresponding to a `join operation in relational algebra <https://en.wikipedia.org/wiki/Join_(relational_algebra)>`__ - combines `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one or more `tables <https://en.wikipedia.org/wiki/Table_(database)>`__ in a relational `database <https://en.wikipedia.org/wiki/Database>`__. It creates a set that can be saved as a table or used as it is. A ``JOIN`` is a means for combining `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one (self-join) or more tables by using values common to each. `ANSI <https://en.wikipedia.org/wiki/American_National_Standards_Institute>`__-standard SQL specifies five types of ``JOIN``: ``INNER``, ``LEFT OUTER``, ``RIGHT OUTER``, ``FULL OUTER`` and ``CROSS``. As a special case, a
