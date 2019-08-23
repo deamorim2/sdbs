@@ -16,19 +16,20 @@ A table join creates a pseudo-table derived from two or more tables according to
 To know more about this subject, `Click Here! <https://en.wikipedia.org/wiki/Join_(SQL)>`_.
 
 Simply put we have three types of table joins:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A) **Inner Join** - all rows in one table relate to all rows in other tables if they have at least 1 field in common.
+#) **Inner Join** - all rows in one table relate to all rows in other tables if they have at least 1 field in common.
 
-#. ``Equi-join``  - An equi-join is a specific comparator-based join type, which uses only equality comparisons in the join predicate. Using other comparison operators (such as <) disqualifies an association as an equi-join.
-#. ``Natural join`` - The natural join is a special case of equi-join. The natural join (⋈) is a binary operator that is written as (R ⋈ S) where R and S are relations. The result of the natural join is the set of all tuple combinations in R and S that are equal in their common attribute names.
+##. ``Equi-join``  - An equi-join is a specific comparator-based join type, which uses only equality comparisons in the join predicate. Using other comparison operators (such as <) disqualifies an association as an equi-join.
+##. ``Natural join`` - The natural join is a special case of equi-join. The natural join (⋈) is a binary operator that is written as (R ⋈ S) where R and S are relations. The result of the natural join is the set of all tuple combinations in R and S that are equal in their common attribute names.
 
-B) **Outer Join** - is a selection that does not require records in one table to have equivalent records in other
+#) **Outer Join** - is a selection that does not require records in one table to have equivalent records in other
 
-#. ``Left Outer Join`` - all records in the left table even when there are no matching records in the right table.
-#. ``Right Outer Join`` - all records in the right table even when there are no matching records in the left table.
-#. ``Full Outer Join`` - This operation displays all data from the left and right tables, even if they are not matched in another table.
+##. ``Left Outer Join`` - all records in the left table even when there are no matching records in the right table.
+##. ``Right Outer Join`` - all records in the right table even when there are no matching records in the left table.
+##. ``Full Outer Join`` - This operation displays all data from the left and right tables, even if they are not matched in another table.
 
-C) Self-Join - A self-join is joining a table to itself.
+#) Self-Join - A self-join is joining a table to itself.
 
 
 
