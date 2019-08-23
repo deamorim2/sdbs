@@ -144,10 +144,15 @@ The `SQL Language Syntax <https://en.wikipedia.org/wiki/SQL_syntax>`_ is subdivi
 - ``Predicates``, which specify conditions that can be evaluated to SQL three-valued logic (3VL) (true/false/unknown) or Boolean truth values and are used to limit the effects of statements and queries, or to change program flow.
 - ``Queries``, which retrieve the data based on specific criteria. This is an important element of SQL.
 - ``Statements``, which may have a persistent effect on schemata and data, or may control transactions, program flow, connections, sessions, or diagnostics.
-+ SQL statements also include the semicolon (";") statement terminator. Though not required on every platform, it is defined as a standard part of the SQL grammar.
-- Insignificant whitespace is generally ignored in SQL statements and queries, making it easier to format SQL code for readability.
 
 .. image:: ./screenshots/language_elements.png
+
+------
+
+.. Note:: -SQL statements also include the semicolon (";") statement terminator. Though not required on every platform, it is defined as a standard part of the SQL grammar.
+          - Insignificant whitespace is generally ignored in SQL statements and queries, making it easier to format SQL code for readability.
+
+-------
 
 Example
 =======
