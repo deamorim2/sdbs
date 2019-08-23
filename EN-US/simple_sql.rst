@@ -15,7 +15,9 @@ The SQL language is divided into subsets according to operations that we want to
 Data Manipulation Language (DML) 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The first group is Data Manipulation Language(DML). DML is a subset of the SQL language that is used to perform data inclusions, changes, and deletions present in records. These tasks can be performed on multiple records from multiple tables at same time. Commands that perform the above functions respectively referred to are:
+The first group is Data Manipulation Language(DML). DML is a subset of the SQL language that is used to perform data inclusions, changes, and deletions present in records. These tasks can be performed on multiple records from multiple tables at same time.
+
+Commands that perform the above functions respectively referred to are:
 
 - Data Inclusions (INSERT);
 - Data updates (UPDATE);
@@ -24,7 +26,9 @@ The first group is Data Manipulation Language(DML). DML is a subset of the SQL l
 Data Definition Language (DDL)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The second group is Data Definition Language(DDL). A DDL allows the user to define new tables and elements associated. The main commands used are:
+The second group is Data Definition Language(DDL). A DDL allows the user to define new tables and elements associated.
+
+The main commands used are:
 
 - Object Creation (CREATE);
 - Object Alteration (ALTER);
