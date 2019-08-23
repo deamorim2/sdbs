@@ -15,7 +15,7 @@ The SQL language is divided into sublanguages according to operations that we wa
 Data Manipulation Language (DML)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The first group is Data Manipulation Language(DML). DML is a subset of the SQL language that is used to perform data inclusions, changes, and deletions present in records. These tasks can be performed on multiple records from multiple tables at same time.
+The first group is Data Manipulation Language(DML). DML is a sublanguage of the SQL language that is used to perform data inclusions, changes, and deletions present in records. These tasks can be performed on multiple records from multiple tables at same time.
 
 Commands that perform the above functions respectively referred to are:
 
@@ -82,13 +82,13 @@ A selection query is usually of the form:
 .. Note:: - For a synopsis of all ``SELECT`` parameters, see the `PostgresSQL documentation  <http://www.postgresql.org/docs/current/interactive/sql-select.html>`_.
 --------------
 
-The SQL language can be divided into:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The SQL Language can be divided into:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Clauses;
 - Logical Operators;
 - Relational Operators;
-- Aggregation Functions;
+- Aggregate Functions;
 
 Clauses
 ^^^^^^^^
@@ -131,6 +131,23 @@ Aggregate Functions
 - ``SUM`` - Used to return the sum of all values of a given field.
 - ``MAX`` - Used to return the highest value of a field.
 - ``MIN`` - Used to return the lowest value of a field.
+
+SQL Language Elements
+~~~~~~~~~~~~~~~~~~~~~~
+
+Main article: 
+
+The `SQL Language Syntax <https://en.wikipedia.org/wiki/SQL_syntax>`_ is subdivided into several language elements, including:
+
+- ``Clauses``, which are constituent components of statements and queries. (In some cases, these are optional).
+- ``Expressions``, which can produce either scalar values, or tables consisting of columns and rows of data.
+- ``Predicates``, which specify conditions that can be evaluated to SQL three-valued logic (3VL) (true/false/unknown) or Boolean truth values and are used to limit the effects of statements and queries, or to change program flow.
+- ``Queries``, which retrieve the data based on specific criteria. This is an important element of SQL.
+- ``Statements``, which may have a persistent effect on schemata and data, or may control transactions, program flow, connections, sessions, or diagnostics.
++ SQL statements also include the semicolon (";") statement terminator. Though not required on every platform, it is defined as a standard part of the SQL grammar.
+- Insignificant whitespace is generally ignored in SQL statements and queries, making it easier to format SQL code for readability.
+
+.. image:: ./screenshots/language_elements.png
 
 Example
 =======
