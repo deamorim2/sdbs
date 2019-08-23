@@ -36,7 +36,7 @@ Types of JOIN:
 
 3. **Self-Join** - A self-join is joining a table to itself.
 
-.. figure:: ./screenshots/SQL_joins.png
+.. figure:: ./screenshots/SQL_Joins.png
    
    *Simplified diagram with SQL join types between tables* 
 
