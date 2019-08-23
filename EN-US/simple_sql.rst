@@ -7,7 +7,7 @@ SQL, or "Structured Query Language", is a means of asking questions and update d
 
 If you want to know a little more about this subject `Click On here! <https://en.wikipedia.org/wiki/SQL>`_
 
-SQL subsets
+SQL Subsets
 -----------
 
 The SQL language is divided into subsets according to operations that we want to perform on a database, such as:
