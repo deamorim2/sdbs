@@ -67,9 +67,10 @@ A selection query is usually of the form:
 
 .. code-block:: sql
 
-    SELECT some_columns
-    FROM some_data_source
-    WHERE some_condition;
+   SELECT some_columns
+     FROM some_data_source
+     WHERE some_condition;
+     
 
 - ``some_columns`` are column names or value functions of column.
 
