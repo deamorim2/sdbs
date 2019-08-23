@@ -9,15 +9,11 @@ It creates a set that can be saved as a table or used as it is.
 
 A ``JOIN`` is a means for combining `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one (self-join) or more tables by using values common to each.
 
-
-
 As a special case, a table (base table, `view <https://en.wikipedia.org/wiki/View_(database)>`__, or joined table) can ``JOIN`` to itself in a *self-join*.
 
 A programmer declares a ``JOIN`` statement to identify rows for joining. If the evaluated predicate is true, the combined row is then produced in the expected format, a row set or a temporary table.
 
 To know more about this subject, `Click Here! <https://en.wikipedia.org/wiki/Join_(SQL)>`_.
-
-
 
 Types of JOIN:
 ~~~~~~~~~~~~~~
@@ -38,19 +34,11 @@ Types of JOIN:
    
    * ``Full Outer Join`` - This operation displays all data from the left and right tables, even if they are not matched in another table.
 
-3. Self-Join - A self-join is joining a table to itself.
+3. **Self-Join** - A self-join is joining a table to itself.
 
-
-
-
-
-Simplified frames with SQL join types between tables:
-
-
-
-
-
-
+.. figure:: ./screenshots/SQL_joins.png
+   
+   *Simplified diagram with SQL join types between tables* 
 
 Sample Tables
 -------------
@@ -99,7 +87,7 @@ assigned to the "Marketing" department.
 
 -----
 
-This is the SQL statement to create the aforementioned tables.
+This is the SQL statement to PostgreSQL to create the aforementioned tables.
 
 ::
 
@@ -127,8 +115,7 @@ INSERT INTO employee VALUES('Robinson', 34);
 INSERT INTO employee VALUES('Smith', 34);
 INSERT INTO employee VALUES('Williams', NULL);
 
-CROSS JOIN returns the `Cartesian
-product <https://en.wikipedia.org/wiki/Cartesian_product>`__ of rows
+CROSS JOIN returns the `Cartesian product <https://en.wikipedia.org/wiki/Cartesian_product>`__ of rows
 from tables in the join. In other words, it will produce rows which
 combine each row from the first table with each row from the second
 table.\ :sup:``[1] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-1>`__`
