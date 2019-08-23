@@ -1,32 +1,54 @@
-======================
-Non Spatial Join (SQL)
-======================
+.. _non_spatial_join:
 
-An `SQL <https://en.wikipedia.org/wiki/SQL>`__ **join** clause - corresponding to a `join operation in relational algebra <https://en.wikipedia.org/wiki/Join_(relational_algebra)>`__ - combines `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one or more `tables <https://en.wikipedia.org/wiki/Table_(database)>`__ in a relational `database <https://en.wikipedia.org/wiki/Database>`__. It creates a set that can be saved as a table or used as it is. A ``JOIN`` is a means for combining `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one (self-join) or more tables by using values common to each. `ANSI <https://en.wikipedia.org/wiki/American_National_Standards_Institute>`__-standard SQL specifies five types of ``JOIN``: ``INNER``, ``LEFT OUTER``, ``RIGHT OUTER``, ``FULL OUTER`` and ``CROSS``. As a special case, a
-table (base table, `view <https://en.wikipedia.org/wiki/View_(database)>`__, or joined table) can ``JOIN`` to itself in a *self-join*.
+Non Spatial Join Using SQL
+==========================
+
+In a database we can have two or more related tables.
+
+It is common when we make a query that we need to bring data from different tables.
+
+To create this selection we must define the grouping criteria to bring this data.
+
+These criteria are called JOINS.
+
+A table join creates a pseudo-table derived from two or more tables according to the specified rules, which are similar to the rules of set theory.
+
+To know more about this subject, `Click Here! <https://en.wikipedia.org/wiki/Join_(SQL)>`_.
+
+Simply put we have three types of table joins:
+
+A) **Inner Join** - all rows in one table relate to all rows in other tables if they have at least 1 field in common.
+
+#. ``Equi-join``  - An equi-join is a specific comparator-based join type, which uses only equality comparisons in the join predicate. Using other comparison operators (such as <) disqualifies an association as an equi-join.
+#. ``Natural join`` - The natural join is a special case of equi-join. The natural join (⋈) is a binary operator that is written as (R ⋈ S) where R and S are relations. The result of the natural join is the set of all tuple combinations in R and S that are equal in their common attribute names.
+
+B) **Outer Join** - is a selection that does not require records in one table to have equivalent records in other
+
+#. ``Left Outer Join`` - all records in the left table even when there are no matching records in the right table.
+#. ``Right Outer Join`` - all records in the right table even when there are no matching records in the left table.
+#. ``Full Outer Join`` - This operation displays all data from the left and right tables, even if they are not matched in another table.
+
+C) Self-Join - A self-join is joining a table to itself.
+
+
+
+Simplified frames with SQL join types between tables:
+
+
+
+An `SQL <https://en.wikipedia.org/wiki/SQL>`__ **join** clause - corresponding to a `join operation in relational algebra <https://en.wikipedia.org/wiki/Join_(relational_algebra)>`__ - combines `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one or more `tables <https://en.wikipedia.org/wiki/Table_(database)>`__ in a relational `database <https://en.wikipedia.org/wiki/Database>`__. It creates a set that can be saved as a table or used as it is. A ``JOIN`` is a means for combining `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one (self-join) or more tables by using values common to each. `ANSI <https://en.wikipedia.org/wiki/American_National_Standards_Institute>`__-standard SQL specifies five types of ``JOIN``: ``INNER``, ``LEFT OUTER``, ``RIGHT OUTER``, ``FULL OUTER`` and ``CROSS``. As a special case, a table (base table, `view <https://en.wikipedia.org/wiki/View_(database)>`__, or joined table) can ``JOIN`` to itself in a *self-join*.
 
 A programmer declares a ``JOIN`` statement to identify rows for joining. If the evaluated predicate is true, the combined row is then produced in the expected format, a row set or a temporary table.
 
+
+
+
 Sample Tables
+-------------
 
-Relational databases are usually
-`normalized <https://en.wikipedia.org/wiki/Database_normalization>`__ to
-eliminate duplication of information such as when entity types have
-one-to-many relationships. For example, a department may be associated
-with a number of employees. Joining separate tables for department and
-employee effectively creates another table which combines the
-information from both tables.
+Relational databases are usually `normalized <https://en.wikipedia.org/wiki/Database_normalization>`__ to eliminate duplication of information such as when entity types have one-to-many relationships. For example, a department may be associated with a number of employees. Joining separate tables for department and employee effectively creates another table which combines the information from both tables.
 
-All subsequent explanations on join types in this article make use of
-the following two tables. The rows in these tables serve to illustrate
-the effect of different types of joins and join-predicates. In the
-following tables the ``DepartmentID``
-`column <https://en.wikipedia.org/wiki/Column_(database)>`__ of the
-``Department`` table (which can be designated as
-``Department.DepartmentID``) is the `primary
-key <https://en.wikipedia.org/wiki/Primary_key>`__, while
-``Employee.DepartmentID`` is a `foreign
-key <https://en.wikipedia.org/wiki/Foreign_key>`__.
+All subsequent explanations on join types in this article make use of the following two tables. The rows in these tables serve to illustrate the effect of different types of joins and join-predicates. In the following tables the ``DepartmentID`` `column <https://en.wikipedia.org/wiki/Column_(database)>`__ of the ``Department`` table (which can be designated as ``Department.DepartmentID``) is the `primary key <https://en.wikipedia.org/wiki/Primary_key>`__, while ``Employee.DepartmentID`` is a `foreign key <https://en.wikipedia.org/wiki/Foreign_key>`__.
 
 .. table:: Employee table
 
@@ -60,57 +82,41 @@ key <https://en.wikipedia.org/wiki/Foreign_key>`__.
    | 35           | Marketing      |
    +--------------+----------------+
 
-.. raw:: html
+-----
 
-   <div style="clear:both;">
-
-.. raw:: html
-
-   </div>
-
-Note: In the Employee table above, the employee "Williams" has not been
+.. Note:: - In the Employee table above, the employee "Williams" has not been
 assigned to any department yet. Also, note that no employees are
 assigned to the "Marketing" department.
 
+-----
+
 This is the SQL statement to create the aforementioned tables.
-
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
 
 ::
 
-     1 CREATE TABLE department
-     2 (
-     3  DepartmentID INT Primary key,
-     4  DepartmentName VARCHAR(20)
-     5 );
-     6 
-     7 CREATE TABLE employee
-     8 (
-     9  LastName VARCHAR(20),
-    10  DepartmentID INT references department(DepartmentID)
-    11 );
-    12 
-    13 INSERT INTO department VALUES(31, 'Sales');
-    14 INSERT INTO department VALUES(33, 'Engineering');
-    15 INSERT INTO department VALUES(34, 'Clerical');
-    16 INSERT INTO department VALUES(35, 'Marketing');
-    17 
-    18 INSERT INTO employee VALUES('Rafferty', 31);
-    19 INSERT INTO employee VALUES('Jones', 33);
-    20 INSERT INTO employee VALUES('Heisenberg', 33);
-    21 INSERT INTO employee VALUES('Robinson', 34);
-    22 INSERT INTO employee VALUES('Smith', 34);
-    23 INSERT INTO employee VALUES('Williams', NULL);
+CREATE TABLE department
+(
+departmentid integer,
+departmentname varchar(20)
+);
 
-.. raw:: html
+CREATE TABLE employee
+(
+lastname VARCHAR(20),
+departmentid integer
+);
 
-   </div>
+INSERT INTO department VALUES(31, 'Sales');
+INSERT INTO department VALUES(33, 'Engineering');
+INSERT INTO department VALUES(34, 'Clerical');
+INSERT INTO department VALUES(35, 'Marketing');
 
-.. rubric:: Cross
-   join[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=2>`__\ ]
-   :name: cross-joinedit
+INSERT INTO employee VALUES('Rafferty', 31);
+INSERT INTO employee VALUES('Jones', 33);
+INSERT INTO employee VALUES('Heisenberg', 33);
+INSERT INTO employee VALUES('Robinson', 34);
+INSERT INTO employee VALUES('Smith', 34);
+INSERT INTO employee VALUES('Williams', NULL);
 
 CROSS JOIN returns the `Cartesian
 product <https://en.wikipedia.org/wiki/Cartesian_product>`__ of rows
