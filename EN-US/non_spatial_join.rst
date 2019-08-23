@@ -3,20 +3,26 @@
 Non Spatial Join Using SQL
 ==========================
 
-In a database we can have two or more related tables.
+An `SQL <https://en.wikipedia.org/wiki/SQL>`__ ``join`` clause - corresponding to a `join operation in relational algebra <https://en.wikipedia.org/wiki/Join_(relational_algebra)>`__ - combines `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one or more `tables <https://en.wikipedia.org/wiki/Table_(database)>`__ in a relational `database <https://en.wikipedia.org/wiki/Database>`__.
 
-It is common when we make a query that we need to bring data from different tables.
+It creates a set that can be saved as a table or used as it is.
 
-To create this selection we must define the grouping criteria to bring this data.
+A ``JOIN`` is a means for combining `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one (self-join) or more tables by using values common to each.
 
-These criteria are called JOINS.
 
-A table join creates a pseudo-table derived from two or more tables according to the specified rules, which are similar to the rules of set theory.
+
+As a special case, a table (base table, `view <https://en.wikipedia.org/wiki/View_(database)>`__, or joined table) can ``JOIN`` to itself in a *self-join*.
+
+A programmer declares a ``JOIN`` statement to identify rows for joining. If the evaluated predicate is true, the combined row is then produced in the expected format, a row set or a temporary table.
 
 To know more about this subject, `Click Here! <https://en.wikipedia.org/wiki/Join_(SQL)>`_.
 
-Simply put we have three types of table joins:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Types of JOIN:
+~~~~~~~~~~~~~~
+
+`ANSI <https://en.wikipedia.org/wiki/American_National_Standards_Institute>`__-standard SQL specifies five types of ``JOIN``: ``INNER``, ``LEFT OUTER``, ``RIGHT OUTER``, ``FULL OUTER`` and ``CROSS``.
 
 1. **Inner Join** - all rows in one table relate to all rows in other tables if they have at least 1 field in common.
 
@@ -36,13 +42,12 @@ Simply put we have three types of table joins:
 
 
 
+
+
 Simplified frames with SQL join types between tables:
 
 
 
-An `SQL <https://en.wikipedia.org/wiki/SQL>`__ **join** clause - corresponding to a `join operation in relational algebra <https://en.wikipedia.org/wiki/Join_(relational_algebra)>`__ - combines `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one or more `tables <https://en.wikipedia.org/wiki/Table_(database)>`__ in a relational `database <https://en.wikipedia.org/wiki/Database>`__. It creates a set that can be saved as a table or used as it is. A ``JOIN`` is a means for combining `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one (self-join) or more tables by using values common to each. `ANSI <https://en.wikipedia.org/wiki/American_National_Standards_Institute>`__-standard SQL specifies five types of ``JOIN``: ``INNER``, ``LEFT OUTER``, ``RIGHT OUTER``, ``FULL OUTER`` and ``CROSS``. As a special case, a table (base table, `view <https://en.wikipedia.org/wiki/View_(database)>`__, or joined table) can ``JOIN`` to itself in a *self-join*.
-
-A programmer declares a ``JOIN`` statement to identify rows for joining. If the evaluated predicate is true, the combined row is then produced in the expected format, a row set or a temporary table.
 
 
 
