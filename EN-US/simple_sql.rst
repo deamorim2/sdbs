@@ -3,7 +3,7 @@
 Simple SQL 
 ==============
 
-SQL, or "Structured Query Language", is a means of asking questions and update data in relational databases.
+`SQL <https://en.wikipedia.org/wiki/SQL>`_, or "Structured Query Language", is a means of asking questions and update data in relational databases.
 
 If you want to know a little more about this subject `Click On here! <https://en.wikipedia.org/wiki/SQL>`_
 
