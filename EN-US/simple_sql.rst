@@ -149,7 +149,7 @@ The `SQL Language Syntax <https://en.wikipedia.org/wiki/SQL_syntax>`_ is subdivi
 
 ------
 
-.. Note:: -SQL statements also include the semicolon (";") statement terminator. Though not required on every platform, it is defined as a standard part of the SQL grammar.
+.. Note:: - SQL statements also include the semicolon (";") statement terminator. Though not required on every platform, it is defined as a standard part of the SQL grammar.
           - Insignificant whitespace is generally ignored in SQL statements and queries, making it easier to format SQL code for readability.
 
 -------
