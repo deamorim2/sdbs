@@ -144,7 +144,7 @@ The `SQL Language Syntax <https://en.wikipedia.org/wiki/SQL_syntax>`_ is subdivi
 - ``Statements``, which may have a persistent effect on schemata and data, or may control transactions, program flow, connections, sessions, or diagnostics.
 
 .. image:: ./screenshots/language_elements.png
-    :align: center
+    :align: right
 
 ------
 
