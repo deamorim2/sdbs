@@ -18,6 +18,37 @@ To know more about this subject, `Click Here! <https://en.wikipedia.org/wiki/Joi
 Simply put we have three types of table joins:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* A bullet list
+
+  * A nested bullet list
+
+#. An auto-numbered list
+
+   * A nested bullet list
+
+1. An explicity-arabic list
+
+   * A nested bullet list
+
+A. An explicity-uppercase alphabet list
+
+   * A nested bullet list ==> **It has uppercase alphabet**
+
+a. An explicity-lowercase alphabet list
+
+   * A nested bullet list ==> **It has lowercase alphabet**
+
+I. An explicity-uppercase roman list ==> **It has arabic**
+
+   * A nested bullet list
+
+i. An explicity-lowercase roman list ==> **It has arabic**
+
+   * A nested bullet list
+
+
+
+
 A) **Inner Join** - all rows in one table relate to all rows in other tables if they have at least 1 field in common.
 
 1. ``Equi-join``  - An equi-join is a specific comparator-based join type, which uses only equality comparisons in the join predicate. Using other comparison operators (such as <) disqualifies an association as an equi-join.
