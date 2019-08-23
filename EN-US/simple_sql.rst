@@ -1,15 +1,158 @@
 .. _simple_sql:
 
-Simple SQL
-==========
+Simple SQL 
+==============
 
-`SQL <https://en.wikipedia.org/wiki/SQL>`_, or "Structured Query Language", is a means of asking questions of, and updating data in, relational databases. You have already seen SQL when we created our first database.  Recall:
+Structured Query Language (SQL)
+==============================
+
+SQL, or "Structured Query Language", is a means of asking questions and update data in relational databases.
+
+If you want to know a little more about this subject `Click On here! <https://en.wikipedia.org/wiki/SQL>`_
+
+SQL subsets
+-----------
+
+The SQL language is divided into subsets according to operations that we want to perform on a database, such as:
+
+Data Manipulation Language (DML) 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The first group is Data Manipulation Language(DML).
+
+DML is a subset of the SQL language that is used to perform data inclusions, changes, and deletions present in records. These tasks can be performed on multiple records from multiple tables at Same time. Commands that perform the above functions respectively referred to are:
+
+- Data Inclusions (INSERT);
+- Data updates (UPDATE);
+- Data Exclusions (DELETE)
+
+Data Definition Language (DDL)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The second group is Data Definition Language(DDL).
+
+A DDL allows the user to define new tables and elements associated. The main commands used are:
+
+- Object Creation (CREATE);
+- Object Alteration (ALTER);
+- Object Addition (ADD);
+- Object Exclusion (DROP);
+- Object Rename (RENAME);
+- TRUNCATE
+
+Object Types: Database, Table, Column, Constraint, User, Sequence, Function, View, Trigger, Index, etc.
+
+Data Control Language (DCL)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The third group is the Data Control Language(DCL).
+
+DCL controls aspects of data authorization and user licenses to control who has access to view or manipulate data within the database. 
+
+The main commands used are:
+
+- User Authorization (GRANT);
+- User Revocation (REVOKE).
+
+Data Transaction Language (DTL)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- BEGIN WORK (or START TRANSACTION, depending on SQL dialect) can be used to mark the beginning of a database transaction that can be completed or not.
+- COMMIT ends a transaction within a management system Database
+- ROLLBACK makes changes to existing data since last COMMIT or ROLLBACK are discarded.
+
+Data Query Language (DQL)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Although it has only one command, DQL is the most commonly used part of SQL.
+
+The SELECT command allows the user to specify a query as a description of the desired outcome. This command is composed of various clauses and options, making it possible to elaborate simple to the most elaborate.
+
+We will work almost exclusively with SELECT to ask questions from tables using spatial functions.
+
+A selection query is usually of the form:
+
+::
+
+    SELECT some_columns
+    FROM (some) some_data_source
+    WHERE some_condition;
+
+- ``some_columns`` are column names or value functions of column.
+
+- ``some_data_source`` is a single table or a composite table created by joining two tables in a key or condition.
+
+- ``some_condition`` is a filter that restricts the number of rows to be returned.
+
+--------------
+
+.. Note:: - For a synopsis of all SELECT parameters, see the documentation of `PostgreSQL <http://www.postgresql.org/docs/current/interactive/sql-select.html>`__.
+
+--------------
+
+The SQL language can be divided into:
+
+- Clauses;
+- Logical Operators;
+- Relational Operators;
+- Aggregation Functions;
+
+Clauses
+^^^^^^^^
+
+- ``FROM`` - Used to specify the table to select the records.
+- ``WHERE`` - Used to specify the conditions that must meet the records that will be selected.
+- ``GROUP BY`` - Used to separate the selected records into specific groups.
+- ``HAVING`` - Used to express the condition that must satisfy each group.
+- ``ORDER BY`` - Used to sort the selected records with a specific order.
+- ``DISTINCT`` - Used to select data without repeating.
+- ``UNION`` - combine the results of two SQL queries into one table for all matching rows.
+
+Logical Operators
+^^^^^^^^^^^^^^^^^
+
+- ``AND`` - And logical. Evaluates conditions and returns true value if both are correct.
+- ``OR`` - OR logical. Evaluates conditions and returns true value if any is correct.
+- ``NOT`` - Logical negation. Returns the opposite value of the expression.
+
+Relational Operators
+^^^^^^^^^^^^^^^^^^^^
+
+- ``<`` Minor
+- ``>`` Larger
+- ``<=`` Less than or equal
+- ``>=`` Greater than or equal
+- ``=`` Equal
+- ``<>`` Different
+- ``BETWEEN`` - Value range
+- ``LIKE`` - Data Comparison
+- ``IN`` - If dataset is in a list
+- ``IS`` or ``IS NOT`` - data comparison with null data;
+- ``AS`` - Alias(nickname)
+
+Aggregate Functions
+^^^^^^^^^^^^^^^^^^^^
+
+- ``AVG`` - Used to average values of a field determined.
+- ``COUNT`` - Used to return the number of records in the selection.
+- ``SUM`` - Used to return the sum of all values of a given field.
+- ``MAX`` - Used to return the highest value of a field.
+- ``MIN`` - Used to return the lowest value of a field.
+
+Example
+=======
+
+You have already seen SQL when we created our first database.
+
+Recall:
 
 .. code-block:: sql
 
    SELECT postgis_full_version();
 
-But that was a question about the database.  Now that we've loaded data into our database, let's use SQL to ask questions of the data! For example,
+But that was a question about the database.
+
+Now that we've loaded data into our database, let's use SQL to ask questions of the data! For example,
 
   "What are the names of all the neighborhoods in New York City?"
   
