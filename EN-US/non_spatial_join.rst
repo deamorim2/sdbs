@@ -13,7 +13,7 @@ As a special case, a table (base table, `view <https://en.wikipedia.org/wiki/Vie
 
 A programmer declares a ``JOIN`` statement to identify rows for joining. If the evaluated predicate is true, the combined row is then produced in the expected format, a row set or a temporary table.
 
-To know more about this subject, `Click Here! <https://en.wikipedia.org/wiki/Join_(SQL)>`_.
+To know more about this subject, `Click Here! <https://en.wikipedia.org/wiki/Join_(SQL)>`_
 
 Types of JOIN:
 ~~~~~~~~~~~~~~
@@ -89,29 +89,29 @@ This is the SQL statement to PostgreSQL to create the aforementioned tables.
 
 .. code-block:: sql
 
-CREATE TABLE department
-(
-departmentid integer,
-departmentname varchar(20)
-);
+  CREATE TABLE department
+  (
+  departmentid integer,
+  departmentname varchar(20)
+  );
 
-CREATE TABLE employee
-(
-lastname VARCHAR(20),
-departmentid integer
-);
+  CREATE TABLE employee
+  (
+  lastname VARCHAR(20),
+  departmentid integer
+  );
 
-INSERT INTO department VALUES(31, 'Sales');
-INSERT INTO department VALUES(33, 'Engineering');
-INSERT INTO department VALUES(34, 'Clerical');
-INSERT INTO department VALUES(35, 'Marketing');
+  INSERT INTO department VALUES(31, 'Sales');
+  INSERT INTO department VALUES(33, 'Engineering');
+  INSERT INTO department VALUES(34, 'Clerical');
+  INSERT INTO department VALUES(35, 'Marketing');
 
-INSERT INTO employee VALUES('Rafferty', 31);
-INSERT INTO employee VALUES('Jones', 33);
-INSERT INTO employee VALUES('Heisenberg', 33);
-INSERT INTO employee VALUES('Robinson', 34);
-INSERT INTO employee VALUES('Smith', 34);
-INSERT INTO employee VALUES('Williams', NULL);
+  INSERT INTO employee VALUES('Rafferty', 31);
+  INSERT INTO employee VALUES('Jones', 33);
+  INSERT INTO employee VALUES('Heisenberg', 33);
+  INSERT INTO employee VALUES('Robinson', 34);
+  INSERT INTO employee VALUES('Smith', 34);
+  INSERT INTO employee VALUES('Williams', NULL);
 
 CROSS JOIN returns the `Cartesian product <https://en.wikipedia.org/wiki/Cartesian_product>`__ of rows from tables in the join. In other words, it will produce rows which combine each row from the first table with each row from the second table.
 
