@@ -1,9 +1,9 @@
 .. _non_spatial_join:
 
-Non Spatial Join Using SQL
+Non Spatial JOIN Using SQL
 ==========================
 
-An `SQL <https://en.wikipedia.org/wiki/SQL>`__ ``join`` clause - corresponding to a `join operation in relational algebra <https://en.wikipedia.org/wiki/Join_(relational_algebra)>`__ - combines `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one or more `tables <https://en.wikipedia.org/wiki/Table_(database)>`__ in a relational `database <https://en.wikipedia.org/wiki/Database>`__.
+An `SQL <https://en.wikipedia.org/wiki/SQL>`__ ``JOIN`` clause - corresponding to a `join operation in relational algebra <https://en.wikipedia.org/wiki/Join_(relational_algebra)>`__ - combines `columns <https://en.wikipedia.org/wiki/Column_(database)>`__ from one or more `tables <https://en.wikipedia.org/wiki/Table_(database)>`__ in a relational `database <https://en.wikipedia.org/wiki/Database>`__.
 
 It creates a set that can be saved as a table or used as it is.
 
@@ -45,7 +45,7 @@ Sample Tables
 
 Relational databases are usually `normalized <https://en.wikipedia.org/wiki/Database_normalization>`__ to eliminate duplication of information such as when entity types have one-to-many relationships. For example, a department may be associated with a number of employees. Joining separate tables for department and employee effectively creates another table which combines the information from both tables.
 
-All subsequent explanations on join types in this article make use of the following two tables. The rows in these tables serve to illustrate the effect of different types of joins and join-predicates. In the following tables the ``DepartmentID`` `column <https://en.wikipedia.org/wiki/Column_(database)>`__ of the ``Department`` table (which can be designated as ``Department.DepartmentID``) is the `primary key <https://en.wikipedia.org/wiki/Primary_key>`__, while ``Employee.DepartmentID`` is a `foreign key <https://en.wikipedia.org/wiki/Foreign_key>`__.
+All subsequent explanations on join types in this tutorial make use of the following two tables.
 
 .. table:: employee table
 
@@ -85,8 +85,12 @@ All subsequent explanations on join types in this article make use of the follow
 
 -----
 
-This is the SQL statement to PostgreSQL to create the aforementioned tables.
+The rows in these tables serve to illustrate the effect of different types of joins and join-predicates. In the following tables the ``departmentid`` `column <https://en.wikipedia.org/wiki/Column_(database)>`__ of the ``department`` table (which can be designated as ``department.departmentid``) is the `primary key <https://en.wikipedia.org/wiki/Primary_key>`__, while ``employee.departmentid`` is a `foreign key <https://en.wikipedia.org/wiki/Foreign_key>`__.
 
+**Below is the SQL statement to PostgreSQL to create the aforementioned tables.**
+
+  Create the department and employee tables and enter their data from the instructions below into the sbde database:  
+  
 .. code-block:: sql
 
   CREATE TABLE department
@@ -113,16 +117,19 @@ This is the SQL statement to PostgreSQL to create the aforementioned tables.
   INSERT INTO employee VALUES('Smith', 34);
   INSERT INTO employee VALUES('Williams', NULL);
 
+Cross-Join
+~~~~~~~~~~
+
 CROSS JOIN returns the `Cartesian product <https://en.wikipedia.org/wiki/Cartesian_product>`__ of rows from tables in the join. In other words, it will produce rows which combine each row from the first table with each row from the second table.
 
-Example of an explicit cross join:
+**Example of an explicit cross join:**
 
 .. code-block:: sql
 
     SELECT *
     FROM employee CROSS JOIN department;
 
-Example of an implicit cross join:
+**Example of an implicit cross join:**
 
 .. code-block:: sql
 
@@ -182,59 +189,17 @@ Example of an implicit cross join:
 | Williams        | ``NULL``        | Marketing       | 35              |
 +-----------------+-----------------+-----------------+-----------------+
 
-The cross join does not itself apply any predicate to filter rows from
-the joined table. The results of a cross join can be filtered by using a
-```WHERE`` <https://en.wikipedia.org/wiki/Where_(SQL)>`__ clause which
-may then produce the equivalent of an inner join.
+The cross join does not itself apply any predicate to filter rows from the joined table. The results of a cross join can be filtered by using a ```WHERE`` <https://en.wikipedia.org/wiki/Where_(SQL)>`__ clause which may then produce the equivalent of an inner join.
 
-In the `SQL:2011 <https://en.wikipedia.org/wiki/SQL:2011>`__ standard,
-cross joins are part of the optional F401, "Extended joined table",
-package.
+In the `SQL:2011 <https://en.wikipedia.org/wiki/SQL:2011>`__ standard, cross joins are part of the optional F401, "Extended joined table", package.
 
 Normal uses are for checking the server's performance.
 
-.. rubric:: Inner
-   join[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=3>`__\ ]
-   :name: inner-joinedit
-
-.. raw:: html
-
-   <div class="thumb tright">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:222px;">
 
 |A Venn Diagram showing the inner overlapping portion filled.|
 
-.. raw:: html
 
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-` <https://en.wikipedia.org/wiki/File:SQL_Join_-_07_A_Inner_Join_B.svg>`__
-
-.. raw:: html
-
-   </div>
-
-A Venn Diagram representing an Inner Join SQL statement between the
-tables A and B.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+A Venn Diagram representing an Inner Join SQL statement between the tables A and B.
 
 An **inner join** requires each row in the two joined tables to have
 matching column values, and is a commonly used join operation in
