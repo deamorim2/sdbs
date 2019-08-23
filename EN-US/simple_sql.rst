@@ -61,7 +61,7 @@ Data Query Language (DQL)
 
 Although it has only one command, DQL is the most commonly used part of SQL. The SELECT command allows the user to specify a query as a description of the desired outcome. This command is composed of various clauses and options, making it possible to elaborate simple to the most elaborate.
 
-We will work almost exclusively with SELECT to ask questions from tables using spatial functions.
+We will be working almost exclusively with ``SELECT`` in order to ask questions of tables using spatial functions.
 
 A selection query is usually of the form:
 
@@ -79,8 +79,7 @@ A selection query is usually of the form:
 
 --------------
 
-.. Note:: - For a synopsis of all SELECT parameters, see the documentation of `PostgreSQL <http://www.postgresql.org/docs/current/interactive/sql-select.html>`__.
-
+.. Note:: - For a synopsis of all ``SELECT`` parameters, see the `PostgresSQL documentation  <http://www.postgresql.org/docs/current/interactive/sql-select.html>`_.
 --------------
 
 The SQL language can be divided into:
@@ -158,7 +157,8 @@ then enter the following query in to the query window
 
 .. code-block:: sql
 
-  SELECT name FROM nyc_neighborhoods;
+  SELECT name
+  FROM nyc_neighborhoods;
   
 and click the **Execute Query** button (the green triangle).
   
@@ -175,24 +175,8 @@ But what exactly happened here?  To understand, let's begin with the four "verbs
 * ``UPDATE``, alters existing rows in a table
 * ``DELETE``, removes rows from a table
  
-We will be working almost exclusively with ``SELECT`` in order to ask questions of tables using spatial functions.
-
 SELECT queries
 --------------
-
-A select query is generally of the form::
-
-.. code-block:: sql
-
-  SELECT some_columns
-  FROM some_data_source
-  WHERE some_condition;
-  
-.. note::
-
-    For a synopsis of all ``SELECT`` parameters, see the `PostgresSQL documentation  <http://www.postgresql.org/docs/current/interactive/sql-select.html>`_.
-    
-The ``some_columns`` are either column names or functions of column values. The ``some_data_source`` is either a single table, or a composite table created by joining two tables on a key or condition. The ``some_condition`` is a filter that restricts the number of rows to be returned.
 
   "What are the names of all the neighborhoods in Brooklyn?"
 
