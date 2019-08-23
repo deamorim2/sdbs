@@ -67,10 +67,7 @@ A selection query is usually of the form:
 
 .. code-block:: sql
 
-   SELECT some_columns
-     FROM some_data_source
-     WHERE some_condition;
-     
+   SELECT some_columns FROM some_data_source WHERE some_condition;     
 
 - ``some_columns`` are column names or value functions of column.
 
@@ -182,7 +179,11 @@ SELECT queries
 
 A select query is generally of the form::
 
-  SELECT some_columns FROM some_data_source WHERE some_condition;
+.. code-block:: sql
+
+  SELECT some_columns
+  FROM some_data_source
+  WHERE some_condition;
   
 .. note::
 
@@ -197,8 +198,8 @@ We return to our ``nyc_neighborhoods`` table with a filter in hand.  The table c
 .. code-block:: sql
 
   SELECT name 
-    FROM nyc_neighborhoods 
-    WHERE boroname = 'Brooklyn';
+  FROM nyc_neighborhoods 
+  WHERE boroname = 'Brooklyn';
 
 The query will run for even fewer (milli)seconds and return the 23 results.
 
@@ -211,8 +212,8 @@ Fortunately, PostgreSQL has a string length function, :command:`char_length(stri
 .. code-block:: sql
 
   SELECT char_length(name) 
-    FROM nyc_neighborhoods 
-    WHERE boroname = 'Brooklyn';
+  FROM nyc_neighborhoods 
+  WHERE boroname = 'Brooklyn';
 
 Often, we are less interested in the individual rows than in a statistic that applies to all of them. So knowing the lengths of the neighborhood names might be less interesting than knowing the average length of the names. Functions that take in multiple rows and return a single result are called "aggregate" functions.  
 
@@ -223,8 +224,8 @@ PostgreSQL has a series of built-in aggregate functions, including the general p
 .. code-block:: sql
 
   SELECT avg(char_length(name)), stddev(char_length(name)) 
-    FROM nyc_neighborhoods 
-    WHERE boroname = 'Brooklyn';
+  FROM nyc_neighborhoods 
+  WHERE boroname = 'Brooklyn';
   
 ::
 
@@ -239,8 +240,8 @@ The aggregate functions in our last example were applied to every row in the res
 .. code-block:: sql
 
   SELECT boroname, avg(char_length(name)), stddev(char_length(name)) 
-    FROM nyc_neighborhoods 
-    GROUP BY boroname;
+  FROM nyc_neighborhoods 
+  GROUP BY boroname;
  
 We include the ``boroname`` column in the output result so we can determine which statistic applies to which borough. In an aggregate query, you can only output columns that are either (a) members of the grouping clause or (b) aggregate functions.
   
