@@ -135,8 +135,6 @@ Aggregate Functions
 SQL Language Elements
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Main article: 
-
 The `SQL Language Syntax <https://en.wikipedia.org/wiki/SQL_syntax>`_ is subdivided into several language elements, including:
 
 - ``Clauses``, which are constituent components of statements and queries. (In some cases, these are optional).
