@@ -45,7 +45,7 @@ Sample Tables
 
 Relational databases are usually `normalized <https://en.wikipedia.org/wiki/Database_normalization>`__ to eliminate duplication of information such as when entity types have one-to-many relationships. For example, a department may be associated with a number of employees. Joining separate tables for department and employee effectively creates another table which combines the information from both tables.
 
-All subsequent explanations on join types in this tutorial make use of the following two tables.
+All subsequent explanations on join types in this tutorial make use of the following two tables:
 
 .. table:: employee table
 
