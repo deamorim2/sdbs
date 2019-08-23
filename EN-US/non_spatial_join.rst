@@ -47,10 +47,10 @@ Relational databases are usually `normalized <https://en.wikipedia.org/wiki/Data
 
 All subsequent explanations on join types in this article make use of the following two tables. The rows in these tables serve to illustrate the effect of different types of joins and join-predicates. In the following tables the ``DepartmentID`` `column <https://en.wikipedia.org/wiki/Column_(database)>`__ of the ``Department`` table (which can be designated as ``Department.DepartmentID``) is the `primary key <https://en.wikipedia.org/wiki/Primary_key>`__, while ``Employee.DepartmentID`` is a `foreign key <https://en.wikipedia.org/wiki/Foreign_key>`__.
 
-.. table:: Employee table
+.. table:: employee table
 
    +------------+--------------+
-   | LastName   | DepartmentID |
+   | lastname   | departmentid |
    +============+==============+
    | Rafferty   | 31           |
    +------------+--------------+
@@ -65,10 +65,10 @@ All subsequent explanations on join types in this article make use of the follow
    | Williams   | ``NULL``     |
    +------------+--------------+
 
-.. table:: Department table
+.. table:: department table
 
    +--------------+----------------+
-   | DepartmentID | DepartmentName |
+   | departmentid | departmentname |
    +==============+================+
    | 31           | Sales          |
    +--------------+----------------+
@@ -81,15 +81,13 @@ All subsequent explanations on join types in this article make use of the follow
 
 -----
 
-.. Note:: - In the Employee table above, the employee "Williams" has not been
-assigned to any department yet. Also, note that no employees are
-assigned to the "Marketing" department.
+.. Note:: - In the ``employee`` table above, the employee *Williams* has not been assigned to any department yet. Also, note that no employees are assigned to the *Marketing* department.
 
 -----
 
 This is the SQL statement to PostgreSQL to create the aforementioned tables.
 
-::
+.. code-block:: sql
 
 CREATE TABLE department
 (
@@ -115,43 +113,24 @@ INSERT INTO employee VALUES('Robinson', 34);
 INSERT INTO employee VALUES('Smith', 34);
 INSERT INTO employee VALUES('Williams', NULL);
 
-CROSS JOIN returns the `Cartesian product <https://en.wikipedia.org/wiki/Cartesian_product>`__ of rows
-from tables in the join. In other words, it will produce rows which
-combine each row from the first table with each row from the second
-table.\ :sup:``[1] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-1>`__`
+CROSS JOIN returns the `Cartesian product <https://en.wikipedia.org/wiki/Cartesian_product>`__ of rows from tables in the join. In other words, it will produce rows which combine each row from the first table with each row from the second table.
 
 Example of an explicit cross join:
 
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
+.. code-block:: sql
 
     SELECT *
     FROM employee CROSS JOIN department;
 
-.. raw:: html
-
-   </div>
-
 Example of an implicit cross join:
 
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
+.. code-block:: sql
 
     SELECT *
     FROM employee, department;
 
-.. raw:: html
-
-   </div>
-
 +-----------------+-----------------+-----------------+-----------------+
-| Employee.LastNa | Employee.Depart | Department.Depa | Department.Depa |
+| employee.LastNa | Employee.Depart | Department.Depa | Department.Depa |
 | me              | mentID          | rtmentName      | rtmentID        |
 +=================+=================+=================+=================+
 | Rafferty        | 31              | Sales           | 31              |
