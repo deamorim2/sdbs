@@ -15,9 +15,7 @@ The SQL language is divided into subsets according to operations that we want to
 Data Manipulation Language (DML) 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The first group is Data Manipulation Language(DML).
-
-DML is a subset of the SQL language that is used to perform data inclusions, changes, and deletions present in records. These tasks can be performed on multiple records from multiple tables at Same time. Commands that perform the above functions respectively referred to are:
+The first group is Data Manipulation Language(DML). DML is a subset of the SQL language that is used to perform data inclusions, changes, and deletions present in records. These tasks can be performed on multiple records from multiple tables at Same time. Commands that perform the above functions respectively referred to are:
 
 - Data Inclusions (INSERT);
 - Data updates (UPDATE);
@@ -26,9 +24,7 @@ DML is a subset of the SQL language that is used to perform data inclusions, cha
 Data Definition Language (DDL)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The second group is Data Definition Language(DDL).
-
-A DDL allows the user to define new tables and elements associated. The main commands used are:
+The second group is Data Definition Language(DDL).A DDL allows the user to define new tables and elements associated. The main commands used are:
 
 - Object Creation (CREATE);
 - Object Alteration (ALTER);
@@ -42,9 +38,7 @@ Object Types: Database, Table, Column, Constraint, User, Sequence, Function, Vie
 Data Control Language (DCL)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The third group is the Data Control Language(DCL).
-
-DCL controls aspects of data authorization and user licenses to control who has access to view or manipulate data within the database. 
+The third group is the Data Control Language(DCL). DCL controls aspects of data authorization and user licenses to control who has access to view or manipulate data within the database. 
 
 The main commands used are:
 
@@ -61,9 +55,7 @@ Data Transaction Language (DTL)
 Data Query Language (DQL)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Although it has only one command, DQL is the most commonly used part of SQL.
-
-The SELECT command allows the user to specify a query as a description of the desired outcome. This command is composed of various clauses and options, making it possible to elaborate simple to the most elaborate.
+Although it has only one command, DQL is the most commonly used part of SQL. The SELECT command allows the user to specify a query as a description of the desired outcome. This command is composed of various clauses and options, making it possible to elaborate simple to the most elaborate.
 
 We will work almost exclusively with SELECT to ask questions from tables using spatial functions.
 
