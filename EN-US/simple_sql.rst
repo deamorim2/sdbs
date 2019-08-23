@@ -84,6 +84,7 @@ A selection query is usually of the form:
 --------------
 
 The SQL language can be divided into:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Clauses;
 - Logical Operators;
