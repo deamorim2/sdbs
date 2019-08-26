@@ -233,7 +233,9 @@ PostgreSQL has a series of built-in aggregate functions, including the general p
   SELECT avg(char_length(name)), stddev(char_length(name)) 
   FROM nyc_neighborhoods 
   WHERE boroname = 'Brooklyn';
-  
+
+..
+
   +--------------------+--------------------+
   |        avg         |       stddev       |
   +====================+====================+
