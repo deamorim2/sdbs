@@ -6,7 +6,7 @@ Geometries
 Introduction
 ------------
 
-In the previous `section <./loading_data.rst>`, we loaded a variety of data.  Before we start playing with our data lets have a look at some simpler examples.  In pgAdmin, once again select the **nyc** database and open the SQL query tool.  Paste this example SQL code into the pgAdmin SQL Editor window (removing any text that may be there by default) and then execute.
+In the previous `section <./loading_data.rst>`_, we loaded a variety of data.  Before we start playing with our data lets have a look at some simpler examples.  In pgAdmin, once again select the **nyc** database and open the SQL query tool.  Paste this example SQL code into the pgAdmin SQL Editor window (removing any text that may be there by default) and then execute.
 
 .. code-block:: sql
 
