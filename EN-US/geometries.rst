@@ -14,16 +14,16 @@ In the previous `section <./loading_data.rst>`_, we loaded a variety of data.  B
 
 .. code-block:: sql
 
-  CREATE TABLE geometries (name varchar, geom geometry);
+    CREATE TABLE geometries (id integer, name varchar, geom geometry);
 
-  INSERT INTO geometries VALUES
-    ('Point', 'POINT(0 0)'),
-    ('Linestring', 'LINESTRING(0 0, 1 1, 2 1, 2 2)'),
-    ('Polygon', 'POLYGON((0 0, 1 0, 1 1, 0 1, 0 0))'),
-    ('PolygonWithHole', 'POLYGON((0 0, 10 0, 10 10, 0 10, 0 0),(1 1, 1 2, 2 2, 2 1, 1 1))'),
-    ('Collection', 'GEOMETRYCOLLECTION(POINT(2 0),POLYGON((0 0, 1 0, 1 1, 0 1, 0 0)))');
+    INSERT INTO geometries VALUES
+    (1, 'Point', 'POINT(0 0)'),
+    (2, 'Linestring', 'LINESTRING(0 0, 1 1, 2 1, 2 2)'),
+    (3, 'Polygon', 'POLYGON((0 0, 1 0, 1 1, 0 1, 0 0))'),
+    (4, 'PolygonWithHole', 'POLYGON((2 0, 12 0, 12 10, 2 10, 2 0),(3 1, 4 1, 4 2, 3 2, 3 1))'),
+    (5, 'Collection', 'GEOMETRYCOLLECTION(POINT(2 1),POLYGON((5 3, 6 3, 6 4, 5 4, 5 3)))');
 
-  SELECT name, ST_AsText(geom) FROM geometries;
+    SELECT id, name, ST_AsText(geom) FROM geometries;
 
 .. image:: ./geometries/start01.png
 
@@ -32,7 +32,7 @@ The above example CREATEs a table (**geometries**) then INSERTs five geometries:
 Metadata Tables
 ---------------
 
-In conformance with the Simple Features for SQL (:term:`SFSQL`) specification, PostGIS provides two tables to track and report on the geometry types available in a given database.
+In conformance with the OpenGIS Implementation Specification for Geographic information-Simple feature access (`SFSQL <http://www.opengeospatial.org/standards/sfa>`_) or by the ISO/IEC 13249-3:2016 Part 3: Spatial (`SQLMM <https://www.iso.org/standard/60343.html>`_), **PostGIS** provides two tables to track and report on the geometry types available in a given database.
 
 * The first table, ``spatial_ref_sys``, defines all the spatial reference systems known to the database and will be described in greater detail later.
 * The second table (actually, a view), ``geometry_columns``, provides a listing of all "features" (defined as an object with geometric attributes), and the basic details of those features.
@@ -40,7 +40,9 @@ In conformance with the Simple Features for SQL (:term:`SFSQL`) specification, P
 .. image:: ./geometries/table01.png
   :class: inline
 
-Let's have a look at the ``geometry_columns`` table in our database.  Paste this command in the Query Tool as before:
+Let's have a look at the ``geometry_columns`` table in our database.
+
+  Paste this command in the Query Tool as before:
 
 .. code-block:: sql
 
@@ -55,28 +57,32 @@ Let's have a look at the ``geometry_columns`` table in our database.  Paste this
 
 By querying this table, GIS clients and libraries can determine what to expect when retrieving data and can perform any necessary projection, processing or rendering without needing to inspect each geometry.
 
-.. note::
+-----
 
-   Do some or all of your ``nyc`` tables not have an ``srid`` of 26918? It's easy to fix by updating the table
+.. note:: - Do some or all of your ``nyc`` tables not have an ``srid`` of 26918? It's easy to fix by updating the table
 
-   .. code-block:: sql
+-----
+
+.. code-block:: sql
 
       SELECT UpdateGeometrySRID('nyc_neighborhoods','geom',26918);
 
 Representing Real World Objects
 -------------------------------
 
-The Simple Features for SQL (:term:`SFSQL`) specification, the original guiding standard for PostGIS development, defines how a real world object is represented.  By taking a continuous shape and digitizing it at a fixed resolution we achieve a passable representation of the object.  SFSQL only handled 2-dimensional representations.  PostGIS has extended that to include 3- and 4-dimensional representations; more recently the SQL-Multimedia Part 3 (:term:`SQL/MM`) specification has officially defined their own representation.
+The OpenGIS Implementation Specification for Geographic information-Simple feature access (`SFSQL <http://www.opengeospatial.org/standards/sfa>`_), the original guiding standard for PostGIS development, defines how a real world object is represented.  By taking a continuous shape and digitizing it at a fixed resolution we achieve a passable representation of the object. 
+
+`SFSQL <http://www.opengeospatial.org/standards/sfa>`_ only handled 2-dimensional representations.  PostGIS has extended that to include 3- and 4-dimensional representations; more recently the SQL-Multimedia Part 3 (`SQLMM <https://www.iso.org/standard/60343.html>`_) specification has officially defined their own representation.
 
 Our example table contains a mixture of different geometry types. We can collect general information about each object using functions that read the geometry metadata.
 
-* :command:`ST_GeometryType(geometry)` returns the type of the geometry
-* :command:`ST_NDims(geometry)` returns the number of dimensions of the geometry
-* :command:`ST_SRID(geometry)` returns the spatial reference identifier number of the geometry
+* `ST_GeometryType(geometry)` returns the type of the geometry
+* `ST_NDims(geometry)` returns the number of dimensions of the geometry
+* `ST_SRID(geometry)` returns the spatial reference identifier number of the geometry
 
 .. code-block:: sql
 
-  SELECT name, ST_GeometryType(geom), ST_NDims(geom), ST_SRID(geom)
+    SELECT name, ST_GeometryType(geom), ST_NDims(geom), ST_SRID(geom)
     FROM geometries;
 
 ::
@@ -101,7 +107,7 @@ A spatial **point** represents a single location on the Earth.  This point is re
 
 .. code-block:: sql
 
-  SELECT ST_AsText(geom)
+    SELECT ST_AsText(geom)
     FROM geometries
     WHERE name = 'Point';
 
@@ -111,8 +117,8 @@ A spatial **point** represents a single location on the Earth.  This point is re
 
 Some of the specific spatial functions for working with points are:
 
-* :command:`ST_X(geometry)` returns the X ordinate
-* :command:`ST_Y(geometry)` returns the Y ordinate
+* `ST_X(geometry)` returns the X ordinate
+* `ST_Y(geometry)` returns the Y ordinate
 
 So, we can read the ordinates from a point like this:
 
@@ -122,11 +128,11 @@ So, we can read the ordinates from a point like this:
     FROM geometries
     WHERE name = 'Point';
 
-The New York City subway stations (``nyc_subway_stations``) table is a data set represented as points. The following SQL query will return the geometry associated with one point (in the :command:`ST_AsText` column).
+The New York City subway stations (``nyc_subway_stations``) table is a data set represented as points. The following SQL query will return the geometry associated with one point (in the `ST_AsText` column).
 
 .. code-block:: sql
 
-  SELECT name, ST_AsText(geom)
+    SELECT name, ST_AsText(geom)
     FROM nyc_subway_stations
     LIMIT 1;
 
@@ -146,7 +152,7 @@ The following SQL query will return the geometry associated with one linestring 
 
 .. code-block:: sql
 
-  SELECT ST_AsText(geom)
+    SELECT ST_AsText(geom)
     FROM geometries
     WHERE name = 'Linestring';
 
