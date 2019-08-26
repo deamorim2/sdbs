@@ -16,7 +16,7 @@ A programmer declares a **JOIN** statement to identify rows for joining. If the 
 To know more about this subject, `Click Here! <https://en.wikipedia.org/wiki/Join_(SQL)>`_
 
 Types of JOIN:
-~~~~~~~~~~~~~~
+--------------
 
 `ANSI-standard SQL <https://en.wikipedia.org/wiki/American_National_Standards_Institute>`__ specifies five types of **JOIN**: ``INNER``, ``LEFT OUTER``, ``RIGHT OUTER``, ``FULL OUTER`` and ``CROSS``.
 
@@ -118,7 +118,7 @@ The rows in these tables serve to illustrate the effect of different types of jo
   INSERT INTO employee VALUES('Williams', NULL);
 
 Cross-Join
-~~~~~~~~~~
+----------
 
 CROSS JOIN returns the `Cartesian product <https://en.wikipedia.org/wiki/Cartesian_product>`__ of rows from tables in the join. In other words, it will produce rows which combine each row from the first table with each row from the second table.
 
@@ -195,7 +195,7 @@ In the `SQL:2011 <https://en.wikipedia.org/wiki/SQL:2011>`__ standard, cross joi
 Normal uses are for checking the server's performance.
 
 Inner Join
-~~~~~~~~~~
+----------
 
 An **inner join** requires each row in the two joined tables to have matching column values, and is a commonly used join operation in `applications <https://en.wikipedia.org/wiki/Application_software>`__ but should not be assumed to be the best choice in all situations.
 
@@ -325,158 +325,35 @@ Specifically, any columns mentioned in the ``USING`` list will appear only once,
 Natural Join
 ~~~~~~~~~~~~
 
-The natural join is a special case of equi-join. Natural join (⋈) is a `binary operator <https://en.wikipedia.org/wiki/Binary_relation>`__ that is written as (*R* ⋈ *S*) where *R* and *S* are `relations <https://en.wikipedia.org/wiki/Relation_(database)>`__.\ :sup:``[6] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-6>`__` The result of the natural join is the set of all combinations of `tuples <https://en.wikipedia.org/wiki/Tuples>`__ in *R* and *S* that are equal on their common attribute names. For an example consider the tables *Employee* and *Dept* and their natural join:
+The **natural join** is a special case of **equi-join**. **Natural join** (⋈) is a `binary operator <https://en.wikipedia.org/wiki/Binary_relation>`__ that is written as (*R* ⋈ *S*) where *R* and *S* are `relations <https://en.wikipedia.org/wiki/Relation_(database)>`__.
 
-+-----------------------+-----------------------+-----------------------+
-| .. table:: *Employee* | .. table:: *Dept*     | .. table:: *Employee* |
-|                       |                       |  :math:`\bowtie`\ |\\ |
-|    +-----+-----+----- |    +------------+---- | bowtie                |
-| +                     | -----+                | | *Dept*              |
-|    | Nam | Emp | Dep  |    | DeptName   | Man |                       |
-| |                     | ager |                |    +---+---+---+---+  |
-|    | e   | Id  | tNa  |    +============+==== |    | N | E | D | M |  |
-| |                     | =====+                |    | a | m | e | a |  |
-|    |     |     | me   |    | Finance    | Geo |    | m | p | p | n |  |
-| |                     | rge  |                |    | e | I | t | a |  |
-|    +=====+=====+===== |    +------------+---- |    |   | d | N | g |  |
-| +                     | -----+                |    |   |   | a | e |  |
-|    | Har | 341 | Fin  |    | Sales      | Har |    |   |   | m | r |  |
-| |                     | riet |                |    |   |   | e |   |  |
-|    | ry  | 5   | anc  |    +------------+---- |    +===+===+===+===+  |
-| |                     | -----+                |    | H | 3 | F | G |  |
-|    |     |     | e    |    | Production | Cha |    | a | 4 | i | e |  |
-| |                     | rles |                |    | r | 1 | n | o |  |
-|    +-----+-----+----- |    +------------+---- |    | r | 5 | a | r |  |
-| +                     | -----+                |    | y |   | n | g |  |
-|    | Sal | 224 | Sal  |                       |    |   |   | c | e |  |
-| |                     |                       |    |   |   | e |   |  |
-|    | ly  | 1   | es   |                       |    +---+---+---+---+  |
-| |                     |                       |    | S | 2 | S | H |  |
-|    +-----+-----+----- |                       |    | a | 2 | a | a |  |
-| +                     |                       |    | l | 4 | l | r |  |
-|    | Geo | 340 | Fin  |                       |    | l | 1 | e | r |  |
-| |                     |                       |    | y |   | s | i |  |
-|    | rge | 1   | anc  |                       |    |   |   |   | e |  |
-| |                     |                       |    |   |   |   | t |  |
-|    |     |     | e    |                       |    +---+---+---+---+  |
-| |                     |                       |    | G | 3 | F | G |  |
-|    +-----+-----+----- |                       |    | e | 4 | i | e |  |
-| +                     |                       |    | o | 0 | n | o |  |
-|    | Har | 220 | Sal  |                       |    | r | 1 | a | r |  |
-| |                     |                       |    | g |   | n | g |  |
-|    | rie | 2   | es   |                       |    | e |   | c | e |  |
-| |                     |                       |    |   |   | e |   |  |
-|    | t   |     |      |                       |    +---+---+---+---+  |
-| |                     |                       |    | H | 2 | S | H |  |
-|    +-----+-----+----- |                       |    | a | 2 | a | a |  |
-| +                     |                       |    | r | 0 | l | r |  |
-|                       |                       |    | r | 2 | e | r |  |
-|                       |                       |    | i |   | s | i |  |
-|                       |                       |    | e |   |   | e |  |
-|                       |                       |    | t |   |   | t |  |
-|                       |                       |    +---+---+---+---+  |
-+-----------------------+-----------------------+-----------------------+
+The result of the **natural join** is the set of all combinations of `tuples <https://en.wikipedia.org/wiki/Tuples>`__ in *R* and *S* that are equal on their common attribute names. For an example consider the tables *Employee* and *Dept* and their natural join:
 
-This can also be used to define `composition of
-relations <https://en.wikipedia.org/wiki/Composition_of_relations>`__.
-For example, the composition of *Employee* and *Dept* is their join as
-shown above, projected on all but the common attribute *DeptName*. In
-`category theory <https://en.wikipedia.org/wiki/Category_theory>`__, the
-join is precisely the `fiber
-product <https://en.wikipedia.org/wiki/Fiber_product>`__.
+This can also be used to define `composition of relations <https://en.wikipedia.org/wiki/Composition_of_relations>`__.
+For example, the composition of *employee* and *dept* is their join as shown above, projected on all but the common attribute *DeptName*. In `category theory <https://en.wikipedia.org/wiki/Category_theory>`__, the join is precisely the `fiber product <https://en.wikipedia.org/wiki/Fiber_product>`__.
 
-The natural join is arguably one of the most important operators since
-it is the relational counterpart of logical AND. Note that if the same
-variable appears in each of two predicates that are connected by AND,
-then that variable stands for the same thing and both appearances must
-always be substituted by the same value. In particular, the natural join
-allows the combination of relations that are associated by a `foreign
-key <https://en.wikipedia.org/wiki/Foreign_key>`__. For example, in the
-above example a foreign key probably holds from *Employee*.\ *DeptName*
-to *Dept*.\ *DeptName* and then the natural join of *Employee* and
-*Dept* combines all employees with their departments. This works because
-the foreign key holds between attributes with the same name. If this is
-not the case such as in the foreign key from *Dept*.\ *manager* to
-*Employee*.\ *Name* then these columns have to be renamed before the
-natural join is taken. Such a join is sometimes also referred to as an
-**equi-join**.
+The natural join is arguably one of the most important operators since it is the relational counterpart of logical AND. Note that if the same variable appears in each of two predicates that are connected by AND, then that variable stands for the same thing and both appearances must always be substituted by the same value.
 
-More formally the semantics of the natural join are defined as follows:
+In particular, the natural join allows the combination of relations that are associated by a `foreign key <https://en.wikipedia.org/wiki/Foreign_key>`__. For example, in the above example a foreign key probably holds from *Employee*.\ *DeptName* to *Dept*.\ *DeptName* and then the natural join of *Employee* and *Dept* combines all employees with their departments. This works because the foreign key holds between attributes with the same name. If this is not the case such as in the foreign key from *Dept*.\ *manager* to *Employee*.\ *Name* then these columns have to be renamed before the natural join is taken. Such a join is sometimes also referred to as an **equi-join**.
 
-:math:`R \bowtie S = \left\{ {t \cup s \mid t \in R\  \land \ s \in S\  \land \ {\mathit{F}\mathit{u}\mathit{n}}(t \cup s)} \right\}`\ |{\displaystyle
-R\bowtie S=\left\{t\cup s\mid t\in R\\ \\land \\ s\in S\\ \\land \\
-{\mathit {Fun}}(t\cup s)\right\}}|,
-where *Fun* is a
-`predicate <https://en.wikipedia.org/wiki/Predicate_(mathematics)>`__
-that is true for a
-`relation <https://en.wikipedia.org/wiki/Relation_(mathematics)>`__ *r*
-`if and only if <https://en.wikipedia.org/wiki/If_and_only_if>`__ *r* is
-a function. It is usually required that *R* and *S* must have at least
-one common attribute, but if this constraint is omitted, and *R* and *S*
-have no common attributes, then the natural join becomes exactly the
-Cartesian product.
+-----
 
-The natural join can be simulated with Codd's primitives as follows. Let
-*c*\ :sub:`1`, …, *c*\ :sub:`*m*` be the attribute names common to *R*
-and *S*, *r*\ :sub:`1`, …, *r*\ :sub:`*n*` be the attribute names unique
-to *R* and let *s*\ :sub:`1`, …, *s*\ :sub:`*k*` be the attributes
-unique to *S*. Furthermore, assume that the attribute names
-*x*\ :sub:`1`, …, *x*\ :sub:`*m*` are neither in *R* nor in *S*. In a
-first step the common attribute names in *S* can now be renamed:
+.. Tip:: - Most experts agree that **NATURAL JOINs** are dangerous and therefore strongly discourage their use. The danger comes from inadvertently adding a new column, named the same as another column in the other table. An existing natural join might then "naturally" use the new column for comparisons, making comparisons/matches using different criteria (from different columns) than before.
 
-:math:`T = \rho_{x_{1}/c_{1},\ldots,x_{m}/c_{m}}(S) = \rho_{x_{1}/c_{1}}(\rho_{x_{2}/c_{2}}(\ldots\rho_{x_{m}/c_{m}}(S)\ldots))`\ |T=\rho
-\_{x_{1}/c_{1},\ldots ,x_{m}/c_{m}}(S)=\rho \_{x_{1}/c_{1}}(\rho
-\_{x_{2}/c_{2}}(\ldots \\rho \_{x_{m}/c_{m}}(S)\ldots ))|
-Then we take the Cartesian product and select the tuples that are to be
-joined:
+------
 
-:math:`U = \pi_{r_{1},\ldots,r_{n},c_{1},\ldots,c_{m},s_{1},\ldots,s_{k}}(P)`\ |U=\pi
-\_{r_{1},\ldots ,r_{n},c_{1},\ldots ,c_{m},s_{1},\ldots ,s_{k}}(P)|
-A `natural join <https://en.wikipedia.org/wiki/Natural_join>`__ is a
-type of equi-join where the **join** predicate arises implicitly by
-comparing all columns in both tables that have the same column-names in
-the joined tables. The resulting joined table contains only one column
-for each pair of equally named columns. In the case that no columns with
-the same names are found, the result is a `cross
-join <https://en.wikipedia.org/wiki/Cross_join>`__.
+Thus an existing query could produce different results, even though the data in the tables have not been changed, but only augmented. The use of column names to automatically determine table links is not an option in large databases with hundreds or thousands of tables where it would place an unrealistic constraint on naming conventions.
 
-Most experts agree that NATURAL JOINs are dangerous and therefore
-strongly discourage their
-use.\ :sup:``[7] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-7>`__`
-The danger comes from inadvertently adding a new column, named the same
-as another column in the other table. An existing natural join might
-then "naturally" use the new column for comparisons, making
-comparisons/matches using different criteria (from different columns)
-than before. Thus an existing query could produce different results,
-even though the data in the tables have not been changed, but only
-augmented. The use of column names to automatically determine table
-links is not an option in large databases with hundreds or thousands of
-tables where it would place an unrealistic constraint on naming
-conventions. Real world databases are commonly designed with `foreign
-key <https://en.wikipedia.org/wiki/Foreign_key>`__ data that is not
-consistently populated (NULL values are allowed), due to business rules
-and context. It is common practice to modify column names of similar
-data in different tables and this lack of rigid consistency relegates
-natural joins to a theoretical concept for discussion.
+Real world databases are commonly designed with `foreign key <https://en.wikipedia.org/wiki/Foreign_key>`__ data that is not consistently populated (NULL values are allowed), due to business rules and context. It is common practice to modify column names of similar data in different tables and this lack of rigid consistency relegates **natural joins** to a theoretical concept for discussion.
 
-The above sample query for inner joins can be expressed as a natural
-join in the following way:
+The above sample query for **inner joins** can be expressed as a **natural join** in the following way:
 
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
+.. code-block:: sql
 
     SELECT *
     FROM employee NATURAL JOIN department;
 
-.. raw:: html
-
-   </div>
-
-As with the explicit ``USING`` clause, only one DepartmentID column
-occurs in the joined table, with no qualifier:
+As with the explicit ``USING`` clause, only one ``departmentid`` column occurs in the joined table, with no qualifier:
 
 +--------------+-------------------+---------------------------+
 | DepartmentID | Employee.LastName | Department.DepartmentName |
@@ -492,113 +369,33 @@ occurs in the joined table, with no qualifier:
 | 31           | Rafferty          | Sales                     |
 +--------------+-------------------+---------------------------+
 
-PostgreSQL, MySQL and Oracle support natural joins; Microsoft T-SQL and
-IBM DB2 do not. The columns used in the join are implicit so the join
-code does not show which columns are expected, and a change in column
-names may change the results. In the
-`SQL:2011 <https://en.wikipedia.org/wiki/SQL:2011>`__ standard, natural
-joins are part of the optional F401, "Extended joined table", package.
+PostgreSQL, MySQL and Oracle support natural joins; Microsoft T-SQL and IBM DB2 do not. The columns used in the join are implicit so the join code does not show which columns are expected, and a change in column names may change the results. In the `SQL:2011 <https://en.wikipedia.org/wiki/SQL:2011>`__ standard, **natural joins** are part of the optional F401, "Extended joined table", package.
 
-In many database environments the column names are controlled by an
-outside vendor, not the query developer. A natural join assumes
-stability and consistency in column names which can change during vendor
-mandated version upgrades.
+In many database environments the column names are controlled by an outside vendor, not the query developer. A natural join assumes stability and consistency in column names which can change during vendor mandated version upgrades.
 
-.. rubric:: Outer
-   join[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=6>`__\ ]
-   :name: outer-joinedit
+Outer Join
+----------
 
-The joined table retains each row—even if no other matching row exists.
-Outer joins subdivide further into left outer joins, right outer joins,
-and full outer joins, depending on which table's rows are retained:
-left, right, or both (in this case *left* and *right* refer to the two
-sides of the ``JOIN`` keyword). Like `inner
-joins <https://en.wikipedia.org/wiki/Join_(SQL)#Inner_join>`__, one can
-further sub-categorize all types of outer joins as
-`equi-joins <https://en.wikipedia.org/wiki/Join_(SQL)#Equi-join>`__,
-`natural
-joins <https://en.wikipedia.org/wiki/Join_(SQL)#Natural_join>`__,
-``ON <predicate>``
-(`*θ*-join <https://en.wikipedia.org/wiki/Relational_algebra#%CE%B8-join_and_equijoin>`__),
-etc.\ :sup:``[8] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-8>`__`
+The joined table retains each row—even if no other matching row exists. Outer joins subdivide further into **left outer joins**, **right outer joins**, and **full outer joins**, depending on which table's rows are retained: left, right, or both (in this case *left* and *right* refer to the two sides of the ``JOIN`` keyword).
+
+Like `inner joins <https://en.wikipedia.org/wiki/Join_(SQL)#Inner_join>`__, one can further sub-categorize all types of outer joins as `equi-joins <https://en.wikipedia.org/wiki/Join_(SQL)#Equi-join>`__, `natural joins <https://en.wikipedia.org/wiki/Join_(SQL)#Natural_join>`__, ``ON <predicate>`` (`*θ*-join <https://en.wikipedia.org/wiki/Relational_algebra#%CE%B8-join_and_equijoin>`__), etc.
 
 No implicit join-notation for outer joins exists in standard SQL.
 
-.. raw:: html
+Left Outer Join
+~~~~~~~~~~~~~~~~
 
-   <div class="thumb tright">
+The result of a **left outer join** (or simply **left join**) for tables A and B always contains all rows of the "left" table (A), even if the join-condition does not find any matching row in the "right" table (B). This means that if the ``ON`` clause matches 0 (zero) rows in B (for a given row in A), the join will still return a row in the result (for that row)—but with NULL in each column from B. A **left outer join** returns all the values from an inner join plus all values in the left table that do not match to the right table, including rows with NULL (empty) values in the link column.
 
-.. raw:: html
+For example, this allows us to find an employee's department, but still shows employees that have not been assigned to a department (contrary to the inner-join example above, where unassigned employees were excluded from the result).
 
-   <div class="thumbinner" style="width:222px;">
-
-|A Venn Diagram showing the left circle and overlapping portion filled.|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-` <https://en.wikipedia.org/wiki/File:SQL_Join_-_01_A_Left_Join_B.svg>`__
-
-.. raw:: html
-
-   </div>
-
-A Venn Diagram representing the Left Join SQL statement between tables A
-and B.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Left outer
-   join[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=7>`__\ ]
-   :name: left-outer-joinedit
-
-The result of a *left outer join* (or simply **left join**) for tables A
-and B always contains all rows of the "left" table (A), even if the
-join-condition does not find any matching row in the "right" table (B).
-This means that if the ``ON`` clause matches 0 (zero) rows in B (for a
-given row in A), the join will still return a row in the result (for
-that row)—but with NULL in each column from B. A **left outer join**
-returns all the values from an inner join plus all values in the left
-table that do not match to the right table, including rows with NULL
-(empty) values in the link column.
-
-For example, this allows us to find an employee's department, but still
-shows employees that have not been assigned to a department (contrary to
-the inner-join example above, where unassigned employees were excluded
-from the result).
-
-Example of a left outer join (the **``OUTER``** keyword is optional),
-with the additional result row (compared with the inner join)
+Example of a **left outer join** (the **``OUTER``** keyword is optional), with the additional result row (compared with the inner join)
 italicized:
 
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
+.. code-block:: sql
 
     SELECT *
-    FROM employee 
-    LEFT OUTER JOIN department ON employee.DepartmentID = department.DepartmentID;
-
-.. raw:: html
-
-   </div>
+    FROM employee LEFT OUTER JOIN department ON employee.DepartmentID = department.DepartmentID;
 
 +-----------------+-----------------+-----------------+-----------------+
 | Employee.LastNa | Employee.Depart | Department.Depa | Department.Depa |
@@ -617,138 +414,48 @@ italicized:
 | Heisenberg      | 33              | Engineering     | 33              |
 +-----------------+-----------------+-----------------+-----------------+
 
-.. rubric:: Alternative
-   syntaxes[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=8>`__\ ]
-   :name: alternative-syntaxesedit
+Alternative syntaxes
 
-Oracle supports the
-deprecated\ :sup:``[9] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-deprecated_plus_sign-9>`__`
-syntax:
+Oracle supports the deprecated syntax:
 
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
+.. code-block:: sql
 
     SELECT *
     FROM employee, department
-    WHERE employee.DepartmentID = department.DepartmentID(+)
+    WHERE employee.departmentid = department.departmentid(+)
 
-.. raw:: html
+`Sybase <https://en.wikipedia.org/wiki/Sybase>`__ supports the syntax (`Microsoft SQL Server <https://en.wikipedia.org/wiki/Microsoft_SQL_Server>`__ deprecated this syntax since version 2000):
 
-   </div>
-
-`Sybase <https://en.wikipedia.org/wiki/Sybase>`__ supports the syntax
-(`Microsoft SQL
-Server <https://en.wikipedia.org/wiki/Microsoft_SQL_Server>`__
-deprecated this syntax since version 2000):
-
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
+.. code-block:: sql
 
     SELECT *
     FROM employee, department
-    WHERE employee.DepartmentID *= department.DepartmentID
+    WHERE employee.departmentid *= department.departmentid
 
-.. raw:: html
+`IBM Informix <https://en.wikipedia.org/wiki/IBM_Informix>`__ supports the syntax:
 
-   </div>
-
-`IBM Informix <https://en.wikipedia.org/wiki/IBM_Informix>`__ supports
-the syntax:
-
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
+.. code-block:: sql
 
     SELECT *
     FROM employee, OUTER department
-    WHERE employee.DepartmentID = department.DepartmentID
+    WHERE employee.departmentid = department.departmentid
 
-.. raw:: html
+Right Outer Join
+~~~~~~~~~~~~~~~~
 
-   </div>
+A **right outer join** (or **right join**) closely resembles a left outer join, except with the treatment of the tables reversed. Every row from the "right" table (B) will appear in the joined table at least once. If no matching row from the "left" table (A) exists, NULL will appear in columns from A for those rows that have no match in B.
 
-.. raw:: html
+A right outer join returns all the values from the right table and matched values from the left table (NULL in the case of no matching join predicate). For example, this allows us to find each employee and his or her department, but still show departments that have no employees.
 
-   <div class="thumb tright">
+Below is an example of a right outer join (the **``OUTER``** keyword is optional), with the additional result row italicized:
 
-.. raw:: html
-
-   <div class="thumbinner" style="width:222px;">
-
-|A Venn Diagram show the right circle and overlapping portions filled.|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-` <https://en.wikipedia.org/wiki/File:SQL_Join_-_03_A_Right_Join_B.svg>`__
-
-.. raw:: html
-
-   </div>
-
-A Venn Diagram representing the Right Join SQL statement between tables
-A and B.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Right outer
-   join[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=9>`__\ ]
-   :name: right-outer-joinedit
-
-A **right outer join** (or **right join**) closely resembles a left
-outer join, except with the treatment of the tables reversed. Every row
-from the "right" table (B) will appear in the joined table at least
-once. If no matching row from the "left" table (A) exists, NULL will
-appear in columns from A for those rows that have no match in B.
-
-A right outer join returns all the values from the right table and
-matched values from the left table (NULL in the case of no matching join
-predicate). For example, this allows us to find each employee and his or
-her department, but still show departments that have no employees.
-
-Below is an example of a right outer join (the **``OUTER``** keyword is
-optional), with the additional result row italicized:
-
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
+.. code-block:: sql
 
     SELECT *
-    FROM employee RIGHT OUTER JOIN department
-      ON employee.DepartmentID = department.DepartmentID;
-
-.. raw:: html
-
-   </div>
+    FROM employee RIGHT OUTER JOIN department ON employee.departmentid = department.departmentid;
 
 +-----------------+-----------------+-----------------+-----------------+
-| Employee.LastNa | Employee.Depart | Department.Depa | Department.Depa |
-| me              | mentID          | rtmentName      | rtmentID        |
+| lastname        | departmentid    | departmentname  | departmentid    |
 +=================+=================+=================+=================+
 | Smith           | 34              | Clerical        | 34              |
 +-----------------+-----------------+-----------------+-----------------+
@@ -763,85 +470,24 @@ optional), with the additional result row italicized:
 | ``NULL``        | ``NULL``        | *Marketing*     | *35*            |
 +-----------------+-----------------+-----------------+-----------------+
 
-Right and left outer joins are functionally equivalent. Neither provides
-any functionality that the other does not, so right and left outer joins
-may replace each other as long as the table order is switched.
+Right and left outer joins are functionally equivalent. Neither provides any functionality that the other does not, so right and left outer joins may replace each other as long as the table order is switched.
 
-.. raw:: html
+Full Outer Join
+~~~~~~~~~~~~~~~~
 
-   <div class="thumb tright">
+Conceptually, a **full outer join** combines the effect of applying both left and right outer joins. Where rows in the FULL OUTER JOINed tables do not match, the result set will have NULL values for every column of the table that lacks a matching row. For those rows that do match, a single row will be produced in the result set (containing columns populated from both tables).
 
-.. raw:: html
-
-   <div class="thumbinner" style="width:222px;">
-
-|A Venn Diagram showing the right circle, left circle, and overlapping
-portion filled.|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-` <https://en.wikipedia.org/wiki/File:SQL_Join_-_05b_A_Full_Join_B.svg>`__
-
-.. raw:: html
-
-   </div>
-
-A Venn Diagram representing the Full Join SQL statement between tables A
-and B.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Full outer
-   join[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=10>`__\ ]
-   :name: full-outer-joinedit
-
-Conceptually, a **full outer join** combines the effect of applying both
-left and right outer joins. Where rows in the FULL OUTER JOINed tables
-do not match, the result set will have NULL values for every column of
-the table that lacks a matching row. For those rows that do match, a
-single row will be produced in the result set (containing columns
-populated from both tables).
-
-For example, this allows us to see each employee who is in a department
-and each department that has an employee, but also see each employee who
-is not part of a department and each department which doesn't have an
-employee.
+For example, this allows us to see each employee who is in a department and each department that has an employee, but also see each employee who is not part of a department and each department which doesn't have an employee.
 
 Example of a full outer join (the **``OUTER``** keyword is optional):
 
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
+.. code-block:: sql
 
     SELECT *
-    FROM employee FULL OUTER JOIN department
-      ON employee.DepartmentID = department.DepartmentID;
-
-.. raw:: html
-
-   </div>
+    FROM employee FULL OUTER JOIN department ON employee.departmentid = department.departmentid;
 
 +-----------------+-----------------+-----------------+-----------------+
-| Employee.LastNa | Employee.Depart | Department.Depa | Department.Depa |
-| me              | mentID          | rtmentName      | rtmentID        |
+| lastname        | departmentid    | departmentname  | departmentid    |
 +=================+=================+=================+=================+
 | Smith           | 34              | Clerical        | 34              |
 +-----------------+-----------------+-----------------+-----------------+
@@ -858,63 +504,41 @@ Example of a full outer join (the **``OUTER``** keyword is optional):
 | ``NULL``        | ``NULL``        | *Marketing*     | *35*            |
 +-----------------+-----------------+-----------------+-----------------+
 
-Some database systems do not support the full outer join functionality
-directly, but they can emulate it through the use of an inner join and
-UNION ALL selects of the "single table rows" from left and right tables
-respectively. The same example can appear as follows:
+Self-Join
+~~~~~~~~~~~~~~~~
 
-.. raw:: html
+A **self-join** is joining a table to itself.
 
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
+  Enter two new columns in the ``employee`` table. One of type varchar(13) with ``country`` field name and one with ``employeeid`` column name of integer type:
 
-::
+.. code-block:: sql
 
-    SELECT employee.LastName, employee.DepartmentID,
-           department.DepartmentName, department.DepartmentID
-    FROM employee
-    INNER JOIN department ON employee.DepartmentID = department.DepartmentID
+    ALTER TABLE employee
+    ADD COLUMN country varchar(13),
+    ADD COLUMN employeeid integer;  
 
-    UNION ALL
+  Delete all data from ``employee`` table
+  
+.. code-block:: sql
 
-    SELECT employee.LastName, employee.DepartmentID,
-           cast(NULL as varchar(20)), cast(NULL as integer)
-    FROM employee
-    WHERE NOT EXISTS (
-        SELECT * FROM department
-                 WHERE employee.DepartmentID = department.DepartmentID)
+    DELETE FROM employee;
+    
+Insert the data bellow in the table ``employee``:
 
-    UNION ALL
+    INSERT INTO employee (country, employeeid, lastname, departmentid) VALUES
+    ('Australia', 123, 'Rafferty', 31),
+    ('Australia', 124, 'Jones', 33),
+    ('Australia', 145, 'Heisenberg', 33),
+    ('United States', 201, 'Robinson', 34),
+    ('Germany', 305, 'Smith', 34),
+    ('Germany', 306, 'Williams', NULL);
 
-    SELECT cast(NULL as varchar(20)), cast(NULL as integer),
-           department.DepartmentName, department.DepartmentID
-    FROM department
-    WHERE NOT EXISTS (
-        SELECT * FROM employee
-                 WHERE employee.DepartmentID = department.DepartmentID)
+If there were two separate tables for employees and a query which requested employees in the first table having the same country as employees in the second table, a normal join operation could be used to find the answer table. However, all the employee information is
+contained within a single large table.
 
-.. raw:: html
+Considering the new modified ``Employee`` table such as the following:
 
-   </div>
-
-.. rubric:: Self-join[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=11>`__\ ]
-   :name: self-joinedit
-
-A self-join is joining a table to
-itself.\ :sup:``[10] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-10>`__`
-
-.. rubric:: Example[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=12>`__\ ]
-   :name: exampleedit
-
-If there were two separate tables for employees and a query which
-requested employees in the first table having the same country as
-employees in the second table, a normal join operation could be used to
-find the answer table. However, all the employee information is
-contained within a single large
-table.\ :sup:``[11] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-11>`__`
-
-Consider a modified ``Employee`` table such as the following:
-
-.. table:: Employee Table
+.. table:: new employee table
 
    +------------+------------+---------------+--------------+
    | EmployeeID | LastName   | Country       | DepartmentID |
@@ -932,37 +556,21 @@ Consider a modified ``Employee`` table such as the following:
    | 306        | Williams   | Germany       | ``NULL``     |
    +------------+------------+---------------+--------------+
 
-.. raw:: html
-
-   <div style="clear:both;">
-
-.. raw:: html
-
-   </div>
-
 An example solution query could be as follows:
 
-.. raw:: html
+.. code-block:: sql
 
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
-
-    SELECT F.EmployeeID, F.LastName, S.EmployeeID, S.LastName, F.Country
-    FROM Employee F INNER JOIN Employee S ON F.Country = S.Country
-    WHERE F.EmployeeID < S.EmployeeID
-    ORDER BY F.EmployeeID, S.EmployeeID;
-
-.. raw:: html
-
-   </div>
+    SELECT f.employeeid, f.lastname, s.employeeid, s.lastname, f.country
+    FROM employee f INNER JOIN employee s ON f.country = s.country
+    WHERE f.employeeid < s.employeeid
+    ORDER BY f.employeeid, s.employeeid;
 
 Which results in the following table being generated.
 
 .. table:: Employee Table after Self-join by Country
 
    +------------+----------+------------+------------+-----------+
-   | EmployeeID | LastName | EmployeeID | LastName   | Country   |
+   | employeeid | lastname | employeeid | lastname   | country   |
    +============+==========+============+============+===========+
    | 123        | Rafferty | 124        | Jones      | Australia |
    +------------+----------+------------+------------+-----------+
@@ -973,31 +581,16 @@ Which results in the following table being generated.
    | 305        | Smith    | 306        | Williams   | Germany   |
    +------------+----------+------------+------------+-----------+
 
-.. raw:: html
+**For this example:**
 
-   <div style="clear:both;">
+-  ``f`` and ``s`` are `aliases <https://en.wikipedia.org/wiki/Alias_(SQL)>`__ for the first    and second copies of the employee table.
+-  The condition ``f.country = s.country`` excludes pairings between employees in different countries. The example question only wanted pairs of employees in the same country.
+-  The condition ``f.employeeID < s.employeeID`` excludes pairings where the ``employeeid`` of the first employee is greater than or equal to the ``EmployeeID`` of the second employee. In other words, the effect of this condition is to exclude duplicate pairings and self-pairings.
 
-.. raw:: html
-
-   </div>
-
-For this example:
-
--  ``F`` and ``S`` are
-   `aliases <https://en.wikipedia.org/wiki/Alias_(SQL)>`__ for the first
-   and second copies of the employee table.
--  The condition ``F.Country = S.Country`` excludes pairings between
-   employees in different countries. The example question only wanted
-   pairs of employees in the same country.
--  The condition ``F.EmployeeID < S.EmployeeID`` excludes pairings where
-   the ``EmployeeID`` of the first employee is greater than or equal to
-   the ``EmployeeID`` of the second employee. In other words, the effect
-   of this condition is to exclude duplicate pairings and self-pairings.
-   Without it, the following less useful table would be generated (the
-   table below displays only the "Germany" portion of the result):
+Without it, the following less useful table would be generated (the table below displays only the "Germany" portion of the result):
 
 +------------+----------+------------+----------+---------+
-| EmployeeID | LastName | EmployeeID | LastName | Country |
+| employeeid | lastname | employeeid | lastname | country |
 +============+==========+============+==========+=========+
 | 305        | Smith    | 305        | Smith    | Germany |
 +------------+----------+------------+----------+---------+
@@ -1008,184 +601,4 @@ For this example:
 | 306        | Williams | 306        | Williams | Germany |
 +------------+----------+------------+----------+---------+
 
-.. raw:: html
-
-   <div style="clear:both;">
-
-.. raw:: html
-
-   </div>
-
-Only one of the two middle pairings is needed to satisfy the original
-question, and the topmost and bottommost are of no interest at all in
-this example.
-
-.. rubric:: Alternatives[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=13>`__\ ]
-   :name: alternativesedit
-
-The effect of an outer join can also be obtained using a UNION ALL
-between an INNER JOIN and a SELECT of the rows in the "main" table that
-do not fulfill the join condition. For example,
-
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
-
-    SELECT employee.LastName, employee.DepartmentID, department.DepartmentName
-    FROM employee
-    LEFT OUTER JOIN department ON employee.DepartmentID = department.DepartmentID;
-
-.. raw:: html
-
-   </div>
-
-can also be written as
-
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
-
-    SELECT employee.LastName, employee.DepartmentID, department.DepartmentName
-    FROM employee
-    INNER JOIN department ON employee.DepartmentID = department.DepartmentID
-
-    UNION ALL
-
-    SELECT employee.LastName, employee.DepartmentID, cast(NULL as varchar(20))
-    FROM employee
-    WHERE NOT EXISTS (
-        SELECT * FROM department
-                 WHERE employee.DepartmentID = department.DepartmentID)
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Implementation[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=14>`__\ ]
-   :name: implementationedit
-
-Much work in database-systems has aimed at efficient implementation of
-joins, because relational systems commonly call for joins, yet face
-difficulties in optimising their efficient execution. The problem arises
-because inner joins operate both
-`commutatively <https://en.wikipedia.org/wiki/Commutative>`__ and
-`associatively <https://en.wikipedia.org/wiki/Associative>`__. In
-practice, this means that the user merely supplies the list of tables
-for joining and the join conditions to use, and the database system has
-the task of determining the most efficient way to perform the operation.
-A `query optimizer <https://en.wikipedia.org/wiki/Query_optimizer>`__
-determines how to execute a query containing joins. A query optimizer
-has two basic freedoms:
-
-#. **Join order**: Because it joins functions commutatively and
-   associatively, the order in which the system joins tables does not
-   change the final result set of the query. However, join-order
-   **could** have an enormous impact on the cost of the join operation,
-   so choosing the best join order becomes very important.
-#. **Join method**: Given two tables and a join condition, multiple
-   `algorithms <https://en.wikipedia.org/wiki/Algorithm>`__ can produce
-   the result set of the join. Which algorithm runs most efficiently
-   depends on the sizes of the input tables, the number of rows from
-   each table that match the join condition, and the operations required
-   by the rest of the query.
-
-Many join-algorithms treat their inputs differently. One can refer to
-the inputs to a join as the "outer" and "inner" join operands, or "left"
-and "right", respectively. In the case of nested loops, for example, the
-database system will scan the entire inner relation for each row of the
-outer relation.
-
-One can classify query-plans involving joins as
-follows:\ :sup:``[12] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-Yu1998-12>`__`
-
-left-deep 
-    using a base table (rather than another join) as the inner operand
-    of each join in the plan
-right-deep 
-    using a base table as the outer operand of each join in the plan
-bushy 
-    neither left-deep nor right-deep; both inputs to a join may
-    themselves result from joins
-
-These names derive from the appearance of the `query
-plan <https://en.wikipedia.org/wiki/Query_plan>`__ if drawn as a
-`tree <https://en.wikipedia.org/wiki/Tree_data_structure>`__, with the
-outer join relation on the left and the inner relation on the right (as
-convention dictates).
-
-.. rubric:: Join
-   algorithms[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=15>`__\ ]
-   :name: join-algorithmsedit
-
-Three fundamental algorithms for performing a join operation exist:
-`nested loop join <https://en.wikipedia.org/wiki/Nested_loop_join>`__,
-`sort-merge join <https://en.wikipedia.org/wiki/Sort-merge_join>`__ and
-`hash join <https://en.wikipedia.org/wiki/Hash_join>`__.
-
-.. rubric:: Join
-   indexes[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=16>`__\ ]
-   :name: join-indexesedit
-
-Join indexes are `database
-indexes <https://en.wikipedia.org/wiki/Database_index>`__ that
-facilitate the processing of join queries in `data
-warehouses <https://en.wikipedia.org/wiki/Data_warehouse>`__: they are
-currently (2012) available in implementations by
-`Oracle <https://en.wikipedia.org/wiki/Oracle_database>`__\ :sup:``[13] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-13>`__`
-and
-`Teradata <https://en.wikipedia.org/wiki/Teradata>`__.\ :sup:``[14] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-14>`__`
-
-In the Teradata implementation, specified columns, aggregate functions
-on columns, or components of date columns from one or more tables are
-specified using a syntax similar to the definition of a `database
-view <https://en.wikipedia.org/wiki/Database_view>`__: up to 64
-columns/column expressions can be specified in a single join index.
-Optionally, a column that defines the `primary
-key <https://en.wikipedia.org/wiki/Primary_key>`__ of the composite data
-may also be specified: on parallel hardware, the column values are used
-to partition the index's contents across multiple disks. When the source
-tables are updated interactively by users, the contents of the join
-index are automatically updated. Any query whose `WHERE
-clause <https://en.wikipedia.org/wiki/Where_(SQL)>`__ specifies any
-combination of columns or column expressions that are an exact subset of
-those defined in a join index (a so-called "covering query") will cause
-the join index, rather than the original tables and their indexes, to be
-consulted during query execution.
-
-The Oracle implementation limits itself to using `bitmap
-indexes <https://en.wikipedia.org/wiki/Bitmap_index>`__. A *bitmap join
-index* is used for low-cardinality columns (i.e., columns containing
-fewer than 300 distinct values, according to the Oracle documentation):
-it combines low-cardinality columns from multiple related tables. The
-example Oracle uses is that of an inventory system, where different
-suppliers provide different parts. The schema has three linked tables:
-two "master tables", Part and Supplier, and a "detail table", Inventory.
-The last is a many-to-many table linking Supplier to Part, and contains
-the most rows. Every part has a Part Type, and every supplier is based
-in the US, and has a State column. There are not more than 60
-states+territories in the US, and not more than 300 Part Types. The
-bitmap join index is defined using a standard three-table join on the
-three tables above, and specifying the Part_Type and Supplier_State
-columns for the index. However, it is defined on the Inventory table,
-even though the columns Part_Type and Supplier_State are "borrowed" from
-Supplier and Part respectively.
-
-As for Teradata, an Oracle bitmap join index is only utilized to answer
-a query when the query's `WHERE
-clause <https://en.wikipedia.org/wiki/Where_(SQL)>`__ specifies columns
-limited to those that are included in the join index.
-
-.. rubric:: Straight
-   join[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=17>`__\ ]
-   :name: straight-joinedit
-
-Some database systems allow the user to force the system to read the
-tables in a join in a particular order. This is used when the join
-optimizer chooses to read the tables in an inefficient order. For
-example, in `MySQL <https://en.wikipedia.org/wiki/MySQL>`__ the command
-``STRAIGHT_JOIN`` reads the tables in exactly the order listed in the
-query.
+Only one of the two middle pairings is needed to satisfy the original question, and the topmost and bottommost are of no interest at all in this example.
