@@ -489,7 +489,7 @@ A **self-join** is joining a table to itself.
     ADD COLUMN country varchar(13),
     ADD COLUMN employeeid integer;
     
-::  
+..
     
   Delete all data from ``employee`` table
   
