@@ -414,32 +414,6 @@ italicized:
 | Heisenberg      | 33              | Engineering     | 33              |
 +-----------------+-----------------+-----------------+-----------------+
 
-Alternative syntaxes
-
-Oracle supports the deprecated syntax:
-
-.. code-block:: sql
-
-    SELECT *
-    FROM employee, department
-    WHERE employee.departmentid = department.departmentid(+)
-
-`Sybase <https://en.wikipedia.org/wiki/Sybase>`__ supports the syntax (`Microsoft SQL Server <https://en.wikipedia.org/wiki/Microsoft_SQL_Server>`__ deprecated this syntax since version 2000):
-
-.. code-block:: sql
-
-    SELECT *
-    FROM employee, department
-    WHERE employee.departmentid *= department.departmentid
-
-`IBM Informix <https://en.wikipedia.org/wiki/IBM_Informix>`__ supports the syntax:
-
-.. code-block:: sql
-
-    SELECT *
-    FROM employee, OUTER department
-    WHERE employee.departmentid = department.departmentid
-
 Right Outer Join
 ~~~~~~~~~~~~~~~~
 
@@ -475,7 +449,7 @@ Right and left outer joins are functionally equivalent. Neither provides any fun
 Full Outer Join
 ~~~~~~~~~~~~~~~~
 
-Conceptually, a **full outer join** combines the effect of applying both left and right outer joins. Where rows in the FULL OUTER JOINed tables do not match, the result set will have NULL values for every column of the table that lacks a matching row. For those rows that do match, a single row will be produced in the result set (containing columns populated from both tables).
+Conceptually, a **full outer join** combines the effect of applying both left and right outer joins. Where rows in the **FULL OUTER JOIN **(ed) tables do not match, the result set will have NULL values for every column of the table that lacks a matching row. For those rows that do match, a single row will be produced in the result set (containing columns populated from both tables).
 
 For example, this allows us to see each employee who is in a department and each department that has an employee, but also see each employee who is not part of a department and each department which doesn't have an employee.
 
@@ -515,15 +489,21 @@ A **self-join** is joining a table to itself.
 
     ALTER TABLE employee
     ADD COLUMN country varchar(13),
-    ADD COLUMN employeeid integer;  
-
+    ADD COLUMN employeeid integer;
+    
+-----    
+    
   Delete all data from ``employee`` table
   
 .. code-block:: sql
 
     DELETE FROM employee;
-    
-Insert the data bellow in the table ``employee``:
+
+------
+
+  Insert the data bellow in the table ``employee``:
+  
+.. code-block:: sql
 
     INSERT INTO employee (country, employeeid, lastname, departmentid) VALUES
     ('Australia', 123, 'Rafferty', 31),
