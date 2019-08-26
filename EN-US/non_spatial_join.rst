@@ -378,8 +378,6 @@ Outer Join
 
 The joined table retains each row—even if no other matching row exists. Outer joins subdivide further into **left outer joins**, **right outer joins**, and **full outer joins**, depending on which table's rows are retained: left, right, or both (in this case *left* and *right* refer to the two sides of the ``JOIN`` keyword).
 
-Like `inner joins <https://en.wikipedia.org/wiki/Join_(SQL)#Inner_join>`__, one can further sub-categorize all types of outer joins as `equi-joins <https://en.wikipedia.org/wiki/Join_(SQL)#Equi-join>`__, `natural joins <https://en.wikipedia.org/wiki/Join_(SQL)#Natural_join>`__, ``ON <predicate>`` (`*θ*-join <https://en.wikipedia.org/wiki/Relational_algebra#%CE%B8-join_and_equijoin>`__), etc.
-
 No implicit join-notation for outer joins exists in standard SQL.
 
 Left Outer Join
@@ -491,7 +489,7 @@ A **self-join** is joining a table to itself.
     ADD COLUMN country varchar(13),
     ADD COLUMN employeeid integer;
     
-  
+::  
     
   Delete all data from ``employee`` table
   
@@ -499,7 +497,7 @@ A **self-join** is joining a table to itself.
 
     DELETE FROM employee;
 
-
+..
 
   Insert the data bellow in the table ``employee``:
   
