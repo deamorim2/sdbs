@@ -137,8 +137,7 @@ CROSS JOIN returns the `Cartesian product <https://en.wikipedia.org/wiki/Cartesi
     FROM employee, department;
 
 +-----------------+-----------------+-----------------+-----------------+
-| employee.LastNa | Employee.Depart | Department.Depa | Department.Depa |
-| me              | mentID          | rtmentName      | rtmentID        |
+| lastname        | departmentid    | departmentname  | departmentid    |
 +=================+=================+=================+=================+
 | Rafferty        | 31              | Sales           | 31              |
 +-----------------+-----------------+-----------------+-----------------+
