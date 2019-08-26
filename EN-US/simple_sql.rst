@@ -235,10 +235,30 @@ PostgreSQL has a series of built-in aggregate functions, including the general p
   WHERE boroname = 'Brooklyn';
   
 ::
-
-           avg         |       stddev       
-  ---------------------+--------------------
-   11.7391304347826087 | 3.9105613559407395
+  +--------------------+--------------------+
+  |        avg         |       stddev       |
+  +====================+====================+
+  |11.7391304347826087 | 3.9105613559407395 | 
+  +--------------------+--------------------+ 
+   
+   
+   
+   +------------+--------------+
+   | lastname   | departmentid |
+   +============+==============+
+   | Rafferty   | 31           |
+   +------------+--------------+
+   | Jones      | 33           |
+   +------------+--------------+
+   | Heisenberg | 33           |
+   +------------+--------------+
+   | Robinson   | 34           |
+   +------------+--------------+
+   | Smith      | 34           |
+   +------------+--------------+
+   | Williams   | ``NULL``     |
+   +------------+--------------+
+   
 
 The aggregate functions in our last example were applied to every row in the result set. What if we want the summaries to be carried out over smaller groups within the overall result set? For that we add a ``GROUP BY`` clause. Aggregate functions often need an added ``GROUP BY`` statement to group the result-set by one or more columns.  
 
