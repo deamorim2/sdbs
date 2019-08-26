@@ -47,7 +47,7 @@ Relational databases are usually `normalized <https://en.wikipedia.org/wiki/Data
 
 All subsequent explanations on join types in this tutorial make use of the following two tables:
 
-.. table:: employee table
+.. table:: *employee table*
 
    +------------+--------------+
    | lastname   | departmentid |
@@ -65,7 +65,7 @@ All subsequent explanations on join types in this tutorial make use of the follo
    | Williams   | ``NULL``     |
    +------------+--------------+
 
-.. table:: department table
+.. table:: *department table*
 
    +--------------+----------------+
    | departmentid | departmentname |
@@ -516,7 +516,7 @@ contained within a single large table.
 
 Considering the new modified ``Employee`` table such as the following:
 
-.. table:: new employee table
+.. table:: *new employee table*
 
    +------------+------------+---------------+--------------+
    | EmployeeID | LastName   | Country       | DepartmentID |
