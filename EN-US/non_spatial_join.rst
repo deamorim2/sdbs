@@ -188,69 +188,36 @@ CROSS JOIN returns the `Cartesian product <https://en.wikipedia.org/wiki/Cartesi
 | Williams        | ``NULL``        | Marketing       | 35              |
 +-----------------+-----------------+-----------------+-----------------+
 
-The cross join does not itself apply any predicate to filter rows from the joined table. The results of a cross join can be filtered by using a ```WHERE`` <https://en.wikipedia.org/wiki/Where_(SQL)>`__ clause which may then produce the equivalent of an inner join.
+The cross join does not itself apply any predicate to filter rows from the joined table. The results of a cross join can be filtered by using a `WHERE <https://en.wikipedia.org/wiki/Where_(SQL)>`__ clause which may then produce the equivalent of an inner join.
 
 In the `SQL:2011 <https://en.wikipedia.org/wiki/SQL:2011>`__ standard, cross joins are part of the optional F401, "Extended joined table", package.
 
 Normal uses are for checking the server's performance.
 
+Inner Join
+~~~~~~~~~~
 
-|A Venn Diagram showing the inner overlapping portion filled.|
+An **inner join** requires each row in the two joined tables to have matching column values, and is a commonly used join operation in `applications <https://en.wikipedia.org/wiki/Application_software>`__ but should not be assumed to be the best choice in all situations.
 
+**Inner join** creates a new result table by combining column values of two tables (A and B) based upon the join-predicate. The query compares each row of A with each row of B to find all pairs of rows that satisfy the join-predicate.
 
-A Venn Diagram representing an Inner Join SQL statement between the tables A and B.
+When the join-predicate is satisfied by matching non-\ `NULL <https://en.wikipedia.org/wiki/Null_(SQL)>`__ values, column values for each matched pair of rows of A and B are combined into a result row.
 
-An **inner join** requires each row in the two joined tables to have
-matching column values, and is a commonly used join operation in
-`applications <https://en.wikipedia.org/wiki/Application_software>`__
-but should not be assumed to be the best choice in all situations. Inner
-join creates a new result table by combining column values of two tables
-(A and B) based upon the join-predicate. The query compares each row of
-A with each row of B to find all pairs of rows that satisfy the
-join-predicate. When the join-predicate is satisfied by matching
-non-\ `NULL <https://en.wikipedia.org/wiki/Null_(SQL)>`__ values, column
-values for each matched pair of rows of A and B are combined into a
-result row.
+The result of the join can be defined as the outcome of first taking the `Cartesian product <https://en.wikipedia.org/wiki/Cartesian_product>`__ (or `Cross join <https://en.wikipedia.org/wiki/Join_(SQL)#Cross_join>`__) of all rows in the tables (combining every row in table A with every row in table B) and then returning all rows that satisfy the join predicate.
 
-The result of the join can be defined as the outcome of first taking the
-`Cartesian product <https://en.wikipedia.org/wiki/Cartesian_product>`__
-(or `Cross
-join <https://en.wikipedia.org/wiki/Join_(SQL)#Cross_join>`__) of all
-rows in the tables (combining every row in table A with every row in
-table B) and then returning all rows that satisfy the join predicate.
-Actual SQL implementations normally use other approaches, such as `hash
-joins <https://en.wikipedia.org/wiki/Hash_join>`__ or `sort-merge
-joins <https://en.wikipedia.org/wiki/Sort-merge_join>`__, since
-computing the Cartesian product is slower and would often require a
-prohibitively large amount of memory to store.
+Actual SQL implementations normally use other approaches, such as `hash joins <https://en.wikipedia.org/wiki/Hash_join>`__ or `sort-merge joins <https://en.wikipedia.org/wiki/Sort-merge_join>`__, since computing the Cartesian product is slower and would often require a prohibitively large amount of memory to store.
 
-SQL specifies two different syntactical ways to express joins: the
-"explicit join notation" and the "implicit join notation". The "implicit
-join notation" is no longer considered a best practice, although
-database systems still support it.
+SQL specifies two different syntactical ways to express joins: the "explicit join notation" and the "implicit join notation". The "implicit join notation" is no longer considered a best practice, although database systems still support it.
 
-The "explicit join notation" uses the ``JOIN`` keyword, optionally
-preceded by the ``INNER`` keyword, to specify the table to join, and the
-``ON`` keyword to specify the predicates for the join, as in the
-following example:
+The "explicit join notation" uses the ``JOIN`` keyword, optionally preceded by the ``INNER`` keyword, to specify the table to join, and the ``ON`` keyword to specify the predicates for the join, as in the following example:
 
-.. raw:: html
+.. code-block:: sql
 
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
-
-    SELECT employee.LastName, employee.DepartmentID, department.DepartmentName 
-    FROM employee 
-    INNER JOIN department ON
-    employee.DepartmentID = department.DepartmentID;
-
-.. raw:: html
-
-   </div>
+    SELECT employee.lastname, employee.departmentid, department.departmentname 
+    FROM employee INNER JOIN department ON employee.departmentid = department.departmentid;
 
 +-------------------+-----------------------+---------------------------+
-| Employee.LastName | Employee.DepartmentID | Department.DepartmentName |
+| lastname          | departmentid          | departmentname            |
 +===================+=======================+===========================+
 | Robinson          | 34                    | Clerical                  |
 +-------------------+-----------------------+---------------------------+
@@ -263,44 +230,22 @@ following example:
 | Rafferty          | 31                    | Sales                     |
 +-------------------+-----------------------+---------------------------+
 
-The "implicit join notation" simply lists the tables for joining, in the
-``FROM`` clause of the ``SELECT`` statement, using commas to separate
-them. Thus it specifies a `cross
-join <https://en.wikipedia.org/wiki/Join_(SQL)#Cross_join>`__, and the
-``WHERE`` clause may apply additional filter-predicates (which function
-comparably to the join-predicates in the explicit notation).
+The **implicit join notation** simply lists the tables for joining, in the ``FROM`` clause of the ``SELECT`` statement, using commas to separate them. Thus it specifies a `cross join <https://en.wikipedia.org/wiki/Join_(SQL)#Cross_join>`__, and the ``WHERE`` clause may apply additional filter-predicates (which function comparably to the join-predicates in the explicit notation).
 
-The following example is equivalent to the previous one, but this time
-using implicit join notation:
+The following example is equivalent to the previous one, but this time using implicit join notation:
 
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
+.. code-block:: sql
 
     SELECT *
     FROM employee, department
-    WHERE employee.DepartmentID = department.DepartmentID;
+    WHERE employee.departmentid = department.departmentid;
 
-.. raw:: html
+The queries given in the examples above will join the ``employee`` and ``department`` tables using the ``departmentid`` column of both tables. Where the ``departmentid`` of these tables match (i.e. the join-predicate is satisfied), the query will combine the ``lastname``, ``departmentid`` and ``departmentname`` columns from the two tables into a result row. Where the departmentid does not match, no result row is generated.
 
-   </div>
-
-The queries given in the examples above will join the Employee and
-Department tables using the DepartmentID column of both tables. Where
-the DepartmentID of these tables match (i.e. the join-predicate is
-satisfied), the query will combine the *LastName*, *DepartmentID* and
-*DepartmentName* columns from the two tables into a result row. Where
-the DepartmentID does not match, no result row is generated.
-
-Thus the result of the
-`execution <https://en.wikipedia.org/wiki/Query_plan>`__ of the query
-above will be:
+Thus the result of the `execution <https://en.wikipedia.org/wiki/Query_plan>`__ of the query above will be:
 
 +-----------------+-----------------+-----------------+-----------------+
-| Employee.LastNa | Employee.Depart | Department.Depa | Department.Depa |
-| me              | mentID          | rtmentName      | rtmentID        |
+| lastname        | departmentid    | departmentname  | departmentid    |
 +=================+=================+=================+=================+
 | Robinson        | 34              | Clerical        | 34              |
 +-----------------+-----------------+-----------------+-----------------+
@@ -313,153 +258,74 @@ above will be:
 | Rafferty        | 31              | Sales           | 31              |
 +-----------------+-----------------+-----------------+-----------------+
 
-The employee "Williams" and the department "Marketing" do not appear in
-the query execution results. Neither of these has any matching rows in
-the other respective table: "Williams" has no associated department, and
-no employee has the department ID 35 ("Marketing"). Depending on the
-desired results, this behavior may be a subtle bug, which can be avoided
-by replacing the inner join with an `outer
+The employee *Williams* and the department *Marketing* do not appear in the query execution results. Neither of these has any matching rows in the other respective table: *Williams* has no associated department, and no employee has the department id 35 (*Marketing*). Depending on the desired results, this behavior may be a subtle bug, which can be avoided by replacing the inner join with an `outer
 join <https://en.wikipedia.org/wiki/Join_(SQL)#Outer_join>`__.
 
-Programmers should take special care when joining tables on columns that
-can contain `NULL <https://en.wikipedia.org/wiki/Null_(SQL)>`__ values,
-since NULL will never match any other value (not even NULL itself),
-unless the join condition explicitly uses a combination predicate that
-first checks that the joins columns are ``NOT NULL`` before applying the
-remaining predicate condition(s). The Inner join can only be safely used
-in a database that enforces `referential
-integrity <https://en.wikipedia.org/wiki/Referential_integrity>`__ or
-where the join columns are guaranteed not to be NULL. Many `transaction
-processing <https://en.wikipedia.org/wiki/Transaction_processing>`__
-relational databases rely on `Atomicity, Consistency, Isolation,
-Durability (ACID) <https://en.wikipedia.org/wiki/ACID>`__ data update
-standards to ensure data integrity, making inner joins an appropriate
-choice. However transaction databases usually also have desirable join
-columns that are allowed to be NULL. Many reporting relational database
-and `data warehouses <https://en.wikipedia.org/wiki/Data_warehouse>`__
-use high volume `Extract, Transform, Load
-(ETL) <https://en.wikipedia.org/wiki/Extract,_transform,_load>`__ batch
-updates which make referential integrity difficult or impossible to
-enforce, resulting in potentially NULL join columns that an SQL query
-author cannot modify and which cause inner joins to omit data with no
-indication of an error. The choice to use an inner join depends on the
-database design and data characteristics. A left outer join can usually
-be substituted for an inner join when the join columns in one table may
-contain NULL values.
+Programmers should take special care when joining tables on columns that can contain `NULL <https://en.wikipedia.org/wiki/Null_(SQL)>`__ values, since NULL will never match any other value (not even NULL itself), unless the join condition explicitly uses a combination predicate that first checks that the joins columns are ``NOT NULL`` before applying the remaining predicate condition(s).
 
-Any data column that may be NULL (empty) should never be used as a link
-in an inner join, unless the intended result is to eliminate the rows
-with the NULL value. If NULL join columns are to be deliberately removed
-from the result set, an inner join can be faster than an outer join
-because the table join and filtering is done in a single step.
-Conversely, an inner join can result in disastrously slow performance or
-even a server crash when used in a large volume query in combination
-with database functions in an SQL Where
-clause.\ :sup:``[2] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-2>`__\ `[3] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-3>`__\ `[4] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-4>`__`
-A function in an SQL Where clause can result in the database ignoring
-relatively compact table indexes. The database may read and inner join
-the selected columns from both tables before reducing the number of rows
-using the filter that depends on a calculated value, resulting in a
-relatively enormous amount of inefficient processing.
+The **inner join** can only be safely used in a database that enforces `referential integrity <https://en.wikipedia.org/wiki/Referential_integrity>`__ or where the join columns are guaranteed not to be NULL. Many `transaction processing <https://en.wikipedia.org/wiki/Transaction_processing>`__ relational databases rely on `Atomicity, Consistency, Isolation, Durability (ACID) <https://en.wikipedia.org/wiki/ACID>`__ data update standards to ensure data integrity, making inner joins an appropriate choice.
 
-When a result set is produced by joining several tables, including
-master tables used to look up full text descriptions of numeric
-identifier codes (a `Lookup
-table <https://en.wikipedia.org/wiki/Lookup_table>`__), a NULL value in
-any one of the foreign keys can result in the entire row being
-eliminated from the result set, with no indication of error. A complex
-SQL query that includes one or more inner joins and several outer joins
-has the same risk for NULL values in the inner join link columns.
+However transaction databases usually also have desirable join columns that are allowed to be NULL. Many reporting relational database and `data warehouses <https://en.wikipedia.org/wiki/Data_warehouse>`__ use high volume `Extract, Transform, Load (ETL) <https://en.wikipedia.org/wiki/Extract,_transform,_load>`__ batch updates which make referential integrity difficult or impossible to enforce, resulting in potentially NULL join columns that an SQL query author cannot modify and which cause **inner joins** to omit data with no indication of an error. The choice to use an *8inner join** depends on the database design and data characteristics. A **left outer join** can usually be substituted for an **inner join** when the join columns in one table may contain NULL values.
 
-A commitment to SQL code containing inner joins assumes NULL join
-columns will not be introduced by future changes, including vendor
-updates, design changes and bulk processing outside of the application's
-data validation rules such as data conversions, migrations, bulk imports
-and merges.
+Any data column that may be NULL (empty) should never be used as a link in an **inner join**, unless the intended result is to eliminate the rows with the NULL value. If NULL join columns are to be deliberately removed from the result set, an **inner join** can be faster than an **outer join** because the table join and filtering is done in a single step.
 
-One can further classify inner joins as equi-joins, as natural joins, or
-as cross-joins.
+Conversely, an **inner join** can result in disastrously slow performance or even a server crash when used in a large volume query in combination with database functions in an SQL Where clause.
 
-.. rubric:: Equi-join[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=4>`__\ ]
-   :name: equi-joinedit
+A function in an SQL Where clause can result in the database ignoring relatively compact table indexes. The database may read and inner join the selected columns from both tables before reducing the number of rows using the filter that depends on a calculated value, resulting in a relatively enormous amount of inefficient processing.
 
-An **equi-join** is a specific type of comparator-based join, that uses
-only `equality <https://en.wikipedia.org/wiki/Equality_(mathematics)>`__
-comparisons in the join-predicate. Using other comparison operators
-(such as ``<``) disqualifies a join as an equi-join. The query shown
-above has already provided an example of an equi-join:
+When a result set is produced by joining several tables, including master tables used to look up full text descriptions of numeric
+identifier codes (a `Lookup table <https://en.wikipedia.org/wiki/Lookup_table>`__), a NULL value in any one of the foreign keys can result in the entire row being eliminated from the result set, with no indication of error. A complex SQL query that includes one or more **inner joins** and several **outer joins** has the same risk for NULL values in the **inner join** link columns.
 
-.. raw:: html
+A commitment to SQL code containing **inner joins** assumes NULL join columns will not be introduced by future changes, including vendor updates, design changes and bulk processing outside of the application's data validation rules such as data conversions, migrations, bulk imports and merges.
 
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
+-----
 
-::
+.. Note:: - One can further classify **inner joins** as **equi-joins**, as **natural joins**, or as **cross-joins**.
+
+-----
+
+Equi-Join
+~~~~~~~~~~
+
+An **equi-join** is a specific type of comparator-based join, that uses only `equality <https://en.wikipedia.org/wiki/Equality_(mathematics)>`__ comparisons in the join-predicate. Using other comparison operators (such as ``<``) disqualifies a join as an **equi-join**. The query shown above has already provided an example of an **equi-join**:
+
+.. code-block:: sql
 
     SELECT *
-    FROM employee JOIN department
-      ON employee.DepartmentID = department.DepartmentID;
+    FROM employee JOIN department ON employee.departmentid = department.departmentid;
 
-.. raw:: html
+We can write **equi-join** as below,
 
-   </div>
-
-We can write equi-join as below,
-
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
+.. code-block:: sql
 
     SELECT *
     FROM employee, department
-    WHERE employee.DepartmentID = department.DepartmentID;
+    WHERE employee.departmentid = department.departmentid;
 
-.. raw:: html
+If columns in an equi-join have the same name, `SQL-92 <https://en.wikipedia.org/wiki/SQL-92>`__ provides an optional
+shorthand notation for expressing equi-joins, by way of the ``USING`` construct.
 
-   </div>
+.. code-block:: sql
 
-If columns in an equi-join have the same name,
-`SQL-92 <https://en.wikipedia.org/wiki/SQL-92>`__ provides an optional
-shorthand notation for expressing equi-joins, by way of the ``USING``
-construct:\ :sup:``[5] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-5>`__`
-
-.. raw:: html
-
-   <div class="mw-highlight mw-content-ltr" dir="ltr">
-
-::
 
     SELECT *
-    FROM employee INNER JOIN department USING (DepartmentID);
+    FROM employee INNER JOIN department USING (departmentid);
 
-.. raw:: html
 
-   </div>
+The ``USING`` construct is more than mere `syntactic sugar <https://en.wikipedia.org/wiki/Syntactic_sugar>`__, however, since the result set differs from the result set of the version with the explicit predicate.
 
-The ``USING`` construct is more than mere `syntactic
-sugar <https://en.wikipedia.org/wiki/Syntactic_sugar>`__, however, since
-the result set differs from the result set of the version with the
-explicit predicate. Specifically, any columns mentioned in the ``USING``
-list will appear only once, with an unqualified name, rather than once
-for each table in the join. In the case above, there will be a single
-``DepartmentID`` column and no ``employee.DepartmentID`` or
-``department.DepartmentID``.
+Specifically, any columns mentioned in the ``USING`` list will appear only once, with an unqualified name, rather than once for each table in the join. In the case above, there will be a single ``departmentid`` column and no ``employee.departmentid`` or ``department.departmentid``.
 
-The ``USING`` clause is not supported by MS SQL Server and Sybase.
+-----
 
-.. rubric:: Natural
-   join[\ `edit <https://en.wikipedia.org/w/index.php?title=Join_(SQL)&action=edit&section=5>`__\ ]
-   :name: natural-joinedit
+.. Note:: - The ``USING`` clause is not supported by MS SQL Server and Sybase.
 
-The natural join is a special case of equi-join. Natural join (⋈) is a
-`binary operator <https://en.wikipedia.org/wiki/Binary_relation>`__ that
-is written as (*R* ⋈ *S*) where *R* and *S* are
-`relations <https://en.wikipedia.org/wiki/Relation_(database)>`__.\ :sup:``[6] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-6>`__`
-The result of the natural join is the set of all combinations of
-`tuples <https://en.wikipedia.org/wiki/Tuples>`__ in *R* and *S* that
-are equal on their common attribute names. For an example consider the
-tables *Employee* and *Dept* and their natural join:
+-----
+
+Natural Join
+~~~~~~~~~~~~
+
+The natural join is a special case of equi-join. Natural join (⋈) is a `binary operator <https://en.wikipedia.org/wiki/Binary_relation>`__ that is written as (*R* ⋈ *S*) where *R* and *S* are `relations <https://en.wikipedia.org/wiki/Relation_(database)>`__.\ :sup:``[6] <https://en.wikipedia.org/wiki/Join_(SQL)#cite_note-6>`__` The result of the natural join is the set of all combinations of `tuples <https://en.wikipedia.org/wiki/Tuples>`__ in *R* and *S* that are equal on their common attribute names. For an example consider the tables *Employee* and *Dept* and their natural join:
 
 +-----------------------+-----------------------+-----------------------+
 | .. table:: *Employee* | .. table:: *Dept*     | .. table:: *Employee* |
