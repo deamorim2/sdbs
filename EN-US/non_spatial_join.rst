@@ -285,7 +285,7 @@ A commitment to SQL code containing **inner joins** assumes NULL join columns wi
 -----
 
 Equi-Join
-_________
+~~~~~~~~~~
 
 An **equi-join** is a specific type of comparator-based join, that uses only `equality <https://en.wikipedia.org/wiki/Equality_(mathematics)>`__ comparisons in the join-predicate. Using other comparison operators (such as ``<``) disqualifies a join as an **equi-join**. The query shown above has already provided an example of an **equi-join**:
 
@@ -323,7 +323,7 @@ Specifically, any columns mentioned in the ``USING`` list will appear only once,
 -----
 
 Natural Join
-____________
+~~~~~~~~~~~~
 
 The **natural join** is a special case of **equi-join**. **Natural join** (⋈) is a `binary operator <https://en.wikipedia.org/wiki/Binary_relation>`__ that is written as (*R* ⋈ *S*) where *R* and *S* are `relations <https://en.wikipedia.org/wiki/Relation_(database)>`__.
 
