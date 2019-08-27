@@ -319,13 +319,17 @@ Within the database, geometries are stored on disk in a format only used by the 
 
 * Well-known text (`WKT`)
 
-  * `ST_GeomFromText(text, srid)` returns ``geometry``
-  * `ST_AsText(geometry)` returns ``text``
-  * `ST_AsEWKT(geometry)` returns ``text``
+  * `ST_GeomFromText <http://postgis.net/docs/manual-2.1/ST_GeomFromText.html>`_ (text, srid) returns ``geometry``
+  * `ST_AsText <http://postgis.net/docs/manual-2.1/ST_AsText.html>`_ (geometry) returns ``text``
+  * `ST_AsEWKT <http://postgis.net/docs/manual-2.1/ST_AsEWKT.html>`_ (geometry) returns ``text``
+
+External hyperlinks, like Python_.
+
+.. _Python: http://www.python.org/
 
 * Well-known binary (`WKB`)
 
-  * `ST_GeomFromWKB(bytea)` returns ``geometry``
+  * ST_GeomFromWKB_(bytea) returns ``geometry``
   * `ST_AsBinary(geometry)` returns ``bytea``
   * `ST_AsEWKB(geometry)` returns ``bytea``
 
