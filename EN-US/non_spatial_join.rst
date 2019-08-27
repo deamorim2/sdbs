@@ -47,7 +47,9 @@ Relational databases are usually `normalized <https://en.wikipedia.org/wiki/Data
 
 All subsequent explanations on join types in this tutorial make use of the following two tables:
 
-.. table:: *employee table*
+*employee table*
+
+::
 
     lastname  | departmentid
   ------------+--------------
@@ -59,7 +61,9 @@ All subsequent explanations on join types in this tutorial make use of the follo
    Williams   |             
   
 
-.. table:: *department table*
+*department table*
+
+::
 
    departmentid | departmentname
   --------------+----------------
