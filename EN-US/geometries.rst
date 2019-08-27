@@ -331,7 +331,7 @@ External hyperlinks, like Python_.
 
   * ST_GeomFromWKB_ (bytea) returns ``geometry``
 
-.. _ST_GeomFromWKB: http://postgis.net/docs/manual-2.1/ST_GeomFromWKB.html - Creates a geometry instance from a Well-Known Binary geometry representation (WKB) and optional SRID.
+.. _ST_GeomFromWKB: http://postgis.net/docs/manual-2.1/ST_GeomFromWKB.html
 
   * `ST_AsBinary(geometry)` returns ``bytea``
   * `ST_AsEWKB(geometry)` returns ``bytea``
