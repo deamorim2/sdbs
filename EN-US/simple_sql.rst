@@ -236,6 +236,8 @@ PostgreSQL has a series of built-in aggregate functions, including the general p
 
 ..
 
+::
+
          avg         |       stddev
 ---------------------+--------------------
  11.7391304347826087 | 3.9105613559407395
