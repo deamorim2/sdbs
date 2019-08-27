@@ -23,7 +23,7 @@ Part I - Introduction to PostGIS
 
 #. `About Our Data <./EN-US/about_data.rst>`__
 
-Part II - Spatial Database Systems Implementation
+Part II - Spatial Database System Implementation
 -------------------------------------------------
 
 #. `Conceptual Modeling <./EN-US/conceptual_modeling.rst>`__
