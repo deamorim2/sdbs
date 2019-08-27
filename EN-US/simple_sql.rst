@@ -254,7 +254,7 @@ We include the ``boroname`` column in the output result so we can determine whic
   
 ::
 
-     boroname    |         avg         |       stddev       
+     boroname    |         avg         |       stddev
   ---------------+---------------------+--------------------
    Brooklyn      | 11.7391304347826087 | 3.9105613559407395
    Manhattan     | 11.8214285714285714 | 4.3123729948325257
