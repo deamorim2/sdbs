@@ -231,17 +231,19 @@ The following SQL query will return the geometry associated with one linestring 
   SELECT ST_AsText(geom)
   FROM geometries
   WHERE name LIKE 'Polygon%';
-
---------
-.. note:: - Rather than using an ``=`` sign in our ``WHERE`` clause, we are using the ``LIKE`` operator to carry out a string matching operation. **You may be used to the ``*`` symbol as a "glob" for pattern matching, but in SQL the ``%`` symbol is used**, along with the ``LIKE`` operator to tell the system to do globbing.
---------
-
+  
 ::
 
                           st_astext
   ----------------------------------------------------------
    POLYGON((0 0,1 0,1 1,0 1,0 0))
    POLYGON((2 0,12 0,12 10,2 10,2 0),(3 1,4 1,4 2,3 2,3 1))
+
+--------
+
+.. note:: - Rather than using an ``=`` sign in our ``WHERE`` clause, we are using the ``LIKE`` operator to carry out a string matching operation. You may be used to the ``*`` symbol as a "glob" for pattern matching, but in SQL the ``%`` symbol is used**, along with the ``LIKE`` operator to tell the system to do *globbing*.
+
+--------
 
 The first polygon has only one ring. The second one has an interior "hole". Most graphics systems include the concept of a "polygon", but GIS systems are relatively unique in allowing polygons to explicitly have holes.
 
@@ -397,42 +399,35 @@ On the output side, the `ST_AsText` function is conservative, and only emits ISO
 
 In addition to the `ST_GeometryFromText` function, there are many other ways to create geometries from well-known text or similar formatted inputs:
 
-  - Using ST_GeomFromText with the SRID parameter
+- Using ST_GeomFromText with the SRID parameter
 
 .. code-block:: sql
 
   SELECT ST_GeomFromText('POINT(2 2)',4326);
 
-::
-
-                    st_geomfromtext
-  ----------------------------------------------------
-   0101000020E610000000000000000000400000000000000040
-
-  - Using ST_GeomFromText without the SRID parameter
+- Using ST_GeomFromText without the SRID parameter
   
 .. code-block:: sql
 
   SELECT ST_SetSRID(ST_GeomFromText('POINT(2 2)'),4326);
-
-  - Using a ST_Make* function
+  
+- Using a ST_Make* function
 
 .. code-block:: sql
   
   SELECT ST_SetSRID(ST_MakePoint(2, 2), 4326);
 
-  - Using PostgreSQL casting syntax and ISO WKT
+- Using PostgreSQL casting syntax and ISO WKT
 
 .. code-block:: sql
 
   SELECT ST_SetSRID('POINT(2 2)'::geometry, 4326);
 
-  - Using PostgreSQL casting syntax and extended WKT
+- Using PostgreSQL casting syntax and extended WKT
 
 .. code-block:: sql
 
   SELECT 'SRID=4326;POINT(2 2)'::geometry;
-
 
 In addition to emitters for the various forms (WKT, WKB, GML, KML, JSON, SVG), PostGIS also has consumers for four (WKT, WKB, GML, KML). Most applications use the WKT or WKB geometry creation functions, but the others work too. Here's an example that consumes GML and output JSON:
 
@@ -442,11 +437,16 @@ In addition to emitters for the various forms (WKT, WKB, GML, KML, JSON, SVG), P
 
 .. image:: ./geometries/represent-07.png
 
+::
+
+               st_asgeojson
+  --------------------------------------
+   {"type":"Point","coordinates":[1,1]}
 
 Casting from Text
 -----------------
 
-The :term:`WKT` strings we've see so far have been of type 'text' and we have been converting them to type 'geometry' using PostGIS functions like :command:`ST_GeomFromText()`.
+The `WKT` strings we've see so far have been of type 'text' and we have been converting them to type 'geometry' using PostGIS functions like `ST_GeomFromText()`.
 
 PostgreSQL includes a short form syntax that allows data to be converted from one type to another, the casting syntax, `oldata::newtype`. So for example, this SQL converts a double into a text string.
 
@@ -454,11 +454,23 @@ PostgreSQL includes a short form syntax that allows data to be converted from on
 
   SELECT 0.9::text;
 
-Less trivially, this SQL converts a :term:`WKT` string into a geometry:
+::
+
+   text
+  ------
+   0.9
+
+Less trivially, this SQL converts a `WKT` string into a geometry:
 
 .. code-block:: sql
 
   SELECT 'POINT(0 0)'::geometry;
+  
+::
+
+                    geometry
+  --------------------------------------------
+   010100000000000000000000000000000000000000
 
 One thing to note about using casting to create geometries: unless you specify the SRID, you will get a geometry with an unknown SRID. You can specify the SRID using the "extended" well-known text form, which includes an SRID block at the front:
 
@@ -466,8 +478,13 @@ One thing to note about using casting to create geometries: unless you specify t
 
   SELECT 'SRID=4326;POINT(0 0)'::geometry;
 
-It's very common to use the casting notation when working with :term:`WKT`, as well as `geometry` and `geography` columns (see :ref:`geography`).
+::
 
+                        geometry
+  ----------------------------------------------------
+   0101000020E610000000000000000000000000000000000000
+ 
+It's very common to use the casting notation when working with :term:`WKT`, as well as `geometry` and `geography` columns (see :ref:`geography`).
 
 Function List
 -------------
