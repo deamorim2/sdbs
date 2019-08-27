@@ -329,7 +329,7 @@ External hyperlinks, like Python_.
 
 * Well-known binary (`WKB`)
 
-  * ST_GeomFromWKB_(bytea) returns ``geometry``
+  * ST_GeomFromWKB_ (bytea) returns ``geometry``
   * `ST_AsBinary(geometry)` returns ``bytea``
   * `ST_AsEWKB(geometry)` returns ``bytea``
 
