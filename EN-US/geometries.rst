@@ -492,17 +492,17 @@ Function List
 
 ST_Area_ : Returns the area of the surface if it is a polygon or multi-polygon. For ``geometry`` type area is in SRID_ units. For ``geography`` area is in square meters.
 
-ST_AsText_ : Returns the Well-Known Text (WKT_) representation of the geometry/geography without SRID metadata.
+ST_AsText_ : Returns the Well-Known Text (WKT_) representation of the geometry/geography without SRID_ metadata.
 
-ST_AsBinary_ : Returns the Well-Known Binary (WKB_) representation of the geometry/geography without SRID meta data.
+ST_AsBinary_ : Returns the Well-Known Binary (WKB_) representation of the geometry/geography without SRID_ meta data.
 
 ST_EndPoint_ : Returns the last point of a LINESTRING geometry as a POINT.
 
-ST_AsEWKB_ : Returns the Well-Known Binary (WKB_) representation of the geometry with SRID meta data.
+ST_AsEWKB_ : Returns the Well-Known Binary (WKB_) representation of the geometry with SRID_ meta data.
 
-ST_AsEWKT_  : Returns the Well-Known Text (WKT_) representation of the geometry with SRID meta data.
+ST_AsEWKT_  : Returns the Well-Known Text (WKT_) representation of the geometry with SRID_ meta data.
 
-ST_AsGeoJSON_ : Returns the geometry as a GeoJSON element.
+ST_AsGeoJSON_ : Returns the geometry as a GeoJSON_ element.
 
 ST_AsGML_ : Returns the geometry as a GML_ version 2 or 3 element.
 
@@ -528,7 +528,7 @@ ST_InteriorRingN_ : Returns the Nth interior linestring ring of the polygon geom
 
 ST_Length_ : Returns the 2d length of the geometry if it is a linestring or multilinestring. geometry are in units of spatial reference and geography are in meters (default spheroid)
 
-ST_MakePoint_ : Creates a 2D, 3DZ or 4D point geometry (geometry with measure). ST_MakePoint_ while not being OGC compliant is generally faster and more precise than ST_GeomFromText_ and ST_PointFromText_. It is also easier to use if you have raw coordinates rather than WKT_.
+ST_MakePoint_ : Creates a 2D, 3DZ or 4D point geometry (geometry with measure). ST_MakePoint_ while not being OGC compliant is generally faster and more precise than ST_GeomFromText_ and ST_PointFromText. It is also easier to use if you have raw coordinates rather than WKT_.
 
 ST_NDims_ : Returns coordinate dimension of the geometry as a small int. Values are: 2,3 or 4.
 
