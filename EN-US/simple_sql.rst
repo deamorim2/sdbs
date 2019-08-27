@@ -224,31 +224,31 @@ Fortunately, PostgreSQL has a string length function, `char_length(string) <http
   
 ::
 
- char_length
--------------
-          11
-           9
-          11
-          11
-           8
-          11
-          12
-          13
-           8
-          10
-          12
-           8
-           9
-          24
-          13
-          11
-           8
-          10
-          18
-          18
-          15
-          12
--- Mais  --
+   char_length
+  -------------
+            11
+             9
+            11
+            11
+             8
+            11
+            12
+            13
+             8
+            10
+            12
+             8
+             9
+            24
+            13
+            11
+             8
+            10
+            18
+            18
+            15
+            12
+  -- Mais  --
 
 Often, we are less interested in the individual rows than in a statistic that applies to all of them. So knowing the lengths of the neighborhood names might be less interesting than knowing the average length of the names. Functions that take in multiple rows and return a single result are called "aggregate" functions.  
 
