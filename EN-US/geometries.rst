@@ -6,7 +6,9 @@ Geometries
 Introduction
 ------------
 
-In the previous `section <./loading_data.rst>`_, we loaded a variety of data.  Before we start playing with our data lets have a look at some simpler examples.
+In the previous `section <./loading_data.rst>`_, we loaded a variety of data.
+
+Before we start playing with our data lets have a look at some simpler examples.
 
   In pgAdmin, once again select the **nyc** database and open the SQL query tool.
   
@@ -40,7 +42,7 @@ The above example CREATEs a table (**geometries**) then INSERTs five geometries:
 Metadata Tables
 ---------------
 
-In conformance with the OpenGIS Implementation Specification for Geographic information-Simple feature access (`SFSQL <http://www.opengeospatial.org/standards/sfa>`_) or by the ISO/IEC 13249-3:2016 Part 3: Spatial (`SQLMM <https://www.iso.org/standard/60343.html>`_), **PostGIS** provides two tables to track and report on the geometry types available in a given database.
+In conformance with the OpenGIS Implementation Specification for Geographic information-Simple feature access (SFSQL_) or by the ISO/IEC 13249-3:2016 Part 3: Spatial (SQLMM_), **PostGIS** provides two tables to track and report on the geometry types available in a given database.
 
 * The first table, ``spatial_ref_sys``, defines all the spatial reference systems known to the database and will be described in greater detail later.
 * The second table (actually, a view), ``geometry_columns``, provides a listing of all "features" (defined as an object with geometric attributes), and the basic details of those features.
@@ -87,15 +89,15 @@ By querying this table, GIS clients and libraries can determine what to expect w
 Representing Real World Objects
 -------------------------------
 
-The OpenGIS Implementation Specification for Geographic information-Simple feature access (`SFSQL <http://www.opengeospatial.org/standards/sfa>`_), the original guiding standard for PostGIS development, defines how a real world object is represented.  By taking a continuous shape and digitizing it at a fixed resolution we achieve a passable representation of the object. 
+The OpenGIS Implementation Specification for Geographic information-Simple feature access (SFSQL_), the original guiding standard for PostGIS development, defines how a real world object is represented.  By taking a continuous shape and digitizing it at a fixed resolution we achieve a passable representation of the object. 
 
-`SFSQL <http://www.opengeospatial.org/standards/sfa>`_ only handled 2-dimensional representations.  PostGIS has extended that to include 3- and 4-dimensional representations; more recently the SQL-Multimedia Part 3 (`SQLMM <https://www.iso.org/standard/60343.html>`_) specification has officially defined their own representation.
+SFSQL_ only handled 2-dimensional representations.  PostGIS has extended that to include 3- and 4-dimensional representations; more recently the SQL-Multimedia Part 3 (SQLMM_) specification has officially defined their own representation.
 
 Our example table contains a mixture of different geometry types. We can collect general information about each object using functions that read the geometry metadata.
 
-* `ST_GeometryType <http://postgis.net/docs/manual-2.1/ST_GeometryType.html>`_ (geometry) returns the type of the geometry
-* `ST_NDims <http://postgis.net/docs/manual-2.1/ST_NDims.html>`_ (geometry) returns the number of dimensions of the geometry
-* `ST_SRID <http://postgis.net/docs/manual-2.1/ST_SRID.html>`_ (geometry) returns the spatial reference identifier number of the geometry
+* ST_GeometryType_ (geometry) returns the type of the geometry
+* ST_NDims_ (geometry) returns the number of dimensions of the geometry
+* ST_SRID_ (geometry) returns the spatial reference identifier number of the geometry
 
 .. code-block:: sql
 
@@ -136,8 +138,8 @@ A spatial **point** represents a single location on the Earth. This point is rep
 
 Some of the specific spatial functions for working with points are:
 
-* `ST_X <http://postgis.net/docs/manual-2.1/ST_X.html>`_ (geometry) returns the X ordinate
-* `ST_Y <http://postgis.net/docs/manual-2.1/ST_Y.html>`_ (geometry) returns the Y ordinate
+* ST_X_ (geometry) returns the X ordinate
+* ST_Y_ (geometry) returns the Y ordinate
 
 So, we can read the ordinates from a point like this:
 
@@ -153,7 +155,7 @@ So, we can read the ordinates from a point like this:
   ------+------
       0 |    0
 
-The New York City subway stations (``nyc_subway_stations``) table is a data set represented as points. The following SQL query will return the geometry associated with one point (in the `ST_AsText <http://postgis.net/docs/manual-2.1/ST_AsText.html>`_ column).
+The New York City subway stations (``nyc_subway_stations``) table is a data set represented as points. The following SQL query will return the geometry associated with one point (in the ST_AsText_ column).
 
 .. code-block:: sql
 
@@ -178,7 +180,7 @@ A **linestring** is a path between locations.  It takes the form of an ordered s
 
 The street network for New York (``nyc_streets``) was loaded earlier in the workshop.  This dataset contains details such as name, and type.  A single real world street may consist of many linestrings, each representing a segment of road with different attributes.
 
-The following SQL query will return the geometry associated with one linestring (in the `ST_AsText <http://postgis.net/docs/manual-2.1/ST_AsText.html>`_ column).
+The following SQL query will return the geometry associated with one linestring (in the ST_AsText_ column).
 
 .. code-block:: sql
 
@@ -194,10 +196,10 @@ The following SQL query will return the geometry associated with one linestring 
 
 Some of the specific spatial functions for working with linestrings are:
 
-* `ST_Length <http://postgis.net/docs/manual-2.1/ST_Length.html>`_ (geometry) returns the length of the linestring
-* `ST_StartPoint <http://postgis.net/docs/manual-2.1/ST_StartPoint.html>`_ (geometry) returns the first coordinate as a point
-* `ST_EndPoint <http://postgis.net/docs/manual-2.1/ST_EndPoint.html>`_ (geometry) returns the last coordinate as a point
-* `ST_NPoints <http://postgis.net/docs/manual-2.1/ST_NPoints.html>`_ (geometry) returns the number of coordinates in the linestring
+* ST_Length_ (geometry) returns the length of the linestring
+* ST_StartPoint_ (geometry) returns the first coordinate as a point
+* ST_EndPoint_ (geometry) returns the last coordinate as a point
+* ST_NPoints_ (geometry) returns the number of coordinates in the linestring
 
 So, the length of our linestring is:
 
@@ -220,11 +222,13 @@ Polygons
   :align: center
   :class: inline
 
-A polygon is a representation of an area. The outer boundary of the polygon is represented by a ring.  This ring is a linestring that is both closed and simple as defined above. Holes within the polygon are also represented by rings.
+A polygon is a representation of an area. The outer boundary of the polygon is represented by a ring.
+
+This ring is a linestring that is both closed and simple as defined above. Holes within the polygon are also represented by rings.
 
 Polygons are used to represent objects whose size and shape are important. City limits, parks, building footprints or bodies of water are all commonly represented as polygons when the scale is sufficiently high to see their area.  Roads and rivers can sometimes be represented as polygons.
 
-The following SQL query will return the geometry associated with one linestring (in the `ST_AsText <http://postgis.net/docs/manual-2.1/ST_AsText.html>`_ column).
+The following SQL query will return the geometry associated with one linestring (in the ST_AsText_ column).
 
 .. code-block:: sql
 
@@ -241,7 +245,7 @@ The following SQL query will return the geometry associated with one linestring 
 
 --------
 
-.. note:: - Rather than using an ``=`` sign in our ``WHERE`` clause, we are using the ``LIKE`` operator to carry out a string matching operation. You may be used to the ``*`` symbol as a "glob" for pattern matching, but in SQL the ``%`` symbol is used**, along with the ``LIKE`` operator to tell the system to do *globbing*.
+.. note:: - Rather than using an ``=`` sign in our ``WHERE`` clause, we are using the ``LIKE`` operator to carry out a string matching operation. You may be used to the ´´ * ´´ symbol as a glob_ for pattern matching, but in SQL the ``%`` symbol is used**, along with the ``LIKE`` operator to tell the system to do globbing_.
 
 --------
 
@@ -251,11 +255,11 @@ The first polygon has only one ring. The second one has an interior "hole". Most
 
 Some of the specific spatial functions for working with polygons are:
 
-* `ST_Area <http://postgis.net/docs/manual-2.1/ST_Area.html>`_ (geometry) returns the area of the polygons
-* `ST_NRings <http://postgis.net/docs/manual-2.1/ST_NRings.html>`_ (geometry) returns the number of rings (usually 1, more of there are holes)
-* `ST_ExteriorRing <http://postgis.net/docs/manual-2.1/ST_ExteriorRing.html>`_ (geometry) returns the outer ring as a linestring
-* `ST_InteriorRingN <http://postgis.net/docs/manual-2.1/ST_InteriorRingN.html>`_ (geometry,n) returns a specified interior ring as a linestring
-* `ST_Perimeter <http://postgis.net/docs/manual-2.1/ST_Perimeter.html>`_ (geometry) returns the length of all the rings
+* ST_Area_ (geometry) returns the area of the polygons
+* ST_NRings_ (geometry) returns the number of rings (usually 1, more of there are holes)
+* ST_ExteriorRing_ (geometry) returns the outer ring as a linestring
+* ST_InteriorRingN_ (geometry,n) returns a specified interior ring as a linestring
+* ST_Perimeter_ (geometry) returns the length of all the rings
 
 We can calculate the area of our polygons using the area function:
 
@@ -306,11 +310,10 @@ Our example collection contains a polygon and a point:
 
 Some of the specific spatial functions for working with collections are:
 
-* `ST_NumGeometries <http://postgis.net/docs/manual-2.1/ST_NumGeometries.html>`_ (geometry) returns the number of parts in the collection
-* `ST_GeometryN <http://postgis.net/docs/manual-2.1/ST_GeometryN.html>`_ (geometry,n) returns the specified part
-* `ST_AsText <http://postgis.net/docs/manual-2.1/ST_AsText.html>`_ (geometry) returns the total area of all polygonal parts
-* `ST_Length <http://postgis.net/docs/manual-2.1/ST_Length.html>`_ (geometry) returns the total length of all linear parts
-
+* ST_NumGeometries_ (geometry) returns the number of parts in the collection
+* ST_GeometryN_ (geometry,n) returns the specified part
+* ST_AsText_ (geometry) returns the total area of all polygonal parts
+* ST_Length_ (geometry) returns the total length of all linear parts
 
 Geometry Input and Output
 -------------------------
@@ -319,9 +322,9 @@ Within the database, geometries are stored on disk in a format only used by the 
 
 * Well-known text (`WKT`)
 
-  * `ST_GeomFromText <http://postgis.net/docs/manual-2.1/ST_GeomFromText.html>`_ (text, srid) returns ``geometry``
-  * `ST_AsText <http://postgis.net/docs/manual-2.1/ST_AsText.html>`_ (geometry) returns ``text``
-  * `ST_AsEWKT <http://postgis.net/docs/manual-2.1/ST_AsEWKT.html>`_ (geometry) returns ``text``
+  * ST_GeomFromText_ (text, srid) returns ``geometry``
+  * ST_AsText_ (geometry) returns ``text``
+  * ST_AsEWKT_ (geometry) returns ``text``
 
 External hyperlinks, like Python_.
 
@@ -330,26 +333,26 @@ External hyperlinks, like Python_.
 * Well-known binary (`WKB`)
 
   * ST_GeomFromWKB_ (bytea) returns ``geometry``
-  * `ST_AsBinary(geometry)` returns ``bytea``
-  * `ST_AsEWKB(geometry)` returns ``bytea``
+  * ST_AsBinary_ (geometry) returns ``bytea``
+  * ST_AsEWKB_ (geometry) returns ``bytea``
 
 * Geographic Mark-up Language (`GML`)
 
-  * `ST_GeomFromGML(text)` returns ``geometry``
-  * `ST_AsGML(geometry)` returns ``text``
+  * ST_GeomFromGML_ (text) returns ``geometry``
+  * ST_AsGML_(geometry) returns ``text``
 
 * Keyhole Mark-up Language (`KML`)
 
-  * `ST_GeomFromKML(text)` returns ``geometry``
-  * `ST_AsKML(geometry)` returns ``text``
+  * ST_GeomFromKML_ (text) returns ``geometry``
+  * ST_AsKML_ (geometry) returns ``text``
 
 * `GeoJSON`
 
-  * `ST_AsGeoJSON(geometry)` returns ``text``
+  * ST_AsGeoJSON_ (geometry) returns ``text``
 
 * Scalable Vector Graphics (`SVG`)
 
-  * `ST_AsSVG(geometry)` returns ``text``
+  * ST_AsSVG_(geometry) returns ``text``
 
 The most common use of a constructor is to turn a text representation of a geometry into an internal representation:
 
@@ -363,7 +366,7 @@ The most common use of a constructor is to turn a text representation of a geome
 
 Note that in addition to a text parameter with a geometry representation, we also have a numeric parameter providing the :term:`SRID` of the geometry.
 
-The following SQL query shows an example of :term:`WKB` representation (the call to :command:`encode()` is required to convert the binary output into an ASCII form for printing):
+The following SQL query shows an example of `WKB` representation (the call to :command:`encode()` is required to convert the binary output into an ASCII form for printing):
 
 .. code-block:: sql
 
@@ -379,9 +382,9 @@ The following SQL query shows an example of :term:`WKB` representation (the call
 
 For the purposes of this workshop we will continue to use WKT to ensure you can read and understand the geometries we're viewing.  However, most actual processes, such as viewing data in a GIS application, transferring data to a web service, or processing data remotely, WKB is the format of choice.
 
-Since WKT and WKB were defined in the `SFSQL` specification, they do not handle 3- or 4-dimensional geometries.  For these cases PostGIS has defined the Extended Well Known Text (EWKT) and Extended Well Known Binary (EWKB) formats.  These provide the same formatting capabilities of WKT and WKB with the added dimensionality.
+Since WKT and WKB were defined in the SFSQL_ specification, they do not handle 3- or 4-dimensional geometries.  For these cases PostGIS has defined the Extended Well Known Text (EWKT_) and Extended Well Known Binary (EWKB_) formats.  These provide the same formatting capabilities of WKT_ and WKB_ with the added dimensionality.
 
-Here is an example of a 3D linestring in WKT:
+Here is an example of a 3D linestring in WKT_:
 
 .. code-block:: sql
 
@@ -399,11 +402,11 @@ Note that the text representation changes! This is because the text input routin
 * extended well-known text, and
 * ISO standard well-known text.
 
-On the output side, the `ST_AsText` function is conservative, and only emits ISO standard well-known text.
+On the output side, the ST_AsText_ function is conservative, and only emits ISO standard well-known text.
 
-In addition to the `ST_GeometryFromText` function, there are many other ways to create geometries from well-known text or similar formatted inputs:
+In addition to the ST_GeometryFromText_ function, there are many other ways to create geometries from well-known text or similar formatted inputs:
 
-- Using ST_GeomFromText with the SRID parameter
+- Using ST_GeomFromText_ with the SRID_ parameter
 
 .. code-block:: sql
 
@@ -433,7 +436,7 @@ In addition to the `ST_GeometryFromText` function, there are many other ways to 
 
   SELECT 'SRID=4326;POINT(2 2)'::geometry;
 
-In addition to emitters for the various forms (WKT, WKB, GML, KML, JSON, SVG), PostGIS also has consumers for four (WKT, WKB, GML, KML). Most applications use the WKT or WKB geometry creation functions, but the others work too. Here's an example that consumes GML and output JSON:
+In addition to emitters for the various forms (WKT_, WKB_, GML_, KML_, JSON_, SVG_), PostGIS also has consumers for four (WKT_, WKB_, GML_, KML_). Most applications use the WKT_ or WKB_ geometry creation functions, but the others work too. Here's an example that consumes GML_ and output JSON_:
 
 .. code-block:: sql
 
@@ -448,7 +451,7 @@ In addition to emitters for the various forms (WKT, WKB, GML, KML, JSON, SVG), P
 Casting from Text
 -----------------
 
-The `WKT` strings we've see so far have been of type 'text' and we have been converting them to type 'geometry' using PostGIS functions like `ST_GeomFromText()`.
+The WKT_ strings we've see so far have been of type 'text' and we have been converting them to type 'geometry' using PostGIS functions like ST_GeomFromText_ ().
 
 PostgreSQL includes a short form syntax that allows data to be converted from one type to another, the casting syntax, `oldata::newtype`. So for example, this SQL converts a double into a text string.
 
@@ -474,7 +477,7 @@ Less trivially, this SQL converts a `WKT` string into a geometry:
   --------------------------------------------
    010100000000000000000000000000000000000000
 
-One thing to note about using casting to create geometries: unless you specify the SRID, you will get a geometry with an unknown SRID. You can specify the SRID using the "extended" well-known text form, which includes an SRID block at the front:
+One thing to note about using casting to create geometries: unless you specify the SRID_, you will get a geometry with an unknown SRID_. You can specify the SRID_ using the "extended" well-known text form, which includes an SRID_ block at the front:
 
 .. code-block:: sql
 
@@ -486,65 +489,132 @@ One thing to note about using casting to create geometries: unless you specify t
   ----------------------------------------------------
    0101000020E610000000000000000000000000000000000000
  
-It's very common to use the casting notation when working with `WKT`, as well as `geometry` and `geography` columns (see `geography`).
+It's very common to use the casting notation when working with WKT_, as well as geometry_ and geography_ columns.
 
 Function List
 -------------
 
-`ST_Area <http://postgis.net/docs/manual-2.1/ST_Area.html>`_: Returns the area of the surface if it is a polygon or multi-polygon. For "geometry" type area is in SRID units. For "geography" area is in square meters.
 
-`ST_AsText <http://postgis.net/docs/manual-2.1/ST_AsText.html>`_: Returns the Well-Known Text (WKT) representation of the geometry/geography without SRID metadata.
 
-`ST_AsBinary <http://postgis.net/docs/manual-2.1/ST_AsBinary.html>`_: Returns the Well-Known Binary (WKB) representation of the geometry/geography without SRID meta data.
 
-`ST_EndPoint <http://postgis.net/docs/manual-2.1/ST_EndPoint.html>`_: Returns the last point of a LINESTRING geometry as a POINT.
+ST_Area_ : Returns the area of the surface if it is a polygon or multi-polygon. For "geometry" type area is in SRID units. For "geography" area is in square meters.
 
-`ST_AsEWKB <http://postgis.net/docs/manual-2.1/ST_AsEWKB.html>`_: Returns the Well-Known Binary (WKB) representation of the geometry with SRID meta data.
+ST_AsText_ : Returns the Well-Known Text (WKT) representation of the geometry/geography without SRID metadata.
 
-`ST_AsEWKT <http://postgis.net/docs/manual-2.1/ST_AsEWKT.html>`_: Returns the Well-Known Text (WKT) representation of the geometry with SRID meta data.
+ST_AsBinary_ : Returns the Well-Known Binary (WKB) representation of the geometry/geography without SRID meta data.
 
-`ST_AsGeoJSON <http://postgis.net/docs/manual-2.1/ST_AsGeoJSON.html>`_: Returns the geometry as a GeoJSON element.
+ST_EndPoint_ : Returns the last point of a LINESTRING geometry as a POINT.
 
-`ST_AsGML <http://postgis.net/docs/manual-2.1/ST_AsGML.html>`_: Returns the geometry as a GML version 2 or 3 element.
+ST_AsEWKB_ : Returns the Well-Known Binary (WKB) representation of the geometry with SRID meta data.
 
-`ST_AsKML <http://postgis.net/docs/manual-2.1/ST_AsKML.html>`_: Returns the geometry as a KML element. Several variants. Default version=2, default precision=15.
+ST_AsEWKT_  : Returns the Well-Known Text (WKT) representation of the geometry with SRID meta data.
 
-`ST_AsSVG <http://postgis.net/docs/manual-2.1/ST_AsSVG.html>`_: Returns a Geometry in SVG path data given a geometry or geography object.
+ST_AsGeoJSON_ : Returns the geometry as a GeoJSON element.
 
-`ST_ExteriorRing <http://postgis.net/docs/manual-2.1/ST_ExteriorRing.html>`_: Returns a line string representing the exterior ring of the POLYGON geometry. Return NULL if the geometry is not a polygon. Will not work with MULTIPOLYGON
+ST_AsGML_ : Returns the geometry as a GML version 2 or 3 element.
 
-`ST_GeometryN <http://postgis.net/docs/manual-2.1/ST_GeometryN.html>`_: Returns the 1-based Nth geometry if the geometry is a GEOMETRYCOLLECTION, MULTIPOINT, MULTILINESTRING, MULTICURVE or MULTIPOLYGON. Otherwise, return NULL.
+ST_AsKML_ : Returns the geometry as a KML element. Several variants. Default version=2, default precision=15.
 
-`ST_GeomFromGML <http://postgis.net/docs/manual-2.1/ST_GeomFromGML.html>`_: Takes as input GML representation of geometry and outputs a PostGIS geometry object.
+ST_AsSVG_ : Returns a Geometry in SVG path data given a geometry or geography object.
 
-`ST_GeomFromKML <http://postgis.net/docs/manual-2.1/ST_GeomFromKML.html>`_: Takes as input KML representation of geometry and outputs a PostGIS geometry object
+ST_ExteriorRing_ : Returns a line string representing the exterior ring of the POLYGON geometry. Return NULL if the geometry is not a polygon. Will not work with MULTIPOLYGON
 
-`ST_GeomFromText <http://postgis.net/docs/manual-2.1/ST_GeomFromText.html>`_: Returns a specified ST_Geometry value from Well-Known Text representation (WKT).
+ST_GeometryN_ : Returns the 1-based Nth geometry if the geometry is a GEOMETRYCOLLECTION, MULTIPOINT, MULTILINESTRING, MULTICURVE or MULTIPOLYGON. Otherwise, return NULL.
 
-`ST_GeomFromWKB <http://postgis.net/docs/manual-2.1/ST_GeomFromWKB.html>`_: Creates a geometry instance from a Well-Known Binary geometry representation (WKB) and optional SRID.
+ST_GeomFromGML_ : Takes as input GML representation of geometry and outputs a PostGIS geometry object.
 
-`ST_GeometryType <http://postgis.net/docs/manual-2.1/ST_GeometryType.html>`_: Returns the geometry type of the ST_Geometry value.
+ST_GeomFromKML_ : Takes as input KML representation of geometry and outputs a PostGIS geometry object
 
-`ST_InteriorRingN <http://postgis.net/docs/manual-2.1/ST_InteriorRingN.html>`_: Returns the Nth interior linestring ring of the polygon geometry. Return NULL if the geometry is not a polygon or the given N is out of range.
+ST_GeomFromText_ : Returns a specified ST_Geometry value from Well-Known Text representation (WKT).
 
-`ST_Length <http://postgis.net/docs/manual-2.1/ST_Length.html>`_: Returns the 2d length of the geometry if it is a linestring or multilinestring. geometry are in units of spatial reference and geography are in meters (default spheroid)
+ST_GeomFromWKB_ : Creates a geometry instance from a Well-Known Binary geometry representation (WKB) and optional SRID.
 
-`ST_NDims <http://postgis.net/docs/manual-2.1/ST_NDims.html>`_: Returns coordinate dimension of the geometry as a small int. Values are: 2,3 or 4.
+ST_GeometryType_ : Returns the geometry type of the ST_Geometry value.
 
-`ST_NPoints <http://postgis.net/docs/manual-2.1/ST_NPoints.html>`_: Returns the number of points (vertexes) in a geometry.
+ST_InteriorRingN_ : Returns the Nth interior linestring ring of the polygon geometry. Return NULL if the geometry is not a polygon or the given N is out of range.
 
-`ST_NRings <http://postgis.net/docs/manual-2.1/ST_NRings.html>`_: If the geometry is a polygon or multi-polygon returns the number of rings.
+ST_Length_ : Returns the 2d length of the geometry if it is a linestring or multilinestring. geometry are in units of spatial reference and geography are in meters (default spheroid)
 
-`ST_NumGeometries <http://postgis.net/docs/manual-2.1/ST_NumGeometries.html>`_: If geometry is a GEOMETRYCOLLECTION (or MULTI*) returns the number of geometries, otherwise return NULL.
+ST_NDims_ : Returns coordinate dimension of the geometry as a small int. Values are: 2,3 or 4.
 
-`ST_Perimeter <http://postgis.net/docs/manual-2.1/ST_Perimeter.html>`_: Returns the length measurement of the boundary of an ST_Surface or ST_MultiSurface value. (Polygon, Multipolygon)
+ST_NPoints_ : Returns the number of points (vertexes) in a geometry.
 
-`ST_SRID <http://postgis.net/docs/manual-2.1/ST_SRID.html>`_: Returns the spatial reference identifier for the ST_Geometry as defined in spatial_ref_sys table.
+ST_NRings_ : If the geometry is a polygon or multi-polygon returns the number of rings.
 
-`ST_StartPoint <http://postgis.net/docs/manual-2.1/ST_StartPoint.html>`_: Returns the first point of a LINESTRING geometry as a POINT.
+ST_NumGeometries_ : If geometry is a GEOMETRYCOLLECTION (or MULTI*) returns the number of geometries, otherwise return NULL.
 
-`ST_X <http://postgis.net/docs/manual-2.1/ST_X.html>`_: Returns the X coordinate of the point, or NULL if not available. Input must be a point.
+ST_Perimeter_ : Returns the length measurement of the boundary of an ST_Surface or ST_MultiSurface value. (Polygon, Multipolygon)
 
-`ST_Y <http://postgis.net/docs/manual-2.1/ST_Y.html>`_: Returns the Y coordinate of the point, or NULL if not available. Input must be a point.
+ST_SRID_ : Returns the spatial reference identifier for the ST_Geometry as defined in spatial_ref_sys table.
 
-.. _ST_GeomFromWKB: http://postgis.net/docs/manual-2.1/ST_GeomFromWKB.html
+ST_StartPoint_ : Returns the first point of a LINESTRING geometry as a POINT.
+
+ST_X_ : Returns the X coordinate of the point, or NULL if not available. Input must be a point.
+
+ST_Y_ : Returns the Y coordinate of the point, or NULL if not available. Input must be a point.
+
+
+
+.. _glob: https://en.wikipedia.org/wiki/Glob_%28programming%29
+
+.. _globbing: https://en.wikipedia.org/wiki/Glob_%28programming%29
+
+.. _SFSQL: http://www.opengeospatial.org/standards/sfa
+
+.. _SQLMM: https://www.iso.org/standard/60343.html
+
+.. _ST_Area: http://postgis.net/docs/manual-2.5/ST_Area.html 
+
+.. _ST_AsText: http://postgis.net/docs/manual-2.5/ST_AsText.html
+
+.. _ST_AsBinary: http://postgis.net/docs/manual-2.5/ST_AsBinary.html
+
+.. _ST_EndPoint: http://postgis.net/docs/manual-2.5/ST_EndPoint.html
+
+.. _ST_AsEWKB: http://postgis.net/docs/manual-2.5/ST_AsEWKB.html
+
+.. _ST_AsEWKT: http://postgis.net/docs/manual-2.5/ST_AsEWKT.html
+
+.. _ST_AsGeoJSON: http://postgis.net/docs/manual-2.5/ST_AsGeoJSON.html
+
+.. _ST_AsGML: http://postgis.net/docs/manual-2.5/ST_AsGML.html
+
+.. _ST_AsKML: http://postgis.net/docs/manual-2.5/ST_AsKML.html
+
+.. _ST_AsSVG: http://postgis.net/docs/manual-2.5/ST_AsSVG.html
+
+.. _ST_ExteriorRing: http://postgis.net/docs/manual-2.5/ST_ExteriorRing.html
+
+.. _ST_GeometryN: http://postgis.net/docs/manual-2.5/ST_GeometryN.html
+
+.. _ST_GeomFromGML: http://postgis.net/docs/manual-2.5/ST_GeomFromGML.html
+
+.. _ST_GeomFromKML: http://postgis.net/docs/manual-2.5/ST_GeomFromKML.html
+
+.. _ST_GeomFromText: http://postgis.net/docs/manual-2.5/ST_GeomFromText.html
+
+.. _ST_GeomFromWKB: http://postgis.net/docs/manual-2.5/ST_GeomFromWKB.html
+
+.. _ST_GeometryType: http://postgis.net/docs/manual-2.5/ST_GeometryType.html
+
+.. _ST_InteriorRingN: http://postgis.net/docs/manual-2.5/ST_InteriorRingN.html
+
+.. _ST_Length: http://postgis.net/docs/manual-2.5/ST_Length.html
+
+.. _ST_NDims: http://postgis.net/docs/manual-2.5/ST_NDims.html
+
+.. _ST_NPoints: http://postgis.net/docs/manual-2.5/ST_NPoints.html
+
+.. _ST_NRings: http://postgis.net/docs/manual-2.5/ST_NRings.html
+
+.. _ST_NumGeometries: http://postgis.net/docs/manual-2.5/ST_NumGeometries.html
+
+.. _ST_Perimeter: http://postgis.net/docs/manual-2.5/ST_Perimeter.html
+
+.. _ST_SRID: http://postgis.net/docs/manual-2.5/ST_SRID.html
+
+.. _ST_StartPoint: http://postgis.net/docs/manual-2.5/ST_StartPoint.html
+
+.. _ST_X: http://postgis.net/docs/manual-2.5/ST_X.html
+
+.. _ST_Y: http://postgis.net/docs/manual-2.5/ST_Y.html
