@@ -95,7 +95,7 @@ SFSQL_ only handled 2-dimensional representations.  PostGIS has extended that to
 
 Our example table contains a mixture of different geometry types. We can collect general information about each object using functions that read the geometry metadata.
 
-* ST_GeometryType_ (geometry) returns the type of the geometry
+* ST_GeometryType_(geometry) returns the type of the geometry
 * ST_NDims_ (geometry) returns the number of dimensions of the geometry
 * ST_SRID_ (geometry) returns the spatial reference identifier number of the geometry
 
