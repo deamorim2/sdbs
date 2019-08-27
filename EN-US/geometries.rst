@@ -146,6 +146,12 @@ So, we can read the ordinates from a point like this:
   SELECT ST_X(geom), ST_Y(geom)
   FROM geometries
   WHERE name = 'Point';
+  
+::
+
+   st_x | st_y
+  ------+------
+      0 |    0
 
 The New York City subway stations (``nyc_subway_stations``) table is a data set represented as points. The following SQL query will return the geometry associated with one point (in the `ST_AsText` column).
 
@@ -155,6 +161,11 @@ The New York City subway stations (``nyc_subway_stations``) table is a data set 
     FROM nyc_subway_stations
     LIMIT 1;
 
+::
+
+       name     |                st_astext
+  --------------+------------------------------------------
+   Cortlandt St | POINT(583521.854408956 4507077.86259909)
 
 Linestrings
 ~~~~~~~~~~~
@@ -167,7 +178,7 @@ A **linestring** is a path between locations.  It takes the form of an ordered s
 
 The street network for New York (``nyc_streets``) was loaded earlier in the workshop.  This dataset contains details such as name, and type.  A single real world street may consist of many linestrings, each representing a segment of road with different attributes.
 
-The following SQL query will return the geometry associated with one linestring (in the :command:`ST_AsText` column).
+The following SQL query will return the geometry associated with one linestring (in the `ST_AsText` column).
 
 .. code-block:: sql
 
@@ -177,7 +188,9 @@ The following SQL query will return the geometry associated with one linestring 
 
 ::
 
-  LINESTRING(0 0, 1 1, 2 1, 2 2)
+            st_astext
+  -----------------------------
+   LINESTRING(0 0,1 1,2 1,2 2)
 
 Some of the specific spatial functions for working with linestrings are:
 
@@ -191,13 +204,14 @@ So, the length of our linestring is:
 .. code-block:: sql
 
   SELECT ST_Length(geom)
-    FROM geometries
-    WHERE name = 'Linestring';
+  FROM geometries
+  WHERE name = 'Linestring';
 
 ::
 
-  3.41421356237309
-
+      st_length
+  ------------------
+   3.41421356237309
 
 Polygons
 ~~~~~~~~
@@ -210,22 +224,24 @@ A polygon is a representation of an area.  The outer boundary of the polygon is 
 
 Polygons are used to represent objects whose size and shape are important.  City limits, parks, building footprints or bodies of water are all commonly represented as polygons when the scale is sufficiently high to see their area.  Roads and rivers can sometimes be represented as polygons.
 
-The following SQL query will return the geometry associated with one linestring (in the :command:`ST_AsText` column).
+The following SQL query will return the geometry associated with one linestring (in the `ST_AsText` column).
 
 .. code-block:: sql
 
   SELECT ST_AsText(geom)
-    FROM geometries
-    WHERE name LIKE 'Polygon%';
+  FROM geometries
+  WHERE name LIKE 'Polygon%';
 
-.. note::
-
-   Rather than using an ``=`` sign in our ``WHERE`` clause, we are using the ``LIKE`` operator to carry out a string matching operation. **You may be used to the ``*`` symbol as a "glob" for pattern matching, but in SQL the ``%`` symbol is used**, along with the ``LIKE`` operator to tell the system to do globbing.
+--------
+.. note:: - Rather than using an ``=`` sign in our ``WHERE`` clause, we are using the ``LIKE`` operator to carry out a string matching operation. **You may be used to the ``*`` symbol as a "glob" for pattern matching, but in SQL the ``%`` symbol is used**, along with the ``LIKE`` operator to tell the system to do globbing.
+--------
 
 ::
 
- POLYGON((0 0, 1 0, 1 1, 0 1, 0 0))
- POLYGON((0 0, 10 0, 10 10, 0 10, 0 0),(1 1, 1 2, 2 2, 2 1, 1 1))
+                          st_astext
+  ----------------------------------------------------------
+   POLYGON((0 0,1 0,1 1,0 1,0 0))
+   POLYGON((2 0,12 0,12 10,2 10,2 0),(3 1,4 1,4 2,3 2,3 1))
 
 The first polygon has only one ring. The second one has an interior "hole". Most graphics systems include the concept of a "polygon", but GIS systems are relatively unique in allowing polygons to explicitly have holes.
 
@@ -233,24 +249,26 @@ The first polygon has only one ring. The second one has an interior "hole". Most
 
 Some of the specific spatial functions for working with polygons are:
 
-* :command:`ST_Area(geometry)` returns the area of the polygons
-* :command:`ST_NRings(geometry)` returns the number of rings (usually 1, more of there are holes)
-* :command:`ST_ExteriorRing(geometry)` returns the outer ring as a linestring
-* :command:`ST_InteriorRingN(geometry,n)` returns a specified interior ring as a linestring
-* :command:`ST_Perimeter(geometry)` returns the length of all the rings
+* `ST_Area(geometry)` returns the area of the polygons
+* `ST_NRings(geometry)` returns the number of rings (usually 1, more of there are holes)
+* `ST_ExteriorRing(geometry)` returns the outer ring as a linestring
+* `ST_InteriorRingN(geometry,n)` returns a specified interior ring as a linestring
+* `ST_Perimeter(geometry)` returns the length of all the rings
 
 We can calculate the area of our polygons using the area function:
 
 .. code-block:: sql
 
   SELECT name, ST_Area(geom)
-    FROM geometries
-    WHERE name LIKE 'Polygon%';
+  FROM geometries
+  WHERE name LIKE 'Polygon%';
 
 ::
 
-  Polygon            1
-  PolygonWithHole    99
+        name       | st_area
+  -----------------+---------
+   Polygon         |       1
+   PolygonWithHole |      99
 
 Note that the polygon with a hole has an area that is the area of the outer shell (a 10x10 square) minus the area of the hole (a 1x1 square).
 
@@ -273,22 +291,23 @@ Our example collection contains a polygon and a point:
 .. code-block:: sql
 
   SELECT name, ST_AsText(geom)
-    FROM geometries
-    WHERE name = 'Collection';
+  FROM geometries
+  WHERE name = 'Collection';
 
 ::
 
-  GEOMETRYCOLLECTION(POINT(2 0),POLYGON((0 0, 1 0, 1 1, 0 1, 0 0)))
+      name    |                           st_astext
+  ------------+---------------------------------------------------------------
+   Collection | GEOMETRYCOLLECTION(POINT(2 1),POLYGON((5 3,6 3,6 4,5 4,5 3)))
 
 .. image:: ./screenshots/collection.png
 
 Some of the specific spatial functions for working with collections are:
 
-* :command:`ST_NumGeometries(geometry)` returns the number of parts in the collection
-* :command:`ST_GeometryN(geometry,n)` returns the specified part
-* :command:`ST_Area(geometry)` returns the total area of all polygonal parts
-* :command:`ST_Length(geometry)` returns the total length of all linear parts
-
+* `ST_NumGeometries(geometry)` returns the number of parts in the collection
+* `ST_GeometryN(geometry,n)` returns the specified part
+* `ST_Area(geometry)` returns the total area of all polygonal parts
+* `ST_Length(geometry)` returns the total length of all linear parts
 
 
 Geometry Input and Output
@@ -296,41 +315,45 @@ Geometry Input and Output
 
 Within the database, geometries are stored on disk in a format only used by the PostGIS program. In order for external programs to insert and retrieve useful geometries, they need to be converted into a format that other applications can understand. Fortunately, PostGIS supports emitting and consuming geometries in a large number of formats:
 
-* Well-known text (:term:`WKT`)
+* Well-known text (`WKT`)
 
-  * :command:`ST_GeomFromText(text, srid)` returns ``geometry``
-  * :command:`ST_AsText(geometry)` returns ``text``
-  * :command:`ST_AsEWKT(geometry)` returns ``text``
+  * `ST_GeomFromText(text, srid)` returns ``geometry``
+  * `ST_AsText(geometry)` returns ``text``
+  * `ST_AsEWKT(geometry)` returns ``text``
 
-* Well-known binary (:term:`WKB`)
+* Well-known binary (`WKB`)
 
-  * :command:`ST_GeomFromWKB(bytea)` returns ``geometry``
-  * :command:`ST_AsBinary(geometry)` returns ``bytea``
-  * :command:`ST_AsEWKB(geometry)` returns ``bytea``
+  * `ST_GeomFromWKB(bytea)` returns ``geometry``
+  * `ST_AsBinary(geometry)` returns ``bytea``
+  * `ST_AsEWKB(geometry)` returns ``bytea``
 
-* Geographic Mark-up Language (:term:`GML`)
+* Geographic Mark-up Language (`GML`)
 
-  * :command:`ST_GeomFromGML(text)` returns ``geometry``
-  * :command:`ST_AsGML(geometry)` returns ``text``
+  * `ST_GeomFromGML(text)` returns ``geometry``
+  * `ST_AsGML(geometry)` returns ``text``
 
-* Keyhole Mark-up Language (:term:`KML`)
+* Keyhole Mark-up Language (`KML`)
 
-  * :command:`ST_GeomFromKML(text)` returns ``geometry``
-  * :command:`ST_AsKML(geometry)` returns ``text``
+  * `ST_GeomFromKML(text)` returns ``geometry``
+  * `ST_AsKML(geometry)` returns ``text``
 
-* :term:`GeoJSON`
+* `GeoJSON`
 
-  * :command:`ST_AsGeoJSON(geometry)` returns ``text``
+  * `ST_AsGeoJSON(geometry)` returns ``text``
 
-* Scalable Vector Graphics (:term:`SVG`)
+* Scalable Vector Graphics (`SVG`)
 
-  * :command:`ST_AsSVG(geometry)` returns ``text``
+  * `ST_AsSVG(geometry)` returns ``text``
 
 The most common use of a constructor is to turn a text representation of a geometry into an internal representation:
 
 .. code-block::sql
 
   SELECT ST_GeomFromText('POINT(583571 4506714)',26918);
+  
+                    st_geomfromtext
+  ----------------------------------------------------
+   0101000020266900000000000026CF21410000008016315141
 
 Note that in addition to a text parameter with a geometry representation, we also have a numeric parameter providing the :term:`SRID` of the geometry.
 
@@ -344,11 +367,13 @@ The following SQL query shows an example of :term:`WKB` representation (the call
 
 ::
 
-  01020000000200000000000000000000000000000000000000000000000000f03f0000000000000000
+                                         encode
+  ------------------------------------------------------------------------------------
+   01020000000200000000000000000000000000000000000000000000000000f03f0000000000000000
 
 For the purposes of this workshop we will continue to use WKT to ensure you can read and understand the geometries we're viewing.  However, most actual processes, such as viewing data in a GIS application, transferring data to a web service, or processing data remotely, WKB is the format of choice.
 
-Since WKT and WKB were defined in the  :term:`SFSQL` specification, they do not handle 3- or 4-dimensional geometries.  For these cases PostGIS has defined the Extended Well Known Text (EWKT) and Extended Well Known Binary (EWKB) formats.  These provide the same formatting capabilities of WKT and WKB with the added dimensionality.
+Since WKT and WKB were defined in the `SFSQL` specification, they do not handle 3- or 4-dimensional geometries.  For these cases PostGIS has defined the Extended Well Known Text (EWKT) and Extended Well Known Binary (EWKB) formats.  These provide the same formatting capabilities of WKT and WKB with the added dimensionality.
 
 Here is an example of a 3D linestring in WKT:
 
@@ -358,7 +383,9 @@ Here is an example of a 3D linestring in WKT:
 
 ::
 
-  LINESTRING Z (0 0 0,1 0 0,1 1 2)
+              st_astext
+  ----------------------------------
+   LINESTRING Z (0 0 0,1 0 0,1 1 2)
 
 Note that the text representation changes! This is because the text input routine for PostGIS is liberal in what it consumes. It will consume
 
@@ -366,25 +393,44 @@ Note that the text representation changes! This is because the text input routin
 * extended well-known text, and
 * ISO standard well-known text.
 
-On the output side, the :command:`ST_AsText` function is conservative, and only emits ISO standard well-known text.
+On the output side, the `ST_AsText` function is conservative, and only emits ISO standard well-known text.
 
-In addition to the :command:`ST_GeometryFromText` function, there are many other ways to create geometries from well-known text or similar formatted inputs:
+In addition to the `ST_GeometryFromText` function, there are many other ways to create geometries from well-known text or similar formatted inputs:
+
+  - Using ST_GeomFromText with the SRID parameter
 
 .. code-block:: sql
 
-  -- Using ST_GeomFromText with the SRID parameter
   SELECT ST_GeomFromText('POINT(2 2)',4326);
 
-  -- Using ST_GeomFromText without the SRID parameter
+::
+
+                    st_geomfromtext
+  ----------------------------------------------------
+   0101000020E610000000000000000000400000000000000040
+
+  - Using ST_GeomFromText without the SRID parameter
+  
+.. code-block:: sql
+
   SELECT ST_SetSRID(ST_GeomFromText('POINT(2 2)'),4326);
 
-  -- Using a ST_Make* function
+  - Using a ST_Make* function
+
+.. code-block:: sql
+  
   SELECT ST_SetSRID(ST_MakePoint(2, 2), 4326);
 
-  -- Using PostgreSQL casting syntax and ISO WKT
+  - Using PostgreSQL casting syntax and ISO WKT
+
+.. code-block:: sql
+
   SELECT ST_SetSRID('POINT(2 2)'::geometry, 4326);
 
-  -- Using PostgreSQL casting syntax and extended WKT
+  - Using PostgreSQL casting syntax and extended WKT
+
+.. code-block:: sql
+
   SELECT 'SRID=4326;POINT(2 2)'::geometry;
 
 
