@@ -157,9 +157,5 @@ Things to Try: View data using QGIS
 
 Try using this software to connect your PostGIS database.  The application can be downloaded from http://qgis.org
 
-.. rubric:: Footnotes
-
-.. [#PostGIS_Install] "Chapter 2.5. Installation" PostGIS Documentation <http://postgis.net/docs/manual-2.1/postgis_installation.html#PGInstall>
-
 .. _PostGIS: https://postgis.net/
 
