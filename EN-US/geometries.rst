@@ -93,9 +93,9 @@ The OpenGIS Implementation Specification for Geographic information-Simple featu
 
 Our example table contains a mixture of different geometry types. We can collect general information about each object using functions that read the geometry metadata.
 
-* ``ST_GeometryType <http://postgis.net/docs/manual-2.1/ST_GeometryType.html>`_(geometry)` returns the type of the geometry
-* ``ST_NDims <http://postgis.net/docs/manual-2.1/ST_NDims.html>`_(geometry)` returns the number of dimensions of the geometry
-* ``ST_SRID <http://postgis.net/docs/manual-2.1/ST_SRID.html>`_(geometry)` returns the spatial reference identifier number of the geometry
+* `ST_GeometryType <http://postgis.net/docs/manual-2.1/ST_GeometryType.html>`_(geometry) returns the type of the geometry
+* `ST_NDims <http://postgis.net/docs/manual-2.1/ST_NDims.html>`_(geometry) returns the number of dimensions of the geometry
+* `ST_SRID <http://postgis.net/docs/manual-2.1/ST_SRID.html>`_(geometry) returns the spatial reference identifier number of the geometry
 
 .. code-block:: sql
 
