@@ -6,7 +6,7 @@ Introduction
 What is a Spatial Database?
 ===========================
 
-`PostGIS <https://postgis.net/>`_ is a spatial database. Oracle Spatial and SQL Server (2008 and later) are also spatial databases. But what does that mean; what is it that makes an ordinary database a spatial database?
+PostGIS_ is a spatial database. Oracle Spatial and SQL Server (2008 and later) are also spatial databases. But what does that mean; what is it that makes an ordinary database a spatial database?
 
 The short answer, is...
 
@@ -58,7 +58,7 @@ Spatial data types are organized in a type hierarchy.  Each sub-type inherits th
 Spatial Indexes and Bounding Boxes
 ----------------------------------
 
-An ordinary database provides "access methods" -- commonly known as **indexes** -- to allow for fast and random access to subsets of data.  Indexing for standard types (numbers, strings, dates) is usually done with `B-tree <http://en.wikipedia.org/wiki/B-tree>`_ indexes.  A B-tree partitions the data using the natural sort order to put the data into a hierarchical tree.
+An ordinary database provides "access methods" -- commonly known as **indexes** -- to allow for fast and random access to subsets of data.  Indexing for standard types (numbers, strings, dates) is usually done with B-tree_ indexes.  A B-tree_ partitions the data using the natural sort order to put the data into a hierarchical tree.
 
 The natural sort order of numbers, strings, and dates is simple to determine -- every value is less than, greater than or equal to every other value. But because polygons can overlap, can be contained in one another, and are arrayed in a two-dimensional (or more) space, a B-tree cannot be used to efficiently index them. Real spatial databases provide a "spatial index" that instead answers the question "which objects are within this particular bounding box?".  
 
@@ -72,7 +72,7 @@ Bounding boxes are used because answering the question "is A inside B?" is very 
 
 Indexes have to perform quickly in order to be useful. So instead of providing exact results, as B-trees do, spatial indexes provide approximate results. The question "what lines are inside this polygon?" will be instead interpreted by a spatial index as "what lines have bounding boxes that are contained inside this polygon's bounding box?" 
 
-The actual spatial indexes implemented by various databases vary widely. The most common implementation is the `R-tree <http://en.wikipedia.org/wiki/R-tree>`_ (used in PostGIS), but there are also `Quadtrees <http://en.wikipedia.org/wiki/Quadtree>`_, and `grid-based indexes <http://en.wikipedia.org/wiki/Grid_(spatial_index)>`_ implemented in other spatial databases.
+The actual spatial indexes implemented by various databases vary widely. The most common implementation is the R-tree_ (used in PostGIS_), but there are also Quadtrees_, and `Grid Based Indexes <http://en.wikipedia.org/wiki/Grid_(spatial_index)>`_ in other spatial databases.
 
 Spatial Functions
 -----------------
@@ -87,12 +87,12 @@ The majority of all spatial functions can be grouped into one of the following f
 #. **Comparison**: Functions that *compare* two geometries with respect to their spatial relation. 
 #. **Generation**: Functions that *generate* new geometries from others.
 
-The list of possible functions is very large, but a common set of functions is defined by the Open Geospatial Consortium (`OGC <http://www.opengeospatial.org/>`_) from the "OpenGIS Implementation Specification for Geographic Information-Simple Feature Access" (`SFSQL <http://www.opengeospatial.org/standards/sfa>`_) specification or the ISO from the "ISO/IEC 13249-3: 2016 Part 3: Spatial "(`SQLMM <https://www.iso.org/standard/60343.html>`_). But nothing prevents spatial database system software from adopting its own spatial functions. In the case of PostGIS, it has several spatial functions implemented by OGC/ISO, as well as its own spatial functions.
+The list of possible functions is very large, but a common set of functions is defined by the Open Geospatial Consortium (OGC_) from the "OpenGIS Implementation Specification for Geographic Information-Simple Feature Access" (SFSQL_) specification or the ISO from the "ISO/IEC 13249-3: 2016 Part 3: Spatial "(SQLMM_). But nothing prevents spatial database system software from adopting its own spatial functions. In the case of PostGIS, it has several spatial functions implemented by OGC/ISO, as well as its own spatial functions.
 
 What is PostGIS?
 ================
 
-PostGIS turns the `PostgreSQL <http://www.postgresql.org/>`_ Database Management System into a spatial database by adding support for the three features: spatial types, indexes, and functions.  Because it is built on PostgreSQL, PostGIS automatically inherits important "enterprise" features as well as open standards for implementation 
+PostGIS turns the PostgreSQL_ Database Management System into a spatial database by adding support for the three features: spatial types, indexes, and functions.  Because it is built on PostgreSQL, PostGIS automatically inherits important "enterprise" features as well as open standards for implementation 
 
 But what is PostgreSQL?
 -----------------------
@@ -123,7 +123,7 @@ Because the development path for adding types to PostgreSQL was so straightforwa
 Why not Shapefiles?
 -------------------
 
-The `shapefile <http://en.wikipedia.org/wiki/Shapefile>`_ (and other file formats) have been the standard way of storing and interacting with spatial data since GIS software was first written. However, these "flat" files have the following disadvantages:
+The shapefile_ (and other file formats) have been the standard way of storing and interacting with spatial data since GIS software was first written. However, these "flat" files have the following disadvantages:
 
 * **Files require special software to read and write.**  SQL is an abstraction for random data access and analysis. Without that abstraction, you will need to write all the access and analysis code yourself.
 * **Concurrent users can cause corruption.** While it's possible to write extra code to ensure that multiple writes to the same file do not corrupt the data, by the time you have solved the problem and also solved the associated performance problem, you will have written the better part of a database system. Why not just use a standard database?
@@ -136,7 +136,7 @@ In summation, the combination of support for multiple users, complex ad hoc quer
 Why Geopackage?
 ---------------
 
-`GeoPackage <https://www.geopackage.org/>`_ (GPKG) is an open, non-proprietary, platform-independent spatial data format and is based on standards for geographic information system implemented as a SQLite database container. Defined by the Open Geospatial Consortium (OGC) with support from the US military and published in 2014, GeoPackage has received wide support from various government, commercial and open source organizations.
+GeoPackage_ (GPKG) is an open, non-proprietary, platform-independent spatial data format and is based on standards for geographic information system implemented as a SQLite database container. Defined by the Open Geospatial Consortium (OGC_) with support from the US military and published in 2014, GeoPackage has received wide support from various government, commercial and open source organizations.
 
 A GeoPackage is built as an extended SQLite 3 database file (*.gpkg) that contains data tables and metadata with specified definitions, integrity constraints, format limitations, and content restrictions. The GeoPackage standard describes a set of conventions (requirements) for storing data in vector and matrix formats at various scales, schemas, and metadata. A GeoPackage can be extended using extension rules as defined in clause 2.3 of the standard. The OGC GeoPackage standard specifies a set of extensions approved by OGC members in Annex F.
 
@@ -147,21 +147,21 @@ Compared to shapefile, geopackage supports non-spatial data types such as intege
 A brief history of PostGIS
 --------------------------
 
-In the May of 2001, `Refractions Research <http://www.refractions.net/>`_  released the first version of PostGIS. PostGIS 0.1 had objects, indexes and a handful of functions. The result was a database suitable for storage and retrieval, but not analysis.
+In the May of 2001, `Refractions-Research <http://www.refractions.net/>`_ released the first version of PostGIS_. PostGIS_ 0.1 had objects, indexes and a handful of functions. The result was a database suitable for storage and retrieval, but not analysis.
 
-As the number of functions increased, the need for an organizing principle became clear.  The "Simple Features for SQL" (`SFSQL`) specification from the Open Geospatial Consortium provided such structure with guidelines for function naming and requirements.
+As the number of functions increased, the need for an organizing principle became clear.  The "Simple Features for SQL" (SFSQL_) specification from the Open Geospatial Consortium provided such structure with guidelines for function naming and requirements.
 
-With PostGIS support for simple analysis and spatial joins, `Mapserver <http://mapserver.org/>`_ became the first external application to provide visualization of data in the database. 
+With PostGIS support for simple analysis and spatial joins, Mapserver_ became the first external application to provide visualization of data in the database. 
 
 Over the next several years the number of PostGIS functions grew, but its power remained limited. Many of the most interesting functions (e.g., ST_Intersects(), ST_Buffer(), ST_Union()) were very difficult to code.  Writing them from scratch promised years of work.
 
-Fortunately a second project, the "Geometry Engine, Open Source" or `GEOS <http://trac.osgeo.org/geos>`_, came along. The GEOS library provides the necessary algorithms for implementing the `SFSQL` specification. By linking in GEOS, PostGIS provided complete support for `SFSQL` by version 0.8.
+Fortunately a second project, the "Geometry Engine, Open Source" or GEOS_, came along. The GEOS_ library provides the necessary algorithms for implementing the SFSQL_ specification. By linking in GEOS_, PostGIS_ provided complete support for SFSQL_ by version 0.8.
 
-As PostGIS data capacity grew, another issue surfaced: the representation used to store geometry proved relatively inefficient. For small objects like points and short lines, the metadata in the representation had as much as a 300% overhead. For performance reasons, it was necessary to put the representation on a diet.  By shrinking the metadata header and required dimensions, overhead greatly reduced. In PostGIS 1.0, this new, faster, lightweight representation became the default.
+As PostGIS_ data capacity grew, another issue surfaced: the representation used to store geometry proved relatively inefficient. For small objects like points and short lines, the metadata in the representation had as much as a 300% overhead. For performance reasons, it was necessary to put the representation on a diet.  By shrinking the metadata header and required dimensions, overhead greatly reduced. In PostGIS 1.0, this new, faster, lightweight representation became the default.
 
-Recent updates of PostGIS have worked on expanding standards compliance, adding support for curve-based geometries and function signatures specified in the ISO `SQL/MM` standard. Through a continued focus on performance,  PostGIS 1.4 significantly improved the speed of geometry testing routines.
+Recent updates of PostGIS_ have worked on expanding standards compliance, adding support for curve-based geometries and function signatures specified in the ISO SQLMM_ standard. Through a continued focus on performance, PostGIS_ 1.4 significantly improved the speed of geometry testing routines.
 
-Who uses PostGIS?
+Who uses PostGIS_?
 -----------------
 
 For a complete list of case studies, see the `PostGIS case studies <http://postgis.net/casestudy>`_ page.
@@ -181,7 +181,7 @@ What applications support PostGIS?
 
 PostGIS has become a widely used spatial database, and the number of third-party programs that support storing and retrieving data using it has increased as well. The `programs that support PostGIS <http://trac.osgeo.org/postgis/wiki/UsersWikiToolsSupportPostgis>`_ include both open source and proprietary software on both server and desktop systems.
 
-The following table shows a list of some of the software that leverages PostGIS:
+The following table shows a list of some of the software that leverages PostGIS_:
 
 +-------------------------------------------------+----------------------------------------------+
 | Open/Free                                       | Closed/Proprietary                           |
@@ -220,3 +220,25 @@ Additional Reading
 Casanova, M., et. al.: Bancos de Dados Geográficos. Cap. 1, 6, 8 e 11. MundoGEO. 2005
 
 Yeung, A., Hall, G.: Spatial Database Systems. GeoJournal Library, vol 87. Chapters 1 e 2. Springer, Heidelberd (2007)
+
+.. _PostGIS: https://postgis.net/
+
+.. _B-tree: http://en.wikipedia.org/wiki/B-tree
+
+.. _R-tree: http://en.wikipedia.org/wiki/R-tree
+
+.. _Quadtrees: http://en.wikipedia.org/wiki/Quadtree
+
+.. _OGC: http://www.opengeospatial.org/
+
+.. _PostgreSQL: http://www.postgresql.org/
+
+.. _shapefile: http://en.wikipedia.org/wiki/Shapefile
+
+.. _GeoPackage: https://www.geopackage.org/
+
+.. _GEOS: http://trac.osgeo.org/geos
+
+.. _SQLMM: https://www.iso.org/standard/60343.html
+
+.. _SFSQL: http://www.opengeospatial.org/standards/sfa
