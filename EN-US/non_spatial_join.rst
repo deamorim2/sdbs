@@ -188,13 +188,13 @@ The "explicit join notation" uses the ``JOIN`` keyword, optionally preceded by t
 
 ::
 
-  lastname  | departmentid | departmentname
-------------+--------------+----------------
- Rafferty   |           31 | Sales
- Jones      |           33 | Engineering
- Heisenberg |           33 | Engineering
- Robinson   |           34 | Clerical
- Smith      |           34 | Clerical
+    lastname  | departmentid | departmentname
+  ------------+--------------+----------------
+   Rafferty   |           31 | Sales
+   Jones      |           33 | Engineering
+   Heisenberg |           33 | Engineering
+   Robinson   |           34 | Clerical
+   Smith      |           34 | Clerical
 
 The **implicit join notation** simply lists the tables for joining, in the ``FROM`` clause of the ``SELECT`` statement, using commas to separate them. Thus it specifies a `cross join <https://en.wikipedia.org/wiki/Join_(SQL)#Cross_join>`__, and the ``WHERE`` clause may apply additional filter-predicates (which function comparably to the join-predicates in the explicit notation).
 
@@ -212,13 +212,13 @@ Thus the result of the `execution <https://en.wikipedia.org/wiki/Query_plan>`__ 
 
 ::
 
-  lastname  | departmentid | departmentid | departmentname
-------------+--------------+--------------+----------------
- Rafferty   |           31 |           31 | Sales
- Jones      |           33 |           33 | Engineering
- Heisenberg |           33 |           33 | Engineering
- Robinson   |           34 |           34 | Clerical
- Smith      |           34 |           34 | Clerical
+    lastname  | departmentid | departmentid | departmentname
+  ------------+--------------+--------------+----------------
+   Rafferty   |           31 |           31 | Sales
+   Jones      |           33 |           33 | Engineering
+   Heisenberg |           33 |           33 | Engineering
+   Robinson   |           34 |           34 | Clerical
+   Smith      |           34 |           34 | Clerical
 
 The employee *Williams* and the department *Marketing* do not appear in the query execution results. Neither of these has any matching rows in the other respective table: *Williams* has no associated department, and no employee has the department id 35 (*Marketing*). Depending on the desired results, this behavior may be a subtle bug, which can be avoided by replacing the inner join with an `outer
 join <https://en.wikipedia.org/wiki/Join_(SQL)#Outer_join>`__.
@@ -318,13 +318,13 @@ As with the explicit ``USING`` clause, only one ``departmentid`` column occurs i
 
 ::
 
- departmentid |  lastname  | departmentname
---------------+------------+----------------
-           31 | Rafferty   | Sales
-           33 | Jones      | Engineering
-           33 | Heisenberg | Engineering
-           34 | Robinson   | Clerical
-           34 | Smith      | Clerical
+   departmentid |  lastname  | departmentname
+  --------------+------------+----------------
+             31 | Rafferty   | Sales
+             33 | Jones      | Engineering
+             33 | Heisenberg | Engineering
+             34 | Robinson   | Clerical
+             34 | Smith      | Clerical
 
 PostgreSQL, MySQL and Oracle support natural joins; Microsoft T-SQL and IBM DB2 do not. The columns used in the join are implicit so the join code does not show which columns are expected, and a change in column names may change the results. In the `SQL:2011 <https://en.wikipedia.org/wiki/SQL:2011>`__ standard, **natural joins** are part of the optional F401, "Extended joined table", package.
 
@@ -354,14 +354,14 @@ italicized:
 
 ::
 
-  lastname  | departmentid | departmentid | departmentname
-------------+--------------+--------------+----------------
- Rafferty   |           31 |           31 | Sales
- Jones      |           33 |           33 | Engineering
- Heisenberg |           33 |           33 | Engineering
- Robinson   |           34 |           34 | Clerical
- Smith      |           34 |           34 | Clerical
- Williams   |              |              |
+    lastname  | departmentid | departmentid | departmentname
+  ------------+--------------+--------------+----------------
+   Rafferty   |           31 |           31 | Sales
+   Jones      |           33 |           33 | Engineering
+   Heisenberg |           33 |           33 | Engineering
+   Robinson   |           34 |           34 | Clerical
+   Smith      |           34 |           34 | Clerical
+   Williams   |              |              |
 
 Right Outer Join
 ~~~~~~~~~~~~~~~~
@@ -379,14 +379,14 @@ Below is an example of a right outer join (the **``OUTER``** keyword is optional
 
 ::
 
-  lastname  | departmentid | departmentid | departmentname
-------------+--------------+--------------+----------------
- Rafferty   |           31 |           31 | Sales
- Heisenberg |           33 |           33 | Engineering
- Jones      |           33 |           33 | Engineering
- Smith      |           34 |           34 | Clerical
- Robinson   |           34 |           34 | Clerical
-            |              |           35 | Marketing
+    lastname  | departmentid | departmentid | departmentname
+  ------------+--------------+--------------+----------------
+   Rafferty   |           31 |           31 | Sales
+   Heisenberg |           33 |           33 | Engineering
+   Jones      |           33 |           33 | Engineering
+   Smith      |           34 |           34 | Clerical
+   Robinson   |           34 |           34 | Clerical
+              |              |           35 | Marketing
             
 Right and left outer joins are functionally equivalent. Neither provides any functionality that the other does not, so right and left outer joins may replace each other as long as the table order is switched.
 
@@ -406,15 +406,15 @@ Example of a full outer join (the **``OUTER``** keyword is optional):
 
 ::
 
-  lastname  | departmentid | departmentid | departmentname
-------------+--------------+--------------+----------------
- Rafferty   |           31 |           31 | Sales
- Jones      |           33 |           33 | Engineering
- Heisenberg |           33 |           33 | Engineering
- Robinson   |           34 |           34 | Clerical
- Smith      |           34 |           34 | Clerical
- Williams   |              |              |
-            |              |           35 | Marketing
+    lastname  | departmentid | departmentid | departmentname
+  ------------+--------------+--------------+----------------
+   Rafferty   |           31 |           31 | Sales
+   Jones      |           33 |           33 | Engineering
+   Heisenberg |           33 |           33 | Engineering
+   Robinson   |           34 |           34 | Clerical
+   Smith      |           34 |           34 | Clerical
+   Williams   |              |              |
+              |              |           35 | Marketing
             
             
 Self-Join
@@ -461,14 +461,14 @@ Considering the new modified ``Employee`` table such as the following:
 
 ::
 
-  lastname  | departmentid |    country    | employeeid
-------------+--------------+---------------+------------
- Rafferty   |           31 | Australia     |        123
- Jones      |           33 | Australia     |        124
- Heisenberg |           33 | Australia     |        145
- Robinson   |           34 | United States |        201
- Smith      |           34 | Germany       |        305
- Williams   |              | Germany       |        306
+    lastname  | departmentid |    country    | employeeid
+  ------------+--------------+---------------+------------
+   Rafferty   |           31 | Australia     |        123
+   Jones      |           33 | Australia     |        124
+   Heisenberg |           33 | Australia     |        145
+   Robinson   |           34 | United States |        201
+   Smith      |           34 | Germany       |        305
+   Williams   |              | Germany       |        306
 
 An example solution query could be as follows:
 
@@ -485,12 +485,12 @@ Which results in the following table being generated.
 
 ::
 
- employeeid | lastname | employeeid |  lastname  |  country
-------------+----------+------------+------------+-----------
-        123 | Rafferty |        124 | Jones      | Australia
-        123 | Rafferty |        145 | Heisenberg | Australia
-        124 | Jones    |        145 | Heisenberg | Australia
-        305 | Smith    |        306 | Williams   | Germany
+   employeeid | lastname | employeeid |  lastname  |  country
+  ------------+----------+------------+------------+-----------
+          123 | Rafferty |        124 | Jones      | Australia
+          123 | Rafferty |        145 | Heisenberg | Australia
+          124 | Jones    |        145 | Heisenberg | Australia
+          305 | Smith    |        306 | Williams   | Germany
 
 **For this example:**
 
@@ -508,22 +508,22 @@ Without it, the following less useful table would be generated:
 
 ::
 
- employeeid |  lastname  | employeeid |  lastname  |    country
-------------+------------+------------+------------+---------------
-        123 | Rafferty   |        145 | Heisenberg | Australia
-        123 | Rafferty   |        124 | Jones      | Australia
-        123 | Rafferty   |        123 | Rafferty   | Australia
-        124 | Jones      |        145 | Heisenberg | Australia
-        124 | Jones      |        124 | Jones      | Australia
-        124 | Jones      |        123 | Rafferty   | Australia
-        145 | Heisenberg |        145 | Heisenberg | Australia
-        145 | Heisenberg |        124 | Jones      | Australia
-        145 | Heisenberg |        123 | Rafferty   | Australia
-        201 | Robinson   |        201 | Robinson   | United States
-        305 | Smith      |        306 | Williams   | Germany
-        305 | Smith      |        305 | Smith      | Germany
-        306 | Williams   |        306 | Williams   | Germany
-        306 | Williams   |        305 | Smith      | Germany
+   employeeid |  lastname  | employeeid |  lastname  |    country
+  ------------+------------+------------+------------+---------------
+          123 | Rafferty   |        145 | Heisenberg | Australia
+          123 | Rafferty   |        124 | Jones      | Australia
+          123 | Rafferty   |        123 | Rafferty   | Australia
+          124 | Jones      |        145 | Heisenberg | Australia
+          124 | Jones      |        124 | Jones      | Australia
+          124 | Jones      |        123 | Rafferty   | Australia
+          145 | Heisenberg |        145 | Heisenberg | Australia
+          145 | Heisenberg |        124 | Jones      | Australia
+          145 | Heisenberg |        123 | Rafferty   | Australia
+          201 | Robinson   |        201 | Robinson   | United States
+          305 | Smith      |        306 | Williams   | Germany
+          305 | Smith      |        305 | Smith      | Germany
+          306 | Williams   |        306 | Williams   | Germany
+          306 | Williams   |        305 | Smith      | Germany
 
 
 Only one of the two middle pairings is needed to satisfy the original question, and the topmost and bottommost are of no interest at all in this example.
