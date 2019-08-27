@@ -528,6 +528,8 @@ ST_InteriorRingN_ : Returns the Nth interior linestring ring of the polygon geom
 
 ST_Length_ : Returns the 2d length of the geometry if it is a linestring or multilinestring. geometry are in units of spatial reference and geography are in meters (default spheroid)
 
+ST_MakePoint_ : Creates a 2D, 3DZ or 4D point geometry (geometry with measure). ST_MakePoint_ while not being OGC compliant is generally faster and more precise than ST_GeomFromText_ and ST_PointFromText_. It is also easier to use if you have raw coordinates rather than WKT_.
+
 ST_NDims_ : Returns coordinate dimension of the geometry as a small int. Values are: 2,3 or 4.
 
 ST_NPoints_ : Returns the number of points (vertexes) in a geometry.
@@ -578,58 +580,60 @@ ST_Y_ : Returns the Y coordinate of the point, or NULL if not available. Input m
 
 .. _SRID: https://en.wikipedia.org/wiki/Spatial_reference_system
 
-.. _ST_Area: http://postgis.net/docs/manual-2.5/ST_Area.html 
+.. _ST_Area: http://postgis.net/docs/ST_Area.html 
 
-.. _ST_AsText: http://postgis.net/docs/manual-2.5/ST_AsText.html
+.. _ST_AsText: http://postgis.net/docs/ST_AsText.html
 
-.. _ST_AsBinary: http://postgis.net/docs/manual-2.5/ST_AsBinary.html
+.. _ST_AsBinary: http://postgis.net/docs/ST_AsBinary.html
 
-.. _ST_EndPoint: http://postgis.net/docs/manual-2.5/ST_EndPoint.html
+.. _ST_EndPoint: http://postgis.net/docs/ST_EndPoint.html
 
-.. _ST_AsEWKB: http://postgis.net/docs/manual-2.5/ST_AsEWKB.html
+.. _ST_AsEWKB: http://postgis.net/docs/ST_AsEWKB.html
 
-.. _ST_AsEWKT: http://postgis.net/docs/manual-2.5/ST_AsEWKT.html
+.. _ST_AsEWKT: http://postgis.net/docs/ST_AsEWKT.html
 
-.. _ST_AsGeoJSON: http://postgis.net/docs/manual-2.5/ST_AsGeoJSON.html
+.. _ST_AsGeoJSON: http://postgis.net/docs/ST_AsGeoJSON.html
 
-.. _ST_AsGML: http://postgis.net/docs/manual-2.5/ST_AsGML.html
+.. _ST_AsGML: http://postgis.net/docs/ST_AsGML.html
 
-.. _ST_AsKML: http://postgis.net/docs/manual-2.5/ST_AsKML.html
+.. _ST_AsKML: http://postgis.net/docs/ST_AsKML.html
 
-.. _ST_AsSVG: http://postgis.net/docs/manual-2.5/ST_AsSVG.html
+.. _ST_AsSVG: http://postgis.net/docs/ST_AsSVG.html
 
-.. _ST_ExteriorRing: http://postgis.net/docs/manual-2.5/ST_ExteriorRing.html
+.. _ST_ExteriorRing: http://postgis.net/docs/ST_ExteriorRing.html
 
-.. _ST_GeometryN: http://postgis.net/docs/manual-2.5/ST_GeometryN.html
+.. _ST_GeometryN: http://postgis.net/docs/ST_GeometryN.html
 
-.. _ST_GeomFromGML: http://postgis.net/docs/manual-2.5/ST_GeomFromGML.html
+.. _ST_GeomFromGML: http://postgis.net/docs/ST_GeomFromGML.html
 
-.. _ST_GeomFromKML: http://postgis.net/docs/manual-2.5/ST_GeomFromKML.html
+.. _ST_GeomFromKML: http://postgis.net/docs/ST_GeomFromKML.html
 
-.. _ST_GeomFromText: http://postgis.net/docs/manual-2.5/ST_GeomFromText.html
+.. _ST_GeomFromText: http://postgis.net/docs/ST_GeomFromText.html
 
-.. _ST_GeomFromWKB: http://postgis.net/docs/manual-2.5/ST_GeomFromWKB.html
+.. _ST_GeomFromWKB: http://postgis.net/docs/ST_GeomFromWKB.html
 
-.. _ST_GeometryType: http://postgis.net/docs/manual-2.5/ST_GeometryType.html
+.. _ST_GeometryType: http://postgis.net/docs/ST_GeometryType.html
 
-.. _ST_InteriorRingN: http://postgis.net/docs/manual-2.5/ST_InteriorRingN.html
+.. _ST_InteriorRingN: http://postgis.net/docs/ST_InteriorRingN.html
 
-.. _ST_Length: http://postgis.net/docs/manual-2.5/ST_Length.html
+.. _ST_Length: http://postgis.net/docs/ST_Length.html
 
-.. _ST_NDims: http://postgis.net/docs/manual-2.5/ST_NDims.html
+.. _ST_MakePoint: https://postgis.net/docs/ST_MakePoint.html
 
-.. _ST_NPoints: http://postgis.net/docs/manual-2.5/ST_NPoints.html
+.. _ST_NDims: http://postgis.net/docs/ST_NDims.html
 
-.. _ST_NRings: http://postgis.net/docs/manual-2.5/ST_NRings.html
+.. _ST_NPoints: http://postgis.net/docs/ST_NPoints.html
 
-.. _ST_NumGeometries: http://postgis.net/docs/manual-2.5/ST_NumGeometries.html
+.. _ST_NRings: http://postgis.net/docs/ST_NRings.html
 
-.. _ST_Perimeter: http://postgis.net/docs/manual-2.5/ST_Perimeter.html
+.. _ST_NumGeometries: http://postgis.net/docs/ST_NumGeometries.html
 
-.. _ST_SRID: http://postgis.net/docs/manual-2.5/ST_SRID.html
+.. _ST_Perimeter: http://postgis.net/docs/ST_Perimeter.html
 
-.. _ST_StartPoint: http://postgis.net/docs/manual-2.5/ST_StartPoint.html
+.. _ST_SRID: http://postgis.net/docs/ST_SRID.html
 
-.. _ST_X: http://postgis.net/docs/manual-2.5/ST_X.html
+.. _ST_StartPoint: http://postgis.net/docs/ST_StartPoint.html
 
-.. _ST_Y: http://postgis.net/docs/manual-2.5/ST_Y.html
+.. _ST_X: http://postgis.net/docs/ST_X.html
+
+.. _ST_Y: http://postgis.net/docs/ST_Y.html
