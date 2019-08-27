@@ -25,7 +25,15 @@ In the previous `section <./loading_data.rst>`_, we loaded a variety of data.  B
 
     SELECT id, name, ST_AsText(geom) FROM geometries;
 
-.. image:: ./geometries/start01.png
+::
+
+   id |      name       |                           st_astext
+  ----+-----------------+---------------------------------------------------------------
+    1 | Point           | POINT(0 0)
+    2 | Linestring      | LINESTRING(0 0,1 1,2 1,2 2)
+    3 | Polygon         | POLYGON((0 0,1 0,1 1,0 1,0 0))
+    4 | PolygonWithHole | POLYGON((2 0,12 0,12 10,2 10,2 0),(3 1,4 1,4 2,3 2,3 1))
+    5 | Collection      | GEOMETRYCOLLECTION(POINT(2 1),POLYGON((5 3,6 3,6 4,5 4,5 3)))
 
 The above example CREATEs a table (**geometries**) then INSERTs five geometries: a point, a line, a polygon, a polygon with a hole, and a collection. Finally, the inserted rows are SELECTed and displayed in the Output pane.
 
@@ -49,6 +57,17 @@ Let's have a look at the ``geometry_columns`` table in our database.
   SELECT * FROM geometry_columns;
 
 .. image:: ./geometries/start08.png
+
+::
+
+   f_table_catalog | f_table_schema |    f_table_name     | f_geometry_column | coord_dimension | srid  |      type
+  -----------------+----------------+---------------------+-------------------+-----------------+-------+-----------------
+   nyc             | public         | nyc_census_blocks   | geom              |               2 | 26918 | MULTIPOLYGON
+   nyc             | public         | nyc_homicides       | geom              |               2 | 26918 | POINT
+   nyc             | public         | nyc_neighborhoods   | geom              |               2 | 26918 | MULTIPOLYGON
+   nyc             | public         | nyc_streets         | geom              |               2 | 26918 | MULTILINESTRING
+   nyc             | public         | nyc_subway_stations | geom              |               2 | 26918 | POINT
+   nyc             | public         | geometries          | geom              |               2 |     0 | GEOMETRY
 
 * ``f_table_catalog``, ``f_table_schema``, and ``f_table_name`` provide the fully qualified name of the feature table containing a given geometry.  Because PostgreSQL doesn't make use of catalogs, ``f_table_catalog`` will tend to be empty.
 * ``f_geometry_column`` is the name of the column that geometry containing column -- for feature tables with multiple geometry columns, there will be one record for each.
