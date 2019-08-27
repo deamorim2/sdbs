@@ -6,16 +6,18 @@ Creating a Spatial Database
 PgAdmin
 -------
 
-PostgreSQL has a number of administrative front-ends.  The primary one is `psql <http://www.postgresql.org/docs/current/static/app-psql.html>`_ a command-line tool for entering SQL queries.  Another popular PostgreSQL front-end is the free and open source graphical tool `pgAdmin <http://www.pgadmin.org/>`_. All queries done in pgAdmin can also be done on the command line with ``psql``. 
+PostgreSQL_ has a number of administrative front-ends.  The primary one is psql_ a command-line tool for entering SQL queries.
 
-#. Find pgAdmin and start it up.
+Another popular PostgreSQL front-end is the free and open source graphical tool pgAdmin_. All queries done in pgAdmin can also be done on the command line with ``psql``. 
+
+#. Find pgAdmin_ and start it up.
 
    .. image:: ./screenshots/pgadmin_01.png
      :class: inline
 
-#. If this is the first time you have run pgAdmin, you should have a server entry for **PostGIS (localhost:5432)** already configured in pgAdmin. Double click the entry, and enter anything you like at the password prompt to connect to the database.
+#. If this is the first time you have run pgAdmin_, you should have a server entry for **PostGIS (localhost:5432)** already configured in pgAdmin. Double click the entry, and enter anything you like at the password prompt to connect to the database.
 
-   The PostGIS database has been installed with unrestricted access for local users (users connecting from the same machine as the database is running). That means that it will accept *any* password you provide. If you need to connect from a remote computer, the password for the ``postgres`` user has been set to ``postgres``.
+   The PostGIS_ database has been installed with unrestricted access for local users (users connecting from the same machine as the database is running). That means that it will accept *any* password you provide. If you need to connect from a remote computer, the password for the ``postgres`` user has been set to ``postgres``.
 
 
 Creating a Database
@@ -69,4 +71,14 @@ You have successfully created a PostGIS spatial database!!
 Function List
 -------------
 
-`PostGIS_Full_Version <http://postgis.net/docs/manual-2.1/PostGIS_Full_Version.html>`_: Reports full PostGIS version and build configuration info.
+PostGIS_Full_Version_: Reports full PostGIS version and build configuration info.
+
+.. _PostGIS_Full_Version: http://postgis.net/docs/PostGIS_Full_Version.html
+
+.. _psql: http://www.postgresql.org/docs/current/static/app-psql.html
+
+.. _pgAdmin: http://www.pgadmin.org/
+
+.. _PostgreSQL: http://www.postgresql.org/
+
+.. _PostGIS: https://postgis.net/
