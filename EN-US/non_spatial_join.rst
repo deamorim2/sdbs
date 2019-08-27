@@ -186,19 +186,15 @@ The "explicit join notation" uses the ``JOIN`` keyword, optionally preceded by t
     SELECT employee.lastname, employee.departmentid, department.departmentname 
     FROM employee INNER JOIN department ON employee.departmentid = department.departmentid;
 
-+-------------------+-----------------------+---------------------------+
-| lastname          | departmentid          | departmentname            |
-+===================+=======================+===========================+
-| Robinson          | 34                    | Clerical                  |
-+-------------------+-----------------------+---------------------------+
-| Jones             | 33                    | Engineering               |
-+-------------------+-----------------------+---------------------------+
-| Smith             | 34                    | Clerical                  |
-+-------------------+-----------------------+---------------------------+
-| Heisenberg        | 33                    | Engineering               |
-+-------------------+-----------------------+---------------------------+
-| Rafferty          | 31                    | Sales                     |
-+-------------------+-----------------------+---------------------------+
+::
+
+  lastname  | departmentid | departmentname
+------------+--------------+----------------
+ Rafferty   |           31 | Sales
+ Jones      |           33 | Engineering
+ Heisenberg |           33 | Engineering
+ Robinson   |           34 | Clerical
+ Smith      |           34 | Clerical
 
 The **implicit join notation** simply lists the tables for joining, in the ``FROM`` clause of the ``SELECT`` statement, using commas to separate them. Thus it specifies a `cross join <https://en.wikipedia.org/wiki/Join_(SQL)#Cross_join>`__, and the ``WHERE`` clause may apply additional filter-predicates (which function comparably to the join-predicates in the explicit notation).
 
@@ -214,19 +210,15 @@ The queries given in the examples above will join the ``employee`` and ``departm
 
 Thus the result of the `execution <https://en.wikipedia.org/wiki/Query_plan>`__ of the query above will be:
 
-+-----------------+-----------------+-----------------+-----------------+
-| lastname        | departmentid    | departmentname  | departmentid    |
-+=================+=================+=================+=================+
-| Robinson        | 34              | Clerical        | 34              |
-+-----------------+-----------------+-----------------+-----------------+
-| Jones           | 33              | Engineering     | 33              |
-+-----------------+-----------------+-----------------+-----------------+
-| Smith           | 34              | Clerical        | 34              |
-+-----------------+-----------------+-----------------+-----------------+
-| Heisenberg      | 33              | Engineering     | 33              |
-+-----------------+-----------------+-----------------+-----------------+
-| Rafferty        | 31              | Sales           | 31              |
-+-----------------+-----------------+-----------------+-----------------+
+::
+
+  lastname  | departmentid | departmentid | departmentname
+------------+--------------+--------------+----------------
+ Rafferty   |           31 |           31 | Sales
+ Jones      |           33 |           33 | Engineering
+ Heisenberg |           33 |           33 | Engineering
+ Robinson   |           34 |           34 | Clerical
+ Smith      |           34 |           34 | Clerical
 
 The employee *Williams* and the department *Marketing* do not appear in the query execution results. Neither of these has any matching rows in the other respective table: *Williams* has no associated department, and no employee has the department id 35 (*Marketing*). Depending on the desired results, this behavior may be a subtle bug, which can be avoided by replacing the inner join with an `outer
 join <https://en.wikipedia.org/wiki/Join_(SQL)#Outer_join>`__.
@@ -277,7 +269,6 @@ shorthand notation for expressing equi-joins, by way of the ``USING`` construct.
 
 .. code-block:: sql
 
-
     SELECT *
     FROM employee INNER JOIN department USING (departmentid);
 
@@ -325,19 +316,15 @@ The above sample query for **inner joins** can be expressed as a **natural join*
 
 As with the explicit ``USING`` clause, only one ``departmentid`` column occurs in the joined table, with no qualifier:
 
-+--------------+-------------------+---------------------------+
-| DepartmentID | Employee.LastName | Department.DepartmentName |
-+==============+===================+===========================+
-| 34           | Smith             | Clerical                  |
-+--------------+-------------------+---------------------------+
-| 33           | Jones             | Engineering               |
-+--------------+-------------------+---------------------------+
-| 34           | Robinson          | Clerical                  |
-+--------------+-------------------+---------------------------+
-| 33           | Heisenberg        | Engineering               |
-+--------------+-------------------+---------------------------+
-| 31           | Rafferty          | Sales                     |
-+--------------+-------------------+---------------------------+
+::
+
+ departmentid |  lastname  | departmentname
+--------------+------------+----------------
+           31 | Rafferty   | Sales
+           33 | Jones      | Engineering
+           33 | Heisenberg | Engineering
+           34 | Robinson   | Clerical
+           34 | Smith      | Clerical
 
 PostgreSQL, MySQL and Oracle support natural joins; Microsoft T-SQL and IBM DB2 do not. The columns used in the join are implicit so the join code does not show which columns are expected, and a change in column names may change the results. In the `SQL:2011 <https://en.wikipedia.org/wiki/SQL:2011>`__ standard, **natural joins** are part of the optional F401, "Extended joined table", package.
 
@@ -365,22 +352,16 @@ italicized:
     SELECT *
     FROM employee LEFT OUTER JOIN department ON employee.DepartmentID = department.DepartmentID;
 
-+-----------------+-----------------+-----------------+-----------------+
-| Employee.LastNa | Employee.Depart | Department.Depa | Department.Depa |
-| me              | mentID          | rtmentName      | rtmentID        |
-+=================+=================+=================+=================+
-| Jones           | 33              | Engineering     | 33              |
-+-----------------+-----------------+-----------------+-----------------+
-| Rafferty        | 31              | Sales           | 31              |
-+-----------------+-----------------+-----------------+-----------------+
-| Robinson        | 34              | Clerical        | 34              |
-+-----------------+-----------------+-----------------+-----------------+
-| Smith           | 34              | Clerical        | 34              |
-+-----------------+-----------------+-----------------+-----------------+
-| *Williams*      | ``NULL``        | ``NULL``        | ``NULL``        |
-+-----------------+-----------------+-----------------+-----------------+
-| Heisenberg      | 33              | Engineering     | 33              |
-+-----------------+-----------------+-----------------+-----------------+
+::
+
+  lastname  | departmentid | departmentid | departmentname
+------------+--------------+--------------+----------------
+ Rafferty   |           31 |           31 | Sales
+ Jones      |           33 |           33 | Engineering
+ Heisenberg |           33 |           33 | Engineering
+ Robinson   |           34 |           34 | Clerical
+ Smith      |           34 |           34 | Clerical
+ Williams   |              |              |
 
 Right Outer Join
 ~~~~~~~~~~~~~~~~
@@ -396,22 +377,17 @@ Below is an example of a right outer join (the **``OUTER``** keyword is optional
     SELECT *
     FROM employee RIGHT OUTER JOIN department ON employee.departmentid = department.departmentid;
 
-+-----------------+-----------------+-----------------+-----------------+
-| lastname        | departmentid    | departmentname  | departmentid    |
-+=================+=================+=================+=================+
-| Smith           | 34              | Clerical        | 34              |
-+-----------------+-----------------+-----------------+-----------------+
-| Jones           | 33              | Engineering     | 33              |
-+-----------------+-----------------+-----------------+-----------------+
-| Robinson        | 34              | Clerical        | 34              |
-+-----------------+-----------------+-----------------+-----------------+
-| Heisenberg      | 33              | Engineering     | 33              |
-+-----------------+-----------------+-----------------+-----------------+
-| Rafferty        | 31              | Sales           | 31              |
-+-----------------+-----------------+-----------------+-----------------+
-| ``NULL``        | ``NULL``        | *Marketing*     | *35*            |
-+-----------------+-----------------+-----------------+-----------------+
+::
 
+  lastname  | departmentid | departmentid | departmentname
+------------+--------------+--------------+----------------
+ Rafferty   |           31 |           31 | Sales
+ Heisenberg |           33 |           33 | Engineering
+ Jones      |           33 |           33 | Engineering
+ Smith      |           34 |           34 | Clerical
+ Robinson   |           34 |           34 | Clerical
+            |              |           35 | Marketing
+            
 Right and left outer joins are functionally equivalent. Neither provides any functionality that the other does not, so right and left outer joins may replace each other as long as the table order is switched.
 
 Full Outer Join
@@ -428,24 +404,19 @@ Example of a full outer join (the **``OUTER``** keyword is optional):
     SELECT *
     FROM employee FULL OUTER JOIN department ON employee.departmentid = department.departmentid;
 
-+-----------------+-----------------+-----------------+-----------------+
-| lastname        | departmentid    | departmentname  | departmentid    |
-+=================+=================+=================+=================+
-| Smith           | 34              | Clerical        | 34              |
-+-----------------+-----------------+-----------------+-----------------+
-| Jones           | 33              | Engineering     | 33              |
-+-----------------+-----------------+-----------------+-----------------+
-| Robinson        | 34              | Clerical        | 34              |
-+-----------------+-----------------+-----------------+-----------------+
-| *Williams*      | ``NULL``        | ``NULL``        | ``NULL``        |
-+-----------------+-----------------+-----------------+-----------------+
-| Heisenberg      | 33              | Engineering     | 33              |
-+-----------------+-----------------+-----------------+-----------------+
-| Rafferty        | 31              | Sales           | 31              |
-+-----------------+-----------------+-----------------+-----------------+
-| ``NULL``        | ``NULL``        | *Marketing*     | *35*            |
-+-----------------+-----------------+-----------------+-----------------+
+::
 
+  lastname  | departmentid | departmentid | departmentname
+------------+--------------+--------------+----------------
+ Rafferty   |           31 |           31 | Sales
+ Jones      |           33 |           33 | Engineering
+ Heisenberg |           33 |           33 | Engineering
+ Robinson   |           34 |           34 | Clerical
+ Smith      |           34 |           34 | Clerical
+ Williams   |              |              |
+            |              |           35 | Marketing
+            
+            
 Self-Join
 ~~~~~~~~~~~~~~~~
 
@@ -486,23 +457,18 @@ contained within a single large table.
 
 Considering the new modified ``Employee`` table such as the following:
 
-.. table:: *new employee table*
+*new employee table*
 
-   +------------+------------+---------------+--------------+
-   | EmployeeID | LastName   | Country       | DepartmentID |
-   +============+============+===============+==============+
-   | 123        | Rafferty   | Australia     | 31           |
-   +------------+------------+---------------+--------------+
-   | 124        | Jones      | Australia     | 33           |
-   +------------+------------+---------------+--------------+
-   | 145        | Heisenberg | Australia     | 33           |
-   +------------+------------+---------------+--------------+
-   | 201        | Robinson   | United States | 34           |
-   +------------+------------+---------------+--------------+
-   | 305        | Smith      | Germany       | 34           |
-   +------------+------------+---------------+--------------+
-   | 306        | Williams   | Germany       | ``NULL``     |
-   +------------+------------+---------------+--------------+
+::
+
+  lastname  | departmentid |    country    | employeeid
+------------+--------------+---------------+------------
+ Rafferty   |           31 | Australia     |        123
+ Jones      |           33 | Australia     |        124
+ Heisenberg |           33 | Australia     |        145
+ Robinson   |           34 | United States |        201
+ Smith      |           34 | Germany       |        305
+ Williams   |              | Germany       |        306
 
 An example solution query could be as follows:
 
@@ -515,19 +481,16 @@ An example solution query could be as follows:
 
 Which results in the following table being generated.
 
-.. table:: Employee Table after Self-join by Country
+*Employee Table after Self-join by Country*
 
-   +------------+----------+------------+------------+-----------+
-   | employeeid | lastname | employeeid | lastname   | country   |
-   +============+==========+============+============+===========+
-   | 123        | Rafferty | 124        | Jones      | Australia |
-   +------------+----------+------------+------------+-----------+
-   | 123        | Rafferty | 145        | Heisenberg | Australia |
-   +------------+----------+------------+------------+-----------+
-   | 124        | Jones    | 145        | Heisenberg | Australia |
-   +------------+----------+------------+------------+-----------+
-   | 305        | Smith    | 306        | Williams   | Germany   |
-   +------------+----------+------------+------------+-----------+
+::
+
+ employeeid | lastname | employeeid |  lastname  |  country
+------------+----------+------------+------------+-----------
+        123 | Rafferty |        124 | Jones      | Australia
+        123 | Rafferty |        145 | Heisenberg | Australia
+        124 | Jones    |        145 | Heisenberg | Australia
+        305 | Smith    |        306 | Williams   | Germany
 
 **For this example:**
 
@@ -535,18 +498,32 @@ Which results in the following table being generated.
 -  The condition ``f.country = s.country`` excludes pairings between employees in different countries. The example question only wanted pairs of employees in the same country.
 -  The condition ``f.employeeID < s.employeeID`` excludes pairings where the ``employeeid`` of the first employee is greater than or equal to the ``EmployeeID`` of the second employee. In other words, the effect of this condition is to exclude duplicate pairings and self-pairings.
 
-Without it, the following less useful table would be generated (the table below displays only the "Germany" portion of the result):
+Without it, the following less useful table would be generated:
 
-+------------+----------+------------+----------+---------+
-| employeeid | lastname | employeeid | lastname | country |
-+============+==========+============+==========+=========+
-| 305        | Smith    | 305        | Smith    | Germany |
-+------------+----------+------------+----------+---------+
-| 305        | Smith    | 306        | Williams | Germany |
-+------------+----------+------------+----------+---------+
-| 306        | Williams | 305        | Smith    | Germany |
-+------------+----------+------------+----------+---------+
-| 306        | Williams | 306        | Williams | Germany |
-+------------+----------+------------+----------+---------+
+.. code-block:: sql
+
+    SELECT f.employeeid, f.lastname, s.employeeid, s.lastname, f.country
+    FROM employee f INNER JOIN employee s ON f.country = s.country
+    ORDER BY f.employeeid, s.employeeid;
+
+::
+
+ employeeid |  lastname  | employeeid |  lastname  |    country
+------------+------------+------------+------------+---------------
+        123 | Rafferty   |        145 | Heisenberg | Australia
+        123 | Rafferty   |        124 | Jones      | Australia
+        123 | Rafferty   |        123 | Rafferty   | Australia
+        124 | Jones      |        145 | Heisenberg | Australia
+        124 | Jones      |        124 | Jones      | Australia
+        124 | Jones      |        123 | Rafferty   | Australia
+        145 | Heisenberg |        145 | Heisenberg | Australia
+        145 | Heisenberg |        124 | Jones      | Australia
+        145 | Heisenberg |        123 | Rafferty   | Australia
+        201 | Robinson   |        201 | Robinson   | United States
+        305 | Smith      |        306 | Williams   | Germany
+        305 | Smith      |        305 | Smith      | Germany
+        306 | Williams   |        306 | Williams   | Germany
+        306 | Williams   |        305 | Smith      | Germany
+
 
 Only one of the two middle pairings is needed to satisfy the original question, and the topmost and bottommost are of no interest at all in this example.
