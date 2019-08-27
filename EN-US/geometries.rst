@@ -335,7 +335,7 @@ Within the database, geometries are stored on disk in a format only used by the 
 * Geographic Mark-up Language (GML_)
 
   * ST_GeomFromGML_ (text) returns ``geometry``
-  * ST_AsGML_(geometry) returns ``text``
+  * ST_AsGML_ (geometry) returns ``text``
 
 * Keyhole Mark-up Language (KML_)
 
@@ -348,7 +348,7 @@ Within the database, geometries are stored on disk in a format only used by the 
 
 * Scalable Vector Graphics (SVG_)
 
-  * ST_AsSVG_(geometry) returns ``text``
+  * ST_AsSVG_ (geometry) returns ``text``
 
 The most common use of a constructor is to turn a text representation of a geometry into an internal representation:
 
@@ -400,7 +400,7 @@ Note that the text representation changes! This is because the text input routin
 
 On the output side, the ST_AsText_ function is conservative, and only emits ISO standard well-known text.
 
-In addition to the ST_GeometryFromText_ function, there are many other ways to create geometries from well-known text or similar formatted inputs:
+In addition to the ST_GeomFromText_ function, there are many other ways to create geometries from well-known text or similar formatted inputs:
 
 - Using ST_GeomFromText_ with the SRID_ parameter
 
@@ -414,7 +414,7 @@ In addition to the ST_GeometryFromText_ function, there are many other ways to c
 
   SELECT ST_SetSRID(ST_GeomFromText('POINT(2 2)'),4326);
   
-- Using a ST_Make_ function
+- Using a ST_MakePoint_ function
 
 .. code-block:: sql
   
