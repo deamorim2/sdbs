@@ -3,7 +3,9 @@
 Loading spatial data
 ====================
 
-Supported by a wide variety of libraries and applications, PostGIS provides many options for loading data.  This section will focus on the basics -- loading shapefiles using the PostGIS shapefile loading tool.  
+Supported by a wide variety of libraries and applications, PostGIS_ provides many options for loading data.
+
+This section will focus on the basics -- loading shapefiles using the PostGIS shapefile loading tool.
 
 #. First, return to the Start menu, and click on the **pgShapeLoader** application. The GUI shapefile importer will launch.
 
@@ -158,4 +160,6 @@ Try using this software to connect your PostGIS database.  The application can b
 .. rubric:: Footnotes
 
 .. [#PostGIS_Install] "Chapter 2.5. Installation" PostGIS Documentation <http://postgis.net/docs/manual-2.1/postgis_installation.html#PGInstall>
+
+.. _PostGIS: https://postgis.net/
 
