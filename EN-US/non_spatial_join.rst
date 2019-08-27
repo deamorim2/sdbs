@@ -188,6 +188,35 @@ CROSS JOIN returns the `Cartesian product <https://en.wikipedia.org/wiki/Cartesi
 | Williams        | ``NULL``        | Marketing       | 35              |
 +-----------------+-----------------+-----------------+-----------------+
 
+::
+
+    lastname  | departmentid | departmentid | departmentname
+  ------------+--------------+--------------+----------------
+   Rafferty   |           31 |           31 | Sales
+   Rafferty   |           31 |           33 | Engineering
+   Rafferty   |           31 |           34 | Clerical
+   Rafferty   |           31 |           35 | Marketing
+   Jones      |           33 |           31 | Sales
+   Jones      |           33 |           33 | Engineering
+   Jones      |           33 |           34 | Clerical
+   Jones      |           33 |           35 | Marketing
+   Heisenberg |           33 |           31 | Sales
+   Heisenberg |           33 |           33 | Engineering
+   Heisenberg |           33 |           34 | Clerical
+   Heisenberg |           33 |           35 | Marketing
+   Robinson   |           34 |           31 | Sales
+   Robinson   |           34 |           33 | Engineering
+   Robinson   |           34 |           34 | Clerical
+   Robinson   |           34 |           35 | Marketing
+   Smith      |           34 |           31 | Sales
+   Smith      |           34 |           33 | Engineering
+   Smith      |           34 |           34 | Clerical
+   Smith      |           34 |           35 | Marketing
+   Williams   |              |           31 | Sales
+   Williams   |              |           33 | Engineering
+   Williams   |              |           34 | Clerical
+   Williams   |              |           35 | Marketing
+
 The cross join does not itself apply any predicate to filter rows from the joined table. The results of a cross join can be filtered by using a `WHERE <https://en.wikipedia.org/wiki/Where_(SQL)>`__ clause which may then produce the equivalent of an inner join.
 
 In the `SQL:2011 <https://en.wikipedia.org/wiki/SQL:2011>`__ standard, cross joins are part of the optional F401, "Extended joined table", package.
