@@ -130,9 +130,9 @@ A spatial **point** represents a single location on the Earth.  This point is re
 
 ::
 
- st_astext
-------------
- POINT(0 0)
+   st_astext
+  ------------
+   POINT(0 0)
 
 Some of the specific spatial functions for working with points are:
 
