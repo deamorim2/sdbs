@@ -3,7 +3,7 @@
 Simple SQL 
 ==============
 
-`SQL <https://en.wikipedia.org/wiki/SQL>`_, or "Structured Query Language", is a means of asking questions and update data in relational databases.
+SQL_, or "Structured Query Language", is a means of asking questions and update data in relational databases.
 
 If you want to know a little more about this subject `Click On here! <https://en.wikipedia.org/wiki/SQL>`_
 
@@ -214,7 +214,7 @@ Sometimes we will need to apply a function to the results of our query. For exam
 
   "What is the number of letters in the names of all the neighborhoods in Brooklyn?"
   
-Fortunately, PostgreSQL has a string length function, `char_length(string) <http://www.postgresql.org/docs/current/static/functions-string.html>`_.
+Fortunately, PostgreSQL has a string length function, char_length_(string).
 
 .. code-block:: sql
 
@@ -252,7 +252,7 @@ Fortunately, PostgreSQL has a string length function, `char_length(string) <http
 
 Often, we are less interested in the individual rows than in a statistic that applies to all of them. So knowing the lengths of the neighborhood names might be less interesting than knowing the average length of the names. Functions that take in multiple rows and return a single result are called "aggregate" functions.  
 
-PostgreSQL has a series of built-in aggregate functions, including the general purpose `avg(expression) <http://www.postgresql.org/docs/current/static/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE>`_ for average values and `stddev(expression) <http://www.postgresql.org/docs/current/static/functions-aggregate.html#FUNCTIONS-AGGREGATE-STATISTICS-TABLE>`_ for standard deviations.
+PostgreSQL has a series of built-in aggregate functions, including the general purpose avg_ (expression) for average values and stddev_ (expression) for standard deviations.
 
   "What is the average number of letters and standard deviation of number of letters in the names of all the neighborhoods in Brooklyn?"
   
@@ -293,10 +293,16 @@ We include the ``boroname`` column in the output result so we can determine whic
 Function List
 -------------
 
-`avg(expression) <http://www.postgresql.org/docs/current/static/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE>`_: PostgreSQL aggregate function that returns the average value of a numeric column.
+avg_ (expression): PostgreSQL aggregate function that returns the average value of a numeric column.
 
-`char_length(string) <http://www.postgresql.org/docs/current/static/functions-string.html>`_: PostgreSQL string function that returns the number of character in a string.
+char_length_ (string): PostgreSQL string function that returns the number of character in a string.
 
-`stddev(expression) <http://www.postgresql.org/docs/current/static/functions-aggregate.html#FUNCTIONS-AGGREGATE-STATISTICS-TABLE>`_: PostgreSQL aggregate function that returns the standard deviation of input values.
+stddev_ (expression): PostgreSQL aggregate function that returns the standard deviation of input values.
   
-  
+.. _avg: http://www.postgresql.org/docs/current/static/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE
+
+.. _char_length: http://www.postgresql.org/docs/current/static/functions-string.html
+
+.. _stddev: http://www.postgresql.org/docs/current/static/functions-aggregate.html#FUNCTIONS-AGGREGATE-STATISTICS-TABLE
+
+.. _SQL: https://en.wikipedia.org/wiki/SQL
