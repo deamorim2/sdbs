@@ -56,8 +56,6 @@ Let's have a look at the ``geometry_columns`` table in our database.
 
   SELECT * FROM geometry_columns;
 
-.. image:: ./geometries/start08.png
-
 ::
 
    f_table_catalog | f_table_schema |    f_table_name     | f_geometry_column | coord_dimension | srid  |      type
@@ -132,7 +130,9 @@ A spatial **point** represents a single location on the Earth.  This point is re
 
 ::
 
-  POINT(0 0)
+ st_astext
+------------
+ POINT(0 0)
 
 Some of the specific spatial functions for working with points are:
 
