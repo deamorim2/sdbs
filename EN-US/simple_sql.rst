@@ -214,7 +214,7 @@ Sometimes we will need to apply a function to the results of our query. For exam
 
   "What is the number of letters in the names of all the neighborhoods in Brooklyn?"
   
-Fortunately, PostgreSQL has a string length function, char_length_(string).
+Fortunately, PostgreSQL has a string length function, char_length_ (string).
 
 .. code-block:: sql
 
