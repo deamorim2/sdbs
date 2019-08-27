@@ -59,37 +59,19 @@ All subsequent explanations on join types in this tutorial make use of the follo
    Robinson   |           34
    Smith      |           34
    Williams   |             
-
-   +------------+--------------+
-   | lastname   | departmentid |
-   +============+==============+
-   | Rafferty   | 31           |
-   +------------+--------------+
-   | Jones      | 33           |
-   +------------+--------------+
-   | Heisenberg | 33           |
-   +------------+--------------+
-   | Robinson   | 34           |
-   +------------+--------------+
-   | Smith      | 34           |
-   +------------+--------------+
-   | Williams   | ``NULL``     |
-   +------------+--------------+
+  
 
 .. table:: *department table*
 
-   +--------------+----------------+
-   | departmentid | departmentname |
-   +==============+================+
-   | 31           | Sales          |
-   +--------------+----------------+
-   | 33           | Engineering    |
-   +--------------+----------------+
-   | 34           | Clerical       |
-   +--------------+----------------+
-   | 35           | Marketing      |
-   +--------------+----------------+
+::
 
+   departmentid | departmentname
+  --------------+----------------
+             31 | Sales
+             33 | Engineering
+             34 | Clerical
+             35 | Marketing
+                          
 -----
 
 .. Note:: - In the ``employee`` table above, the employee *Williams* has not been assigned to any department yet. Also, note that no employees are assigned to the *Marketing* department.
