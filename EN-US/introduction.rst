@@ -147,11 +147,11 @@ Compared to shapefile, geopackage supports non-spatial data types such as intege
 A brief history of PostGIS
 --------------------------
 
-In the May of 2001, `Refractions-Research <http://www.refractions.net/>`_ released the first version of PostGIS_. PostGIS_ 0.1 had objects, indexes and a handful of functions. The result was a database suitable for storage and retrieval, but not analysis.
+In the May of 2001, `Refractions Research <http://www.refractions.net/>`_ released the first version of PostGIS_. PostGIS_ 0.1 had objects, indexes and a handful of functions. The result was a database suitable for storage and retrieval, but not analysis.
 
 As the number of functions increased, the need for an organizing principle became clear.  The "Simple Features for SQL" (SFSQL_) specification from the Open Geospatial Consortium provided such structure with guidelines for function naming and requirements.
 
-With PostGIS support for simple analysis and spatial joins, Mapserver_ became the first external application to provide visualization of data in the database. 
+With PostGIS support for simple analysis and spatial joins, `Mapserver <https://en.wikipedia.org/wiki/MapServer>`_ became the first external application to provide visualization of data in the database. 
 
 Over the next several years the number of PostGIS functions grew, but its power remained limited. Many of the most interesting functions (e.g., ST_Intersects(), ST_Buffer(), ST_Union()) were very difficult to code.  Writing them from scratch promised years of work.
 
