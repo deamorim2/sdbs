@@ -523,6 +523,10 @@ Function List
 
 `ST_GeomFromWKB <http://postgis.net/docs/manual-2.1/ST_GeomFromWKB.html>`_: Creates a geometry instance from a Well-Known Binary geometry representation (WKB) and optional SRID.
 
+.. _ST_GeomFromWKB: http://postgis.net/docs/manual-2.1/ST_GeomFromWKB.html - Creates a geometry instance from a Well-Known Binary geometry representation (WKB) and optional SRID.
+
+.. _Python: http://www.python.org/
+
 `ST_GeometryType <http://postgis.net/docs/manual-2.1/ST_GeometryType.html>`_: Returns the geometry type of the ST_Geometry value.
 
 `ST_InteriorRingN <http://postgis.net/docs/manual-2.1/ST_InteriorRingN.html>`_: Returns the Nth interior linestring ring of the polygon geometry. Return NULL if the geometry is not a polygon or the given N is out of range.
