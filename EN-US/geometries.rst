@@ -330,9 +330,6 @@ External hyperlinks, like Python_.
 * Well-known binary (`WKB`)
 
   * ST_GeomFromWKB_ (bytea) returns ``geometry``
-
-.. _ST_GeomFromWKB: http://postgis.net/docs/manual-2.1/ST_GeomFromWKB.html
-
   * `ST_AsBinary(geometry)` returns ``bytea``
   * `ST_AsEWKB(geometry)` returns ``bytea``
 
@@ -549,3 +546,5 @@ Function List
 `ST_X <http://postgis.net/docs/manual-2.1/ST_X.html>`_: Returns the X coordinate of the point, or NULL if not available. Input must be a point.
 
 `ST_Y <http://postgis.net/docs/manual-2.1/ST_Y.html>`_: Returns the Y coordinate of the point, or NULL if not available. Input must be a point.
+
+.. _ST_GeomFromWKB: http://postgis.net/docs/manual-2.1/ST_GeomFromWKB.html
