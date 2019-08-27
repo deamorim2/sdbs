@@ -49,6 +49,8 @@ All subsequent explanations on join types in this tutorial make use of the follo
 
 .. table:: *employee table*
 
+::
+
     lastname  | departmentid
   ------------+--------------
    Rafferty   |           31
