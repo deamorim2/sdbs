@@ -82,7 +82,7 @@ The rows in these tables serve to illustrate the effect of different types of jo
 
 **Below is the SQL statement to PostgreSQL to create the aforementioned tables.**
 
-  Create the department and employee tables and enter their data using the instructions below into the ``nyc`` database:  
+  Create the ``department`` and ``employee`` tables and enter their data using the instructions below into the ``nyc`` database:  
   
 .. code-block:: sql
 
