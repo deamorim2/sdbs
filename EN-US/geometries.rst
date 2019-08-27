@@ -120,7 +120,7 @@ Points
   :align: center
   :class: inline
 
-A spatial **point** represents a single location on the Earth.  This point is represented by a single coordinate (including either 2-, 3- or 4-dimensions).  Points are used to represent objects when the exact details, such as shape and size, are not important at the target scale.  For example, cities on a map of the world can be described as points, while a map of a single state might represent cities as polygons.
+A spatial **point** represents a single location on the Earth. This point is represented by a single coordinate (including either 2-, 3- or 4-dimensions).  Points are used to represent objects when the exact details, such as shape and size, are not important at the target scale.  For example, cities on a map of the world can be described as points, while a map of a single state might represent cities as polygons.
 
 .. code-block:: sql
 
@@ -136,8 +136,8 @@ A spatial **point** represents a single location on the Earth.  This point is re
 
 Some of the specific spatial functions for working with points are:
 
-* `ST_X(geometry)` returns the X ordinate
-* `ST_Y(geometry)` returns the Y ordinate
+* `ST_X <http://postgis.net/docs/manual-2.1/ST_X.html>`_ (geometry) returns the X ordinate
+* `ST_Y <http://postgis.net/docs/manual-2.1/ST_Y.html>`_ (geometry) returns the Y ordinate
 
 So, we can read the ordinates from a point like this:
 
@@ -153,7 +153,7 @@ So, we can read the ordinates from a point like this:
   ------+------
       0 |    0
 
-The New York City subway stations (``nyc_subway_stations``) table is a data set represented as points. The following SQL query will return the geometry associated with one point (in the `ST_AsText` column).
+The New York City subway stations (``nyc_subway_stations``) table is a data set represented as points. The following SQL query will return the geometry associated with one point (in the `ST_AsText <http://postgis.net/docs/manual-2.1/ST_AsText.html>`_ column).
 
 .. code-block:: sql
 
@@ -178,7 +178,7 @@ A **linestring** is a path between locations.  It takes the form of an ordered s
 
 The street network for New York (``nyc_streets``) was loaded earlier in the workshop.  This dataset contains details such as name, and type.  A single real world street may consist of many linestrings, each representing a segment of road with different attributes.
 
-The following SQL query will return the geometry associated with one linestring (in the `ST_AsText` column).
+The following SQL query will return the geometry associated with one linestring (in the `ST_AsText <http://postgis.net/docs/manual-2.1/ST_AsText.html>`_ column).
 
 .. code-block:: sql
 
@@ -194,10 +194,10 @@ The following SQL query will return the geometry associated with one linestring 
 
 Some of the specific spatial functions for working with linestrings are:
 
-* :command:`ST_Length(geometry)` returns the length of the linestring
-* :command:`ST_StartPoint(geometry)` returns the first coordinate as a point
-* :command:`ST_EndPoint(geometry)` returns the last coordinate as a point
-* :command:`ST_NPoints(geometry)` returns the number of coordinates in the linestring
+* `ST_Length <http://postgis.net/docs/manual-2.1/ST_Length.html>`_ (geometry) returns the length of the linestring
+* `ST_StartPoint <http://postgis.net/docs/manual-2.1/ST_StartPoint.html>`_ (geometry) returns the first coordinate as a point
+* `ST_EndPoint <http://postgis.net/docs/manual-2.1/ST_EndPoint.html>`_ (geometry) returns the last coordinate as a point
+* `ST_NPoints <http://postgis.net/docs/manual-2.1/ST_NPoints.html>`_ (geometry) returns the number of coordinates in the linestring
 
 So, the length of our linestring is:
 
@@ -220,11 +220,11 @@ Polygons
   :align: center
   :class: inline
 
-A polygon is a representation of an area.  The outer boundary of the polygon is represented by a ring.  This ring is a linestring that is both closed and simple as defined above.  Holes within the polygon are also represented by rings.
+A polygon is a representation of an area. The outer boundary of the polygon is represented by a ring.  This ring is a linestring that is both closed and simple as defined above. Holes within the polygon are also represented by rings.
 
-Polygons are used to represent objects whose size and shape are important.  City limits, parks, building footprints or bodies of water are all commonly represented as polygons when the scale is sufficiently high to see their area.  Roads and rivers can sometimes be represented as polygons.
+Polygons are used to represent objects whose size and shape are important. City limits, parks, building footprints or bodies of water are all commonly represented as polygons when the scale is sufficiently high to see their area.  Roads and rivers can sometimes be represented as polygons.
 
-The following SQL query will return the geometry associated with one linestring (in the `ST_AsText` column).
+The following SQL query will return the geometry associated with one linestring (in the `ST_AsText <http://postgis.net/docs/manual-2.1/ST_AsText.html>`_ column).
 
 .. code-block:: sql
 
@@ -251,11 +251,11 @@ The first polygon has only one ring. The second one has an interior "hole". Most
 
 Some of the specific spatial functions for working with polygons are:
 
-* `ST_Area(geometry)` returns the area of the polygons
-* `ST_NRings(geometry)` returns the number of rings (usually 1, more of there are holes)
-* `ST_ExteriorRing(geometry)` returns the outer ring as a linestring
-* `ST_InteriorRingN(geometry,n)` returns a specified interior ring as a linestring
-* `ST_Perimeter(geometry)` returns the length of all the rings
+* `ST_Area <http://postgis.net/docs/manual-2.1/ST_Area.html>`_ (geometry) returns the area of the polygons
+* `ST_NRings <http://postgis.net/docs/manual-2.1/ST_NRings.html>`_ (geometry) returns the number of rings (usually 1, more of there are holes)
+* `ST_ExteriorRing <http://postgis.net/docs/manual-2.1/ST_ExteriorRing.html>`_ (geometry) returns the outer ring as a linestring
+* `ST_InteriorRingN <http://postgis.net/docs/manual-2.1/ST_InteriorRingN.html>`_ (geometry,n) returns a specified interior ring as a linestring
+* `ST_Perimeter <http://postgis.net/docs/manual-2.1/ST_Perimeter.html>`_ (geometry) returns the length of all the rings
 
 We can calculate the area of our polygons using the area function:
 
@@ -306,10 +306,10 @@ Our example collection contains a polygon and a point:
 
 Some of the specific spatial functions for working with collections are:
 
-* `ST_NumGeometries(geometry)` returns the number of parts in the collection
-* `ST_GeometryN(geometry,n)` returns the specified part
-* `ST_Area(geometry)` returns the total area of all polygonal parts
-* `ST_Length(geometry)` returns the total length of all linear parts
+* `ST_NumGeometries <http://postgis.net/docs/manual-2.1/ST_NumGeometries.html>`_ (geometry) returns the number of parts in the collection
+* `ST_GeometryN <http://postgis.net/docs/manual-2.1/ST_GeometryN.html>`_ (geometry,n) returns the specified part
+* `ST_AsText <http://postgis.net/docs/manual-2.1/ST_AsText.html>`_ (geometry) returns the total area of all polygonal parts
+* `ST_Length <http://postgis.net/docs/manual-2.1/ST_Length.html>`_ (geometry) returns the total length of all linear parts
 
 
 Geometry Input and Output
