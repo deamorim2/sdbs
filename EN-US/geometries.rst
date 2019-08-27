@@ -144,8 +144,8 @@ So, we can read the ordinates from a point like this:
 .. code-block:: sql
 
   SELECT ST_X(geom), ST_Y(geom)
-    FROM geometries
-    WHERE name = 'Point';
+  FROM geometries
+  WHERE name = 'Point';
 
 The New York City subway stations (``nyc_subway_stations``) table is a data set represented as points. The following SQL query will return the geometry associated with one point (in the `ST_AsText` column).
 
