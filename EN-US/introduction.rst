@@ -133,6 +133,8 @@ Most users of PostGIS are setting up systems where multiple applications will be
 
 In summation, the combination of support for multiple users, complex ad hoc queries, and performance on large data sets are what sets spatial databases apart from file-based systems.
 
+For more information, access http://switchfromshapefile.org/
+
 Why Geopackage?
 ---------------
 
