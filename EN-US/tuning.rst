@@ -75,7 +75,7 @@ The size of this buffer only needs to be large enough to hold WAL data for a sin
 
   *Default value*: 64kB
 
-  *Recommended value*: 1MB (1/32 shared_buffer)
+  *Recommended value*: 64MB (1/32 shared_buffer)
 
 .. image:: ./tuning/conf07.png
 
