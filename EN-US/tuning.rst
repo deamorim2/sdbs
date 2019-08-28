@@ -77,7 +77,7 @@ Starting with PostgreSQL 9.1 wal_buffers defaults to being 1/32 of the size of s
 
   *Default value*: 64kB
 
-  *Recommended value*: 16MB (1/32 shared_buffer)
+  *Recommended value*: 16MB (1/32 shared_buffer, with an upper limit of 16MB)
 
 .. image:: ./tuning/conf07.png
 
