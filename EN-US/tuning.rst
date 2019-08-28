@@ -30,9 +30,20 @@ shared_buffers
 
 Sets the amount of memory the database server uses for shared memory buffers.  These are shared amongst the back-end processes, as the name suggests.  The default values are typically woefully inadequate for production databases.
 
+The shared_buffers configuration parameter determines how much memory is dedicated to PostgreSQL to use for caching data. One reason the defaults are low is because on some platforms (like older Solaris versions and SGI), having large values requires invasive action like recompiling the kernel. Even on a modern Linux system, the stock kernel will likely not allow setting shared_buffers to over 32MB without adjusting kernel settings first. (PostgreSQL 9.4 and later use a different shared memory mechanism, so kernel settings will usually not have to be adjusted there.)
+
+If you have a system with 1GB or more of RAM, a reasonable starting value for shared_buffers is 1/4 of the memory in your system. If you have less RAM you'll have to account more carefully for how much RAM the OS is taking up; closer to 15% is more typical there. There are some workloads where even larger settings for shared_buffers are effective, but given the way PostgreSQL also relies on the operating system cache, it's unlikely you'll find using more than 40% of RAM to work better than a smaller amount.
+
+Be aware that if your system or PostgreSQL build is 32-bit, it might not be practical to set shared_buffers above 2 to 2.5GB.
+
+Note that on Windows, large values for shared_buffers aren't as effective, and you may find better results keeping it relatively low and using the OS cache more instead. On Windows the useful range is 64MB to 512MB.
+
+
   *Default value*: typically 32MB
 
-  *Recommended value*: 2GB (25% of memory)
+  *Recommended value*: 2GB (25% of memory) for Linux System
+  
+  *Recommended value*: 512MB for Windows Operational System
 
 .. image:: ./tuning/conf04.png
 
