@@ -73,9 +73,11 @@ Sets the amount of memory used for write-ahead log (WAL) data.  Write-ahead logs
 
 The size of this buffer only needs to be large enough to hold WAL data for a single typical transaction.  While the default value is often sufficient for most data, geospatial data tends to be much larger.  Therefore, it is recommended to increase the size of this parameter.
 
+Starting with PostgreSQL 9.1 wal_buffers defaults to being 1/32 of the size of shared_buffers, with an upper limit of 16MB. But you can try higher values that not exceed 1/32 shared_buffer.
+
   *Default value*: 64kB
 
-  *Recommended value*: 64MB (1/32 shared_buffer)
+  *Recommended value*: 16MB (1/32 shared_buffer)
 
 .. image:: ./tuning/conf07.png
 
