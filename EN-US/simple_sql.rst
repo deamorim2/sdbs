@@ -207,6 +207,34 @@ We return to our ``nyc_neighborhoods`` table with a filter in hand.  The table c
   SELECT name 
   FROM nyc_neighborhoods 
   WHERE boroname = 'Brooklyn';
+  
+  ::
+  
+                name
+   --------------------------
+    Bensonhurst
+    Bay Ridge
+    Boerum Hill
+    Cobble Hill
+    Downtown
+    Sunset Park
+    Borough Park
+    East Brooklyn
+    Flatbush
+    Park Slope
+    Williamsburg
+    Canarsie
+    Greenwood
+    Gravesend-Sheepshead Bay
+    Dyker Heights
+    Brownsville
+    Bushwick
+    Fort Green
+    Mapleton-Flatlands
+    Bedford-Stuyvesant
+    Carroll Gardens
+    Coney Island
+    Red Hook
 
 The query will run for even fewer (milli)seconds and return the 23 results.
 
