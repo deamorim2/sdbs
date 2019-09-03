@@ -208,7 +208,7 @@ We return to our ``nyc_neighborhoods`` table with a filter in hand.  The table c
   FROM nyc_neighborhoods 
   WHERE boroname = 'Brooklyn';
   
-  ::
+::
   
                 name
    --------------------------
