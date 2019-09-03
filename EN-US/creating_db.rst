@@ -53,7 +53,7 @@ Creating a Database
 
 #. Enter the following query into the query text field to load the PostGIS spatial extension:
 
-   .. code-block:: sql
+.. code-block:: sql
 
      CREATE EXTENSION postgis;
            
