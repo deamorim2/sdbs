@@ -23,6 +23,10 @@ Part I - Introduction to PostGIS
 
 #. `About Our Data <./EN-US/about_data.rst>`__
 
+#. `Simple SQL <./EN-US/simple_sql.rst>`_
+
+#. `Non Spatial Join <./EN-US/non_spatial_join.rst>`_
+
 Part II - Spatial Database System Implementation
 -------------------------------------------------
 
