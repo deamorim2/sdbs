@@ -28,7 +28,7 @@ This section will focus on the basics -- loading shapefiles using the PostGIS sh
    .. image:: ./screenshots/pgshapeloader_02.png
      :class: inline
 
-#. Download this `folder <https://drive.google.com/drive/folders/1dmcVfJer0JJgXhj4ADcsEVUtP9nEHH_Z?usp=sharing>`_ and copy it to your computer.
+#. Download the folder `data <https://drive.google.com/drive/folders/1dmcVfJer0JJgXhj4ADcsEVUtP9nEHH_Z?usp=sharing>`_ and copy it to your computer.
 
 #. Next, open the *Add File* browser and navigate to the data directory, ``\data``. Select the ``nyc_census_blocks.shp`` file. 
 
