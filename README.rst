@@ -27,6 +27,8 @@ Part I - Introduction to PostGIS
 
 #. `Non Spatial Join <./EN-US/non_spatial_join.rst>`_
 
+#. `Geometries <./EN-US/geometries.rst>`_
+
 Part II - Spatial Database System Implementation
 -------------------------------------------------
 
