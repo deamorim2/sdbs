@@ -183,11 +183,11 @@ Then, plug the geometry representation back into an ST_Equals_ test:
 
    Broad St
 
-.. note::
+------
 
-  The representation of the point was not very human readable (``0101000020266900000EEBD4CF27CF2141BC17D69516315141``) but it was an exact representation of the coordinate values. For a test like equality, using the exact coordinates is necessary.
+.. note:: - The representation of the point was not very human readable (``0101000020266900000EEBD4CF27CF2141BC17D69516315141``) but it was an exact representation of the coordinate values. For a test like equality, using the exact coordinates is necessary.
 
-..
+------
 
 Function List
 =============
