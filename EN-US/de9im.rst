@@ -1,5 +1,8 @@
 .. _de9im:
 
+Topological Models
+==================
+
 The main proposals presented to date on the representation of topological relations between geometric objects in a two-dimensional space include:
 
 * Four Intersection Method (4IM) (Egenhofer & Franzosa, 1990)
