@@ -200,7 +200,7 @@ DE-9IM Spatial Relationships
 Clementini and Felice (1995) state that all possible relations applied in the CBM method can be represented using the DE-9IM model and all possible topological relationships between points, lines and polygons in a two-dimensional space. They can be grouped into five categories or topological relationships:
 
 * Touch
-* In (Within)
+* In(Within)
 * Cross
 * Overlap
 * Disjoint
@@ -221,6 +221,8 @@ Applied for groups:
 * point/line
 
 〈A, touch, B〉 = [I (A) ∩ I (B) = ∅] and [B (A) ∩ I (B) ≠ ∅] or [I (A) ∩ B (B) ≠ or or [ B (A) ∩ B (B) ≠ ∅]
+
+::
 
 Corresponding DE-9IM matrix pattern = (F T * * * * * * *), (F * * T * * * * *), and (F * * * T * * * *)
 
