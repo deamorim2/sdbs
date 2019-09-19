@@ -20,7 +20,7 @@ ST_Crosses
 .. figure:: ./spatial_relationships/st_crosses.png  
    :align: center
 
-For multipoint/polygon, multipoint/linestring, linestring/linestring, linestring/polygon, and linestring/multipolygon comparisons, ST_Crosses_(geometry A, geometry B) returns t (TRUE) if the intersection results in a geometry whose dimension is one less than the maximum dimension of the two source geometries and the intersection set is interior to both source geometries.
+For multipoint/polygon, multipoint/linestring, linestring/linestring, linestring/polygon, and linestring/multipolygon comparisons, ST_Crosses_ (geometry A, geometry B) returns t (TRUE) if the intersection results in a geometry whose dimension is one less than the maximum dimension of the two source geometries and the intersection set is interior to both source geometries.
 
 ST_Overlaps
 -----------
@@ -30,7 +30,7 @@ ST_Overlaps
 
 ST_Overlaps_ (geometry A, geometry B) compares two geometries of the same dimension and returns TRUE if their intersection set results in a geometry different from both but of the same dimension.
 
-Let's take our Broad Street subway station and determine its neighborhood using the :command:`ST_Intersects` function:
+Let's take our Broad Street subway station and determine its neighborhood using the ST_Intersects_ function:
 
 .. code-block:: sql
 
@@ -63,7 +63,7 @@ ST_Touches_ tests whether two geometries touch at their boundaries, but do not i
 .. figure:: ./spatial_relationships/st_touches.png
    :align: center
 
-ST_Touches_ (geometry A, geometry B)` returns TRUE if either of the geometries' boundaries intersect or if only one of the geometry's interiors intersects the other's boundary.
+ST_Touches_ (geometry A, geometry B) returns TRUE if either of the geometries' boundaries intersect or if only one of the geometry's interiors intersects the other's boundary.
 
 ST_Within and ST_Contains
 -------------------------
@@ -92,7 +92,7 @@ ST_Intersects, ST_Distance, ST_DWithin and ST_Equals
 ST_Intersects
 -------------
 
-The opposite of ST_Disjoint is ST_Intersects_, ST_Crosses_, and ST_Overlaps_ tests whether the interiors of the geometries intersect. 
+The opposite of ST_Disjoint_ is ST_Intersects_, ST_Crosses_, and ST_Overlaps_ tests whether the interiors of the geometries intersect. 
 
 .. figure:: ./spatial_relationships/st_intersects.png
    :align: center
@@ -102,7 +102,9 @@ ST_Intersects_ (geometry A, geometry B) returns t (TRUE) if the two shapes have 
 ST_Distance and ST_DWithin
 --------------------------
 
-An extremely common GIS question is "find all the stuff within distance X of this other stuff". 
+An extremely common GIS question is:
+
+  Find all the stuff within distance X of this other stuff 
 
 The ST_Distance_ (geometry A, geometry B) calculates the *shortest* distance between two geometries and returns it as a float. This is useful for actually reporting back the distance between objects.
 
@@ -261,3 +263,5 @@ ST_Intersects_ (geometry A, geometry B): Returns TRUE if the Geometries/Geograph
 .. _ST_AsGML: http://postgis.net/docs/ST_AsGML.html
 
 .. _ST_GeomFromText: http://postgis.net/docs/ST_GeomFromText.html
+
+.. _ST_SRID: http://postgis.net/docs/ST_SRID.html
