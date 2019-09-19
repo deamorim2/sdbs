@@ -9,7 +9,7 @@ The main proposals presented to date on the representation of topological relati
 * Nine Intersection Method (9IM) (Egenhofer & Herring 1991; Pullar & Egenhofer, 1988)
 * Dimensionally Extended Method (DEM)
 * Calculation Based Method (CBM) (Clementini et al., 1993)
-* Dimensionally Extended 9-Intersection Model (DE-9IM) (Clementini & Felice, 1995)
+* **Dimensionally Extended 9-Intersection Model** (DE-9IM) (Clementini & Felice, 1995)
 
 The DE-9IM is a method or model chosen by OGC/ISO and implemented in PostGIS for the representation of topological models.
 
@@ -25,7 +25,7 @@ Other operations within the Dimensionally Extended 9-Intersection Model (DE-9IM)
 Interior (I), Exterior (E), and Boundary (B)
 --------------------------------------------
 
-The "`Dimensionally Extended 9-Intersection Model <http://en.wikipedia.org/wiki/DE-9IM>`_" (DE9IM) is a framework for modelling how two spatial objects interact.
+The "`Dimensionally Extended 9-Intersection Model (DE9IM) is a framework for modelling how two spatial objects interact.
 
 First, every spatial object has:
 
@@ -362,3 +362,5 @@ Function List
 -------------
 
 `ST_Relate(geometry A, geometry B) <http://postgis.net/docs/manual-2.1/ST_Relate.html>`_: Returns a text string representing the DE9IM relationship between the geometries. 
+
+<http://en.wikipedia.org/wiki/DE-9IM>`_"
