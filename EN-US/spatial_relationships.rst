@@ -48,7 +48,9 @@ ST_Within_ and ST_Contains_ test whether one geometry is fully within the other.
 .. figure:: ./spatial_relationships/st_within.png
    :align: center
     
-ST_Within_ (geometry A , geometry B) returns TRUE if the first geometry is completely within the second geometry. ST_Within_ tests for the exact opposite result of ST_Contains_.  
+ST_Within_ (geometry A , geometry B) returns TRUE if the first geometry is completely within the second geometry.
+
+ST_Within_ tests for the exact opposite result of ST_Contains_.  
 
 ST_Contains_ (geometry A, geometry B) returns TRUE if the second geometry is completely contained by the first geometry. 
 
