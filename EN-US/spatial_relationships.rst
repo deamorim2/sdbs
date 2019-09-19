@@ -30,31 +30,6 @@ ST_Overlaps
 
 ST_Overlaps_ (geometry A, geometry B) compares two geometries of the same dimension and returns TRUE if their intersection set results in a geometry different from both but of the same dimension.
 
-Let's take our Broad Street subway station and determine its neighborhood using the ST_Intersects_ function:
-
-.. code-block:: sql
-
-  SELECT name, ST_AsText(geom)
-  FROM nyc_subway_stations 
-  WHERE name = 'Broad St';               
-
-::
-
-  POINT(583571 4506714)
-
-.. code-block:: sql   
-
-  SELECT name, boroname 
-  FROM nyc_neighborhoods
-  WHERE ST_Intersects(geom, ST_GeomFromText('POINT(583571 4506714)',26918));
-
-::
-
-          name        | boroname  
-  --------------------+-----------
-   Financial District | Manhattan
-
-
 ST_Touches
 ----------
 
@@ -99,6 +74,32 @@ The opposite of ST_Disjoint_ is ST_Intersects_, ST_Crosses_, and ST_Overlaps_ te
 
 ST_Intersects_ (geometry A, geometry B) returns t (TRUE) if the two shapes have any space in common, i.e., if their boundaries or interiors intersect.
 
+Let's take our Broad Street subway station and determine its neighborhood using the ST_Intersects_ function:
+
+.. code-block:: sql
+
+  SELECT name, ST_AsText(geom)
+  FROM nyc_subway_stations 
+  WHERE name = 'Broad St';               
+
+::
+
+      name   |                st_astext
+   ----------+------------------------------------------
+    Broad St | POINT(583571.905921312 4506714.34119218)
+
+.. code-block:: sql   
+
+  SELECT name, boroname 
+  FROM nyc_neighborhoods
+  WHERE ST_Intersects(geom, ST_GeomFromText('POINT(583571.905921312 4506714.34119218)',26918));
+
+::
+
+                  name                | boroname
+   -----------------------------------+-----------
+    Battery Park City-Lower Manhattan | Manhattan
+
 ST_Distance and ST_DWithin
 --------------------------
 
@@ -116,7 +117,9 @@ The ST_Distance_ (geometry A, geometry B) calculates the *shortest* distance bet
 
 ::
 
-  3
+    st_distance
+   -------------
+              3
 
 For testing whether two objects are within a distance of one another, the ST_DWithin_ function provides an index-accelerated true/false test. This is useful for questions like "how many trees are within a 500 meter buffer of the road?". You don't have to calculate an actual buffer, you just have to test the distance relationship.
 
@@ -131,7 +134,7 @@ Using our Broad Street subway station again, we can find the streets nearby (wit
   FROM nyc_streets 
   WHERE ST_DWithin(
           geom, 
-          ST_GeomFromText('POINT(583571 4506714)',26918), 
+          ST_GeomFromText('POINT(583571.905921312 4506714.34119218)',26918), 
           10
         );
 
@@ -169,7 +172,7 @@ First, let's retrieve a representation of a point from our ``nyc_subway_stations
 
      name   |                      geom                          |      st_astext
   ----------+----------------------------------------------------+-----------------------
-   Broad St | 0101000020266900000EEBD4CF27CF2141BC17D69516315141 | POINT(583571 4506714)
+   Broad St | 0101000020266900000EEBD4CF27CF2141BC17D69516315141 | POINT(583571.905921312 4506714.34119218)
  
 Then, plug the geometry representation back into an ST_Equals_ test:
 
@@ -181,7 +184,9 @@ Then, plug the geometry representation back into an ST_Equals_ test:
 
 ::
 
-   Broad St
+      name
+   ----------
+    Broad St
 
 ------
 
