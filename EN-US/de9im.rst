@@ -20,7 +20,7 @@ The types of spatial elements used in the Dimensionally Extended 9-Intersection 
 
 This model of representing topological relationships considers ``Interior`` (I), ``Exterior`` (E), and ``Boundary`` (B) operations for each geometric object.
 
-Other operations within the Dimensionally Extended 9-Intersection Model (DE-9IM) are an intersection matrix (e) and the concept of dimensionality (dim) of a geometric object or a product dimensional used at the intersection between interiors, boundaries, and exteriors of the two geometries, which is a topological relationship in itself.
+Other operations within the Dimensionally Extended 9-Intersection Model (DE-9IM) are an intersection matrix (∩) and the concept of dimensionality (dim) of a geometric object or a product dimensional used at the intersection between interiors, boundaries, and exteriors of the two geometries, which is a topological relationship in itself.
 
 Interior (I), Exterior (E), and Boundary (B)
 --------------------------------------------
