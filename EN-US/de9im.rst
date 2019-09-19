@@ -87,6 +87,9 @@ The DE9IM matrix for the interaction is this:
 
 Note that the boundaries of the two objects don't actually intersect at all (the end point of the line interacts with the interior of the polygon, not the boundary, and vice versa), so the B/B cell is filled in with an "F". 
 
+ST_Relate
+---------
+
 While it's fun to visually fill out DE9IM matrices, it would be nice if a computer could do it, and that's what the :command:`ST_Relate` function is for.
 
 The previous example can be simplified using a simple box and line, with the same spatial relationship as our polygon and linestring:
@@ -191,6 +194,116 @@ And the SQL looks like this:
 
 Confirm that the stricter SQL from the previous example does *not* return the new dock.
 
+DE-9IM Spatial Relationships
+============================
+
+Clementini and Felice (1995) state that all possible relations applied in the CBM method can be represented using the DE-9IM model and all possible topological relationships between points, lines and polygons in a two-dimensional space. They can be grouped into five categories or topological relationships:
+
+* Touch
+* In (Within)
+* Cross
+* Overlap
+* Disjoint
+
+The SFSQL and the SQLMM specifications use the DE9IM model and these spatial relationships.
+
+Therefore, the following equations and patterns may be possible under the DE-9IM model and its respective PostGIS-implemented topological relationships that implements the SFSQL/SQLMM specifications:
+
+Touch (ST_Touches)
+------------------
+
+Applied for groups:
+
+* polygon/polygon
+* line/line
+* line/polygon
+* point/polygon
+* point/line
+
+〈A, touch, B〉 = [I (A) ∩ I (B) = ∅] and [B (A) ∩ I (B) ≠ ∅] or [I (A) ∩ B (B) ≠ or or [ B (A) ∩ B (B) ≠ ∅]
+
+Corresponding DE-9IM matrix pattern = (F T * * * * * * *), (F * * T * * * * *), and (F * * * T * * * *)
+
+.. image:: ./screenshots/de9im_touch.png
+  :class: inline
+
+In (ST_Within/ST_Contains)
+----------------------------
+
+Applied to all groups:
+
+* polygon/polygon
+* line/line
+* line/polygon
+* point/polygon
+* point/line
+* point/point
+
+〈A, in, B〉 = [I (A) ∩ I (B) e] and [I (A) ∩ E (B) = ∅] and [B (A) ∩ E (B) = ∅]
+
+Corresponding DE-9IM matrix pattern : (T * F * * F * * *)
+
+.. image:: ./screenshots/de9im_within.png
+  :class: inline
+
+Cross (ST_Crosses)
+------------------
+
+Applied for groups:
+
+* Line/Line
+
+〈A, cross, B〉 = dim [I (A) ∩ I (B) = 0]
+
+Corresponding DE-9IM matrix pattern : (0 * * * * * * * *)
+
+* Line/Polygon:
+
+〈A, cross, B〉 = [I (A) ∩ I (B) ≠ ∅] and [I (A) ∩ E (B) ≠ ∅]
+
+Corresponding DE-9IM matrix pattern : (T * T * * * * * *)
+
+.. image:: ./screenshots/de9im_cross.png
+  :class: inline
+
+Overlap (ST_Overlaps)
+---------------------
+
+Applied for groups:
+
+* Line/Line
+
+〈A, overlap, B〉 = dim [I (A) ∩ I (B) = 1] and [I (A) ∩ E (B) ≠ ∅] and [E (A) ∩ I (B) ≠ ∅]
+
+Corresponding DE-9IM matrix pattern : (1 * T * * * T * *)
+
+* Polygon / Polygon:
+
+〈A, overlay, B〉 = [I (A) ∩ I (B) ≠ ∅] and [I (A) ∩ E (B) ≠ ∅] and [E (A) ∩ I (B) ≠ ∅]
+
+Corresponding DE-9IM matrix pattern : (T * T * * * T * *)
+
+.. image:: ./screenshots/de9im_overlap.png
+  :class: inline
+
+Disjoint (ST_Disjoint)
+----------------------
+
+Applied to all groups:
+
+* polygon/polygon
+* line/line
+* line/polygon
+* point/polygon
+* point/line
+* point/point
+
+〈A, disjoint, B〉 = [I (A) ∩ I (B) = ∅] and [B (A) ∩ I (B) = ∅] and [I (A) ∩ B (B) = ∅] and [B (A) ∩ B (B) = ∅]
+
+Corresponding DE-9IM matrix pattern : (F F * F F * * * *)
+
+.. image:: ./screenshots/de9im_disjoint.png
+  :class: inline
 
 Data Quality Testing
 ~~~~~~~~~~~~~~~~~~~~
