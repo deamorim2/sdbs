@@ -9,23 +9,23 @@ The main proposals presented to date on the representation of topological relati
 * Nine Intersection Method (9IM) (Egenhofer & Herring 1991; Pullar & Egenhofer, 1988)
 * Dimensionally Extended Method (DEM)
 * Calculation Based Method (CBM) (Clementini et al., 1993)
-* **Dimensionally Extended 9-Intersection Model** (DE-9IM) (Clementini & Felice, 1995)
+* **Dimensionally Extended 9-Intersection Model** (DE-9IM_) (Clementini & Felice, 1995)
 
 The DE-9IM is a method or model chosen by OGC/ISO and implemented in PostGIS for the representation of topological models.
 
-Dimensionally Extended 9-Intersection Model
-===========================================
+Dimensionally Extended 9-Intersection Model (DE-9IM_)
+=====================================================
 
-The types of spatial elements used in the Dimensionally Extended 9-Intersection Model (DE-9IM) for representing vector geometric objects in two-dimensional space are points, lines, and polygons.
+The types of spatial elements used in the Dimensionally Extended 9-Intersection Model (DE-9IM_) for representing vector geometric objects in two-dimensional space are points, lines, and polygons.
 
 This model of representing topological relationships considers ``Interior`` (I), ``Exterior`` (E), and ``Boundary`` (B) operations for each geometric object.
 
-Other operations within the Dimensionally Extended 9-Intersection Model (DE-9IM) are an intersection matrix (∩) and the concept of dimensionality (dim) of a geometric object or a product dimensional used at the intersection between interiors, boundaries, and exteriors of the two geometries, which is a topological relationship in itself.
+Other operations within the Dimensionally Extended 9-Intersection Model (DE-9IM_) are an intersection matrix (∩) and the concept of dimensionality (dim) of a geometric object or a product dimensional used at the intersection between interiors, boundaries, and exteriors of the two geometries, which is a topological relationship in itself.
 
 Interior (I), Exterior (E), and Boundary (B)
 --------------------------------------------
 
-The "`Dimensionally Extended 9-Intersection Model (DE9IM) is a framework for modelling how two spatial objects interact.
+The "`Dimensionally Extended 9-Intersection Model (DE9IM_) is a framework for modelling how two spatial objects interact.
 
 First, every spatial object has:
 
@@ -62,7 +62,7 @@ Using these definitions of interior, exterior and boundary, the relationships be
 Dimensional Representation of Topological Interaction Between Spatial Oobjects
 ------------------------------------------------------------------------------
 
-The Dimensionally Extended 9-Intersection Model (DE-9IM) includes the intersection of Interiors, Boundaries, and Exteriors between a geometric object A and a geometric object B.
+The Dimensionally Extended 9-Intersection Model (DE-9IM_) includes the intersection of Interiors, Boundaries, and Exteriors between a geometric object A and a geometric object B.
 
 Depending on the type of geometric object, the dimensionality result can be of types: False (F) or empty (∅), 0 (dot), 1 (line), and 2 (polygon). Dimensionality True (T) or nonempty (∅) matches all results except False (F) or empty (∅).
 
@@ -145,7 +145,7 @@ Our legal docks have the following characteristics:
 * Their boundaries **also** have a point (0D) intersection with the lake boundary
 * Their interiors have no intersection (F) with the lake exterior
 
-So their DE9IM matrix looks like this:
+So their DE9IM_ matrix looks like this:
 
 .. image:: ./screenshots/de9im8.jpg
   :class: inline
@@ -361,6 +361,53 @@ We can test for that by looking for streets that intersect (so we have a join) b
 Function List
 -------------
 
-`ST_Relate(geometry A, geometry B) <http://postgis.net/docs/manual-2.1/ST_Relate.html>`_: Returns a text string representing the DE9IM relationship between the geometries. 
+ST_Relate_ (geometry A, geometry B): Returns a text string representing the DE9IM relationship between the geometries.
 
-<http://en.wikipedia.org/wiki/DE-9IM>`_"
+ST_Contains_ (geometry A, geometry B): Returns true if and only if no points of B lie in the exterior of A, and at least one point of the interior of B lies in the interior of A.
+
+ST_Crosses_ (geometry A, geometry B): Returns TRUE if the supplied geometries have some, but not all, interior points in common.
+
+ST_Disjoint_ (geometry A , geometry B): Returns TRUE if the Geometries do not "spatially intersect" - if they do not share any space together.
+
+ST_Overlaps_ (geometry A, geometry B): Returns TRUE if the Geometries share space, are of the same dimension, but are not completely contained by each other.
+
+ST_Touches_ (geometry A, geometry B): Returns TRUE if the geometries have at least one point in common, but their interiors do not intersect.
+
+ST_Within_ (geometry A , geometry B): Returns true if the geometry A is completely inside geometry B
+
+Reference
+=========
+
+* EGENHOFER, M. J.; CLEMENTINI, E.; FELICE, P. D. Topological relations between regions with holes. International Journal of Geographic Information Systems, v 8, n. 2, p. 129-142, 1994.
+* EGENHOFER, M. J.; FRANZOSA, R. D. Point-set topological spatial relations. International Journal of Geographic Information Systems. v. 5, n. 2, p. 161-174, 1990.
+* EGENHOFER, M. J.; HERRING, J. A mathematical framework for the definition of topological relationships. In: 4th INTERNATIONAL SYMPOSIUM ON SPATIAL DATA HANDLING, 4., 1991, Zürich, Switzerland. Proceedings…Zürich, Switzerland, 1991. p. 803-813.
+* CLEMENTINI, E. A model for uncertain lines. Journal of Visual Languages and Computing 16, p. 271-288, 2005.
+* CLEMENTINI, E.; DIFELICE, P.; VAN OOSTEROM, P. A small set of formal topological relationships suitable for end-user interaction. In: 3rd SYMPOSIUM ON SPATIAL DATABASE SYSTEMS, 3., 1993, Singapore. Proceedings…Singapore. 1993. p. 277-295.
+* CLEMENTINI, E.; FELICE, P. D. A Comparison of Methods for Representing Topological Relationships. Information Sciences, v. 3, p. 149-178, 1995.
+* CLEMENTINI, E.; FELICE, P. D. A model for representing topological relationships between complex geometric features in spatial databases. Information Sciences: an International Journal archive, v. 90, n. 1-4, 1996.
+* CLEMENTINI, E.; FELICE, P. D. Approximate Topological Relations. International Journal of Approximate Reasoning, v. 16, n. 2, p. 173-204, 1997.
+* CLEMENTINI, E.; FELICE, P. D. CALIFANO, G. Composite Regions In Topological Queries. Information Systems, v. 20, n. 7, p. 579-594, 1995.
+* CLEMENTINI, E.; FELICE, P. D. KOPERSKI, K. Mining multiple-level spatial association rules for objects with a broad boundary. Data & Knowledge Engineering, v. 34, p. 251-270, 2000.
+* CLEMENTINI, E.; FELICE, P. D. Topological Invariants for Lines. IEEE Transactions On Knowledge And Data Engineering, v. 10, n. 1, 1998.
+
+
+
+.. _DE-9IM: http://en.wikipedia.org/wiki/DE-9IM
+
+.. _SFSQL: http://www.opengeospatial.org/standards/sfa
+
+.. _SQLMM: https://www.iso.org/standard/60343.html
+
+.. _ST_Relate: http://postgis.net/docs/ST_Relate.html
+
+.. _ST_Crosses: http://postgis.net/docs/ST_Crosses.html
+
+.. _ST_Disjoint: http://postgis.net/docs/ST_Disjoint.html
+
+.. _ST_Within: http://postgis.net/docs/ST_Within.html
+
+.. _ST_Overlaps: http://postgis.net/docs/ST_Overlaps.html
+
+.. _ST_Touches: http://postgis.net/docs/ST_Touches.html
+
+
