@@ -11,7 +11,7 @@ The main proposals presented to date on the representation of topological relati
 * Calculation Based Method (CBM) (Clementini et al., 1993)
 * **Dimensionally Extended 9-Intersection Model** (DE-9IM_) (Clementini & Felice, 1995)
 
-The DE-9IM is a method or model chosen by OGC/ISO and implemented in PostGIS for the representation of topological models.
+The DE-9IM is a method or model chosen by OGC_/ISO_ and implemented in PostGIS for the representation of topological models.
 
 Dimensionally Extended 9-Intersection Model (DE-9IM_)
 =====================================================
@@ -90,7 +90,7 @@ Note that the boundaries of the two objects don't actually intersect at all (the
 ST_Relate
 ---------
 
-While it's fun to visually fill out DE9IM matrices, it would be nice if a computer could do it, and that's what the :command:`ST_Relate` function is for.
+While it's fun to visually fill out DE9IM matrices, it would be nice if a computer could do it, and that's what the ST_Relate_ function is for.
 
 The previous example can be simplified using a simple box and line, with the same spatial relationship as our polygon and linestring:
 
@@ -114,7 +114,7 @@ The answer (1010F0212) is the same as we calculated visually, but returned as a 
   0F0
   212
 
-However, the power of DE9IM matrices is not in generating them, but in using them as a matching key to find geometries with very specific relationships to one another.
+However, the power of DE9IM_ matrices is not in generating them, but in using them as a matching key to find geometries with very specific relationships to one another.
 
 .. code-block:: sql
 
@@ -160,7 +160,7 @@ So to find all the legal docks, we would want to find all the docks that interse
 
   -- Answer: our two good docks
 
-Note the use of the three-parameter version of :command:`ST_Relate`, which returns true if the pattern matches or false if it does not. For a fully-defined pattern like this one, the three-parameter version is not needed -- we could have just used a string equality operator.
+Note the use of the three-parameter version of ST_Relate_, which returns true if the pattern matches or false if it does not. For a fully-defined pattern like this one, the three-parameter version is not needed -- we could have just used a string equality operator.
 
 However, for looser pattern searches, the three-parameter allows substitution characters in the pattern string:
 
@@ -207,7 +207,7 @@ Clementini and Felice (1995) state that all possible relations applied in the CB
 
 The SFSQL and the SQLMM specifications use the DE9IM model and these spatial relationships.
 
-Therefore, the following equations and patterns may be possible under the DE-9IM model and its respective PostGIS-implemented topological relationships that implements the SFSQL/SQLMM specifications:
+Therefore, the following equations and patterns may be possible under the DE-9IM model and its respective PostGIS-implemented topological relationships that implements the SFSQL_/SQLMM_ specifications:
 
 Touch (ST_Touches)
 ------------------
@@ -359,7 +359,7 @@ We can test for that by looking for streets that intersect (so we have a join) b
   -- Answer: This happens, so the data is not end-noded.
 
 Function List
--------------
+=============
 
 ST_Relate_ (geometry A, geometry B): Returns a text string representing the DE9IM relationship between the geometries.
 
@@ -390,8 +390,6 @@ Reference
 * CLEMENTINI, E.; FELICE, P. D. KOPERSKI, K. Mining multiple-level spatial association rules for objects with a broad boundary. Data & Knowledge Engineering, v. 34, p. 251-270, 2000.
 * CLEMENTINI, E.; FELICE, P. D. Topological Invariants for Lines. IEEE Transactions On Knowledge And Data Engineering, v. 10, n. 1, 1998.
 
-
-
 .. _DE-9IM: http://en.wikipedia.org/wiki/DE-9IM
 
 .. _SFSQL: http://www.opengeospatial.org/standards/sfa
@@ -409,5 +407,3 @@ Reference
 .. _ST_Overlaps: http://postgis.net/docs/ST_Overlaps.html
 
 .. _ST_Touches: http://postgis.net/docs/ST_Touches.html
-
-
