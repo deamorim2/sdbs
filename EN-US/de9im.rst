@@ -209,7 +209,7 @@ The SFSQL and the SQLMM specifications use the DE9IM model and these spatial rel
 
 Therefore, the following equations and patterns may be possible under the DE-9IM model and its respective PostGIS-implemented topological relationships that implements the SFSQL_/SQLMM_ specifications:
 
-Touch (ST_Touches)
+#. Touch (ST_Touches)
 ------------------
 
 Applied for groups:
@@ -229,7 +229,7 @@ Applied for groups:
 .. image:: ./screenshots/de9im_touch.png
   :class: inline
 
-In (ST_Within/ST_Contains)
+#. In (ST_Within/ST_Contains)
 ----------------------------
 
 Applied to all groups:
@@ -250,7 +250,7 @@ Applied to all groups:
 .. image:: ./screenshots/de9im_within.png
   :class: inline
 
-Cross (ST_Crosses)
+#. Cross (ST_Crosses)
 ------------------
 
 Applied for groups:
@@ -274,7 +274,7 @@ Applied for groups:
 .. image:: ./screenshots/de9im_cross.png
   :class: inline
 
-Overlap (ST_Overlaps)
+#. Overlap (ST_Overlaps)
 ---------------------
 
 Applied for groups:
@@ -298,7 +298,7 @@ Applied for groups:
 .. image:: ./screenshots/de9im_overlap.png
   :class: inline
 
-Disjoint (ST_Disjoint)
+#. Disjoint (ST_Disjoint)
 ----------------------
 
 Applied to all groups:
