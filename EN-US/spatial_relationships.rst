@@ -264,4 +264,4 @@ ST_Intersects_ (geometry A, geometry B): Returns TRUE if the Geometries/Geograph
 
 .. _ST_GeomFromText: http://postgis.net/docs/ST_GeomFromText.html
 
-.. _ST_SRID: http://postgis.net/docs/ST_SRID.html
+.. _SRID: https://en.wikipedia.org/wiki/Spatial_reference_system
