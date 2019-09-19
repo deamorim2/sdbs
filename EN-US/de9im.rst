@@ -3,20 +3,31 @@
 Dimensionally Extended 9-Intersection Model
 ===========================================
 
+The types of spatial elements used in the Dimensionally Extended 9-Intersection Model (DE-9IM) for representing vector geometric objects in two-dimensional space are points, lines, and polygons.
+
+This model of representing topological relationships considers Interior (I), Exterior (E), and Boundary (B) operations for each geometric object.
+
+Other operations within the Dimensionally Extended 9-Intersection Model (DE-9IM) are an intersection matrix (e) and the concept of dimensionality (dim) of a geometric object or a product dimensional used at the intersection between interiors, boundaries, and exteriors of the two geometries, which is a topological relationship in itself.
+
+Interior (I), Exterior (E), and Boundary (B)
+--------------------------------------------
+
 The "`Dimensionally Extended 9-Intersection Model <http://en.wikipedia.org/wiki/DE-9IM>`_" (DE9IM) is a framework for modelling how two spatial objects interact.
 
 First, every spatial object has:
 
-* An interior
-* A boundary
-* An exterior
+* An Interior
+* A Boundary
+* An Exterior
 
 For polygons, the interior, boundary and exterior are obvious:
 
 .. image:: ./screenshots/de9im1.jpg
   :class: inline
 
-The interior is the part bounded by the rings; the boundary is the rings themselves; the exterior is everything else in the plane.
+* The ``Interior`` is the part bounded by the rings;
+* The ``Boundary`` is the rings themselves;
+* The ``Exterior`` is everything else in the plane.
 
 For linear features, the interior, boundary and exterior are less well-known:
 
