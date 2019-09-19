@@ -224,7 +224,7 @@ Applied for groups:
 
 ::
 
-Corresponding DE-9IM matrix pattern = (F T * * * * * * *), (F * * T * * * * *), and (F * * * T * * * *)
+  DE-9IM matrix pattern : (F T * * * * * * *), (F * * T * * * * *), and (F * * * T * * * *)
 
 .. image:: ./screenshots/de9im_touch.png
   :class: inline
@@ -243,7 +243,9 @@ Applied to all groups:
 
 〈A, in, B〉 = [I (A) ∩ I (B) e] and [I (A) ∩ E (B) = ∅] and [B (A) ∩ E (B) = ∅]
 
-Corresponding DE-9IM matrix pattern : (T * F * * F * * *)
+::
+
+  DE-9IM matrix pattern : (T * F * * F * * *)
 
 .. image:: ./screenshots/de9im_within.png
   :class: inline
