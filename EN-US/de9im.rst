@@ -59,7 +59,10 @@ For points, things are even stranger:
 
 Using these definitions of interior, exterior and boundary, the relationships between any pair of spatial features can be characterized using the dimensionality of the nine possible intersections between the interiors/boundaries/exteriors of a pair of objects.
 
-The nine dimensionally extended intersection model (DE-9IM) includes the intersection of interiors, boundaries, and exteriors between a geometric object A and a geometric object B.
+Dimensional Representation of Topological interaction Between Spatial Oobjects
+------------------------------------------------------------------------------
+
+The Dimensionally Extended 9-Intersection Model (DE-9IM) includes the intersection of Interiors, Boundaries, and Exteriors between a geometric object A and a geometric object B.
 
 Depending on the type of geometric object, the dimensionality result can be of types: False (F) or empty (∅), 0 (dot), 1 (line), and 2 (polygon). Dimensionality True (T) or nonempty (∅) matches all results except False (F) or empty (∅).
 
