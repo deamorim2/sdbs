@@ -1,6 +1,6 @@
 .. _spatial_relationships:
 
-Spatial Relationships
+SPATIAL RELATIONSHIPS
 =====================
 
 So far we have only used spatial functions that measure (ST_Area_, ST_Length_), serialize (ST_AsGML_), and deserialize (ST_GeomFromText_) geometries. What these functions have in common is that they only work on one geometry at a time.
