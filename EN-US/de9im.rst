@@ -259,13 +259,17 @@ Applied for groups:
 
 〈A, cross, B〉 = dim [I (A) ∩ I (B) = 0]
 
-Corresponding DE-9IM matrix pattern : (0 * * * * * * * *)
+::
+
+  DE-9IM matrix pattern : (0 * * * * * * * *)
 
 * Line/Polygon:
 
 〈A, cross, B〉 = [I (A) ∩ I (B) ≠ ∅] and [I (A) ∩ E (B) ≠ ∅]
 
-Corresponding DE-9IM matrix pattern : (T * T * * * * * *)
+::
+
+  DE-9IM matrix pattern : (T * T * * * * * *)
 
 .. image:: ./screenshots/de9im_cross.png
   :class: inline
@@ -279,13 +283,17 @@ Applied for groups:
 
 〈A, overlap, B〉 = dim [I (A) ∩ I (B) = 1] and [I (A) ∩ E (B) ≠ ∅] and [E (A) ∩ I (B) ≠ ∅]
 
-Corresponding DE-9IM matrix pattern : (1 * T * * * T * *)
+::
+
+  DE-9IM matrix pattern : (1 * T * * * T * *)
 
 * Polygon / Polygon:
 
 〈A, overlay, B〉 = [I (A) ∩ I (B) ≠ ∅] and [I (A) ∩ E (B) ≠ ∅] and [E (A) ∩ I (B) ≠ ∅]
 
-Corresponding DE-9IM matrix pattern : (T * T * * * T * *)
+::
+
+  DE-9IM matrix pattern : (T * T * * * T * *)
 
 .. image:: ./screenshots/de9im_overlap.png
   :class: inline
@@ -304,13 +312,15 @@ Applied to all groups:
 
 〈A, disjoint, B〉 = [I (A) ∩ I (B) = ∅] and [B (A) ∩ I (B) = ∅] and [I (A) ∩ B (B) = ∅] and [B (A) ∩ B (B) = ∅]
 
-Corresponding DE-9IM matrix pattern : (F F * F F * * * *)
+::
+
+  DE-9IM matrix pattern : (F F * F F * * * *)
 
 .. image:: ./screenshots/de9im_disjoint.png
   :class: inline
 
 Data Quality Testing
-~~~~~~~~~~~~~~~~~~~~
+====================
 
 The TIGER data is carefully quality controlled when it is prepared, so we expect our data to meet strict standards. For example: no census block should overlap any other census block. Can we test for that?
 
@@ -347,8 +357,6 @@ We can test for that by looking for streets that intersect (so we have a join) b
   LIMIT 10;
 
   -- Answer: This happens, so the data is not end-noded.
-
-
 
 Function List
 -------------
