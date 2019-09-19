@@ -9,7 +9,7 @@ Spatial databases are powerful because they not only store geometry, they also h
 
 Questions like "Which are the closest bike racks to a park?" or "Where are the intersections of subway lines and streets?" can only be answered by comparing geometries representing the bike racks, streets, and subway lines.
 
-The OGC and ISO standards (SFSQL_ / SQLMM_) defines the following set of methods to compare geometries:
+The OGC and ISO standards (SFSQL_/SQLMM_) defines the following set of methods to compare geometries:
 
 ST_Touches,ST_Within, ST_Disjoint, ST_Crosses and ST_Overlaps
 =============================================================
