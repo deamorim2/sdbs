@@ -184,7 +184,7 @@ and click the **Execute Query** button (the green triangle).
   
 .. image:: ./screenshots/pgadmin_08.png  
 
-The query will run for a few (milli)seconds and return the 129 results.
+The query will run for a few (milli)seconds and return the 196 results.
 
 .. image:: ./screenshots/pgadmin_09.png  
 
@@ -207,36 +207,66 @@ We return to our ``nyc_neighborhoods`` table with a filter in hand.  The table c
   SELECT name 
   FROM nyc_neighborhoods 
   WHERE boroname = 'Brooklyn';
-  
-::
-  
-                name
-   --------------------------
-    Bensonhurst
-    Bay Ridge
-    Boerum Hill
-    Cobble Hill
-    Downtown
-    Sunset Park
-    Borough Park
-    East Brooklyn
-    Flatbush
-    Park Slope
-    Williamsburg
-    Canarsie
-    Greenwood
-    Gravesend-Sheepshead Bay
-    Dyker Heights
-    Brownsville
-    Bushwick
-    Fort Green
-    Mapleton-Flatlands
-    Bedford-Stuyvesant
-    Carroll Gardens
-    Coney Island
-    Red Hook
 
-The query will run for even fewer (milli)seconds and return the 23 results.
+::
+
+                          name
+   --------------------------------------------------
+    Prospect Heights
+    East Flatbush-Farragut
+    East New York (Pennsylvania Ave)
+    DUMBO-Vinegar Hill-Downtown Brooklyn-Boerum Hill
+    Flatlands
+    Greenpoint
+    Park Slope-Gowanus
+    Borough Park
+    Madison
+    Crown Heights North
+    Bay Ridge
+    Bedford
+    West Brighton
+    Brownsville
+    Kensington-Ocean Parkway
+    Ocean Parkway South
+    Bushwick North
+    Sheepshead Bay-Gerritsen Beach-Manhattan Beach
+    Crown Heights South
+    Canarsie
+    Erasmus
+    Flatbush
+    East Williamsburg
+    Midwood
+    Fort Greene
+    park-cemetery-etc-Queens
+    Clinton Hill
+    Sunset Park East
+    East New York
+    Bushwick South
+    Bath Beach
+    North Side-South Side
+    Williamsburg
+    Brooklyn Heights-Cobble Hill
+    Windsor Terrace
+    Starrett City
+    Dyker Heights
+    Stuyvesant Heights
+    Sunset Park West
+    Seagate-Coney Island
+    Prospect Lefferts Gardens-Wingate
+    park-cemetery-etc-Brooklyn
+    Bensonhurst West
+    Georgetown-Marine Park-Bergen Beach-Mill Basin
+    Homecrest
+    Rugby-Remsen Village
+    Carroll Gardens-Columbia Street-Red Hook
+    Cypress Hills-City Line
+    Gravesend
+    Bensonhurst East
+    Brighton Beach
+    Ocean Hill
+   (52 results)
+
+The query will run for even fewer (milli)seconds and return the 52 results.
 
 Sometimes we will need to apply a function to the results of our query. For example,
 
@@ -252,31 +282,61 @@ Fortunately, PostgreSQL has a string length function, char_length_ (string).
   
 ::
 
-   char_length
-  -------------
-            11
-             9
-            11
-            11
-             8
-            11
-            12
-            13
-             8
-            10
-            12
-             8
-             9
-            24
-            13
-            11
-             8
-            10
-            18
-            18
-            15
-            12
-  -- More  --
+    char_length
+   -------------
+             16
+             22
+             32
+             48
+              9
+             10
+             18
+             12
+              7
+             19
+              9
+              7
+             13
+             11
+             24
+             19
+             14
+             46
+             19
+              8
+              7
+              8
+             17
+              7
+             11
+             24
+             12
+             16
+             13
+             14
+             10
+             21
+             12
+             28
+             15
+             13
+             13
+             18
+             16
+             20
+             33
+             26
+             16
+             46
+              9
+             20
+             40
+             23
+              9
+             16
+             14
+             10
+   (52 results)
 
 Often, we are less interested in the individual rows than in a statistic that applies to all of them. So knowing the lengths of the neighborhood names might be less interesting than knowing the average length of the names. Functions that take in multiple rows and return a single result are called "aggregate" functions.  
 
@@ -292,10 +352,10 @@ PostgreSQL has a series of built-in aggregate functions, including the general p
 
 ::
 
-           avg         |       stddev
-  ---------------------+--------------------
-   11.7391304347826087 | 3.9105613559407395
-
+            avg         |       stddev
+   ---------------------+---------------------
+    17.6923076923076923 | 10.1451011292681022
+ 
 The aggregate functions in our last example were applied to every row in the result set. What if we want the summaries to be carried out over smaller groups within the overall result set? For that we add a ``GROUP BY`` clause. Aggregate functions often need an added ``GROUP BY`` statement to group the result-set by one or more columns.  
 
   "What is the average number of letters in the names of all the neighborhoods in New York City, reported by borough?"
@@ -310,14 +370,14 @@ We include the ``boroname`` column in the output result so we can determine whic
   
 ::
 
-     boroname    |         avg         |       stddev
-  ---------------+---------------------+--------------------
-   Brooklyn      | 11.7391304347826087 | 3.9105613559407395
-   Manhattan     | 11.8214285714285714 | 4.3123729948325257
-   The Bronx     | 12.0416666666666667 | 3.6651017740975152
-   Queens        | 11.6666666666666667 | 5.0057438272815975
-   Staten Island | 12.2916666666666667 | 5.2043390480959474
-  
+      boroname    |         avg         |       stddev
+   ---------------+---------------------+---------------------
+    Brooklyn      | 17.6923076923076923 | 10.1451011292681022
+    The Bronx     | 20.7105263157894737 | 10.2612045411064630
+    Manhattan     | 20.4482758620689655 |  9.0734550314032279
+    Queens        | 16.4482758620689655 | 10.2908107770418567
+    Staten Island | 28.1052631578947368 | 13.2325135633664991  
+
 Function List
 -------------
 
