@@ -1,5 +1,15 @@
 .. _de9im:
 
+The main proposals presented to date on the representation of topological relations between geometric objects in a two-dimensional space include:
+
+* Four Intersection Method (4IM) (Egenhofer & Franzosa, 1990)
+* Nine Intersection Method (9IM) (Egenhofer & Herring 1991; Pullar & Egenhofer, 1988)
+* Dimensionally Extended Method (DEM)
+* Calculation Based Method (CBM) (Clementini et al., 1993)
+* Dimensionally Extended 9-Intersection Model (DE-9IM) (Clementini & Felice, 1995)
+
+The DE-9IM is a method or model chosen by OGC/ISO and implemented in PostGIS for the representation of topological models.
+
 Dimensionally Extended 9-Intersection Model
 ===========================================
 
