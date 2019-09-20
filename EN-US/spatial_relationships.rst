@@ -11,7 +11,7 @@ Questions like "Which are the closest bike racks to a park?" or "Where are the i
 
 The OGC (SFSQL_) and ISO (SQLMM_) defines the following set of methods to compare geometries:
 
-ST_Crosses,ST_Overlapes, ST_Touches, ST_Within and ST_Disjoint
+ST_Crosses,ST_Overlaps, ST_Touches, ST_Within and ST_Disjoint
 ==============================================================
 
 ST_Crosses
