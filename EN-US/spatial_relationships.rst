@@ -102,8 +102,8 @@ Let's take our Broad Street subway station and determine its neighborhood using 
    -----------------------------------+-----------
     Battery Park City-Lower Manhattan | Manhattan
 
-ST_Distance and ST_DWithin
---------------------------
+ST_Distance
+-----------
 
 An extremely common GIS question is:
 
@@ -122,6 +122,10 @@ The ST_Distance_ (geometry A, geometry B) calculates the *shortest* distance bet
     st_distance
    -------------
               3
+
+
+ST_DWithin
+----------
 
 For testing whether two objects are within a distance of one another, the ST_DWithin_ function provides an index-accelerated true/false test. This is useful for questions like "how many trees are within a 500 meter buffer of the road?". You don't have to calculate an actual buffer, you just have to test the distance relationship.
 
