@@ -42,7 +42,7 @@ Instruction 3
 
 ::
 
-  join produces 63339 rows (129 * 491)
+  join produces 96236 rows (196 * 491)
 
 Instruction 4
 -------------
