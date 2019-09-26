@@ -374,21 +374,17 @@ As before, the joins create a virtual table of all the possible combinations ava
 Function List
 -------------
 
-ST_Contains_(geometry A, geometry B): Returns true if and only if no points of B lie in the exterior of A, and at least one point of the interior of B lies in the interior of A.
+ST_Contains_ (geometry A, geometry B): Returns true if and only if no points of B lie in the exterior of A, and at least one point of the interior of B lies in the interior of A.
 
-ST_DWithin_(geometry A, geometry B, radius): Returns true if the geometries are within the specified distance of one another.
+ST_DWithin_ (geometry A, geometry B, radius): Returns true if the geometries are within the specified distance of one another.
 
-ST_Intersects_(geometry A, geometry B): Returns TRUE if the Geometries/Geography "spatially intersect" - (share any portion of space) and FALSE if they don't (they are Disjoint).
+ST_Intersects_ (geometry A, geometry B): Returns TRUE if the Geometries/Geography "spatially intersect" - (share any portion of space) and FALSE if they don't (they are Disjoint).
 
-round_(v numeric, s integer): PostgreSQL math function that rounds to s decimal places
+round_ (v numeric, s integer): PostgreSQL math function that rounds to s decimal places
 
-strpos_(string, substring): PostgreSQL string function that returns an integer location of a specified substring.
+strpos_ (string, substring): PostgreSQL string function that returns an integer location of a specified substring.
 
-sum_(expression): PostgreSQL aggregate function that returns the sum of records in a set of records.
-
-.. rubric:: Footnotes
-
-.. [#PostGIS_Doco] http://postgis.net/docs/manual-2.1/
+sum_ (expression): PostgreSQL aggregate function that returns the sum of records in a set of records.
 
 .. _ST_Relate: http://postgis.net/docs/ST_Relate.html
 
