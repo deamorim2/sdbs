@@ -144,12 +144,12 @@ What's going on here? Notionally (the actual evaluation order is optimized under
 
 #. The ``JOIN`` clause creates a virtual table that includes columns from both the neighborhoods and census tables.
 #. The ``WHERE`` clause filters our virtual table to just rows in Manhattan.
-#. The remaining rows are grouped by the neighborhood name and fed through the aggregation function to Sum_() the population values.
+#. The remaining rows are grouped by the neighborhood name and fed through the aggregation function to sum_() the population values.
 #. After a little arithmetic and formatting (e.g., ``GROUP BY``, ``ORDER BY``) on the final numbers, our query spits out the percentages.
 
 --------
 
-.. note:: - The ``JOIN`` clause combines two ``FROM`` items.  By default, we are using an ``INNER JOIN``, but there are four other types of joins. For further information see the `join_type <http://www.postgresql.org/docs/9.1/interactive/sql-select.html#SQL-FROM>`_ definition in the PostgreSQL documentation.
+.. note:: - The ``JOIN`` clause combines two ``FROM`` items.  By default, we are using an ``INNER JOIN``, but there are four other types of joins. For further information see the join_type_ definition in the PostgreSQL documentation.
 
 --------
 
@@ -374,18 +374,48 @@ As before, the joins create a virtual table of all the possible combinations ava
 Function List
 -------------
 
-`ST_Contains(geometry A, geometry B) <http://postgis.net/docs/manual-2.1/ST_Contains.html>`_: Returns true if and only if no points of B lie in the exterior of A, and at least one point of the interior of B lies in the interior of A.
+ST_Contains_(geometry A, geometry B): Returns true if and only if no points of B lie in the exterior of A, and at least one point of the interior of B lies in the interior of A.
 
-`ST_DWithin(geometry A, geometry B, radius) <http://postgis.net/docs/manual-2.1/ST_DWithin.html>`_: Returns true if the geometries are within the specified distance of one another.
+ST_DWithin_(geometry A, geometry B, radius): Returns true if the geometries are within the specified distance of one another.
 
-`ST_Intersects(geometry A, geometry B) <http://postgis.net/docs/manual-2.1/ST_Intersects.html>`_: Returns TRUE if the Geometries/Geography "spatially intersect" - (share any portion of space) and FALSE if they don't (they are Disjoint).
+ST_Intersects_(geometry A, geometry B): Returns TRUE if the Geometries/Geography "spatially intersect" - (share any portion of space) and FALSE if they don't (they are Disjoint).
 
-`round(v numeric, s integer) <http://www.postgresql.org/docs/current/interactive/functions-math.html>`_: PostgreSQL math function that rounds to s decimal places
+round_(v numeric, s integer): PostgreSQL math function that rounds to s decimal places
 
-`strpos(string, substring) <http://www.postgresql.org/docs/current/static/functions-string.html>`_: PostgreSQL string function that returns an integer location of a specified substring.
+strpos_(string, substring): PostgreSQL string function that returns an integer location of a specified substring.
 
-`sum(expression) <http://www.postgresql.org/docs/current/static/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE>`_: PostgreSQL aggregate function that returns the sum of records in a set of records.
+sum_(expression): PostgreSQL aggregate function that returns the sum of records in a set of records.
 
 .. rubric:: Footnotes
 
 .. [#PostGIS_Doco] http://postgis.net/docs/manual-2.1/
+
+.. _ST_Relate: http://postgis.net/docs/ST_Relate.html
+
+.. _ST_Crosses: http://postgis.net/docs/ST_Crosses.html
+
+.. _ST_Disjoint: http://postgis.net/docs/ST_Disjoint.html
+
+.. _ST_Within: http://postgis.net/docs/ST_Within.html
+
+.. _ST_Overlaps: http://postgis.net/docs/ST_Overlaps.html
+
+.. _ST_Touches: http://postgis.net/docs/ST_Touches.html
+
+.. _ST_Contains: http://postgis.net/docs/ST_Contains.html
+
+.. _ST_Distance: http://postgis.net/docs/ST_Distance.html
+
+.. _ST_DWithin: http://postgis.net/docs/ST_DWithin.html
+
+.. _ST_Intersects: http://postgis.net/docs/ST_Intersects.html
+
+.. _ST_Equals: http://postgis.net/docs/ST_Equals.html
+
+.. _join_type: https://www.postgresql.org/docs/current/sql-select.html#SQL-FROM
+
+.. _round: http://www.postgresql.org/docs/current/interactive/functions-math.html
+
+.. _strpos: http://www.postgresql.org/docs/current/static/functions-string.html
+
+.. _sum: http://www.postgresql.org/docs/current/static/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE
