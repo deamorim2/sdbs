@@ -69,18 +69,18 @@ The way the database efficiently answers the question "what lines intersect the 
 
 For a large table, this "two pass" system of evaluating the approximate index first, then carrying out an exact test can radically reduce the amount of calculations necessary to answer a query.
 
-Both PostGIS and Oracle Spatial share the same "R-Tree" [#RTree]_ spatial index structure. R-Trees break up data into rectangles, and sub-rectangles, and sub-sub rectangles, etc.  It is a self-tuning index structure that automatically handles variable data density and object size.
+Both PostGIS and Oracle Spatial share the same R-Tree_ spatial index structure. R-Tree_ break up data into rectangles, and sub-rectangles, and sub-sub rectangles, etc.  It is a self-tuning index structure that automatically handles variable data density and object size.
 
 .. image:: ./indexing/index-01.png
 
 Index-Only Queries
 ------------------
 
-Most of the commonly used functions in PostGIS (`ST_Contains`, :command:`ST_Intersects`, :command:`ST_DWithin`, etc) include an index filter automatically. But some functions (e.g., :command:`ST_Relate`) do not include and index filter.
+Most of the commonly used functions in PostGIS (ST_Contains_, ST_Intersects_, ST_DWithin_, etc) include an index filter automatically. But some functions (e.g., ST_Relate_) do not include and index filter.
 
-To do a bounding-box search using the index (and no filtering), make use of the :command:`&&` operator. For geometries, the :command:`&&` operator means "bounding boxes overlap or touch" in the same way that for number the :command:`=` operator means "values are the same".
+To do a bounding-box search using the index (and no filtering), make use of the &&_ operator. For geometries, the &&_ operator means "bounding boxes overlap or touch" in the same way that for number the ``=`` operator means "values are the same".
 
-Let's compare an index-only query for the population of the 'West Village' to a more exact query. Using :command:`&&` our index-only query looks like the following:
+Let's compare an index-only query for the population of the 'West Village' to a more exact query. Using &&_ our index-only query looks like the following:
 
 .. code-block:: sql
 
@@ -94,7 +94,7 @@ Let's compare an index-only query for the population of the 'West Village' to a 
 
   49821
   
-Now let's do the same query using the more exact :command:`ST_Intersects` function.
+Now let's do the same query using the more exact ST_Intersects_ function.
 
 .. code-block:: sql
 
@@ -143,13 +143,30 @@ Vacuuming and analyzing the database can be performed separately as needed.  Iss
 Function List
 -------------
 
-`geometry_a && geometry_b <http://postgis.net/docs/manual-2.1/ST_Geometry_Overlap.html>`_: Returns TRUE if A's bounding box overlaps B's.
+geometry_a && geometry_b: (ST_Geometry_Overlap_): Returns TRUE if A's bounding box overlaps B's.
 
-`geometry_a = geometry_b <http://postgis.net/docs/manual-2.1/ST_Geometry_EQ.html>`_: Returns TRUE if A's bounding box is the same as B's.
+`geometry_a = geometry_b: (ST_Geometry_EQ_): Returns TRUE if A's bounding box is the same as B's.
 
-`ST_Intersects(geometry_a, geometry_b) <http://postgis.net/docs/manual-2.1/ST_Intersects.html>`_: Returns TRUE if the Geometries/Geography "spatially intersect" - (share any portion of space) and FALSE if they don't (they are Disjoint). 
+ST_Intersects_ (geometry_a, geometry_b): Returns TRUE if the Geometries/Geography "spatially intersect" - (share any portion of space) and FALSE if they don't (they are Disjoint). 
 
-.. rubric:: Footnotes
+.. _RTree: http://postgis.org/support/rtree.pdf
 
-.. [#RTree] http://postgis.org/support/rtree.pdf
+.. _ST_Relate: http://postgis.net/docs/ST_Relate.html
 
+.. _ST_Crosses: http://postgis.net/docs/ST_Crosses.html
+
+.. _ST_Disjoint: http://postgis.net/docs/ST_Disjoint.html
+
+.. _ST_Within: http://postgis.net/docs/ST_Within.html
+
+.. _ST_Overlaps: http://postgis.net/docs/ST_Overlaps.html
+
+.. _ST_Touches: http://postgis.net/docs/ST_Touches.html
+
+.. _ST_Contains: http://postgis.net/docs/ST_Contains.html
+
+.. _ST_Intersects: http://postgis.net/docs/ST_Intersects.html
+
+.. _ST_Geometry_Overlap: http://postgis.net/docs/ST_Geometry_Overlap.html
+
+.. _ST_Geometry_EQ: http://postgis.net/docs/ST_Geometry_EQ.html
