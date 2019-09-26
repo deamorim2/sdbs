@@ -19,7 +19,7 @@ Our first step is to remove the index.
   
 .. note::
 
-   The ``DROP INDEX`` statement drops an existing index from the database system. For more information, see the PostgreSQL `documentation <http://www.postgresql.org/docs/7.4/interactive/sql-dropindex.html>`_.
+   The ``DROP INDEX`` statement drops an existing index from the database system. For more information, see the PostgreSQL `documentation <https://www.postgresql.org/docs/current/sql-dropindex.html>`_.
    
 Now, watch the "Timing" meter at the lower right-hand corner of the pgAdmin query window and run the following. Our query searches through every single census block in order to identify the Broad Street entry.
 
@@ -47,7 +47,11 @@ Now add the spatial index back in and run the query again.
     ON nyc_census_blocks 
     USING GIST (geom);
 
-.. note:: The ``USING GIST`` clause tells PostgreSQL to use the generic index structure (GIST) when building the index.  If you receive an error that looks like ``ERROR: index row requires 11340 bytes, maximum size is 8191`` when creating your index, you have likely neglected to add the ``USING GIST`` clause.
+-------------
+
+.. note:: - The ``USING GIST`` clause tells PostgreSQL to use the generic index structure (GIST) when building the index.  If you receive an error that looks like ``ERROR: index row requires 11340 bytes, maximum size is 8191`` when creating your index, you have likely neglected to add the ``USING GIST`` clause.
+
+--------------
 
 On my test computer the time drops to **9 ms**. The larger your table, the larger the relative speed improvement of an indexed query will be.
 
@@ -72,7 +76,7 @@ Both PostGIS and Oracle Spatial share the same "R-Tree" [#RTree]_ spatial index 
 Index-Only Queries
 ------------------
 
-Most of the commonly used functions in PostGIS (:command:`ST_Contains`, :command:`ST_Intersects`, :command:`ST_DWithin`, etc) include an index filter automatically. But some functions (e.g., :command:`ST_Relate`) do not include and index filter.
+Most of the commonly used functions in PostGIS (`ST_Contains`, :command:`ST_Intersects`, :command:`ST_DWithin`, etc) include an index filter automatically. But some functions (e.g., :command:`ST_Relate`) do not include and index filter.
 
 To do a bounding-box search using the index (and no filtering), make use of the :command:`&&` operator. For geometries, the :command:`&&` operator means "bounding boxes overlap or touch" in the same way that for number the :command:`=` operator means "values are the same".
 
