@@ -19,7 +19,7 @@ Our first step is to remove the index.
   
 .. note::
 
-   The ``DROP INDEX`` statement drops an existing index from the database system. For more information, see the PostgreSQL `documentation <http://www.postgresql.org/docs/7.4/interactive/sql-dropindex.html>`_.
+   The ``DROP INDEX`` statement drops an existing index from the database system. For more information, see the PostgreSQL `documentation <https://www.postgresql.org/docs/current/sql-dropindex.html>`_.
    
 Now, watch the "Timing" meter at the lower right-hand corner of the pgAdmin query window and run the following. Our query searches through every single census block in order to identify the Broad Street entry.
 
@@ -47,7 +47,11 @@ Now add the spatial index back in and run the query again.
     ON nyc_census_blocks 
     USING GIST (geom);
 
-.. note:: The ``USING GIST`` clause tells PostgreSQL to use the generic index structure (GIST) when building the index.  If you receive an error that looks like ``ERROR: index row requires 11340 bytes, maximum size is 8191`` when creating your index, you have likely neglected to add the ``USING GIST`` clause.
+-------------
+
+.. note:: - The ``USING GIST`` clause tells PostgreSQL to use the generic index structure (GIST) when building the index.  If you receive an error that looks like ``ERROR: index row requires 11340 bytes, maximum size is 8191`` when creating your index, you have likely neglected to add the ``USING GIST`` clause.
+
+--------------
 
 On my test computer the time drops to **9 ms**. The larger your table, the larger the relative speed improvement of an indexed query will be.
 
@@ -65,18 +69,18 @@ The way the database efficiently answers the question "what lines intersect the 
 
 For a large table, this "two pass" system of evaluating the approximate index first, then carrying out an exact test can radically reduce the amount of calculations necessary to answer a query.
 
-Both PostGIS and Oracle Spatial share the same "R-Tree" [#RTree]_ spatial index structure. R-Trees break up data into rectangles, and sub-rectangles, and sub-sub rectangles, etc.  It is a self-tuning index structure that automatically handles variable data density and object size.
+Both PostGIS and Oracle Spatial share the same R-Tree_ spatial index structure. R-Tree_ break up data into rectangles, and sub-rectangles, and sub-sub rectangles, etc.  It is a self-tuning index structure that automatically handles variable data density and object size.
 
 .. image:: ./indexing/index-01.png
 
 Index-Only Queries
 ------------------
 
-Most of the commonly used functions in PostGIS (:command:`ST_Contains`, :command:`ST_Intersects`, :command:`ST_DWithin`, etc) include an index filter automatically. But some functions (e.g., :command:`ST_Relate`) do not include and index filter.
+Most of the commonly used functions in PostGIS (ST_Contains_, ST_Intersects_, ST_DWithin_, etc) include an index filter automatically. But some functions (e.g., ST_Relate_) do not include and index filter.
 
-To do a bounding-box search using the index (and no filtering), make use of the :command:`&&` operator. For geometries, the :command:`&&` operator means "bounding boxes overlap or touch" in the same way that for number the :command:`=` operator means "values are the same".
+To do a bounding-box search using the index (and no filtering), make use of the ``&&`` operator (ST_Geometry_Overlap_). For geometries, the ``&&`` operator means "bounding boxes overlap or touch" in the same way that for number the ``=`` operator (ST_Geometry_EQ_) means "values are the same".
 
-Let's compare an index-only query for the population of the 'West Village' to a more exact query. Using :command:`&&` our index-only query looks like the following:
+Let's compare an index-only query for the population of the 'West Village' to a more exact query. Using ``&&`` our index-only query looks like the following:
 
 .. code-block:: sql
 
@@ -88,9 +92,11 @@ Let's compare an index-only query for the population of the 'West Village' to a 
   
 ::
 
-  49821
+    sum
+  --------
+   117089
   
-Now let's do the same query using the more exact :command:`ST_Intersects` function.
+Now let's do the same query using the more exact ST_Intersects_ function.
 
 .. code-block:: sql
 
@@ -102,7 +108,9 @@ Now let's do the same query using the more exact :command:`ST_Intersects` functi
   
 ::
 
-  26718
+    sum
+  -------
+   86604
 
 A much lower answer! The first query summed up every block that intersected the neighborhood's bounding box; the second query only summed up those blocks that intersected the neighborhood itself.
 
@@ -139,13 +147,32 @@ Vacuuming and analyzing the database can be performed separately as needed.  Iss
 Function List
 -------------
 
-`geometry_a && geometry_b <http://postgis.net/docs/manual-2.1/ST_Geometry_Overlap.html>`_: Returns TRUE if A's bounding box overlaps B's.
+geometry_a && geometry_b: (ST_Geometry_Overlap_): Returns TRUE if A's bounding box overlaps B's.
 
-`geometry_a = geometry_b <http://postgis.net/docs/manual-2.1/ST_Geometry_EQ.html>`_: Returns TRUE if A's bounding box is the same as B's.
+geometry_a = geometry_b: (ST_Geometry_EQ_): Returns TRUE if A's bounding box is the same as B's.
 
-`ST_Intersects(geometry_a, geometry_b) <http://postgis.net/docs/manual-2.1/ST_Intersects.html>`_: Returns TRUE if the Geometries/Geography "spatially intersect" - (share any portion of space) and FALSE if they don't (they are Disjoint). 
+ST_Intersects_ (geometry_a, geometry_b): Returns TRUE if the Geometries/Geography "spatially intersect" - (share any portion of space) and FALSE if they don't (they are Disjoint). 
 
-.. rubric:: Footnotes
+.. _R-Tree: http://postgis.org/support/rtree.pdf
 
-.. [#RTree] http://postgis.org/support/rtree.pdf
+.. _ST_Relate: http://postgis.net/docs/ST_Relate.html
 
+.. _ST_Crosses: http://postgis.net/docs/ST_Crosses.html
+
+.. _ST_Disjoint: http://postgis.net/docs/ST_Disjoint.html
+
+.. _ST_Within: http://postgis.net/docs/ST_Within.html
+
+.. _ST_DWithin: http://postgis.net/docs/ST_DWithin.html
+
+.. _ST_Overlaps: http://postgis.net/docs/ST_Overlaps.html
+
+.. _ST_Touches: http://postgis.net/docs/ST_Touches.html
+
+.. _ST_Contains: http://postgis.net/docs/ST_Contains.html
+
+.. _ST_Intersects: http://postgis.net/docs/ST_Intersects.html
+
+.. _ST_Geometry_Overlap: http://postgis.net/docs/ST_Geometry_Overlap.html
+
+.. _ST_Geometry_EQ: http://postgis.net/docs/ST_Geometry_EQ.html
