@@ -78,9 +78,9 @@ Index-Only Queries
 
 Most of the commonly used functions in PostGIS (ST_Contains_, ST_Intersects_, ST_DWithin_, etc) include an index filter automatically. But some functions (e.g., ST_Relate_) do not include and index filter.
 
-To do a bounding-box search using the index (and no filtering), make use of the &&_ operator. For geometries, the &&_ operator means "bounding boxes overlap or touch" in the same way that for number the ``=`` operator means "values are the same".
+To do a bounding-box search using the index (and no filtering), make use of the ``&&`` operator (ST_Geometry_Overlap_). For geometries, the ``&&`` operator means "bounding boxes overlap or touch" in the same way that for number the ``=`` operator (ST_Geometry_EQ_) means "values are the same".
 
-Let's compare an index-only query for the population of the 'West Village' to a more exact query. Using &&_ our index-only query looks like the following:
+Let's compare an index-only query for the population of the 'West Village' to a more exact query. Using ``&&`` our index-only query looks like the following:
 
 .. code-block:: sql
 
@@ -92,7 +92,9 @@ Let's compare an index-only query for the population of the 'West Village' to a 
   
 ::
 
-  49821
+  sum
+--------
+ 117089
   
 Now let's do the same query using the more exact ST_Intersects_ function.
 
@@ -106,7 +108,9 @@ Now let's do the same query using the more exact ST_Intersects_ function.
   
 ::
 
-  26718
+  sum
+-------
+ 86604
 
 A much lower answer! The first query summed up every block that intersected the neighborhood's bounding box; the second query only summed up those blocks that intersected the neighborhood itself.
 
