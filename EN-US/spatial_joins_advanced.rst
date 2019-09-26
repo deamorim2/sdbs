@@ -72,6 +72,33 @@ Create the new table using the ST_Union_ aggregate:
    CREATE INDEX nyc_census_tract_geoms_tractid_idx 
      ON nyc_census_tract_geoms (tractid);
 
+Geometry Quality Data Testing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Spatial Union operations (ST_Union_) can result in unwanted interior rings resulted from inaccurated geometry topology consistence like overlap or gap between polygons.
+
+Using the instruction below, we can identify these 14 inconsistencies:
+
+.. code-block:: sql
+
+ SELECT tractid
+ FROM nyc_census_tract_geoms
+ WHERE ST_NumInteriorRings(geom) >=1;
+
+To fix this, we must UPDATE the nyc_census_tract_geoms's geometry attribute with the Exterior Ring geometry: 
+
+.. code-block:: sql
+
+ UPDATE nyc_census_tract_geoms
+ SET geom = ST_MakePolygon(ST_ExteriorRing(geom))
+ WHERE ST_NumInteriorRings(geom) >=1;
+
+
+Finally, we must ALTER the geometry attribute from ``geometry`` to ``geometry(MultiPolygon, 26918)``:
+
+.. code-block:: sql
+
+ ALTER TABLE nyc_census_tract_geoms ALTER COLUMN geom type geometry(MultiPolygon, 26918) using ST_Multi(geom);
 
 Join the Attributes to the Spatial Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -99,13 +126,13 @@ Join the table of tract geometries to the table of tract attributes with a stand
 Answer an Interesting Question
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      
-Answer an interesting question! "List top 10 New York neighborhoods ordered by the proportion of people who have graduate degrees."
+Answer an interesting question!
+
+"List top 10 New York neighborhoods ordered by the proportion of people who have graduate degrees."
   
 .. code-block:: sql
   
-  SELECT 
-    100.0 * Sum(t.edu_graduate_dipl) / Sum(t.edu_total) AS graduate_pct, 
-    n.name, n.boroname 
+  SELECT 100.0 * Sum(t.edu_graduate_dipl) / Sum(t.edu_total) AS graduate_pct, n.name, n.boroname 
   FROM nyc_neighborhoods n 
   JOIN nyc_census_tracts t 
   ON ST_Intersects(n.geom, t.geom) 
@@ -118,23 +145,26 @@ We sum up the statistics we are interested, then divide them together at the end
 
 ::
   
-   graduate_pct |       name        | boroname  
-  --------------+-------------------+-----------
-           47.6 | Carnegie Hill     | Manhattan
-           42.2 | Upper West Side   | Manhattan
-           41.1 | Battery Park      | Manhattan
-           39.6 | Flatbush          | Brooklyn
-           39.3 | Tribeca           | Manhattan
-           39.2 | North Sutton Area | Manhattan
-           38.7 | Greenwich Village | Manhattan
-           38.6 | Upper East Side   | Manhattan
-           37.9 | Murray Hill       | Manhattan
-           37.4 | Central Park      | Manhattan
-    
-    
-.. note::
+     graduate_pct     |                    name                    | boroname
+ ---------------------+--------------------------------------------+-----------
+  42.6702869226953502 | Lincoln Square                             | Manhattan
+  41.2095891329118166 | Upper West Side                            | Manhattan
+  39.5831736444328617 | Upper East Side-Carnegie Hill              | Manhattan
+  38.9459465254400823 | Brooklyn Heights-Cobble Hill               | Brooklyn
+  38.5675925148946883 | Lenox Hill-Roosevelt Island                | Manhattan
+  37.7980858289595554 | Turtle Bay-East Midtown                    | Manhattan
+  36.8001551619040582 | Yorkville                                  | Manhattan
+  35.6936748987360635 | Murray Hill-Kips Bay                       | Manhattan
+  35.6064790175029875 | West Village                               | Manhattan
+  34.8544702100006840 | Hudson Yards-Chelsea-Flatiron-Union Square | Manhattan    
 
-  New York geographers will be wondering at the presence of "Flatbush" in this list of over-educated neighborhoods. The answer is discussed in the next section.
+
+-------
+
+.. note:: - New York geographers will be wondering at the presence of "Flatbush" in this list of over-educated neighborhoods. The answer is discussed in the next section.
+
+-------
+
 
 .. _polypolyjoins:
 
