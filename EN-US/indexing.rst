@@ -149,11 +149,11 @@ Function List
 
 geometry_a && geometry_b: (ST_Geometry_Overlap_): Returns TRUE if A's bounding box overlaps B's.
 
-`geometry_a = geometry_b: (ST_Geometry_EQ_): Returns TRUE if A's bounding box is the same as B's.
+geometry_a = geometry_b: (ST_Geometry_EQ_): Returns TRUE if A's bounding box is the same as B's.
 
 ST_Intersects_ (geometry_a, geometry_b): Returns TRUE if the Geometries/Geography "spatially intersect" - (share any portion of space) and FALSE if they don't (they are Disjoint). 
 
-.. _RTree: http://postgis.org/support/rtree.pdf
+.. _R-Tree: http://postgis.org/support/rtree.pdf
 
 .. _ST_Relate: http://postgis.net/docs/ST_Relate.html
 
