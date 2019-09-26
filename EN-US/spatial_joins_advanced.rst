@@ -157,14 +157,14 @@ We sum up the statistics we are interested, then divide them together at the end
 Polygon/Polygon Joins
 ---------------------
 
-In our interesting query (in :ref:`interestingquestion`) we used the ST_Intersects_ (geometry_a, geometry_b) function to determine which census tract polygons to include in each neighborhood summary. Which leads to the question: what if a tract falls on the border between two neighborhoods? It will intersect both, and so will be included in the summary statistics for **both**.
+In our interesting query above we used the ST_Intersects_ (geometry_a, geometry_b) function to determine which census tract polygons to include in each neighborhood summary. Which leads to the question: what if a tract falls on the border between two neighborhoods? It will intersect both, and so will be included in the summary statistics for **both**.
 
 .. image:: ./screenshots/centroid_neighborhood.png
 
 To avoid this kind of double counting there are two methods:
 
 * The simple method is to ensure that each tract only falls in **one** summary area (using ST_Centroid_ (geometry))
-* The complex method is to divide crossing tracts at the borders (using ST_Intersection_ (geometry,geometry))
+* The complex method is to divide crossing tracts at the borders (using ST_Intersection_ (geometry A, geometry B))
  
 Here is an example of using the simple method to avoid double counting in our graduate education query:
 
@@ -265,7 +265,7 @@ ST_Intersects_ (geometry A, geometry B): Returns TRUE if the Geometries/Geograph
 
 ST_Centroid_ (geometry): Computes the geometric center of a geometry, or equivalently, the center of mass of the geometry as a POINT.
 
-ST_Union_ (geometry A, geometry B): This function returns a MULTI geometry or NON-MULTI geometry from a set of geometries. The ST_Union_ () function is an "aggregate" function in the terminology of PostgreSQL. That means that it operates on rows of data, in the same way the SUM_() and AVG_() functions do and like most aggregates, it also ignores NULL geometries.
+ST_Union_ (geometry A, geometry B): This function returns a MULTI geometry or NON-MULTI geometry from a set of geometries. The ST_Union_ () function is an "aggregate" function in the terminology of PostgreSQL. That means that it operates on rows of data, in the same way the SUM() and AVG() functions do and like most aggregates, it also ignores NULL geometries.
 
 ST_Intersection_ (geometry A, geometry B): Returns a geometry that represents the point set intersection of the Geometries.
 
