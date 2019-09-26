@@ -13,6 +13,7 @@ Creating a Census Tracts Table
 In the workshop `data <https://drive.google.com/drive/folders/1dmcVfJer0JJgXhj4ADcsEVUtP9nEHH_Z?usp=sharing>`_ directory, is a file that includes attribute data, but no geometry, ``nyc_census_sociodata.sql``. The table includes interesting socioeconomic data about New York: commute times, incomes, and education attainment. There is just one problem. The data are summarized by "census tract" and we have no census tract spatial data! 
 
 In this section we will
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. Load the ``nyc_census_sociodata.sql`` table
 
