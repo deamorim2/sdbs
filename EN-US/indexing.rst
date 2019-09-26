@@ -92,9 +92,9 @@ Let's compare an index-only query for the population of the 'West Village' to a 
   
 ::
 
-  sum
---------
- 117089
+    sum
+  --------
+   117089
   
 Now let's do the same query using the more exact ST_Intersects_ function.
 
@@ -108,9 +108,9 @@ Now let's do the same query using the more exact ST_Intersects_ function.
   
 ::
 
-  sum
--------
- 86604
+    sum
+  -------
+   86604
 
 A much lower answer! The first query summed up every block that intersected the neighborhood's bounding box; the second query only summed up those blocks that intersected the neighborhood itself.
 
