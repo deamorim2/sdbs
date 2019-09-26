@@ -1,4 +1,4 @@
-.. _joins_advanced:
+.. _spatial_joins_advanced:
 
 More Spatial Joins
 ==================
