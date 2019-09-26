@@ -57,7 +57,7 @@ Instruction 4
 
 ::
 
-  a simple where clause narrows this to 11058 rows
+  a simple where clause narrows this to 18538 rows
 
 
 In the previous section, we explored spatial relationships using a two-step process: first we extracted a subway station point for 'Broad St'; then, we used that point to ask further questions such as "what neighborhood is the 'Broad St' station in?"
@@ -81,7 +81,7 @@ Using a spatial join, we can answer the question in one step, retrieving informa
   -------------+--------------------+-----------
    Broad St    | Financial District | Manhattan
 
-We could have joined every subway station to its containing neighborhood, but in this case we wanted information about just one.  Any function that provides a true/false relationship between two tables can be used to drive a spatial join, but the most commonly used ones are: :command:`ST_Intersects`, :command:`ST_Contains`, and :command:`ST_DWithin`.
+We could have joined every subway station to its containing neighborhood, but in this case we wanted information about just one.  Any function that provides a true/false relationship between two tables can be used to drive a spatial join, but the most commonly used ones are: ST_Intersects_, ST_Contains_, and ST_DWithin_.
 
 Join and Summarize
 ------------------
@@ -144,12 +144,14 @@ What's going on here? Notionally (the actual evaluation order is optimized under
 
 #. The ``JOIN`` clause creates a virtual table that includes columns from both the neighborhoods and census tables.
 #. The ``WHERE`` clause filters our virtual table to just rows in Manhattan.
-#. The remaining rows are grouped by the neighborhood name and fed through the aggregation function to :command:`Sum()` the population values.
+#. The remaining rows are grouped by the neighborhood name and fed through the aggregation function to Sum_() the population values.
 #. After a little arithmetic and formatting (e.g., ``GROUP BY``, ``ORDER BY``) on the final numbers, our query spits out the percentages.
 
-.. note::
+--------
 
-   The ``JOIN`` clause combines two ``FROM`` items.  By default, we are using an ``INNER JOIN``, but there are four other types of joins. For further information see the `join_type <http://www.postgresql.org/docs/9.1/interactive/sql-select.html#SQL-FROM>`_ definition in the PostgreSQL documentation.
+.. note:: - The ``JOIN`` clause combines two ``FROM`` items.  By default, we are using an ``INNER JOIN``, but there are four other types of joins. For further information see the `join_type <http://www.postgresql.org/docs/9.1/interactive/sql-select.html#SQL-FROM>`_ definition in the PostgreSQL documentation.
+
+--------
 
 We can also use distance tests as a join key, to create summarized "all items within a radius" queries. Let's explore the racial geography of New York using distance queries.
 
@@ -190,11 +192,13 @@ First, note that the contents of the ``nyc_subway_stations`` table ``routes`` fi
  E,J,Z
  R,W
 
-.. note::
+------
 
-   The ``DISTINCT`` keyword eliminates duplicate rows from the result.  Without the ``DISTINCT`` keyword, the query above identifies 491 results instead of 73.
+.. note:: - The ``DISTINCT`` keyword eliminates duplicate rows from the result.  Without the ``DISTINCT`` keyword, the query above identifies 491 results instead of 73.
 
-So to find the A-train, we will want any row in ``routes`` that has an 'A' in it. We can do this a number of ways, but today we will use the fact that :command:`strpos(routes,'A')` will return a non-zero number only if 'A' is in the ``routes`` field.
+------
+
+So to find the A-train, we will want any row in ``routes`` that has an 'A' in it. We can do this a number of ways, but today we will use the fact that strpos_(routes,'A') will return a non-zero number only if 'A' is in the ``routes`` field.
 
 .. code-block:: sql
 
@@ -296,7 +300,7 @@ Now we can join the table of subway lines onto our original query.
      7     |      35.7 |       3.5 |     102401
 
 
-As before, the joins create a virtual table of all the possible combinations available within the constraints of the ``JOIN ON`` restrictions, and those rows are then fed into a ``GROUP`` summary. The spatial magic is in the ``ST_DWithin`` function, that ensures only census blocks close to the appropriate subway stations are included in the calculation.
+As before, the joins create a virtual table of all the possible combinations available within the constraints of the ``JOIN ON`` restrictions, and those rows are then fed into a ``GROUP`` summary. The spatial magic is in the ST_DWithin_ function, that ensures only census blocks close to the appropriate subway stations are included in the calculation.
 
 Function List
 -------------
