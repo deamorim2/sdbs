@@ -16,11 +16,11 @@ In this section we will
 
 #. Load the ``nyc_census_sociodata.sql`` table
 
-#.Create a spatial table for census tracts 
+#. Create a spatial table for census tracts 
 
-#.Join the attribute data to the spatial data
+#. Join the attribute data to the spatial data
 
-#.Carry out some analysis using our new data
+#. Carry out some analysis using our new data
  
 Loading nyc_census_sociodata.sql
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
