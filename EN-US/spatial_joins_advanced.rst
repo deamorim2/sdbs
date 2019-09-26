@@ -24,9 +24,15 @@ Loading nyc_census_sociodata.sql
 
   Open the SQL query window in PgAdmin
 
+..
+
   Select **File->Open** from the menu and browse to the ``nyc_census_sociodata.sql`` file
   
+..
+
   Press the "Run Query" button
+
+..
 
   If you press the "Refresh" button in PgAdmin, the list of tables should now include at ``nyc_census_sociodata`` table
  
