@@ -14,10 +14,10 @@ In the workshop `data <https://drive.google.com/drive/folders/1dmcVfJer0JJgXhj4A
 
 In this section we will
 
-* Load the ``nyc_census_sociodata.sql`` table
-* Create a spatial table for census tracts 
-* Join the attribute data to the spatial data
-* Carry out some analysis using our new data
+#.Load the ``nyc_census_sociodata.sql`` table
+#.Create a spatial table for census tracts 
+#.Join the attribute data to the spatial data
+#.Carry out some analysis using our new data
  
 Loading nyc_census_sociodata.sql
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -243,5 +243,81 @@ The solution is to ensure that we have only distinct census blocks before passin
 
 That's better! So a bit over half the population of New York is within 500m (about a 5-7 minute walk) of the subway.
 
+Function List
+=============
 
+ST_Area_ : Returns the area of the surface if it is a polygon or multi-polygon. For ``geometry`` type area is in SRID_ units. For ``geography`` area is in square meters.
+
+ST_Length_ : Returns the 2d length of the geometry if it is a linestring or multilinestring. geometry are in units of spatial reference and geography are in meters (default spheroid)
+
+ST_AsGML_ : Returns the geometry as a GML_ version 2 or 3 element.
+
+ST_GeomFromText_ : Returns a specified ST_Geometry value from Well-Known Text representation (WKT_).
+
+ST_Relate_ (geometry A, geometry B): Returns a text string representing the DE9IM relationship between the geometries.
+
+ST_Contains_ (geometry A, geometry B): Returns true if and only if no points of B lie in the exterior of A, and at least one point of the interior of B lies in the interior of A.
+
+ST_Crosses_ (geometry A, geometry B): Returns TRUE if the supplied geometries have some, but not all, interior points in common.
+
+ST_Disjoint_ (geometry A , geometry B): Returns TRUE if the Geometries do not "spatially intersect" - if they do not share any space together.
+
+ST_Overlaps_ (geometry A, geometry B): Returns TRUE if the Geometries share space, are of the same dimension, but are not completely contained by each other.
+
+ST_Touches_ (geometry A, geometry B): Returns TRUE if the geometries have at least one point in common, but their interiors do not intersect.
+
+ST_Within_ (geometry A , geometry B): Returns true if the geometry A is completely inside geometry B
+
+ST_Distance_ (geometry A, geometry B): Returns the 2-dimensional cartesian minimum distance (based on spatial ref) between two geometries in projected units. 
+
+ST_DWithin_ (geometry A, geometry B, radius): Returns true if the geometries are within the specified distance (radius) of one another. 
+
+ST_Equals_ (geometry A, geometry B): Returns true if the given geometries represent the same geometry. Directionality is ignored.
+
+ST_Intersects_ (geometry A, geometry B): Returns TRUE if the Geometries/Geography "spatially intersect" - (share any portion of space) and FALSE if they don't (they are Disjoint). 
+
+
+.. _SFSQL: http://www.opengeospatial.org/standards/sfa
+
+.. _SQLMM: https://www.iso.org/standard/60343.html
+
+.. _DE-9IM: http://en.wikipedia.org/wiki/DE-9IM
+
+.. _SFSQL: http://www.opengeospatial.org/standards/sfa
+
+.. _SQLMM: https://www.iso.org/standard/60343.html
+
+.. _ST_Relate: http://postgis.net/docs/ST_Relate.html
+
+.. _ST_Crosses: http://postgis.net/docs/ST_Crosses.html
+
+.. _ST_Disjoint: http://postgis.net/docs/ST_Disjoint.html
+
+.. _ST_Within: http://postgis.net/docs/ST_Within.html
+
+.. _ST_Overlaps: http://postgis.net/docs/ST_Overlaps.html
+
+.. _ST_Touches: http://postgis.net/docs/ST_Touches.html
+
+.. _ST_Contains: http://postgis.net/docs/ST_Contains.html
+
+.. _ST_Distance: http://postgis.net/docs/ST_Distance.html
+
+.. _ST_DWithin: http://postgis.net/docs/ST_DWithin.html
+
+.. _ST_Intersects: http://postgis.net/docs/ST_Intersects.html
+
+.. _ST_Equals: http://postgis.net/docs/ST_Equals.html
+
+.. _WKT: https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
+
+.. _ST_Area: http://postgis.net/docs/ST_Area.html 
+
+.. _ST_Length: http://postgis.net/docs/ST_Length.html
+
+.. _ST_AsGML: http://postgis.net/docs/ST_AsGML.html
+
+.. _ST_GeomFromText: http://postgis.net/docs/ST_GeomFromText.html
+
+.. _SRID: https://en.wikipedia.org/wiki/Spatial_reference_system
 
