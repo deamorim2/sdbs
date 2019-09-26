@@ -52,7 +52,7 @@ As we saw in the previous section, we can build up higher level geometries from 
   001    = Census Block
 
 
-Create the new table using the :command:`ST_Union` aggregate:
+Create the new table using the ST_Union_ aggregate:
  
 .. code-block:: sql
    
@@ -137,14 +137,14 @@ We sum up the statistics we are interested, then divide them together at the end
 Polygon/Polygon Joins
 ---------------------
 
-In our interesting query (in :ref:`interestingquestion`) we used the :command:`ST_Intersects(geometry_a, geometry_b)` function to determine which census tract polygons to include in each neighborhood summary. Which leads to the question: what if a tract falls on the border between two neighborhoods? It will intersect both, and so will be included in the summary statistics for **both**.
+In our interesting query (in :ref:`interestingquestion`) we used the ST_Intersects_ (geometry_a, geometry_b) function to determine which census tract polygons to include in each neighborhood summary. Which leads to the question: what if a tract falls on the border between two neighborhoods? It will intersect both, and so will be included in the summary statistics for **both**.
 
 .. image:: ./screenshots/centroid_neighborhood.png
 
 To avoid this kind of double counting there are two methods:
 
-* The simple method is to ensure that each tract only falls in **one** summary area (using :command:`ST_Centroid(geometry)`)
-* The complex method is to divide crossing tracts at the borders (using :command:`ST_Intersection(geometry,geometry)`)
+* The simple method is to ensure that each tract only falls in **one** summary area (using ST_Centroid_ (geometry))
+* The complex method is to divide crossing tracts at the borders (using ST_Intersection_ (geometry,geometry))
  
 Here is an example of using the simple method to avoid double counting in our graduate education query:
 
@@ -161,7 +161,7 @@ Here is an example of using the simple method to avoid double counting in our gr
   ORDER BY graduate_pct DESC
   LIMIT 10;
   
-Note that the query takes longer to run now, because the :command:`ST_Centroid` function  has to be run on every census tract.
+Note that the query takes longer to run now, because the ST_Centroid_ function  has to be run on every census tract.
 
 ::
 
