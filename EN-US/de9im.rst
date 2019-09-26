@@ -11,7 +11,7 @@ The main proposals presented to date on the representation of topological relati
 * Calculation Based Method (CBM) (Clementini et al., 1993)
 * **Dimensionally Extended 9-Intersection Model** (DE-9IM_) (Clementini & Felice, 1995)
 
-The DE-9IM is a method or model chosen by OGC(SFSQL_) and ISO(SQLMM_) and implemented in PostGIS for the representation of topological models.
+The DE-9IM is a method or model chosen by OGC_(SFSQL_) and ISO(SQLMM_) and implemented in PostGIS for the representation of topological models.
 
 Dimensionally Extended 9-Intersection Model (DE-9IM_)
 =====================================================
