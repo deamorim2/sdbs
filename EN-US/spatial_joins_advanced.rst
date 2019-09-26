@@ -214,6 +214,8 @@ However, the question runs into some problems of double counting: many people wi
   
 ::
 
+    sum
+ ---------
   8175032
   
 With the population of the people in New York within 500 meters of a subway station:
@@ -227,6 +229,8 @@ With the population of the people in New York within 500 meters of a subway stat
   
 ::
 
+    sum
+ ----------
   10855873
 
 There's more people close to the subway than there are people! Clearly, our simple SQL is making a big double-counting error. You can see the problem looking at the picture of the buffered subways.
@@ -248,6 +252,8 @@ The solution is to ensure that we have only distinct census blocks before passin
 
 ::
 
+    sum
+ ---------
   5005743
 
 That's better! So a bit over half the population of New York is within 500m (about a 5-7 minute walk) of the subway.
