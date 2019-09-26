@@ -62,15 +62,12 @@ Create the new table using the ST_Union_ aggregate:
    
    -- Make the tracts table
    CREATE TABLE nyc_census_tract_geoms AS
-   SELECT 
-     ST_Union(geom) AS geom, 
-     SubStr(blkid,1,11) AS tractid
+   SELECT ST_Union(geom) AS geom, SubStr(blkid,1,11) AS tractid
    FROM nyc_census_blocks
    GROUP BY tractid;
      
    -- Index the tractid
-   CREATE INDEX nyc_census_tract_geoms_tractid_idx 
-     ON nyc_census_tract_geoms (tractid);
+   CREATE INDEX nyc_census_tract_geoms_tractid_idx ON nyc_census_tract_geoms (tractid);
 
 Geometry Quality Data Testing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -83,7 +80,7 @@ Using the instruction below, we can identify these 14 inconsistencies:
 
  SELECT tractid
  FROM nyc_census_tract_geoms
- WHERE ST_NumInteriorRings(geom) >=1;
+ WHERE ST_NumInteriorRings(geom) >= 1;
 
 To fix this, we must UPDATE the nyc_census_tract_geoms's geometry attribute with the Exterior Ring geometry: 
 
@@ -109,16 +106,13 @@ Join the table of tract geometries to the table of tract attributes with a stand
   
   -- Make the tracts table
   CREATE TABLE nyc_census_tracts AS
-  SELECT 
-    g.geom,
-    a.*
+  SELECT g.geom, a.*
   FROM nyc_census_tract_geoms g
   JOIN nyc_census_sociodata a
   ON g.tractid = a.tractid;
     
   -- Index the geometries
-  CREATE INDEX nyc_census_tract_gidx 
-    ON nyc_census_tracts USING GIST (geom);
+  CREATE INDEX nyc_census_tract_gidx ON nyc_census_tracts USING GIST (geom);
     
 
 .. _interestingquestion:
@@ -158,14 +152,6 @@ We sum up the statistics we are interested, then divide them together at the end
   35.6064790175029875 | West Village                               | Manhattan
   34.8544702100006840 | Hudson Yards-Chelsea-Flatiron-Union Square | Manhattan    
 
-
--------
-
-.. note:: - New York geographers will be wondering at the presence of "Flatbush" in this list of over-educated neighborhoods. The answer is discussed in the next section.
-
--------
-
-
 .. _polypolyjoins:
 
 Polygon/Polygon Joins
@@ -184,9 +170,7 @@ Here is an example of using the simple method to avoid double counting in our gr
 
 .. code-block:: sql
 
-  SELECT 
-    100.0 * Sum(t.edu_graduate_dipl) / Sum(t.edu_total) AS graduate_pct, 
-    n.name, n.boroname 
+  SELECT 100.0 * Sum(t.edu_graduate_dipl) / Sum(t.edu_total) AS graduate_pct, n.name, n.boroname 
   FROM nyc_neighborhoods n 
   JOIN nyc_census_tracts t 
   ON ST_Contains(n.geom, ST_Centroid(t.geom)) 
@@ -195,33 +179,24 @@ Here is an example of using the simple method to avoid double counting in our gr
   ORDER BY graduate_pct DESC
   LIMIT 10;
   
-Note that the query takes longer to run now, because the ST_Centroid_ function  has to be run on every census tract.
+Note that the query takes longer to run now, because the ST_Centroid_ function has to be run on every census tract.
 
 ::
 
-   graduate_pct |        name         | boroname  
-  --------------+---------------------+-----------
-           48.0 | Carnegie Hill       | Manhattan
-           44.2 | Morningside Heights | Manhattan
-           42.1 | Greenwich Village   | Manhattan
-           42.0 | Upper West Side     | Manhattan
-           41.4 | Tribeca             | Manhattan
-           40.7 | Battery Park        | Manhattan
-           39.5 | Upper East Side     | Manhattan
-           39.3 | North Sutton Area   | Manhattan
-           37.4 | Cobble Hill         | Brooklyn
-           37.4 | Murray Hill         | Manhattan
-  
+     graduate_pct     |               name                | boroname
+ ---------------------+-----------------------------------+-----------
+  45.5608109515971079 | Lincoln Square                    | Manhattan
+  45.1985480145198548 | Upper East Side-Carnegie Hill     | Manhattan
+  45.1713395638629283 | Brooklyn Heights-Cobble Hill      | Brooklyn
+  41.2391913998597803 | Morningside Heights               | Manhattan
+  41.0893364728838523 | Upper West Side                   | Manhattan
+  39.6799251286850725 | West Village                      | Manhattan
+  38.7729734528988724 | Midtown-Midtown South             | Manhattan
+  38.2312242446360415 | Lenox Hill-Roosevelt Island       | Manhattan
+  38.1342532700876815 | Battery Park City-Lower Manhattan | Manhattan
+  37.2739813765581120 | Turtle Bay-East Midtown           | Manhattan  
+
 Avoiding double counting changes the results! 
-
-What about Flatbush?
-~~~~~~~~~~~~~~~~~~~~
-
-In particular, the Flatbush neighborhood has dropped off the list. The reason why can be seen by looking more closely at the map of the Flatbush neighborhood in our table.
-
-.. image:: ./screenshots/nyc_tracts_flatbush.jpg
-
-As defined by our data source, Flatbush is not really a neighborhood in the conventional sense, since it just covers the area of Prospect Park. The census tract for that area records, naturally, zero residents. However, the neighborhood boundary does scrape one of the expensive census tracts bordering the north side of the park (in the gentrified Park Slope neighborhood). When using polygon/polygon tests, this single tract was added to the otherwise empty Flatbush, resulting in the very high score for that query.
 
 .. _largeradiusjoins:
 
