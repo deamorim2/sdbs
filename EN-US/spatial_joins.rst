@@ -7,24 +7,58 @@ Spatial joins are the bread-and-butter of spatial databases.  They allow you to 
 
 To review how joins work, here's a step-by-step look at joining the neighborhoods and subway stations tables and then subsequently adding a simple where clause.  Joining two small tables effectively multiplies the number of rows into a much larger dataset with all possible combinations of the two tables.  Then we use a where clause (or two) to narrow our focus.
 
+Instruction 1
+-------------
+
 .. code-block:: sql
 
-    --129 neighborhoods
-    SELECT name, boroname FROM nyc_neighborhoods
+    SELECT name, boroname FROM nyc_neighborhoods;
+    
+::
 
-    --491 subway stations
-    SELECT name, borough FROM nyc_subway_stations
+  196 neighborhoods
 
-    --join produces 63339 rows (129 * 491)
+Instruction 2
+-------------
+
+.. code-block:: sql
+
+    
+    SELECT name, borough FROM nyc_subway_stations;
+
+::
+
+  491 subway stations
+
+Instruction 3
+-------------
+
+.. code-block:: sql
+
+    
+    SELECT n.name, n.boroname,
+           s.name, s.borough
+      FROM nyc_neighborhoods n, nyc_subway_stations s;
+
+::
+
+  join produces 63339 rows (129 * 491)
+
+Instruction 4
+-------------
+
+.. code-block:: sql
+
+    
     SELECT n.name, n.boroname,
            s.name, s.borough
       FROM nyc_neighborhoods n, nyc_subway_stations s
+     WHERE n.boroname = s.borough;
 
-    --a simple where clause narrows this to 11058 rows
-    SELECT n.name, n.boroname,
-           s.name, s.borough
-      FROM nyc_neighborhoods n, nyc_subway_stations s
-     WHERE n.boroname = s.borough
+::
+
+  a simple where clause narrows this to 11058 rows
+
 
 In the previous section, we explored spatial relationships using a two-step process: first we extracted a subway station point for 'Broad St'; then, we used that point to ask further questions such as "what neighborhood is the 'Broad St' station in?"
 
