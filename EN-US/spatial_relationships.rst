@@ -203,13 +203,13 @@ Then, plug the geometry representation back into an ST_Equals_ test:
 Function List
 =============
 
-ST_Area_ : Returns the area of the surface if it is a polygon or multi-polygon. For ``geometry`` type area is in SRID_ units. For ``geography`` area is in square meters.
+ST_Area_ (geometry): Returns the area of the surface if it is a polygon or multi-polygon. For ``geometry`` type area is in SRID_ units. For ``geography`` area is in square meters.
 
-ST_Length_ : Returns the 2d length of the geometry if it is a linestring or multilinestring. geometry are in units of spatial reference and geography are in meters (default spheroid)
+ST_Length_ (geometry): Returns the 2d length of the geometry if it is a linestring or multilinestring. geometry are in units of spatial reference and geography are in meters (default spheroid)
 
-ST_AsGML_ : Returns the geometry as a GML_ version 2 or 3 element.
+ST_AsGML_ (geometry): Returns the geometry as a GML_ version 2 or 3 element.
 
-ST_GeomFromText_ : Returns a specified ST_Geometry value from Well-Known Text representation (WKT_).
+ST_GeomFromText_ (text): Returns a specified ST_Geometry value from Well-Known Text representation (WKT_).
 
 ST_Relate_ (geometry A, geometry B): Returns a text string representing the DE9IM relationship between the geometries.
 
