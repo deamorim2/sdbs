@@ -163,6 +163,8 @@ ST_Intersects_ (geometry_a, geometry_b): Returns TRUE if the Geometries/Geograph
 
 .. _ST_Within: http://postgis.net/docs/ST_Within.html
 
+.. _ST_DWithin: http://postgis.net/docs/ST_DWithin.html
+
 .. _ST_Overlaps: http://postgis.net/docs/ST_Overlaps.html
 
 .. _ST_Touches: http://postgis.net/docs/ST_Touches.html
