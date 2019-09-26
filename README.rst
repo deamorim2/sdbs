@@ -29,6 +29,16 @@ Part I - Introduction to PostGIS
 
 #. `Geometries <./EN-US/geometries.rst>`_
 
+#. `Dimensionally Extended 9-Intersection Model <./EN-US/de9im.rst>`_
+
+#. `Spatial Relationships <./EN-US/spatial_relationship.rst>`_
+
+#. `Spatial Indexing <./EN-US/indexing.rst>`_
+
+#. `Spatial Joins <./EN-US/spatial_joins.rst>`_
+
+#. `More Spatial Joins <./EN-US/spatial_joins_advanced.rst>`_
+
 Part II - Spatial Database System Implementation
 -------------------------------------------------
 
