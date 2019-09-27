@@ -105,7 +105,10 @@ Instruction 4
   a simple where clause narrows this to 18538 rows
 
 
-In the previous section, we explored spatial relationships using a two-step process: first we extracted a subway station point for 'Broad St'; then, we used that point to ask further questions such as "what neighborhood is the 'Broad St' station in?"
+In the previous section, we explored spatial relationships using a two-step process:
+
+- first we extracted a subway station point for 'Broad St'; then,
+- we used that point to ask further questions such as "what neighborhood is the 'Broad St' station in?"
 
 This query present the 'Broad Station' feature:
 
