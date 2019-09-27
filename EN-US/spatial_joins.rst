@@ -110,7 +110,7 @@ In the previous section, we explored spatial relationships using a two-step proc
 - first we extracted a subway station point for 'Broad St'; then,
 - we used that point to ask further questions such as "what neighborhood is the 'Broad St' station in?"
 
-This query present the 'Broad Station' feature:
+This query present the 'Broad Station' feature in the ``nyc_subway_stations`` table:
 
 .. code-block:: sql
 
