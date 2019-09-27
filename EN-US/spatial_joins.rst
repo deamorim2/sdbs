@@ -13,11 +13,22 @@ Instruction 1
 .. code-block:: sql
 
     SELECT name, boroname
-    FROM nyc_neighborhoods;
+    FROM nyc_neighborhoods
+    LIMIT 5;
     
 ::
 
-  196 neighborhoods
+                      name                   | boroname
+    -----------------------------------------+-----------
+     Van Nest-Morris Park-Westchester Square | The Bronx
+     Prospect Heights                        | Brooklyn
+     Hunts Point                             | The Bronx
+     Queens Village                          | Queens
+     East Flatbush-Farragut                  | Brooklyn
+
+::
+
+  TOTAL: 196 neighborhoods
 
 Instruction 2
 -------------
@@ -26,11 +37,22 @@ Instruction 2
 
     
     SELECT name, borough
-    FROM nyc_subway_stations;
+    FROM nyc_subway_stations
+    LIMIT 5;
 
 ::
 
-  491 subway stations
+         name     |  borough
+    --------------+-----------
+     Cortlandt St | Manhattan
+     Rector St    | Manhattan
+     South Ferry  | Manhattan
+     138th St     | Bronx
+     149th St     | Bronx
+
+::
+
+  TOTAL: 491 subway stations
 
 Instruction 3
 -------------
@@ -39,11 +61,23 @@ Instruction 3
 
     
     SELECT n.name, n.boroname, s.name, s.borough
-    FROM nyc_neighborhoods n, nyc_subway_stations s;
+    FROM nyc_neighborhoods n, nyc_subway_stations s
+    LIMIT 5;
 
 ::
 
-  join produces 96236 rows (196 * 491)
+                      name                   | boroname  |     name     |  borough
+    -----------------------------------------+-----------+--------------+-----------
+     Van Nest-Morris Park-Westchester Square | The Bronx | Cortlandt St | Manhattan
+     Prospect Heights                        | Brooklyn  | Cortlandt St | Manhattan
+     Hunts Point                             | The Bronx | Cortlandt St | Manhattan
+     Queens Village                          | Queens    | Cortlandt St | Manhattan
+     East Flatbush-Farragut                  | Brooklyn  | Cortlandt St | Manhattan
+
+::
+
+  TOTAL: join produces 96236 rows (196 * 491)
+  
 
 Instruction 4
 -------------
@@ -53,7 +87,18 @@ Instruction 4
     
     SELECT n.name, n.boroname, s.name, s.borough
     FROM nyc_neighborhoods n, nyc_subway_stations s
-    WHERE n.boroname = s.borough;
+    WHERE n.boroname = s.borough
+    LIMIT 5;
+
+::
+
+                   name                | boroname  |     name     |  borough
+    -----------------------------------+-----------+--------------+-----------
+     Battery Park City-Lower Manhattan | Manhattan | Cortlandt St | Manhattan
+     Morningside Heights               | Manhattan | Cortlandt St | Manhattan
+     Manhattanville                    | Manhattan | Cortlandt St | Manhattan
+     Murray Hill-Kips Bay              | Manhattan | Cortlandt St | Manhattan
+     Washington Heights North          | Manhattan | Cortlandt St | Manhattan
 
 ::
 
@@ -61,6 +106,40 @@ Instruction 4
 
 
 In the previous section, we explored spatial relationships using a two-step process: first we extracted a subway station point for 'Broad St'; then, we used that point to ask further questions such as "what neighborhood is the 'Broad St' station in?"
+
+This query present the 'Broad Station' feature:
+
+.. code-block:: sql
+
+    SELECT name, borough, geom
+    FROM nyc_subway_stations
+    WHERE name = 'Broad St';
+
+::
+
+       name   |  borough  |                        geom
+    ----------+-----------+----------------------------------------------------
+     Broad St | Manhattan | 0101000020266900000EEBD4CF27CF2141BC17D69516315141
+ 
+
+This code below is just an example (5 records) of the ``neighborhood`` table:
+
+.. code-block:: sql
+
+    SELECT name, boroname, geom
+    FROM nyc_neighborhoods
+    LIMIT 5;
+
+::
+
+                      name                   | boroname  |         geom
+    -----------------------------------------+-----------+------------------------
+     Van Nest-Morris Park-Westchester Square | The Bronx | 01060000202669000001000000010300000001000000FA (...)"
+     Prospect Heights                        | Brooklyn  | 0106000020266900000100000001030000000100000061 (...)"
+     Hunts Point                             | The Bronx | 010600002026690000010000000103000000010000000E (...)"
+     Queens Village                          | Queens    | 01060000202669000001000000010300000001000000CB (...)"
+     East Flatbush-Farragut                  | Brooklyn  | "010600002026690000010000000103000000020000006 (...)"
+
 
 Using a spatial join, we can answer the question in one step, retrieving information about the subway station and the neighborhood that contains it:
 
