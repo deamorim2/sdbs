@@ -76,7 +76,7 @@ Both PostGIS and Oracle Spatial share the same R-Tree_ spatial index structure. 
 Index-Only Queries
 ------------------
 
-Most of the commonly used functions in PostGIS (ST_Contains_, ST_Intersects_, ST_DWithin_, etc) include an index filter automatically. But some functions (e.g., ST_Relate_) do not include and index filter.
+Most of the commonly used functions in PostGIS (ST_Contains_, ST_Intersects_, ST_DWithin_, etc) include an index filter automatically. But some functions (e.g., ST_Relate_) do not include an index filter.
 
 To do a bounding-box search using the index (and no filtering), make use of the ``&&`` operator (ST_Geometry_Overlap_). For geometries, the ``&&`` operator means "bounding boxes overlap or touch" in the same way that for number the ``=`` operator (ST_Geometry_EQ_) means "values are the same".
 
