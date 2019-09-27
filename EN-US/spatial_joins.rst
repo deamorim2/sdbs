@@ -118,9 +118,11 @@ This query present the 'Broad Station' feature in the ``nyc_subway_stations`` ta
     FROM nyc_subway_stations
     WHERE name = 'Broad St';
 
-::
+..
 
 *nyc_subway_stations table WHERE name = 'Broad St'*
+
+::
 
        name   |  borough  |                        geom
     ----------+-----------+----------------------------------------------------
@@ -135,9 +137,11 @@ This code below is just an example (5 records) of the ``neighborhood`` table:
     FROM nyc_neighborhoods
     LIMIT 5;
 
-::
+..
 
 *nyc_neighborhoods*
+
+::
 
                       name                   | boroname  |         geom
     -----------------------------------------+-----------+------------------------
