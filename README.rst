@@ -33,11 +33,11 @@ Part I - Introduction to PostGIS
 
 #. `Spatial Relationships <./EN-US/spatial_relationship.rst>`_
 
-#. `Spatial Indexing <./EN-US/indexing.rst>`_
-
 #. `Spatial Joins <./EN-US/spatial_joins.rst>`_
 
 #. `More Spatial Joins <./EN-US/spatial_joins_advanced.rst>`_
+
+#. `Spatial Indexing <./EN-US/indexing.rst>`_
 
 Part II - Spatial Database System Implementation
 -------------------------------------------------
