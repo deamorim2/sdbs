@@ -12,7 +12,8 @@ Instruction 1
 
 .. code-block:: sql
 
-    SELECT name, boroname FROM nyc_neighborhoods;
+    SELECT name, boroname
+    FROM nyc_neighborhoods;
     
 ::
 
