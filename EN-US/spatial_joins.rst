@@ -24,7 +24,8 @@ Instruction 2
 .. code-block:: sql
 
     
-    SELECT name, borough FROM nyc_subway_stations;
+    SELECT name, borough
+    FROM nyc_subway_stations;
 
 ::
 
@@ -36,9 +37,8 @@ Instruction 3
 .. code-block:: sql
 
     
-    SELECT n.name, n.boroname,
-           s.name, s.borough
-      FROM nyc_neighborhoods n, nyc_subway_stations s;
+    SELECT n.name, n.boroname, s.name, s.borough
+    FROM nyc_neighborhoods n, nyc_subway_stations s;
 
 ::
 
@@ -50,10 +50,9 @@ Instruction 4
 .. code-block:: sql
 
     
-    SELECT n.name, n.boroname,
-           s.name, s.borough
-      FROM nyc_neighborhoods n, nyc_subway_stations s
-     WHERE n.boroname = s.borough;
+    SELECT n.name, n.boroname, s.name, s.borough
+    FROM nyc_neighborhoods n, nyc_subway_stations s
+    WHERE n.boroname = s.borough;
 
 ::
 
@@ -66,13 +65,9 @@ Using a spatial join, we can answer the question in one step, retrieving informa
 
 .. code-block:: sql
 
-   SELECT
-     subways.name AS subway_name,
-     neighborhoods.name AS neighborhood_name,
-     neighborhoods.boroname AS borough
+   SELECT subways.name AS subway_name, neighborhoods.name AS neighborhood_name, neighborhoods.boroname AS borough
    FROM nyc_neighborhoods AS neighborhoods
-   JOIN nyc_subway_stations AS subways
-   ON ST_Contains(neighborhoods.geom, subways.geom)
+   JOIN nyc_subway_stations AS subways ON ST_Contains(neighborhoods.geom, subways.geom)
    WHERE subways.name = 'Broad St';
 
 ::
