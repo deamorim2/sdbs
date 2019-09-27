@@ -120,9 +120,7 @@ This query present the 'Broad Station' feature in the ``nyc_subway_stations`` ta
 
 ::
 
-  *nyc_subway_stations table WHERE name = 'Broad St'*
-
-::
+*nyc_subway_stations table WHERE name = 'Broad St'*
 
        name   |  borough  |                        geom
     ----------+-----------+----------------------------------------------------
@@ -139,9 +137,7 @@ This code below is just an example (5 records) of the ``neighborhood`` table:
 
 ::
 
-  *nyc_neighborhoods*
-
-::
+*nyc_neighborhoods*
 
                       name                   | boroname  |         geom
     -----------------------------------------+-----------+------------------------
