@@ -29,7 +29,7 @@ Part I - Introduction to PostGIS
 
 #. `Geometries <./EN-US/geometries.rst>`_
 
-#. `Dimensionally Extended 9-Intersection Model (DE-9IM)<./EN-US/de9im.rst>`_
+#. `Dimensionally Extended 9-Intersection Model (DE-9IM) <./EN-US/de9im.rst>`_
 
 #. `Spatial Relationships <./EN-US/spatial_relationship.rst>`_
 
