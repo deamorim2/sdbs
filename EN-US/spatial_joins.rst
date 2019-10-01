@@ -149,7 +149,7 @@ This code below is just an example (5 records) of the ``neighborhood`` table:
      Prospect Heights                        | Brooklyn  | 0106000020266900000100000001030000000100000061 (...)"
      Hunts Point                             | The Bronx | 010600002026690000010000000103000000010000000E (...)"
      Queens Village                          | Queens    | 01060000202669000001000000010300000001000000CB (...)"
-     East Flatbush-Farragut                  | Brooklyn  | "010600002026690000010000000103000000020000006 (...)"
+     East Flatbush-Farragut                  | Brooklyn  | 0106000020266900000100000001030000000200000060 (...)"
 
 
 Using a spatial join, we can answer the question in one step, retrieving information about the subway station and the neighborhood that contains it:
