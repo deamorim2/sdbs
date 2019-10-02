@@ -206,14 +206,30 @@ To fix this, we must UPDATE the nyc_census_counties's geometry attribute with th
 Function List
 -------------
 
-`ST_AsText(text) <http://postgis.net/docs/manual-2.1/ST_AsText.html>`_: Returns the Well-Known Text (WKT) representation of the geometry/geography without SRID metadata.
+ST_AsText_ (text): Returns the Well-Known Text (WKT) representation of the geometry/geography without SRID metadata.
 
-`ST_Buffer(geometry, distance) <http://postgis.net/docs/manual-2.1/ST_Buffer.html>`_: For geometry: Returns a geometry that represents all points whose distance from this Geometry is less than or equal to distance. Calculations are in the Spatial Reference System of this Geometry. For geography: Uses a planar transform wrapper. 
+ST_Buffer_ (geometry, distance): For geometry: Returns a geometry that represents all points whose distance from this Geometry is less than or equal to distance. Calculations are in the Spatial Reference System of this Geometry. For geography: Uses a planar transform wrapper. 
 
-`ST_Intersection(geometry A, geometry B) <http://postgis.net/docs/manual-2.1/ST_Intersection.html>`_: Returns a geometry that represents the shared portion of geomA and geomB. The geography implementation does a transform to geometry to do the intersection and then transform back to WGS84.
+ST_Intersection_ (geometry A, geometry B): Returns a geometry that represents the shared portion of geomA and geomB. The geography implementation does a transform to geometry to do the intersection and then transform back to WGS84.
 
-`ST_Union() <http://postgis.net/docs/manual-2.1/ST_Union.html>`_: Returns a geometry that represents the point set union of the Geometries.
+ST_Union_ (): Returns a geometry that represents the point set union of the Geometries.
 
-`substring(string [from int] [for int]) <http://www.postgresql.org/docs/current/static/functions-string.html>`_: PostgreSQL string function to extract substring matching SQL regular expression.
+substring_ (string [from int] [for int]): PostgreSQL string function to extract substring matching SQL regular expression.
 
-`sum(expression) <http://www.postgresql.org/docs/current/static/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE>`_: PostgreSQL aggregate function that returns the sum of records in a set of records.
+sum_ (expression): PostgreSQL aggregate function that returns the sum of records in a set of records.
+
+.. _ST_AsText: http://postgis.net/docs/ST_AsText.html
+
+.. _ST_Buffer: http://postgis.net/docs/ST_Buffer.html
+
+.. _ST_Intersection: http://postgis.net/docs/ST_Intersection.html
+
+.. _ST_Union: http://postgis.net/docs/ST_Union.html
+
+.. _ST_AsText: http://postgis.net/docs/ST_AsText.html
+
+.. _substring: https://www.postgresql.org/docs/current/functions-string.html
+
+.. _sum: https://www.postgresql.org/docs/current/functions-aggregate.html
+
+
