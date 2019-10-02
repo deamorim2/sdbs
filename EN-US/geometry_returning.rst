@@ -71,8 +71,6 @@ The ST_Intersection_ (geometry A, geometry B) function returns the spatial area 
 .. image:: ./geometry_returning/intersection.jpg
   :class: inline
 
-
-
 ST_Union
 --------
 
@@ -119,11 +117,12 @@ So, we can create a county map by merging all geometries that share the same fir
 
   -- Create a nyc_census_counties table by merging census blocks
   CREATE TABLE nyc_census_counties AS
-  SELECT 
-    ST_Union(geom)::Geometry(MultiPolygon,26918) AS geom, 
-    SubStr(blkid,1,5) AS countyid
+  SELECT ST_Multi(ST_Union(geom))::Geometry(MultiPolygon,26918) AS geom, SubStr(blkid,1,5) AS countyid
   FROM nyc_census_blocks
   GROUP BY countyid;
+  
+  -- Index the countyid 
+  CREATE INDEX nyc_census_counties_countyid_idx ON nyc_census_counties (countyid);
   
 .. image:: ./geometry_returning/union_counties.png
   :class: inline
@@ -193,7 +192,7 @@ To fix this, we must UPDATE the nyc_census_counties's geometry attribute with th
  SELECT countyid, ST_Union(geom)::Geometry(MultiPolygon,26918) AS geom
  FROM
  ( 
- SELECT countyid, ST_Multi(ST_MakePolygon(ST_ExteriorRing((ST_Dump(geom)).geom)))::Geometry(MultiPolygon,26918) as geom
+ SELECT countyid, ST_Multi(ST_MakePolygon(ST_ExteriorRing((ST_Dump(geom)).geom))) as geom
  FROM
  (
  SELECT countyid, (ST_Dump(geom)).geom as geom
