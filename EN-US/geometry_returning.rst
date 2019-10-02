@@ -170,7 +170,7 @@ Geometry Quality Data Testing
 
 Spatial Union operations (ST_Union_) can result in unwanted interior rings resulted from inaccurated geometry topology consistence like overlap or gap between polygons.
 
-Using the instruction below, we can identify these 6 inconsistencies:
+Using the instruction below, we can identify if these are any inconsistencies:
 
 .. code-block:: sql
 
@@ -186,16 +186,23 @@ To fix this, we must UPDATE the nyc_census_counties's geometry attribute with th
 
 .. code-block:: sql
 
- UPDATE nyc_census_tract_geoms
- SET geom = ST_MakePolygon(ST_ExteriorRing(geom))
- WHERE ST_NumInteriorRings(geom) >=1;
-
-
-Finally, we must ALTER the geometry attribute from ``geometry`` to ``geometry(MultiPolygon, 26918)``:
-
-.. code-block:: sql
-
- ALTER TABLE nyc_census_tract_geoms ALTER COLUMN geom type geometry(MultiPolygon, 26918) using ST_Multi(geom);
+ UPDATE nyc_census_counties cnt
+ SET geom = a.geom
+ FROM
+ (
+ SELECT countyid, ST_Union(geom)::Geometry(MultiPolygon,26918) AS geom
+ FROM
+ ( 
+ SELECT countyid, ST_Multi(ST_MakePolygon(ST_ExteriorRing((ST_Dump(geom)).geom)))::Geometry(MultiPolygon,26918) as geom
+ FROM
+ (
+ SELECT countyid, (ST_Dump(geom)).geom as geom
+ FROM nyc_census_counties
+ ) as a
+ ) as a
+ GROUP BY countyid
+ ) as a
+ WHERE cnt.countyid = a.countyid;
 
 Function List
 -------------
