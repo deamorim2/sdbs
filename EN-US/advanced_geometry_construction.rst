@@ -113,10 +113,12 @@ A less directional characterization of the end stations is "they are the furthes
 
 Since there is no 100% heuristic to figure out the end points, let's try this second rule out.
 
-.. note:: 
+------
 
-  An obvious failure mode of the "furthest from middle" rule is a circular line, like the Circle Line in London, UK. Fortunately, New York doesn't have any such lines!
-  
+.. note:: - An obvious failure mode of the "furthest from middle" rule is a circular line, like the Circle Line in London, UK. Fortunately, New York doesn't have any such lines!
+
+------
+
 To work out the end stations of every route, we first have to work out what routes there are! We find the distinct routes.
 
 .. code-block:: sql
