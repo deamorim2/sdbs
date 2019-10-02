@@ -169,7 +169,7 @@ Geometry Quality Data Testing
 
 Spatial Union operations (ST_Union_) can result in unwanted interior rings resulted from inaccurated geometry topology consistence like overlap or gap between polygons.
 
-Using the instruction below, we can identify if these are any inconsistencies:
+Using the instruction below, we can identify if there are any inconsistencies:
 
 .. code-block:: sql
 
