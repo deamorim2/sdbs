@@ -62,7 +62,7 @@ Create the new table using the ST_Union_ aggregate:
    
    -- Make the tracts table
    CREATE TABLE nyc_census_tract_geoms AS
-   SELECT ST_Union(geom) AS geom, SubStr(blkid,1,11) AS tractid
+   SELECT ST_Union(geom)::Geometry(MultiPolygon,26918) AS geom, SubStr(blkid,1,11) AS tractid
    FROM nyc_census_blocks
    GROUP BY tractid;
      
@@ -78,24 +78,35 @@ Using the instruction below, we can identify these 14 inconsistencies:
 
 .. code-block:: sql
 
- SELECT tractid
+ SELECT tractid, geom
+ FROM
+ (
+ SELECT tractid, (ST_Dump(geom)).geom as geom
  FROM nyc_census_tract_geoms
+ ) as a
  WHERE ST_NumInteriorRings(geom) >= 1;
 
 To fix this, we must UPDATE the nyc_census_tract_geoms's geometry attribute with the Exterior Ring geometry: 
 
 .. code-block:: sql
 
- UPDATE nyc_census_tract_geoms
- SET geom = ST_MakePolygon(ST_ExteriorRing(geom))
- WHERE ST_NumInteriorRings(geom) >=1;
-
-
-Finally, we must ALTER the geometry attribute from ``geometry`` to ``geometry(MultiPolygon, 26918)``:
-
-.. code-block:: sql
-
- ALTER TABLE nyc_census_tract_geoms ALTER COLUMN geom type geometry(MultiPolygon, 26918) using ST_Multi(geom);
+ UPDATE nyc_census_tract_geoms cnt
+ SET geom = a.geom
+ FROM
+ (
+ SELECT tractid, ST_Union(geom)::Geometry(MultiPolygon,26918) AS geom
+ FROM
+ ( 
+ SELECT tractid, ST_Multi(ST_MakePolygon(ST_ExteriorRing((ST_Dump(geom)).geom)))::Geometry(MultiPolygon,26918) as geom
+ FROM
+ (
+ SELECT tractid, (ST_Dump(geom)).geom as geom
+ FROM nyc_census_tract_geoms
+ ) as a
+ ) as a
+ GROUP BY tractid
+ ) as a
+ WHERE cnt.tractid = a.tractid;
 
 Join the Attributes to the Spatial Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
