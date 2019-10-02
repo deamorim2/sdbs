@@ -31,7 +31,7 @@ Part I - Introduction to PostGIS
 
 #. `Geometries Construction <./EN-US/geometry_returning.rst>`_
 
-#. `Advanced Geometries Construction <./EN-US/advanced_geometry_construnction.rst>`_
+#. `Advanced Geometries Construction <./EN-US/advanced_geometry_construction.rst>`_
 
 #. `Dimensionally Extended 9-Intersection Model (DE-9IM) <./EN-US/de9im.rst>`_
 
