@@ -165,7 +165,33 @@ Then we calculate the area of each of our new county polygons from the county ta
 
 The same answer! We have successfully built an NYC county table from our census blocks data.
 
+Geometry Quality Data Testing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Spatial Union operations (ST_Union_) can result in unwanted interior rings resulted from inaccurated geometry topology consistence like overlap or gap between polygons.
+
+Using the instruction below, we can identify these 14 inconsistencies:
+
+.. code-block:: sql
+
+ SELECT tractid
+ FROM nyc_census_tract_geoms
+ WHERE ST_NumInteriorRings(geom) >= 1;
+
+To fix this, we must UPDATE the nyc_census_tract_geoms's geometry attribute with the Exterior Ring geometry: 
+
+.. code-block:: sql
+
+ UPDATE nyc_census_tract_geoms
+ SET geom = ST_MakePolygon(ST_ExteriorRing(geom))
+ WHERE ST_NumInteriorRings(geom) >=1;
+
+
+Finally, we must ALTER the geometry attribute from ``geometry`` to ``geometry(MultiPolygon, 26918)``:
+
+.. code-block:: sql
+
+ ALTER TABLE nyc_census_tract_geoms ALTER COLUMN geom type geometry(MultiPolygon, 26918) using ST_Multi(geom);
 
 Function List
 -------------
