@@ -170,15 +170,19 @@ Geometry Quality Data Testing
 
 Spatial Union operations (ST_Union_) can result in unwanted interior rings resulted from inaccurated geometry topology consistence like overlap or gap between polygons.
 
-Using the instruction below, we can identify these 14 inconsistencies:
+Using the instruction below, we can identify these 6 inconsistencies:
 
 .. code-block:: sql
 
- SELECT tractid
- FROM nyc_census_tract_geoms
+ SELECT countyid, geom
+ FROM
+ (
+ SELECT countyid, (ST_Dump(geom)).geom as geom
+ FROM nyc_census_counties
+ ) as a
  WHERE ST_NumInteriorRings(geom) >= 1;
 
-To fix this, we must UPDATE the nyc_census_tract_geoms's geometry attribute with the Exterior Ring geometry: 
+To fix this, we must UPDATE the nyc_census_counties's geometry attribute with the Exterior Ring geometry: 
 
 .. code-block:: sql
 
