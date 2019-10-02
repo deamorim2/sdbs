@@ -45,7 +45,7 @@ For example, if the US Park Service wanted to enforce a marine traffic zone arou
 .. image:: ./geometry_returning/liberty_positive.jpg
   :class: inline
 
-The :command:`ST_Buffer` function also accepts negative distances and builds inscribed polygons within polygonal inputs. For lines and points you will just get an empty return.
+The ST_Buffer_ function also accepts negative distances and builds inscribed polygons within polygonal inputs. For lines and points you will just get an empty return.
 
 .. image:: ./geometry_returning/liberty_negative.jpg
   :class: inline
@@ -228,8 +228,14 @@ sum_ (expression): PostgreSQL aggregate function that returns the sum of records
 
 .. _ST_AsText: http://postgis.net/docs/ST_AsText.html
 
+.. _ST_Centroid: http://postgis.net/docs/ST_Centroid.html
+
+.. _ST_PointOnSurface: http://postgis.net/docs/ST_PointOnSurface.html
+
 .. _substring: https://www.postgresql.org/docs/current/functions-string.html
 
 .. _sum: https://www.postgresql.org/docs/current/functions-aggregate.html
+
+
 
 
