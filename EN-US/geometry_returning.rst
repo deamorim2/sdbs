@@ -5,9 +5,9 @@ Geometry Constructing Functions
 
 All the functions we have seen so far work with geometries "as they are" and returns
  
-* analyses of the objects (ST_Length_ (geometry), ST_Area_ (geometry)), 
-* serializations of the objects (ST_AsText_ (geometry), ST_AsGML_ (geometry)), 
-* parts of the object (ST_RingN_ (geometry,n)) or 
+* analyses of the objects (ST_Length (geometry), ST_Area (geometry)), 
+* serializations of the objects (ST_AsText (geometry), ST_AsGML (geometry)), 
+* parts of the object (ST_RingN (geometry,n)) or 
 
 "Geometry constructing functions" take geometries as inputs and output new shapes.
 
