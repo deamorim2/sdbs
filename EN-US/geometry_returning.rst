@@ -5,10 +5,9 @@ Geometry Constructing Functions
 
 All the functions we have seen so far work with geometries "as they are" and returns
  
-* analyses of the objects (:command:`ST_Length(geometry)`, :command:`ST_Area(geometry)`), 
-* serializations of the objects (:command:`ST_AsText(geometry)`, :command:`ST_AsGML(geometry)`), 
-* parts of the object (:command:`ST_RingN(geometry,n)`) or 
-* true/false tests (:command:`ST_Contains(geometry,geometry)`, :command:`ST_Intersects(geometry,geometry)`).
+* analyses of the objects (ST_Length_ (geometry), ST_Area_ (geometry)), 
+* serializations of the objects (ST_AsText_ (geometry), ST_AsGML_ (geometry)), 
+* parts of the object (ST_RingN_ (geometry,n)) or 
 
 "Geometry constructing functions" take geometries as inputs and output new shapes.
 
@@ -16,10 +15,10 @@ All the functions we have seen so far work with geometries "as they are" and ret
 ST_Centroid / ST_PointOnSurface
 -------------------------------
 
-A common need when composing a spatial query is to replace a polygon feature with a point representation of the feature. This is useful for spatial joins (as discussed in :ref:`polypolyjoins`) because using :command:`ST_Intersects(geometry,geometry)` on two polygon layers often results in double-counting: a polygon on a boundary will intersect an object on both sides; replacing it with a point forces it to be on one side or the other, not both.
+A common need when composing a spatial query is to replace a polygon feature with a point representation of the feature.
 
-* :command:`ST_Centroid(geometry)` returns a point that is approximately on the center of mass of the input argument. This simple calculation is very fast, but sometimes not desirable, because the returned point is not necessarily in the feature itself. If the input feature has a convexity (imagine the letter 'C') the returned centroid might not be in the interior of the feature.
-* :command:`ST_PointOnSurface(geometry)` returns a point that is guaranteed to be inside the input argument. It is substantially more computationally expensive than the centroid operation.
+* ST_Centroid_ (geometry) returns a point that is approximately on the center of mass of the input argument. This simple calculation is very fast, but sometimes not desirable, because the returned point is not necessarily in the feature itself. If the input feature has a convexity (imagine the letter 'C') the returned centroid might not be in the interior of the feature.
+* ST_PointOnSurface_ (geometry) returns a point that is guaranteed to be inside the input argument. It is substantially more computationally expensive than the centroid operation.
  
 .. image:: ./geometry_returning/centroid.jpg
   :class: inline
@@ -28,7 +27,7 @@ A common need when composing a spatial query is to replace a polygon feature wit
 ST_Buffer
 ---------
 
-The buffering operation is common in GIS workflows, and is also available in PostGIS. :command:`ST_Buffer(geometry,distance)` takes in a buffer distance and geometry type and outputs a polygon with a boundary the buffer distance away from the input geometry. 
+The buffering operation is common in GIS workflows, and is also available in PostGIS. ST_Buffer_ (geometry,distance) takes in a buffer distance and geometry type and outputs a polygon with a boundary the buffer distance away from the input geometry.
 
 .. image:: ./geometry_returning/st_buffer.png
   :class: inline
@@ -57,7 +56,7 @@ ST_Intersection
 
 Another classic GIS operation -- the "overlay" -- creates a new coverage by calculating the intersection of two superimposed polygons. The resultant has the property that any polygon in either of the parents can be built by merging polygons in the resultant.
 
-The :command:`ST_Intersection(geometry A, geometry B)` function returns the spatial area (or line, or point) that both arguments have in common. If the arguments are disjoint, the function returns an empty geometry.
+The ST_Intersection_ (geometry A, geometry B) function returns the spatial area (or line, or point) that both arguments have in common. If the arguments are disjoint, the function returns an empty geometry.
 
 .. code-block:: sql
 
@@ -77,9 +76,11 @@ The :command:`ST_Intersection(geometry A, geometry B)` function returns the spat
 ST_Union
 --------
 
-In the previous example we intersected geometries, creating a new geometry that had lines from both the inputs. The :command:`ST_Union` does the reverse; it takes inputs and removes common lines. There are two forms of the :command:`ST_Union` function: 
+In the previous example we intersected geometries, creating a new geometry that had lines from both the inputs. The ST_Union_ does the reverse; it takes inputs and removes common lines. There are two forms of the ST_Union_ function: 
 
-* :command:`ST_Union(geometry, geometry)`: A two-argument version that takes in two geometries and returns the merged union.  For example, our two-circle example from the previous section looks like this when you replace the intersection with a union.
+* ST_Union_ (geometry, geometry): A two-argument version that takes in two geometries and returns the merged union.
+
+For example, our two-circle example from the previous section looks like this when you replace the intersection with a union.
  
   .. code-block:: sql
 
@@ -95,9 +96,9 @@ In the previous example we intersected geometries, creating a new geometry that 
     :class: inline
    
 
-* :command:`ST_Union([geometry])`: An aggregate version that takes in a set of geometries and returns the merged geometry for the entire group. The aggregate ST_Union can be used with the ``GROUP BY`` SQL statement to create carefully merged subsets of basic geometries. It is very powerful,
+* ST_Union_ ([geometry]): An aggregate version that takes in a set of geometries and returns the merged geometry for the entire group. The aggregate ST_Union can be used with the ``GROUP BY`` SQL statement to create carefully merged subsets of basic geometries. It is very powerful,
  
-As an example of :command:`ST_Union` aggregation, consider our ``nyc_census_blocks`` table. Census geography is carefully constructed so that larger geographies can be built up from smaller ones. So, we can create a census tracts map by merging the blocks that form each tract (as we do later in :ref:`creatingtractstable`). Or, we can create a county map by merging blocks that fall within each county.
+As an example of ST_Union_ aggregation, consider our ``nyc_census_blocks`` table. Census geography is carefully constructed so that larger geographies can be built up from smaller ones. So, we can create a census tracts map by merging the blocks that form each tract. Or, we can create a county map by merging blocks that fall within each county.
 
 To carry out the merge, note that the unique key ``blkid`` actually embeds information about the higher level geographies. Here are the parts of the key for Liberty Island we used earlier:
 
@@ -164,30 +165,6 @@ Then we calculate the area of each of our new county polygons from the county ta
 
 The same answer! We have successfully built an NYC county table from our census blocks data.
 
-.. This section doesn't appear to be relevant anymore
-
-.. Big Geometries and PgAdmin
-.. ~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. 
-.. Note that, if you run a query that returns the value of a large geometry, such as:
-.. 
-.. .. code-block:: sql
-.. 
-..    SELECT countyid, ST_AsText(geom)
-..    FROM nyc_census_counties;
-..      
-.. You may appear to get no geometries back in your response:
-..      
-.. :: 
-.. 
-..   countyid | st_astext
-..      36005 |
-..      36047 |
-..      36061 |
-..      36081 |
-..      36085 |
-.. 
-.. However, this is only because the boundaries of the census counties are so long and complex that none of them fit into the space provided by pgAdmin for results. They really are there! You can confirm it by returning the ST_Area() or ST_NPoints() or any other function that inspects the values of the geometry object.
 
 
 Function List
