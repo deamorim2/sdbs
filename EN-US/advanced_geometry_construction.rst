@@ -348,7 +348,7 @@ See Also
   
 .. _plpgsql: http://www.postgresql.org/docs/current/static/plpgsql.html
 
-.. _expression: http://www.postgresql.org/docs/current/static/queries-with.html
+.. _expressions: http://www.postgresql.org/docs/current/static/queries-with.html
 
 .. _ST_MakeLine: https://postgis.net/docs/ST_MakeLine.html
 
