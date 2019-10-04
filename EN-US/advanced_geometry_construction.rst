@@ -32,8 +32,8 @@ If we start at one of the end stations, the next station on the line seems to al
 
 There are two ways to run such an iterative routine in a database:
 
-* Using a procedural language, like `PL/PgSQL <http://www.postgresql.org/docs/current/static/plpgsql.html>`_.
-* Using recursive `common table expressions <http://www.postgresql.org/docs/current/static/queries-with.html>`_.
+* Using a procedural language, like plpgsql_ .
+* Using recursive common table expressions_ . 
 
 Common table expressions (CTE) have the virtue of not requiring a function definition to run. Here's the CTE to calculate the route line of the 'Q' train, starting from the northernmost stop (where ``gid`` is 304).
 
@@ -68,7 +68,7 @@ Beyond the recursive CTE itself, there are a number of advanced PostgreSQL array
 * We are using **array_append** to build up our array of visited identifiers.
 * We are using the **@>** array operator ("array contains") to find which of the Q train stations we have already visited. The **@>** operators requires ARRAY values on both sides, so we have to turn the individual "gid" numbers into single-entry arrays using the ARRAY[] syntax.
   
-When you run the query, you get each geometry in the order it is found (which is the route order), as well as the list of identifiers already visited. Wrapping the geometries into the PostGIS `ST_MakeLine <http://postgis.net/docs/manual-2.1/ST_MakeLine.html>`_ aggregate function turns the set of geometries into a single linear output, constructed in the provided order.
+When you run the query, you get each geometry in the order it is found (which is the route order), as well as the list of identifiers already visited. Wrapping the geometries into the PostGIS ST_MakeLine_ aggregate function turns the set of geometries into a single linear output, constructed in the provided order.
 
 .. code-block:: sql
 
@@ -113,10 +113,12 @@ A less directional characterization of the end stations is "they are the furthes
 
 Since there is no 100% heuristic to figure out the end points, let's try this second rule out.
 
-.. note:: 
+------
 
-  An obvious failure mode of the "furthest from middle" rule is a circular line, like the Circle Line in London, UK. Fortunately, New York doesn't have any such lines!
-  
+.. note:: - An obvious failure mode of the "furthest from middle" rule is a circular line, like the Circle Line in London, UK. Fortunately, New York doesn't have any such lines!
+
+------
+
 To work out the end stations of every route, we first have to work out what routes there are! We find the distinct routes.
 
 .. code-block:: sql
@@ -129,7 +131,7 @@ To work out the end stations of every route, we first have to work out what rout
     
 Note the use of two advanced PostgreSQL ARRAY functions:
 
-* **string_to_array** takes in a string and splits it into an array using a separator character. `PostgreSQL supports arrays <http://www.postgresql.org/docs/current/static/arrays.html>`_ of any type, so it's possible to build arrays of strings, as in this case, but also of geometries and geographies as we'll see later in this example.
+* **string_to_array** takes in a string and splits it into an array using a separator character. ostgreSQL supports arrays_ of any type, so it's possible to build arrays of strings, as in this case, but also of geometries and geographies as we'll see later in this example.
 * **unnest** takes in an array and builds a new row for each entry in the array. The effect is to take a "horizontal" array embedded in a single row and turn it into a "vertical" array with a row for each value.
 
 The result is a list of all the unique subway route identifiers.
@@ -334,12 +336,26 @@ As usual, there are some problems with our simple understanding of the data:
 
 Hopefully this example has provided a taste of some of the complex data manipulations that are possible combining the advanced features of PostgreSQL and PostGIS.
 
-
 See Also
 --------
 
-* `PostgreSQL Arrays <http://www.postgresql.org/docs/current/static/arrays.html>`_
-* `PostgreSQL Array Functions <http://www.postgresql.org/docs/current/static/functions-array.html>`_
-* `PostgreSQL Recursive Common TABLE Expressions <http://www.postgresql.org/docs/current/static/queries-with.html>`_
-* `PostGIS ST_MakeLine <http://postgis.net/docs/manual-2.1/ST_MakeLine.html>`_
+* PostgreSQL Arrays_
+* PostgreSQL Array Functions_
+* PostgreSQL Recursive_ Common TABLE Expressions 
+* PostGIS ST_MakeLine_ 
   
+  
+  
+.. _plpgsql: http://www.postgresql.org/docs/current/static/plpgsql.html
+
+.. _expressions: http://www.postgresql.org/docs/current/static/queries-with.html
+
+.. _ST_MakeLine: https://postgis.net/docs/ST_MakeLine.html
+
+.. _Arrays: http://www.postgresql.org/docs/current/static/arrays.html
+
+.. _Recursive: http://www.postgresql.org/docs/current/static/queries-with.html
+
+.. _Functions: http://www.postgresql.org/docs/current/static/functions-array.html
+
+

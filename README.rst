@@ -29,6 +29,8 @@ Part I - Introduction to PostGIS
 
 #. `Geometries <./EN-US/geometries.rst>`_
 
+#. `Geometries Construction <./EN-US/geometry_returning.rst>`_
+
 #. `Dimensionally Extended 9-Intersection Model (DE-9IM) <./EN-US/de9im.rst>`_
 
 #. `Spatial Relationships <./EN-US/spatial_relationship.rst>`_
@@ -39,14 +41,16 @@ Part I - Introduction to PostGIS
 
 #. `Spatial Indexing <./EN-US/indexing.rst>`_
 
+#. `Advanced Geometries Construction <./EN-US/advanced_geometry_construction.rst>`_
+
 Part II - Spatial Database System Implementation
 -------------------------------------------------
 
-#. `Conceptual Modeling <./EN-US/conceptual_modeling.rst>`__
+#. `Conceptual Model for Spatial Data <./EN-US/conceptual_model_spatial_data.rst>`__
 
-#. `Logical Scheme Creation <./EN-US/logical_scheme_creation.rst>`__
+#. `Logical Scheme <./EN-US/logical_scheme.rst>`__
 
-#. `Physical Implementation <./EN-US/physical_implementation.rst>`__
+#. `Physical Implementation in SDBS <./EN-US/physical_implementation_sdbs.rst>`__
 
 License
 =======
