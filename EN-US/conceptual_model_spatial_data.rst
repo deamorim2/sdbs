@@ -72,7 +72,43 @@ Geo-Object
 
 Geo-object classes represent individual, particular geographic objects, which can be traced back to real world elements, such as buildings, rivers, and trees.
 
+A **geo-object with geometry class** represents objects which have only geometric properties (points, lines, and polygons), and is specialized precisely in classes named Point, Line, and Polygon, such as bus stop, curb line, and municipal limits, for example.
+
+A **geo-object with geometry and topology** represents objects which have, in addition to geometric properties, topological connectivity properties, and are specifically suited to the representation of spatial network structures, such as water supply systems, electrical distribution systems, or road networks.
+
 .. image:: ./omtg/geoobject.png
   :class: inline
 
+Relationships
+-------------
 
+OMT-G represents the three types of relationship that can occur between its classes:
+
+- Simple Associations
+- Topological Network Relations
+- Spatial relations.
+
+Simple associations represent structural relationships between objects of different classes, conventional as well as georeferenced. 
+
+Spatial relations represent the topologic, metric, ordinal, and fuzzy relationships. Some relations can be derived automatically, from the geometry of each object, during the execution of data entry or spatial analysis operations.
+
+Topologic relations are an example of this. Others need to be specified by the user, in order to allow the system to store and maintain that information. The latter are called explicit relations.
+
+.. image:: ./omtg/relationship.png
+  :class: inline
+
+The DE-9IM model, a minimum set of spatial relation operators is identified, comprising only five spatial relations, from which all others can be specified: touch, in, cross, overlap, and disjoint.
+
+However, sometimes a larger set is required due to cultural or semantic concepts that are familiar to the users. These include relations such as adjacent to, coincide, contain, and near, which are in fact special cases of one of the five basic relations, but deserve special treatment because of their common use in practice.
+
+Additional constraints can be formulated in case some additional relation is required by the application. These include any kind of directional or relative spatial relations, such as north of, left of, in front of, or above.
+
+Cardinality
+-----------
+
+Relationships are characterized by their cardinality. The notation for cardinality adopted by OMT-G is the same used by UML.
+
+.. image:: ./omtg/cardinality.png
+  :class: inline
+  
+  
