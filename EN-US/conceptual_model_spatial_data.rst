@@ -1,6 +1,6 @@
 .. _conceptual_model_spatial_data:
 
-
+=================================
 Conceptual Model for Spatial Data
 =================================
 
