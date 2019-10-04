@@ -46,11 +46,14 @@ In OMT-G, the class diagram is used to describe the structure and contents of a 
 
 The classes defined by the OMT-G model represent the three main groups of data (continuous, discrete, and non-spatial) that can be found in geographic applications, thereby allowing for an integrated view of the modeled space. The classes can be georeferenced or conventional.
 
-A **georeferenced class** describes a set of objects that have spatial representation and are associated to features on Earth, assuming the fields and objects view.
-
 A **conventional class** describes a set of objects with similar properties, behavior, relationships, and semantics, and which can have some sort of relationship with spatial objects, but which do not have geometric or geographic properties.
 
-.. image:: ./omtg/classes.png
+.. image:: ./omtg/conventionalclasses.png
+  :class: inline
+
+A **georeferenced class** describes a set of objects that have spatial representation and are associated to features on Earth, assuming the fields and objects view.
+
+.. image:: ./omtg/georreferencedclasses.png
   :class: inline
 
 
@@ -74,9 +77,12 @@ Geo-object classes represent individual, particular geographic objects, which ca
 
 A **geo-object with geometry class** represents objects which have only geometric properties (points, lines, and polygons), and is specialized precisely in classes named Point, Line, and Polygon, such as bus stop, curb line, and municipal limits, for example.
 
+.. image:: ./omtg/geoobjectclass.png
+  :class: inline
+
 A **geo-object with geometry and topology** represents objects which have, in addition to geometric properties, topological connectivity properties, and are specifically suited to the representation of spatial network structures, such as water supply systems, electrical distribution systems, or road networks.
 
-.. image:: ./omtg/geoobject.png
+.. image:: ./omtg/geoobjecttopology.png
   :class: inline
 
 Relationships
