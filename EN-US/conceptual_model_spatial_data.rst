@@ -26,7 +26,7 @@ The OMT-G model is based on three main concepts:
 - Spatial Integrity Constraints
 
 Diagrams
---------
+========
 
 OMT-G proposes the use of three different diagrams in the process of designing a geographic application.
 
@@ -38,7 +38,7 @@ Finally, a **presentation diagram** must be built in order to provide guidelines
 each application or group of users.
 
 Class Diagram
-~~~~~~~~~~~~~~
+-------------
 
 In OMT-G, the class diagram is used to describe the structure and contents of a geographic database. It contains specific elements of the structure of the database, in special object classes and their relationships, and no transformations or other dynamic processes are considered.
 
@@ -55,7 +55,7 @@ A **conventional class** describes a set of objects with similar properties, beh
 
 
 Georeferenced Classes
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 Georeferenced classes are specialized into geo-field and geo-object classes.
 
