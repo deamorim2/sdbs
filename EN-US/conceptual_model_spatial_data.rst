@@ -38,7 +38,7 @@ Finally, a **presentation diagram** must be built in order to provide guidelines
 each application or group of users.
 
 Class Diagram
--------------
+=============
 
 In OMT-G, the class diagram is used to describe the structure and contents of a geographic database. It contains specific elements of the structure of the database, in special object classes and their relationships, and no transformations or other dynamic processes are considered.
 
