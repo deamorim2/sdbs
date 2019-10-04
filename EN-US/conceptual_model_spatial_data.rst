@@ -55,14 +55,20 @@ A **conventional class** describes a set of objects with similar properties, beh
 
 
 Georeferenced Classes
+~~~~~~~~~~~~~~~~~~~~~
 
-- Geo-field class
-- Geo-object class
+Georeferenced classes are specialized into geo-field and geo-object classes.
+
+Geo-Field
+~~~~~~~~~
 
 Geo-field classes represent objects and phenomena that are continuously distributed over the space, corresponding to variables such as soil type, relief, and mineral contents.
 
 .. image:: ./omtg/geofield.png
   :class: inline
+
+Geo-Object
+~~~~~~~~~~
 
 Geo-object classes represent individual, particular geographic objects, which can be traced back to real world elements, such as buildings, rivers, and trees.
 
