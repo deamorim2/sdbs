@@ -25,7 +25,7 @@ The OMT-G model is based on three main concepts:
 - Relationships
 - Spatial Integrity Constraints
 
-Diagrams
+DIAGRAMS
 ========
 
 OMT-G proposes the use of three different diagrams in the process of designing a geographic application.
@@ -117,4 +117,87 @@ Relationships are characterized by their cardinality. The notation for cardinali
 .. image:: ./omtg/cardinality.png
   :class: inline
   
+Generalization and Specialization
+---------------------------------
+
+**Generalization** is the process of defining classes that are more general (superclasses) than classes with similar characteristics (subclasses).
+
+**Specialization** is the inverse process, in which more specific classes are detailed from generic ones, adding new properties in the
+form of attributes. Each subclass inherits attributes, operations, and associations from the superclass.
+
+In the OMT-G model, the **generalization and specialization** abstractions apply both to georeferenced classes and conventional classes, following the definitions and notation proposed for UML, where a triangle connects a superclass to its subclasses.
+
+Each **generalization** can have an associated discriminator, indicating which property is being abstracted by the generalization relationship.
+
+.. image:: ./omtg/generalization.png
+  :class: inline
+
+Generalizations(spatial or not) can be specified as **total** or **partial**.
+
+A generalization is **total** when the union of all instances of the subclasses is equivalent to the complete set of instances of the superclass. In OMT-G, the totallity is presented by a dot placed in the upper vertex of the triangle that denotes the generalization.
+
+OMT-G also adopts the UML predefined constraint elements **disjoint** and **overlapping**, that is, in a **disjoint** relation the triangle is left blank and in a **overlapping** relation the triangle is filled.
+
+.. image:: ./omtg/generalization_complete.png
+  :class: inline
   
+Aggregation
+-----------
+
+**Aggregation** is a special form of association between objects, where one of them is considered to be assembled from others.
+
+The graphic notation used in OMT-G follows the one used by UML.
+
+.. image:: ./omtg/umlaggregation.png
+  :class: inline
+
+An **aggregation** can occur between **conventional classes**, between **georeferenced and conventional classes** and also between **georeferenced classes**.
+
+.. image:: ./omtg/aggregation_con_geo.png
+  :class: inline
+
+When the **aggregation** is between **georeferenced classes**, **spatial aggregation** must be used.
+
+.. image:: ./omtg/aggregation_geo_geo.png
+  :class: inline
+
+**Spatial aggregation** is a special case of aggregation in which topological “whole-part” relationships are made explicit.
+
+The usage of this kind of aggregation imposes spatial integrity constraints regarding the existence of the aggregated object and the corresponding sub-objects.
+
+In spatial aggregation, also called topological “whole-part”, the geometry of each part is entirely contained within the geometry of the whole. Also, no overlapping among the parts is allowed and the geometry of the whole is fully covered by the geometry of the parts.
+
+Cartographic Generalization
+---------------------------
+
+Generalization, in the cartographic sense, can be seen as a series of transformations that are performed over the representation of spatial information, geared towards improving readability and understanding of data.
+
+For instance, a real world object can have several different spatial representations, according to the current viewing scale.
+
+A city can be represented in a smallscale map as a point, and as a polygon in a large-scale map. In this sense, this paper uses the term representation in the sense of a coding of the geometry of geographic objects (involving aspects such as resolution, spatial dimension, precision, level of detail, and geometric/topologic behavior).
+
+Cartographic generalization can occur in two representation variations: according to **geometric shape** and according to **scale**.
+
+The variation according to **geometric shape** is used to record the simultaneous existence of multiple scale-independent representations for a class. For instance, a river can be represented by its axis, as a single line, as the space between its margins, as a polygon covered by water, or as a set of flows (directed arcs) within river sections, forming a hydrographic network.
+
+.. image:: ./omtg/generalization_geo_shape.png
+  :class: inline
+
+
+Variation according to **scale** is used in the representation of different geometric aspects of a given class, each corresponding to a range of scales. A city can be represented by its political borders (a polygon) in a larger scale, and by a symbol (a point) in a smaller scale.
+
+.. image:: ./omtg/generalization_geo_scale.png
+  :class: inline
+
+The notation used for cartographic generalization uses a square to connect the superclass to its subclasses. The subclass is connected to the square by a dashed line. As a discriminator, the word Scale is used to mean variation according to scale, and the word Shape is used to determine variation according to geometric shape. The square is blank when subclasses are disjoint and filled if subclass overlapping is allowed.
+
+The variation according to geometric shape can also be used in the representation of classes which simultaneously have georeferenced and conventional instances. For instance, a traffic sign can exist in the database as a non-georeferenced object, such as a warehouse item, but it becomes georeferenced when installed at a particular location.
+
+.. image:: ./omtg/generalization_geo_conv.png
+  :class: inline
+
+Transformation Diagrams
+=======================
+
+The transformation diagram proposed for OMT-G follows the UML notation for the state and activity diagrams and is used to specify transformations between classes. Even though it is used to specify transformation operations, the transformation diagram still operates at the conceptual representation level. This is because both the source and the results of the transformation are representations.
+
