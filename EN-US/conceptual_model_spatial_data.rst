@@ -25,7 +25,7 @@ The OMT-G model is based on three main concepts:
 - Relationships
 - Spatial Integrity Constraints
 
-Diagrams
+DIAGRAMS
 ========
 
 OMT-G proposes the use of three different diagrams in the process of designing a geographic application.
@@ -178,7 +178,26 @@ A city can be represented in a smallscale map as a point, and as a polygon in a 
 
 Cartographic generalization can occur in two representation variations: according to **geometric shape** and according to **scale**.
 
-The variation according to geometric shape is used to record the simultaneous existence of multiple scale-independent representations for a class. For instance, a river can be represented by its axis, as a single line, as the space between its margins, as a polygon covered by water, or as a set of flows (directed arcs) within river sections, forming a hydrographic network. Variation according to scale is used in the representation of different geometric aspects of a given class, each corresponding to a range of scales. A city can be represented by its political borders (a polygon) in a larger scale, and by a symbol (a point) in a smaller scale.
+The variation according to **geometric shape** is used to record the simultaneous existence of multiple scale-independent representations for a class. For instance, a river can be represented by its axis, as a single line, as the space between its margins, as a polygon covered by water, or as a set of flows (directed arcs) within river sections, forming a hydrographic network.
+
+.. image:: ./omtg/generalization_geo_shape.png
+  :class: inline
+
+
+Variation according to **scale** is used in the representation of different geometric aspects of a given class, each corresponding to a range of scales. A city can be represented by its political borders (a polygon) in a larger scale, and by a symbol (a point) in a smaller scale.
+
+.. image:: ./omtg/generalization_geo_scale.png
+  :class: inline
 
 The notation used for cartographic generalization uses a square to connect the superclass to its subclasses. The subclass is connected to the square by a dashed line. As a discriminator, the word Scale is used to mean variation according to scale, and the word Shape is used to determine variation according to geometric shape. The square is blank when subclasses are disjoint and filled if subclass overlapping is allowed.
+
+The variation according to geometric shape can also be used in the representation of classes which simultaneously have georeferenced and conventional instances. For instance, a traffic sign can exist in the database as a non-georeferenced object, such as a warehouse item, but it becomes georeferenced when installed at a particular location.
+
+.. image:: ./omtg/generalization_geo_conv.png
+  :class: inline
+
+Transformation Diagrams
+=======================
+
+The transformation diagram proposed for OMT-G follows the UML notation for the state and activity diagrams and is used to specify transformations between classes. Even though it is used to specify transformation operations, the transformation diagram still operates at the conceptual representation level. This is because both the source and the results of the transformation are representations.
 
