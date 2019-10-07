@@ -4,22 +4,20 @@
 Conceptual Model for Spatial Data
 =================================
 
-According to Borges(2001), semantic and object-oriented data models, such as ER, OMT, IFO, and others, have been extensively used for modeling geographic applications.
+According to Borges_(2001), semantic and object-oriented data models, such as Entity-Relatonship Model (E-R_), Object-modeling technique (OMT_), and others, have been extensively used for modeling geographic applications.
 
 Despite their semantic expressiveness, such models present limitations to adequately model those applications, since they do not provide appropriate primitives for representing spatial data.
 
-Borges(2001) proposes the OMT-G model, an object oriented data model for geographic applications.
+Borges_(2001) proposes the **OMT-G model**, an object oriented data model for geographic applications.
 
-OMT-G provides primitives for modeling the geometry and the topology of spatial data, supporting different topological structures, multiple views of objects, and spatial relationships.
+**OMT-G** provides primitives for modeling the geometry and the topology of spatial data, supporting different topological structures, multiple views of objects, and spatial relationships.
 
-OMT-G also includes tools to specify transformation processes and presentation alternatives, that allow, among many other possibilities, modeling for multiple representations and multiple presentations.
-
-In this way, it overcomes the main limitations of the existing models, like EXT. IFO, OMT EXT., GISER, Geo-OOA, GMOD and Modulo-R, for example, thus providing more adequate tools for modeling geographic applications.
+**OMT-G** also includes tools to specify transformation processes and presentation alternatives, that allow, among many other possibilities, modeling for multiple representations and multiple presentations.
 
 The OMT-G Data Model
 ====================
 
-The OMT-G model is based on three main concepts:
+The **OMT-G** model is based on three main concepts:
 
 - Classes
 - Relationships
@@ -28,13 +26,13 @@ The OMT-G model is based on three main concepts:
 DIAGRAMS
 ========
 
-OMT-G proposes the use of three different diagrams in the process of designing a geographic application.
+**OMT-G** proposes the use of three different diagrams in the process of designing a geographic application.
 
-The first, and more usual one, is the **class diagram**, in which all classes are specified, along with their representations and relationships. From this diagram, it is possible to derive a set of spatial integrity constraints that must be observed in the implementation.
+The first, and more usual one, is the **Class Diagram**, in which all classes are specified, along with their representations and relationships. From this diagram, it is possible to derive a set of spatial integrity constraints that must be observed in the implementation.
 
-When the class diagram indicates the need for multiple representations of any class, or when the application involves the derivation of some class from others, a **transformation diagram** must be built. In it, all transformation processes can be specified, allowing for the identification of any required methods for the implementation.
+When the class diagram indicates the need for multiple representations of any class, or when the application involves the derivation of some class from others, a **Transformation Diagram** must be built. In it, all transformation processes can be specified, allowing for the identification of any required methods for the implementation.
 
-Finally, a **presentation diagram** must be built in order to provide guidelines for the visual aspect of objects in the implementation. There can be several visual aspects for any given class, which allows for the definition of a view or set of views for
+Finally, a **Presentation Diagram** must be built in order to provide guidelines for the visual aspect of objects in the implementation. There can be several visual aspects for any given class, which allows for the definition of a view or set of views for
 each application or group of users.
 
 Class Diagram
@@ -46,12 +44,12 @@ In OMT-G, the class diagram is used to describe the structure and contents of a 
 
 The classes defined by the OMT-G model represent the three main groups of data (continuous, discrete, and non-spatial) that can be found in geographic applications, thereby allowing for an integrated view of the modeled space. The classes can be georeferenced or conventional.
 
-A **conventional class** describes a set of objects with similar properties, behavior, relationships, and semantics, and which can have some sort of relationship with spatial objects, but which do not have geometric or geographic properties.
+A **Conventional Class** describes a set of objects with similar properties, behavior, relationships, and semantics, and which can have some sort of relationship with spatial objects, but which do not have geometric or geographic properties.
 
 .. image:: ./omtg/conventionalclasses.png
   :class: inline
 
-A **georeferenced class** describes a set of objects that have spatial representation and are associated to features on Earth, assuming the fields and objects view.
+A **Georeferenced Class** describes a set of objects that have spatial representation and are associated to features on Earth, assuming the fields and objects view.
 
 .. image:: ./omtg/georreferencedclasses.png
   :class: inline
@@ -60,12 +58,12 @@ A **georeferenced class** describes a set of objects that have spatial represent
 Georeferenced Classes
 ---------------------
 
-Georeferenced classes are specialized into geo-field and geo-object classes.
+Georeferenced Classes are specialized into **Geo-Field** and **Geo-Object** classes.
 
 Geo-Field
 ~~~~~~~~~
 
-Geo-field classes represent objects and phenomena that are continuously distributed over the space, corresponding to variables such as soil type, relief, and mineral contents.
+**Geo-Field** Classes represent objects and phenomena that are continuously distributed over the space, corresponding to variables such as soil type, relief, and mineral contents.
 
 .. image:: ./omtg/geofield.png
   :class: inline
@@ -73,14 +71,14 @@ Geo-field classes represent objects and phenomena that are continuously distribu
 Geo-Object
 ~~~~~~~~~~
 
-Geo-object classes represent individual, particular geographic objects, which can be traced back to real world elements, such as buildings, rivers, and trees.
+**Geo-Object** classes represent individual, particular geographic objects, which can be traced back to real world elements, such as buildings, rivers, and trees.
 
-A **geo-object with geometry class** represents objects which have only geometric properties (points, lines, and polygons), and is specialized precisely in classes named Point, Line, and Polygon, such as bus stop, curb line, and municipal limits, for example.
+A **Geo-Object with Geometry Class** represents objects which have only geometric properties (points, lines, and polygons), and is specialized precisely in classes named Point, Line, and Polygon, such as bus stop, curb line, and municipal limits, for example.
 
 .. image:: ./omtg/geoobjectclass.png
   :class: inline
 
-A **geo-object with geometry and topology** represents objects which have, in addition to geometric properties, topological connectivity properties, and are specifically suited to the representation of spatial network structures, such as water supply systems, electrical distribution systems, or road networks.
+A **Geo-Object with Geometry and Topology** represents objects which have, in addition to geometric properties, topological connectivity properties, and are specifically suited to the representation of spatial network structures, such as water supply systems, electrical distribution systems, or road networks.
 
 .. image:: ./omtg/geoobjecttopology.png
   :class: inline
@@ -88,17 +86,17 @@ A **geo-object with geometry and topology** represents objects which have, in ad
 Relationships
 -------------
 
-OMT-G represents the three types of relationship that can occur between its classes:
+**OMT-G** represents the three types of relationship that can occur between its classes:
 
 - Simple Associations
 - Topological Network Relations
-- Spatial relations.
+- Spatial Relations.
 
-Simple associations represent structural relationships between objects of different classes, conventional as well as georeferenced. 
+**Simple Associations** represent structural relationships between objects of different classes, conventional as well as georeferenced. 
 
-Spatial relations represent the topologic, metric, ordinal, and fuzzy relationships. Some relations can be derived automatically, from the geometry of each object, during the execution of data entry or spatial analysis operations.
+**Spatial Relations** represent the topologic, metric, ordinal, and fuzzy relationships. Some relations can be derived automatically, from the geometry of each object, during the execution of data entry or spatial analysis operations.
 
-Topologic relations are an example of this. Others need to be specified by the user, in order to allow the system to store and maintain that information. The latter are called explicit relations.
+**Topologic Relations** are an example of this. Others need to be specified by the user, in order to allow the system to store and maintain that information. The latter are called explicit relations.
 
 .. image:: ./omtg/relationship.png
   :class: inline
@@ -112,7 +110,7 @@ Additional constraints can be formulated in case some additional relation is req
 Cardinality
 -----------
 
-Relationships are characterized by their cardinality. The notation for cardinality adopted by OMT-G is the same used by UML.
+Relationships are characterized by their cardinality_. The notation for cardinality_ adopted by OMT-G is the same used by UML_.
 
 .. image:: ./omtg/cardinality.png
   :class: inline
@@ -125,18 +123,18 @@ Generalization and Specialization
 **Specialization** is the inverse process, in which more specific classes are detailed from generic ones, adding new properties in the
 form of attributes. Each subclass inherits attributes, operations, and associations from the superclass.
 
-In the OMT-G model, the **generalization and specialization** abstractions apply both to georeferenced classes and conventional classes, following the definitions and notation proposed for UML, where a triangle connects a superclass to its subclasses.
+In the **OMT-G** model, the **generalization and specialization** abstractions apply both to georeferenced classes and conventional classes, following the definitions and notation proposed for UML, where a triangle connects a superclass to its subclasses.
 
 Each **generalization** can have an associated discriminator, indicating which property is being abstracted by the generalization relationship.
 
 .. image:: ./omtg/generalization.png
   :class: inline
 
-Generalizations(spatial or not) can be specified as **total** or **partial**.
+**Generalizations**(spatial or not) can be specified as **total** or **partial**.
 
-A generalization is **total** when the union of all instances of the subclasses is equivalent to the complete set of instances of the superclass. In OMT-G, the totallity is presented by a dot placed in the upper vertex of the triangle that denotes the generalization.
+A **Generalization** is **Total** when the union of all instances of the subclasses is equivalent to the complete set of instances of the superclass. In OMT-G, the totallity is presented by a dot placed in the upper vertex of the triangle that denotes the generalization.
 
-OMT-G also adopts the UML predefined constraint elements **disjoint** and **overlapping**, that is, in a **disjoint** relation the triangle is left blank and in a **overlapping** relation the triangle is filled.
+**OMT-G** also adopts the UML_ predefined constraint elements **Disjoint** and **Overlapping**, that is, in a **Disjoint** relation the triangle is left blank and in a **Overlapping** relation the triangle is filled.
 
 .. image:: ./omtg/generalization_complete.png
   :class: inline
@@ -148,22 +146,22 @@ Aggregation
 
 The graphic notation used in OMT-G follows the one used by UML.
 
-An **aggregation** can occur between **conventional classes**:
+An **Aggregation** can occur between **Conventional Classes**:
 
 .. image:: ./omtg/umlaggregation.png
   :class: inline
 
-...between **georeferenced and conventional classes**:
+...between **Georeferenced and Conventional Classes**:
 
 .. image:: ./omtg/aggregation_con_geo.png
   :class: inline
 
-...and when the **aggregation** is between **georeferenced classes**, **spatial aggregation** must be used.
+...and when the **Aggregation** is between **Georeferenced Classes**, **Spatial Aggregation** must be used.
 
 .. image:: ./omtg/aggregation_geo_geo.png
   :class: inline
 
-**Spatial aggregation** is a special case of aggregation in which topological “whole-part” relationships are made explicit.
+**Spatial Aggregation** is a special case of aggregation in which topological “whole-part” relationships are made explicit.
 
 The usage of this kind of aggregation imposes spatial integrity constraints regarding the existence of the aggregated object and the corresponding sub-objects.
 
@@ -172,21 +170,21 @@ In spatial aggregation, also called topological “whole-part”, the geometry o
 Cartographic Generalization
 ---------------------------
 
-Generalization, in the cartographic sense, can be seen as a series of transformations that are performed over the representation of spatial information, geared towards improving readability and understanding of data.
+**Generalization**, in the cartographic sense, can be seen as a series of transformations that are performed over the representation of spatial information, geared towards improving readability and understanding of data.
 
 For instance, a real world object can have several different spatial representations, according to the current viewing scale.
 
 A city can be represented in a smallscale map as a point, and as a polygon in a large-scale map. In this sense, this paper uses the term representation in the sense of a coding of the geometry of geographic objects (involving aspects such as resolution, spatial dimension, precision, level of detail, and geometric/topologic behavior).
 
-Cartographic generalization can occur in two representation variations: according to **geometric shape** and according to **scale**.
+**Cartographic Generalization** can occur in two representation variations: according to **Geometric Shape** and according to **Scale**.
 
-The variation according to **geometric shape** is used to record the simultaneous existence of multiple scale-independent representations for a class. For instance, a river can be represented by its axis, as a single line, as the space between its margins, as a polygon covered by water, or as a set of flows (directed arcs) within river sections, forming a hydrographic network.
+The variation according to **Geometric Shape** is used to record the simultaneous existence of multiple scale-independent representations for a class. For instance, a river can be represented by its axis, as a single line, as the space between its margins, as a polygon covered by water, or as a set of flows (directed arcs) within river sections, forming a hydrographic network.
 
 .. image:: ./omtg/generalization_geo_shape.png
   :class: inline
 
 
-Variation according to **scale** is used in the representation of different geometric aspects of a given class, each corresponding to a range of scales. A city can be represented by its political borders (a polygon) in a larger scale, and by a symbol (a point) in a smaller scale.
+Variation according to **Scale** is used in the representation of different geometric aspects of a given class, each corresponding to a range of scales. A city can be represented by its political borders (a polygon) in a larger scale, and by a symbol (a point) in a smaller scale.
 
 .. image:: ./omtg/generalization_geo_scale.png
   :class: inline
@@ -201,12 +199,12 @@ The variation according to geometric shape can also be used in the representatio
 Transformation Diagrams
 =======================
 
-The transformation diagram proposed for OMT-G follows the UML notation for the state and activity diagrams and is used to specify transformations between classes. Even though it is used to specify transformation operations, the transformation diagram still operates at the conceptual representation level. This is because both the source and the results of the transformation are representations.
+The **Transformation Diagram** proposed for **OMT-G** follows the UML_ notation for the state and activity diagrams and is used to specify transformations between classes. Even though it is used to specify transformation operations, the transformation diagram still operates at the conceptual representation level. This is because both the source and the results of the transformation are representations.
 
 .. image:: ./omtg/transformation_diagram_1.png
   :class: inline
   
-A transformation operator adequate for the transformation diagram can basically be any algorithm that manipulates and modifies existing data on the representation of an object. This is often necessary in the execution of complex spatial analysis procedures, in which a given class or set of classes need to be transformed so that they can be more easily compared.
+A **Transformation Operator** adequate for the transformation diagram can basically be any algorithm that manipulates and modifies existing data on the representation of an object. This is often necessary in the execution of complex spatial analysis procedures, in which a given class or set of classes need to be transformed so that they can be more easily compared.
 
 .. image:: ./omtg/transformation_diagram_2.png
   :class: inline
@@ -224,9 +222,7 @@ Geometric Operators
 
 .. image:: ./omtg/transformation_diagram_5.png
   :class: inline  
-
   
-
 Map Generalization Operators
 ----------------------------
 
@@ -238,11 +234,8 @@ Map Generalization Operators
 - Simplification: reduce the number of vertices employed to represent the element, in order to produce an appearance that is similar to the original, though simpler.
 - Smoothing: displace the vertices used in the representation, in order to eliminate small disturbances and to capture the main tendencies as to the graphical shape.
 
-
-
 .. image:: ./omtg/transformation_diagram_3.png
   :class: inline
-
 
 Spatial Analysis Operators
 --------------------------
@@ -261,19 +254,28 @@ Spatial Analysis Operators
 Presentation Diagram
 ====================
 
-The presentation model for OMT-G assembles the requirements posed by the user in terms of output alternatives for each geographic object. These alternatives may include presentations defined for viewing on the screen, for printout as maps or charts, or both.
+The **Presentation Model for OMT-G** assembles the requirements posed by the user in terms of output alternatives for each geographic object. These alternatives may include presentations defined for viewing on the screen, for printout as maps or charts, or both.
 
 .. image:: ./omtg/presentation_diagram_1.png
   :class: inline  
 
-Presentations are defined starting from a representation that has been defined at the conceptual representation level. Transformation to presentation (TP) operations are then specified in order to achieve the visual aspect desired from the simple geometric shape defined for the representation. Observe that a TP operation does not modify the representation alternative that has been defined previously, nor does it change the level of detail defined at the conceptual representation level.
+**Presentations** are defined starting from a representation that has been defined at the conceptual representation level. **Transformation to Presentation** (TP) operations are then specified in order to achieve the visual aspect desired from the simple geometric shape defined for the representation. Observe that a TP operation does not modify the representation alternative that has been defined previously, nor does it change the level of detail defined at the conceptual representation level.
   
 .. image:: ./omtg/presentation_diagram_2.png
   :class: inline  
   
-Class Diagrma Example 
+Class Diagram Example 
 =====================
 
 .. image:: ./omtg/class_diagram.png
   :class: inline  
 
+.. _Borges: https://drive.google.com/file/d/1zAVAyagXibfFhSac69R1cZf43Sd5spYe/view?usp=sharing
+
+.. _UML: https://en.wikipedia.org/wiki/Unified_Modeling_Language
+
+.. _Cardinality: https://en.wikipedia.org/wiki/Cardinality_(data_modeling)
+
+.. _E-R: https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model
+
+.. _OMT: https://en.wikipedia.org/wiki/Object-modeling_technique
