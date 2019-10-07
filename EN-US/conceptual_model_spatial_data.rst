@@ -201,3 +201,74 @@ Transformation Diagrams
 
 The transformation diagram proposed for OMT-G follows the UML notation for the state and activity diagrams and is used to specify transformations between classes. Even though it is used to specify transformation operations, the transformation diagram still operates at the conceptual representation level. This is because both the source and the results of the transformation are representations.
 
+.. image:: ./omtg/transformation_diagram_1.png
+  :class: inline
+  
+A transformation operator adequate for the transformation diagram can basically be any algorithm that manipulates and modifies existing data on the representation of an object. This is often necessary in the execution of complex spatial analysis procedures, in which a given class or set of classes need to be transformed so that they can be more easily compared.
+
+.. image:: ./omtg/transformation_diagram_2.png
+  :class: inline
+
+Geometric Operators
+-------------------
+
+- Centroid determination: select a point that is internal to a given polygon, usually its center of gravity.
+- Convex hull: define the boundaries of the smallest convex polygon that contains a given point set.
+- Delaunay triangulation: given a point set, define of a set of non-overlapping triangles in which the vertices are the points of the set.
+- Isoline generation: build a set of lines and polygons that describe the intersection between a given 3-D surface and a horizontal plane.
+- Polygon triangulation: divide a polygon into non-overlapping neighboring triangles.
+- Skeletonization: build a 1-D version of a polygonal object, through an approximation of its medial axis.
+- Voronoi diagram: given a set of sites (points), divide the plane in polygons so that each polygon is the locus of the points closer to one of the sites than to any other site.
+
+.. image:: ./omtg/transformation_diagram_3.png
+  :class: inline
+  
+
+Map Generalization Operators
+----------------------------
+
+- Aggregation: join point elements which are very close to each other, representing the result with the limits of the area occupied by the point set.
+- Amalgamation: join nearly contiguous and similar areas, by eliminating borders between them.
+- Collapse: reduce the dimension of the representation of an object, caused by its representation’s size reduction. An area element (2-D) that becomes too small due, for instance, to scale reduction, would be represented as a line (1-D) or point (0-D).
+- Merging: join two or more parallel lines that are too close to each other into a single line.
+- Refinement: discard less significant elements, which are close to more important ones, in order to preserve the visual characteristics of the overall representation but with less information density. In the opposite sense, this operator is often named Selection.
+- Simplification: reduce the number of vertices employed to represent the element, in order to produce an appearance that is similar to the original, though simpler.
+- Smoothing: displace the vertices used in the representation, in order to eliminate small disturbances and to capture the main tendencies as to the graphical shape.
+
+.. image:: ./omtg/transformation_diagram_4.png
+  :class: inline
+  
+
+Spatial Analysis Operators
+--------------------------
+
+- Buffer construction: create a polygon that contains all points of the plane closer than a given distance to an object.
+- Classification: separate objects in groups, according to a set of criteria
+- Grid analysis: manipulate information contained in tesselations (mostly in the form of digital images), including vectorization (extract points, lines and polygons from an image), rasterization (transform points, lines, and polygons into an image), image classification (group cells according to their value), resampling (change the dimensions of the image by means of interpolation on the original cells), and others.
+- Polygon overlay: determine the intersection between two sets of polygons.
+- Selection: retrieve objects from an object set, based on spatial or alphanumeric criteria.
+- Spatial interpolation: determine the value of a geo-field at a given point, based on information from other points.
+- Surface analysis: extract information from a three-dimensional surface model, such as declivity, flood plains, and drainage profiles.
+
+.. image:: ./omtg/transformation_diagram_5.png
+  :class: inline  
+  
+Presentation Diagram
+====================
+
+The presentation model for OMT-G assembles the requirements posed by the user in terms of output alternatives for each geographic object. These alternatives may include presentations defined for viewing on the screen, for printout as maps or charts, or both.
+
+Presentations are defined starting from a representation that has been defined at the conceptual representation level. Transformation to presentation (TP) operations are then specified in order to achieve the visual aspect desired from the simple geometric shape defined for the representation. Observe that a TP operation does not modify the representation alternative that has been defined previously, nor does it change the level of detail defined at the conceptual representation level.
+
+.. image:: ./omtg/presentation_diagram_1.png
+  :class: inline  
+  
+.. image:: ./omtg/presentation_diagram_2.png
+  :class: inline  
+  
+Class Diagrma Example 
+=====================
+
+.. image:: ./omtg/class_diagram.png
+  :class: inline  
+
