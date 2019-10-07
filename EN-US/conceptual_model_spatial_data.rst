@@ -103,11 +103,11 @@ Topologic relations are an example of this. Others need to be specified by the u
 .. image:: ./omtg/relationship.png
   :class: inline
 
-The DE-9IM model, a minimum set of spatial relation operators is identified, comprising only five spatial relations, from which all others can be specified: touch, in, cross, overlap, and disjoint.
+In the **DE-9IM** model, a minimum set of spatial relation operators is identified, comprising only five spatial relations, from which all others can be specified: **touch**, **in**, **cross**, **overlap**, and **disjoint**.
 
-However, sometimes a larger set is required due to cultural or semantic concepts that are familiar to the users. These include relations such as adjacent to, coincide, contain, and near, which are in fact special cases of one of the five basic relations, but deserve special treatment because of their common use in practice.
+However, sometimes a larger set is required due to cultural or semantic concepts that are familiar to the users. These include relations such as **adjacent to**, **coincide**, **contain**, and **near**, which are in fact special cases of one of the five basic relations, but deserve special treatment because of their common use in practice.
 
-Additional constraints can be formulated in case some additional relation is required by the application. These include any kind of directional or relative spatial relations, such as north of, left of, in front of, or above.
+Additional constraints can be formulated in case some additional relation is required by the application. These include any kind of directional or relative spatial relations, such as **north of**, **left of**, **in front of**, or **above**.
 
 Cardinality
 -----------
@@ -148,15 +148,17 @@ Aggregation
 
 The graphic notation used in OMT-G follows the one used by UML.
 
+An **aggregation** can occur between **conventional classes**:
+
 .. image:: ./omtg/umlaggregation.png
   :class: inline
 
-An **aggregation** can occur between **conventional classes**, between **georeferenced and conventional classes** and also between **georeferenced classes**.
+...between **georeferenced and conventional classes**:
 
 .. image:: ./omtg/aggregation_con_geo.png
   :class: inline
 
-When the **aggregation** is between **georeferenced classes**, **spatial aggregation** must be used.
+...and when the **aggregation** is between **georeferenced classes**, **spatial aggregation** must be used.
 
 .. image:: ./omtg/aggregation_geo_geo.png
   :class: inline
@@ -220,8 +222,9 @@ Geometric Operators
 - Skeletonization: build a 1-D version of a polygonal object, through an approximation of its medial axis.
 - Voronoi diagram: given a set of sites (points), divide the plane in polygons so that each polygon is the locus of the points closer to one of the sites than to any other site.
 
-.. image:: ./omtg/transformation_diagram_3.png
-  :class: inline
+.. image:: ./omtg/transformation_diagram_5.png
+  :class: inline  
+
   
 
 Map Generalization Operators
@@ -235,9 +238,11 @@ Map Generalization Operators
 - Simplification: reduce the number of vertices employed to represent the element, in order to produce an appearance that is similar to the original, though simpler.
 - Smoothing: displace the vertices used in the representation, in order to eliminate small disturbances and to capture the main tendencies as to the graphical shape.
 
-.. image:: ./omtg/transformation_diagram_4.png
+
+
+.. image:: ./omtg/transformation_diagram_3.png
   :class: inline
-  
+
 
 Spatial Analysis Operators
 --------------------------
@@ -250,18 +255,18 @@ Spatial Analysis Operators
 - Spatial interpolation: determine the value of a geo-field at a given point, based on information from other points.
 - Surface analysis: extract information from a three-dimensional surface model, such as declivity, flood plains, and drainage profiles.
 
-.. image:: ./omtg/transformation_diagram_5.png
-  :class: inline  
+.. image:: ./omtg/transformation_diagram_4.png
+  :class: inline
   
 Presentation Diagram
 ====================
 
 The presentation model for OMT-G assembles the requirements posed by the user in terms of output alternatives for each geographic object. These alternatives may include presentations defined for viewing on the screen, for printout as maps or charts, or both.
 
-Presentations are defined starting from a representation that has been defined at the conceptual representation level. Transformation to presentation (TP) operations are then specified in order to achieve the visual aspect desired from the simple geometric shape defined for the representation. Observe that a TP operation does not modify the representation alternative that has been defined previously, nor does it change the level of detail defined at the conceptual representation level.
-
 .. image:: ./omtg/presentation_diagram_1.png
   :class: inline  
+
+Presentations are defined starting from a representation that has been defined at the conceptual representation level. Transformation to presentation (TP) operations are then specified in order to achieve the visual aspect desired from the simple geometric shape defined for the representation. Observe that a TP operation does not modify the representation alternative that has been defined previously, nor does it change the level of detail defined at the conceptual representation level.
   
 .. image:: ./omtg/presentation_diagram_2.png
   :class: inline  
