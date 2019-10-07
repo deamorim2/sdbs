@@ -4,11 +4,11 @@
 Conceptual Model for Spatial Data
 =================================
 
-According to Borges_(2001), semantic and object-oriented data models, such as Entity-Relatonship Model (E-R_), Object-modeling technique (OMT_), and others, have been extensively used for modeling geographic applications.
+According to Borges_ (2001), semantic and object-oriented data models, such as Entity-Relatonship Model (E-R_), Object-modeling technique (OMT_), and others, have been extensively used for modeling geographic applications.
 
 Despite their semantic expressiveness, such models present limitations to adequately model those applications, since they do not provide appropriate primitives for representing spatial data.
 
-Borges_(2001) proposes the **OMT-G model**, an object oriented data model for geographic applications.
+Borges_ (2001) proposes the **OMT-G model**, an object oriented data model for geographic applications.
 
 **OMT-G** provides primitives for modeling the geometry and the topology of spatial data, supporting different topological structures, multiple views of objects, and spatial relationships.
 
