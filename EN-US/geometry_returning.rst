@@ -162,7 +162,7 @@ Then we calculate the area of each of our new county polygons from the county ta
    36081    | 283194473.593646
    36085    | 150758328.111199
 
-The same answer! We have successfully built an NYC county table from our census blocks data.
+Oh, no! The answers are different and were suposed to be the same! Now we have to analyse the geometry quality to understand what happened!
 
 Geometry Quality Data Testing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
