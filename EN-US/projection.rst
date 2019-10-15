@@ -150,3 +150,4 @@ ST_Transform_ (geometry, srid): Returns a new geometry with its coordinates tran
 .. _ST_SetSRID: http://postgis.net/docs/ST_SetSRID.html
 .. _ST_SRID: http://postgis.net/docs/ST_SRID.html
 .. _ST_Transform: http://postgis.net/docs/ST_Transform.html
+.. _WKT: https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
