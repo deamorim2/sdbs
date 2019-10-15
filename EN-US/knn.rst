@@ -4,7 +4,9 @@ Nearest-Neighbour Searching
 ===========================
 
 -----
+
 .. note:: -  This section refers to a feature that is only available with PostGIS 2.0 and higher.
+
 -----
 
 What is a Nearest Neighbour Search?
@@ -55,7 +57,9 @@ Index-based **KNN**
 **KNN** is a pure index based nearest neighbour search. By walking up and down the index, the search can find the nearest candidate geometries without using any magical search radius numbers, so the technique is suitable and high performance even for very large tables with highly variable data densities.
 
 -----
+
 .. note:: - The KNN feature is only available on PostGIS 2.0 with PostgreSQL 9.1 or greater.
+
 -----
 
 The **KNN** system works by evaluating distances between bounding boxes inside the PostGIS R-Tree index.
