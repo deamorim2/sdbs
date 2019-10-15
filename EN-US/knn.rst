@@ -3,9 +3,9 @@
 Nearest-Neighbour Searching
 ===========================
 
-.. note::
-
-  This section refers to a feature that is only available with PostGIS 2.0 and higher.
+-----
+.. note:: -  This section refers to a feature that is only available with PostGIS 2.0 and higher.
+-----
 
 What is a Nearest Neighbour Search?
 -----------------------------------
@@ -47,27 +47,27 @@ If you turn on timing, you can see the performance difference between the box-as
 
 The problem with this approach is the magic number of 200 meters. What if there had not happened to be any roads within 200m? We would have failed to come up with a result: there is always a nearest neighbour, it just might not be within 200m.
 
-Index-based KNN
+Index-based **KNN**
 ---------------
 
-"KNN" stands for "K nearest neighbours", where "K" is the number of neighbours you are looking for.
+**KNN** stands for "K nearest neighbours", where "K" is the number of neighbours you are looking for.
 
-KNN is a pure index based nearest neighbour search. By walking up and down the index, the search can find the nearest candidate geometries without using any magical search radius numbers, so the technique is suitable and high performance even for very large tables with highly variable data densities.
+**KNN** is a pure index based nearest neighbour search. By walking up and down the index, the search can find the nearest candidate geometries without using any magical search radius numbers, so the technique is suitable and high performance even for very large tables with highly variable data densities.
 
-.. note:: 
+-----
+.. note:: - The KNN feature is only available on PostGIS 2.0 with PostgreSQL 9.1 or greater.
+-----
 
-  The KNN feature is only available on PostGIS 2.0 with PostgreSQL 9.1 or greater.
-
-The KNN system works by evaluating distances between bounding boxes inside the PostGIS R-Tree index.
+The **KNN** system works by evaluating distances between bounding boxes inside the PostGIS R-Tree index.
 
 Because the index is built using the bounding boxes of geometries, the distances between any geometries that are not points will be inexact: they will be the distances between the bounding boxes of geometries.
 
-The syntax of the index-based KNN query places a special "index-based distance operator" in the ORDER BY clause of the query, in this case "<->". There are two index-based distance operators, 
+The syntax of the index-based **KNN** query places a special "index-based distance operator" in the ORDER BY clause of the query, in this case "<->". There are two index-based distance operators, 
 
 * **<->** means "distance between box centers"
 * **<#>** means "distance between box edges"
 
-One side of the index-based distance operator must be a literal geometry value. We can get away with a subquery that returns as single geometry, or we could include a :term:`WKT` geometry instead.
+One side of the index-based distance operator must be a literal geometry value. We can get away with a subquery that returns as single geometry, or we could include a WKT_ geometry instead.
 
 .. code-block:: sql
 
@@ -103,7 +103,9 @@ One side of the index-based distance operator must be a literal geometry value. 
     'SRID=26918;POINT(583571.905921312 4506714.34119218)'::geometry
   LIMIT 10;
 
-The results of the second query show how odd the index-based query on non-point geometries can appear at first glance.   Wall Street is coming up third in our list, even though the absolute distance from the station to the street is 0.714 meters!
+The results of the second query show how odd the index-based query on non-point geometries can appear at first glance.
+
+Wall Street is coming up third in our list, even though the absolute distance from the station to the street is 0.714 meters!
 
 ::
 
@@ -202,3 +204,6 @@ Note that when querying a point table, because the boxes are identical to the po
   ORDER BY geom <-> 'SRID=26918;POINT(583571.905921312 4506714.34119218)'::geometry
   LIMIT 10;
   
+
+
+.. _WKT: https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
