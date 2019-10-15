@@ -12,14 +12,16 @@ Linear referencing is a means of representing features that are can be described
   
 The benefit of linear referencing models is that the dependent spatial observations do not need to be separately recorded from the base observations, and updates to the base observation layer can be carried out knowing that the dependent observations will automatically track the new geometry.
 
-.. note::
+-----
 
-  The ESRI convention for linear referencing is to have a base table of linear spatial features, and a non-spatial table of "events" which includes a foreign key reference to the spatial feature and a measure along the referenced feature. We will use the term "event table" to refer to the non-spatial tables we build.
+.. note:: - The ESRI convention for linear referencing is to have a base table of linear spatial features, and a non-spatial table of "events" which includes a foreign key reference to the spatial feature and a measure along the referenced feature. We will use the term "event table" to refer to the non-spatial tables we build.
+
+-----
 
 Creating Linear References
 --------------------------
 
-If you have an existing point table that you want to reference to a linear network, use the :command:`ST_LineLocatePoint` function, which takes a line and point, and returns the proportion along the line that the point can be found.
+If you have an existing point table that you want to reference to a linear network, use the ST_LineLocatePoint_ function, which takes a line and point, and returns the proportion along the line that the point can be found.
 
 .. code-block:: sql
 
@@ -31,7 +33,7 @@ If you have an existing point table that you want to reference to a linear netwo
   SELECT ST_LineLocatePoint('LINESTRING(0 0, 2 2)', 'POINT(0 2)');
   -- Answer 0.5
   
-We can convert the **nyc_subway_stations** into an "event table" relative to the streets by using :command:`ST_LineLocatePoint`.
+We can convert the **nyc_subway_stations** into an "event table" relative to the streets by using ST_LineLocatePoint_ .
 
 .. code-block:: sql
 
@@ -68,7 +70,7 @@ We can convert the **nyc_subway_stations** into an "event table" relative to the
 
 Once we have an event table, it's fun to turn it back into a spatial view, so we can visualize the events relative to the original points they were derived from.
 
-To go from a measure to a point, we use the :command:`ST_LineInterpolatePoint` function. Here's our previous simple examples reversed:
+To go from a measure to a point, we use the ST_LineInterpolatePoint_ function. Here's our previous simple examples reversed:
 
 .. code-block:: sql
 
@@ -104,10 +106,17 @@ Viewing the original (red star) and event (blue circle) points with the streets,
 Function List
 -------------
 
-* `ST_LineInterpolatePoint(geometry A, double measure) <http://postgis.net/docs/manual-2.1/ST_LineInterpolatePoint.html>`_: Returns a point interpolated along a line.
-* `ST_LineLocatePoint(geometry A, geometry B) <http://postgis.net/docs/manual-2.1/ST_LineLocatePoint.html>`_: Returns a float between 0 and 1 representing the location of the closest point on LineString to the given Point. 
-* `ST_Line_Substring(geometry A, double from, double to) <http://postgis.net/docs/manual-2.1/ST_Line_Substring.html>`_: Return a linestring being a substring of the input one starting and ending at the given fractions of total 2d length. 
-* `ST_Locate_Along_Measure(geometry A, double measure) <http://postgis.net/docs/manual-2.1/ST_Locate_Along_Measure.html>`_: Return a derived geometry collection value with elements that match the specified measure. 
-* `ST_Locate_Between_Measures(geometry A, double from, double to) <http://postgis.net/docs/manual-2.1/ST_Locate_Between_Measures.html>`_: Return a derived geometry collection value with elements that match the specified range of measures inclusively. 
-* `ST_AddMeasure(geometry A, double from, double to) <http://postgis.net/docs/manual-2.1/ST_AddMeasure.html>`_: Return a derived geometry with measure elements linearly interpolated between the start and end points. If the geometry has no measure dimension, one is added. 
+* ST_LineInterpolatePoint_ (geometry A, double measure): Returns a point interpolated along a line.
+* ST_LineLocatePoint_ (geometry A, geometry B): Returns a float between 0 and 1 representing the location of the closest point on LineString to the given Point. 
+* ST_Line_Substring_ (geometry A, double from, double to): Return a linestring being a substring of the input one starting and ending at the given fractions of total 2d length. 
+* ST_Locate_Along_Measure_ (geometry A, double measure): Return a derived geometry collection value with elements that match the specified measure. 
+* ST_Locate_Between_Measures_ (geometry A, double from, double to): Return a derived geometry collection value with elements that match the specified range of measures inclusively. 
+* ST_AddMeasure_ (geometry A, double from, double to): Return a derived geometry with measure elements linearly interpolated between the start and end points. If the geometry has no measure dimension, one is added. 
+
+.. _ST_LineInterpolatePoint: http://postgis.net/docs/ST_LineInterpolatePoint.html
+.. _ST_LineLocatePoint: http://postgis.net/docs/ST_LineLocatePoint.html
+.. _ST_Line_Substring: http://postgis.net/docs/ST_Line_Substring.html
+.. _ST_Locate_Along_Measure: http://postgis.net/docs/ST_Locate_Along_Measure.html
+.. _ST_Locate_Between_Measures: http://postgis.net/docs/ST_Locate_Between_Measures.html
+.. _ST_ST_AddMeasure: http://postgis.net/docs/ST_LineInterpolatePoint.html
 
