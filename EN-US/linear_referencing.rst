@@ -118,5 +118,5 @@ Function List
 .. _ST_Line_Substring: http://postgis.net/docs/ST_Line_Substring.html
 .. _ST_Locate_Along_Measure: http://postgis.net/docs/ST_Locate_Along_Measure.html
 .. _ST_Locate_Between_Measures: http://postgis.net/docs/ST_Locate_Between_Measures.html
-.. _ST_ST_AddMeasure: http://postgis.net/docs/ST_LineInterpolatePoint.html
+.. _ST_AddMeasure: http://postgis.net/docs/ST_AddMeasure.html
 
