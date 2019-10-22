@@ -9,6 +9,15 @@ Nearest-Neighbour Searching
 
 -----
 
+Operators
+---------
+
+Operators_ can be of two types:
+
+- Bounding Box Operators
+
+- Distance Operators
+
 What is a Nearest Neighbour Search?
 -----------------------------------
 
@@ -211,3 +220,5 @@ Note that when querying a point table, because the boxes are identical to the po
 
 
 .. _WKT: https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
+
+.. _Operators: https://postgis.net/docs/reference.html#idm9872
