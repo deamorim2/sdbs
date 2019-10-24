@@ -40,7 +40,7 @@ The naive way to carry out a nearest neighbour query is to order the candidate t
 
  Closest street to Broad Street station is Wall St.
 
-The trouble with this approach is that it forces the database to calculate the distance between the query geometry and *every* feature in the table of candidate features, then sort them all. For a large table of  candidate features, it is not a reasonable approach.
+The trouble with this approach is that it forces the database to calculate the distance between the query geometry and *every* feature in the table of candidate features, then sort them all. For a large table of candidate features, it is not a reasonable approach.
 
 One way to improve performance is to add an index constraint to the search. This requires a magic number: what's the smallest box we could search around the query geometry, and still come up with at least one candidate geometry? 
 
@@ -76,11 +76,11 @@ Index-based **KNN**
 
 The **KNN** system works by evaluating distances between bounding boxes inside the PostGIS R-Tree index.
 
-Because the index is built using the bounding boxes of geometries, the distances between any geometries that are not points will be inexact: they will be the distances between the bounding boxes of geometries.
+In prior versions, because the index was built using the bounding boxes of geometries, the distances between any geometries that weren't points could inexact: they were the distances between the bounding boxes of geometries. In current versions (PostGIS 2.2+ PostgreSQL 9.5+) this operator returns the true 2D distance between two geometries.
 
 The syntax of the index-based **KNN** query places a special "index-based distance operator" in the ORDER BY clause of the query, in this case "<->". There are two index-based distance operators, 
 
-* **<->** means "distance between box centers"
+* **<->** means "distance between geometries"
 * **<#>** means "distance between box edges"
 
 Closest 10 streets to Broad Street station:
@@ -158,25 +158,6 @@ Same query using a geometry EWKT literal:
    17347 | Cedar St    |  133.009278387597
  
 ..
-
-The results of the second query show how odd the index-based query on non-point geometries can appear at first glance.
-
-Wall Street is coming up third in our list, even though the absolute distance from the station to the street is 0.714 meters!
-
-::
-
-    gid  |     name     |     distance      
-  -------+--------------+-------------------
-   17360 | Exchange Pl  |    101.6241843136
-   17350 | New St       |  63.9499165490674
-   17385 | Wall St      | 0.714202224374917
-   17332 | Exchange Aly |  159.618545539243
-   17402 | Pine St      |  75.8461038368021
-   17347 | Cedar St     |  133.009278387597
-   17335 | Beaver St    |  221.988864601724
-   17314 | Trinity Pl   |  205.942231743204
-   17515 | Hanover St   |  198.414568622805
-   17345 | Thames St    |  167.802276238319
 
 Remember that all the calculations are being done on bounding boxes. The bounding box of the station point is just the point itself, so there is no approximation there. **But the bounding boxes of the streets aren't the same as the street lines.** Here's what the boxes of the top ten closest streets look like:
 
