@@ -310,7 +310,7 @@ In this example we can list the 10 western (<<) stations closer to the 'Broad St
 List of Operators
 ----------------------
 
-`&&` — Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.
+``&&`` — Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.
 
 &&(geometry,box2df) — Returns TRUE if a geometry's (cached) 2D bounding box intersects a 2D float precision bounding box (BOX2DF).
 
@@ -364,7 +364,7 @@ List of Operators
 
 <-> — Returns the 2D distance between A and B.
 
-`|=|` — Returns the distance between A and B trajectories at their closest point of approach.
+``|=|`` — Returns the distance between A and B trajectories at their closest point of approach.
 
 <#> — Returns the 2D distance between A and B bounding boxes.
 
