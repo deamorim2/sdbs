@@ -275,7 +275,7 @@ In the example below we can list the 10 western (<<) streets closer to the 'Broa
 
 ..
 
-This result must be analysed very carefullly because even being located west from the station, if the street's bounding box is also located east from the feature, this street won't be selected. These types of operators work fine for points, but is less precise for  linear or polygonal features.
+This result must be analysed very carefully because even being located west from the station, if the street's bounding box is also located east from the feature, this street won't be selected. These types of operators work fine for points, but is less precise for  linear or polygonal features.
 
 In this example we can list the 10 western (<<) stations closer to the 'Broad St' station.
 
@@ -311,35 +311,65 @@ List of Operators
 ----------------------
 
 && — Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.
+
 &&(geometry,box2df) — Returns TRUE if a geometry's (cached) 2D bounding box intersects a 2D float precision bounding box (BOX2DF).
+
 &&(box2df,geometry) — Returns TRUE if a 2D float precision bounding box (BOX2DF) intersects a geometry's (cached) 2D bounding box.
+
 &&(box2df,box2df) — Returns TRUE if two 2D float precision bounding boxes (BOX2DF) intersect each other.
+
 &&& — Returns TRUE if A's n-D bounding box intersects B's n-D bounding box.
+
 &&&(geometry,gidx) — Returns TRUE if a geometry's (cached) n-D bounding box intersects a n-D float precision bounding box (GIDX).
+
 &&&(gidx,geometry) — Returns TRUE if a n-D float precision bounding box (GIDX) intersects a geometry's (cached) n-D bounding box.
+
 &&&(gidx,gidx) — Returns TRUE if two n-D float precision bounding boxes (GIDX) intersect each other.
+
 &< — Returns TRUE if A's bounding box overlaps or is to the left of B's.
+
 &<| — Returns TRUE if A's bounding box overlaps or is below B's.
+
 &> — Returns TRUE if A' bounding box overlaps or is to the right of B's.
+
 << — Returns TRUE if A's bounding box is strictly to the left of B's.
+
 <<| — Returns TRUE if A's bounding box is strictly below B's.
+
 = — Returns TRUE if the coordinates and coordinate order geometry/geography A are the same as the coordinates and coordinate order of geometry/geography B.
+
 >> — Returns TRUE if A's bounding box is strictly to the right of B's.
+
 @ — Returns TRUE if A's bounding box is contained by B's.
+
 @(geometry,box2df) — Returns TRUE if a geometry's 2D bounding box is contained into a 2D float precision bounding box (BOX2DF).
+
 @(box2df,geometry) — Returns TRUE if a 2D float precision bounding box (BOX2DF) is contained into a geometry's 2D bounding box.
+
 @(box2df,box2df) — Returns TRUE if a 2D float precision bounding box (BOX2DF) is contained into another 2D float precision bounding box.
+
 |&> — Returns TRUE if A's bounding box overlaps or is above B's.
+
 |>> — Returns TRUE if A's bounding box is strictly above B's.
+
 ~ — Returns TRUE if A's bounding box contains B's.
+
 ~(geometry,box2df) — Returns TRUE if a geometry's 2D bonding box contains a 2D float precision bounding box (GIDX).
+
 ~(box2df,geometry) — Returns TRUE if a 2D float precision bounding box (BOX2DF) contains a geometry's 2D bonding box.
+
 ~(box2df,box2df) — Returns TRUE if a 2D float precision bounding box (BOX2DF) contains another 2D float precision bounding box (BOX2DF).
+
 ~= — Returns TRUE if A's bounding box is the same as B's.
+
 <-> — Returns the 2D distance between A and B.
+
 |=| — Returns the distance between A and B trajectories at their closest point of approach.
+
 <#> — Returns the 2D distance between A and B bounding boxes.
+
 <<->> — Returns the n-D distance between the centroids of A and B bounding boxes.
+
 <<#>> — Returns the n-D distance between A and B bounding boxes.
 
 .. _WKT: https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
