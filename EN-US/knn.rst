@@ -3,6 +3,17 @@
 Nearest-Neighbour Searching
 ===========================
 
+Spatial Operators
+-----------------
+
+Spatial Operators_ can be of two types:
+
+- Bounding Box Operators
+
+- Distance Operators
+
+Nearest-Neighbour Searching uses Distance Operators
+
 What is a Nearest Neighbour Search?
 -----------------------------------
 
@@ -227,14 +238,28 @@ Below you can see the distance calculated using the operators above:
   
 ..
 
-Spatial Operators
------------------
+Bounding Box Operators
+----------------------
 
-Spatial Operators_ can be of two types:
+Bounding Box Operators are based on the geometry's box limits.
 
-- Bounding Box Operators
+Using these Bounding Box Operators you can tell if a geometry's bounding box is inside, left(west), right(east), above(north) or below(south) from a specific geometry.
 
-- Distance Operators
+.. code-block:: sql
+
+ SELECT
+ streets.gid,
+ streets.name,
+ ST_Distance(streets.geom, 'SRID=26918;POINT(583571.905921312 4506714.34119218)'::geometry) as geom_dist,
+ streets.geom as geom
+ FROM nyc_streets streets
+ WHERE streets.geom << 'SRID=26918;POINT(583571.905921312 4506714.34119218)'::geometry
+ ORDER BY streets.geom <-> 'SRID=26918;POINT(583571.905921312 4506714.34119218)'::geometry
+ LIMIT 10;
+
+::
+
+
 
 
 
