@@ -375,5 +375,3 @@ List of Operators
 .. _WKT: https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
 
 .. _Operators: https://postgis.net/docs/reference.html#idm9872
-
-
