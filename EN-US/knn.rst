@@ -3,15 +3,6 @@
 Nearest-Neighbour Searching
 ===========================
 
-Operators
----------
-
-Operators_ can be of two types:
-
-- Bounding Box Operators
-
-- Distance Operators
-
 What is a Nearest Neighbour Search?
 -----------------------------------
 
@@ -235,6 +226,17 @@ Below you can see the distance calculated using the operators above:
   17347 | Cedar St    |  133.009278387597 |  133.009278387597 |              113
   
 ..
+
+Spatial Operators
+-----------------
+
+Spatial Operators_ can be of two types:
+
+- Bounding Box Operators
+
+- Distance Operators
+
+
 
 .. _WKT: https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
 
