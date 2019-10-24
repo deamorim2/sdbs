@@ -28,8 +28,7 @@ Unlike a distance search, the "nearest neighbour" search doesn't include any mea
 The naive way to carry out a nearest neighbour query is to order the candidate table by distance from the query geometry, and then take the record with the smallest distance:
 
 .. code-block:: sql
-
-  -- Closest street to Broad Street station is Wall St
+ 
   SELECT streets.gid, streets.name 
   FROM nyc_streets streets, nyc_subway_stations subways
   WHERE subways.name = 'Broad St'
@@ -42,6 +41,10 @@ The naive way to carry out a nearest neighbour query is to order the candidate t
     gid  |  name
   -------+---------
    17385 | Wall St
+
+..
+
+ Closest street to Broad Street station is Wall St.
 
 The trouble with this approach is that it forces the database to calculate the distance between the query geometry and *every* feature in the table of candidate features, then sort them all. For a large table of  candidate features, it is not a reasonable approach.
 
@@ -70,7 +73,7 @@ Index-based **KNN**
 
 -----
 
-.. note:: - The KNN feature is only available on PostGIS 2.0 with PostgreSQL 9.1 or greater.
+.. note:: - The KNN feature is only available on PostGIS 2.0 with PostgreSQL 9.1 or greater. - Enhanced: 2.2.0: True KNN ("K nearest neighbor") behavior for geometry and geography for PostgreSQL 9.5+. Note for geography KNN is based on sphere rather than spheroid. For PostgreSQL 9.4 and below, geography support is new but only supports centroid box. - Changed: 2.2.0 -- For PostgreSQL 9.5 users, old Hybrid syntax may be slower, so you'll want to get rid of that hack if you are running your code only on PostGIS 2.2+ 9.5+. - Availability: 2.0.0: Weak KNN provides nearest neighbors based on geometry centroid distances instead of true distances. Exact results for points, inexact for all other types. Available for PostgreSQL 9.1+
 
 -----
 
