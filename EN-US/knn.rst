@@ -31,12 +31,17 @@ The naive way to carry out a nearest neighbour query is to order the candidate t
 
   -- Closest street to Broad Street station is Wall St
   SELECT streets.gid, streets.name 
-  FROM 
-    nyc_streets streets, 
-    nyc_subway_stations subways
+  FROM nyc_streets streets, nyc_subway_stations subways
   WHERE subways.name = 'Broad St'
   ORDER BY ST_Distance(streets.geom, subways.geom) ASC
   LIMIT 1;
+..
+
+::
+
+    gid  |  name
+  -------+---------
+   17385 | Wall St
 
 The trouble with this approach is that it forces the database to calculate the distance between the query geometry and *every* feature in the table of candidate features, then sort them all. For a large table of  candidate features, it is not a reasonable approach.
 
