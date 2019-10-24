@@ -3,12 +3,6 @@
 Nearest-Neighbour Searching
 ===========================
 
------
-
-.. note:: -  This section refers to a feature that is only available with PostGIS 2.0 and higher.
-
------
-
 Operators
 ---------
 
