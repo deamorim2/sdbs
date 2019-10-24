@@ -53,9 +53,7 @@ If you turn on timing, you can see the performance difference between the box-as
 
   -- Closest street to Broad Street station is Wall St
   SELECT streets.gid, streets.name 
-  FROM 
-    nyc_streets streets, 
-    nyc_subway_stations subways
+  FROM nyc_streets streets, nyc_subway_stations subways
   WHERE subways.name = 'Broad St'
   AND streets.geom && ST_Expand(subways.geom, 200) -- Magic number: 200m
   ORDER BY ST_Distance(streets.geom, subways.geom) ASC
@@ -85,20 +83,37 @@ The syntax of the index-based **KNN** query places a special "index-based distan
 * **<->** means "distance between box centers"
 * **<#>** means "distance between box edges"
 
-One side of the index-based distance operator must be a literal geometry value. We can get away with a subquery that returns as single geometry, or we could include a WKT_ geometry instead.
-
 .. code-block:: sql
 
   -- Closest 10 streets to Broad Street station are ?
-  SELECT 
-    streets.gid, 
-    streets.name
-  FROM 
-    nyc_streets streets
-  ORDER BY 
-    streets.geom <-> 
+  SELECT streets.gid, streets.name
+  FROM nyc_streets streets
+  ORDER BY streets.geom <-> 
     (SELECT geom FROM nyc_subway_stations WHERE name = 'Broad St')
   LIMIT 10;
+
+..
+
+::
+
+    gid  |    name
+  -------+-------------
+   17385 | Wall St
+   17390 | Broad St
+   17436 | Nassau St
+   17350 | New St
+   17402 | Pine St
+   17360 | Exchange Pl
+   17315 | Broadway
+   17289 | Rector St
+   17469 | William St
+   17347 | Cedar St
+ 
+..
+
+One side of the index-based distance operator must be a literal geometry value. We can get away with a subquery that returns as single geometry, or we could include a WKT_ geometry instead.
+
+.. code-block:: sql
 
   -- Same query using a geometry EWKT literal
 
@@ -106,6 +121,9 @@ One side of the index-based distance operator must be a literal geometry value. 
   FROM nyc_subway_stations 
   WHERE name = 'Broad St';
   -- SRID=26918;POINT(583571 4506714)
+..
+
+.. code-block:: sql
 
   SELECT 
     streets.gid, 
@@ -120,6 +138,9 @@ One side of the index-based distance operator must be a literal geometry value. 
     streets.geom <-> 
     'SRID=26918;POINT(583571.905921312 4506714.34119218)'::geometry
   LIMIT 10;
+
+..
+
 
 The results of the second query show how odd the index-based query on non-point geometries can appear at first glance.
 
