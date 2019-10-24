@@ -83,13 +83,13 @@ The syntax of the index-based **KNN** query places a special "index-based distan
 * **<->** means "distance between box centers"
 * **<#>** means "distance between box edges"
 
-.. code-block:: sql
+Closest 10 streets to Broad Street station:
 
-  -- Closest 10 streets to Broad Street station are ?
+.. code-block:: sql
+  
   SELECT streets.gid, streets.name
   FROM nyc_streets streets
-  ORDER BY streets.geom <-> 
-    (SELECT geom FROM nyc_subway_stations WHERE name = 'Broad St')
+  ORDER BY streets.geom <-> (SELECT geom FROM nyc_subway_stations WHERE name = 'Broad St')
   LIMIT 10;
 
 ..
@@ -115,32 +115,49 @@ One side of the index-based distance operator must be a literal geometry value. 
 
 .. code-block:: sql
 
-  -- Same query using a geometry EWKT literal
-
   SELECT ST_AsEWKT(geom)
   FROM nyc_subway_stations 
   WHERE name = 'Broad St';
-  -- SRID=26918;POINT(583571 4506714)
+  
 ..
+
+::
+
+                        st_asewkt
+  -----------------------------------------------------
+   SRID=26918;POINT(583571.905921312 4506714.34119218)
+..
+
+Same query using a geometry EWKT literal:
 
 .. code-block:: sql
 
-  SELECT 
-    streets.gid, 
+  SELECT
+    streets.gid,
     streets.name,
-    ST_Distance(
-      streets.geom, 
-      'SRID=26918;POINT(583571.905921312 4506714.34119218)'::geometry
-      ) AS distance
-  FROM 
-    nyc_streets streets
-  ORDER BY 
-    streets.geom <-> 
-    'SRID=26918;POINT(583571.905921312 4506714.34119218)'::geometry
+    ST_Distance(streets.geom, 'SRID=26918;POINT(583571.905921312 4506714.34119218)'::geometry) AS distance
+  FROM nyc_streets streets
+  ORDER BY streets.geom <-> 'SRID=26918;POINT(583571.905921312 4506714.34119218)'::geometry
   LIMIT 10;
 
 ..
 
+::
+
+    gid  |    name     |     distance
+  -------+-------------+-------------------
+   17385 | Wall St     | 0.714202224374917
+   17390 | Broad St    | 0.872022763400183
+   17436 | Nassau St   |  1.29928727926582
+   17350 | New St      |  63.9499165490674
+   17402 | Pine St     |  75.8461038368021
+   17360 | Exchange Pl |    101.6241843136
+   17315 | Broadway    |  112.049824188021
+   17289 | Rector St   |  114.442000781044
+   17469 | William St  |  126.934064759446
+   17347 | Cedar St    |  133.009278387597
+ 
+..
 
 The results of the second query show how odd the index-based query on non-point geometries can appear at first glance.
 
@@ -176,13 +193,9 @@ What about the **<#>** operator? If we calculate the distance between box edges,
 .. code-block:: sql
 
   -- Closest 10 streets to Broad Street station are ?
-  SELECT 
-    streets.gid, 
-    streets.name
-  FROM 
-    nyc_streets streets
-  ORDER BY 
-    streets.geom <#> 
+  SELECT streets.gid, streets.name
+  FROM nyc_streets streets
+  ORDER BY streets.geom <#> 
     'SRID=26918;POINT(583571.905921312 4506714.34119218)'::geometry
   LIMIT 10;
 
