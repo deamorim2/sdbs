@@ -241,9 +241,9 @@ Below you can see the distance calculated using the operators above:
 Bounding Box Operators
 ----------------------
 
-Bounding Box Operators are based on the geometry's box limits.
+Bounding Box Operators_ are based on the geometry's box limits.
 
-Using these Bounding Box Operators you can tell if a geometry's bounding box is inside, left(west), right(east), above(north) or below(south) from a specific geometry.
+Using these Bounding Box Operators_ you can tell if a geometry's bounding box is inside, left(west), right(east), above(north) or below(south) from a specific geometry.
 
 In the example below we can list the 10 western (<<) streets closer to the 'Broad St' station.
 
