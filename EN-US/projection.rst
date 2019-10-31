@@ -215,9 +215,9 @@ And now in the **OGC WKT** format:
 
 ..
 
-Sometimes, you have to use some customized projection. To do this in PostGIS, you have to insert this projection in the postgis `spatial_ref_sys` table.
+Sometimes, you have to use some customized projection. To do this in PostGIS, you have to insert this projection in the postgis ``spatial_ref_sys`` table.
 
-To insert this customized SRID above in the table `spatial_ref_sys`, execute the SQL instruction below:
+To insert the customized SRID above in the table ``spatial_ref_sys``, execute the SQL instruction below:
 
 .. code-block:: sql
 
@@ -245,7 +245,7 @@ Calculating Lengths
 
 The projection suggested by IBGE to calculate lenghts is the SIRGAS 2000/Brazil Polyconic(SRID 5880).
 
-You can check this projection definition in the _'epsg.io website: <https://epsg.io/5880>'_ .
+You can check this projection definition in the `epsg.io website <https://epsg.io/5880>`_ .
 
 You can also query the text definitions in OGC WKT format for the SRID 5880 in the table ``spatial_ref_sys``:
 
@@ -291,7 +291,9 @@ To view the proj4 format for the SRID 5880 in the table ``spatial_ref_sys`` use 
 ..
 
 ::
+
     +proj=poly +lat_0=0 +lon_0=-54 +x_0=5000000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs
+
 ..
 
 Function List
