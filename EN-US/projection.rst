@@ -136,6 +136,114 @@ However, if you know what the SRID of the coordinates is supposed to be, you can
    )
    FROM geometries;
 
+Brazilian Case
+--------------
+
+In Brazil, the official projection is SIRGAS 2000 or SRID 4674.
+
+For **proj4**, this projection is geocentric and the units are in degrees (longlat):
+
+::
+
+  +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs
+
+..
+
+In the OGC WKT format, the SRID 4674 has the following parameters:
+
+::
+
+    GEOGCS["SIRGAS 2000",
+        DATUM["Sistema_de_Referencia_Geocentrico_para_las_AmericaS_2000",
+            SPHEROID["GRS 1980",6378137,298.257222101,
+                AUTHORITY["EPSG","7019"]],
+            TOWGS84[0,0,0,0,0,0,0],
+            AUTHORITY["EPSG","6674"]],
+        PRIMEM["Greenwich",0,
+            AUTHORITY["EPSG","8901"]],
+        UNIT["degree",0.0174532925199433,
+            AUTHORITY["EPSG","9122"]],
+        AUTHORITY["EPSG","4674"]]
+
+..
+
+Calculating Areas
+^^^^^^^^^^^^^^^^^
+
+The Brazilian Isntitute of Geography and Statistics (IBGE) suggest the projection parameters below to calculate the area to the products of the Continuing Base in the scale of 1:250.000. 
+
+The projection is the Albers equal-area conic projection:
+
+* Longitude of center: -54°
+* Latitude of center: -12°
+* Standard Parallel 1: -2°
+* Standard Parallel 2: -22°
+
+Here are these parameters converted in **proj4** format:
+
+::
+
+    +proj=aea +lat_1=-2 +lat_2=-22 +lat_0=-12 +lon_0=-54 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs
+
+..
+
+And now in the **OGC WKT** format:
+
+::
+
+    PROJCS["Brazil_Albers_Equal_Area_Conic",
+        GEOGCS["SIRGAS 2000",
+            DATUM["Sistema_de_Referencia_Geocentrico_para_las_AmericaS_2000",
+                SPHEROID["GRS 1980",6378137,298.257222101,
+                    AUTHORITY["EPSG","7019"]],
+                TOWGS84[0,0,0,0,0,0,0],
+                AUTHORITY["EPSG","6674"]],
+            PRIMEM["Greenwich",0,
+                AUTHORITY["EPSG","8901"]],
+            UNIT["degree",0.0174532925199433,
+                AUTHORITY["EPSG","9122"]],
+            AUTHORITY["EPSG","4674"]],
+        PROJECTION["Albers_Conic_Equal_Area"],
+        PARAMETER["False_Easting",0],
+        PARAMETER["False_Northing",0],
+        PARAMETER["longitude_of_center",-54],
+        PARAMETER["Standard_Parallel_1",-2],
+        PARAMETER["Standard_Parallel_2",-22],
+        PARAMETER["latitude_of_center",-12],
+        UNIT["Meter",1],
+        AUTHORITY["IBGE","55555"]]
+
+..
+
+Sometimes, you have to use some customized projection. To do this in PostGIS, you have to insert this projection in the postgis `spatial_ref_sys` table.
+
+To insert this customized SRID above in the table `spatial_ref_sys`, execute the SQL instruction below:
+
+.. code-block:: sql
+
+
+    INSERT into spatial_ref_sys (srid, auth_name, auth_srid, proj4text, srtext)
+    values
+    (
+    55555,
+    'IBGE',
+    55555,
+    '+proj=aea +lat_1=-2 +lat_2=-22 +lat_0=-12 +lon_0=-54 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ',
+    'PROJCS["Brazil_Albers_Equal_Area_Conic",GEOGCS["SIRGAS 2000",DATUM["Sistema_de_Referencia_Geocentrico_para_las_AmericaS_2000",SPHEROID["GRS 1980",6378137,298.257222101,AUTHORITY["EPSG","7019"]],TOWGS84[0,0,0,0,0,0,0],AUTHORITY["EPSG","6674"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4674"]],PROJECTION["Albers_Conic_Equal_Area"],PARAMETER["False_Easting",0],PARAMETER["False_Northing",0],PARAMETER["longitude_of_center",-54],PARAMETER["Standard_Parallel_1",-2],PARAMETER["Standard_Parallel_2",-22],PARAMETER["latitude_of_center",-12],UNIT["Meter",1],AUTHORITY["IBGE","55555"]]'
+    );
+
+..
+
+------
+
+.. note:: - There is no SRID 55555 in the **proj4** with theses parameters.
+
+-----
+
+
+
+
+
 Function List
 -------------
 ST_AsText_ (geometry): Returns the Well-Known Text (WKT) representation of the geometry/geography without SRID metadata.
