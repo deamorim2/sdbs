@@ -136,8 +136,8 @@ However, if you know what the SRID of the coordinates is supposed to be, you can
    )
    FROM geometries;
 
-Brazilian Case
---------------
+Projections in Brazil
+---------------------
 
 In Brazil, the official projection is SIRGAS 2000 or SRID 4674.
 
@@ -240,9 +240,59 @@ To insert this customized SRID above in the table `spatial_ref_sys`, execute the
 
 -----
 
+Calculating Lengths
+^^^^^^^^^^^^^^^^^^^
 
+The projection suggested by IBGE to calculate lenghts is the SIRGAS 2000/Brazil Polyconic(SRID 5880).
 
+You can check this projection definition in the _'epsg.io website: <https://epsg.io/5880>'_ .
 
+You can also query the text definitions in OGC WKT format for the SRID 5880 in the table ``spatial_ref_sys``:
+
+.. code-block:: sql
+
+    SELECT srtext FROM spatial_ref_sys WHERE srid = 5880;
+
+..
+
+::
+
+    PROJCS["SIRGAS 2000 / Brazil Polyconic",
+        GEOGCS["SIRGAS 2000",
+            DATUM["Sistema_de_Referencia_Geocentrico_para_las_AmericaS_2000",
+                SPHEROID["GRS 1980",6378137,298.257222101,
+                    AUTHORITY["EPSG","7019"]],
+                TOWGS84[0,0,0,0,0,0,0],
+                AUTHORITY["EPSG","6674"]],
+            PRIMEM["Greenwich",0,
+                AUTHORITY["EPSG","8901"]],
+            UNIT["degree",0.0174532925199433,
+                AUTHORITY["EPSG","9122"]],
+            AUTHORITY["EPSG","4674"]],
+        PROJECTION["Polyconic"],
+        PARAMETER["latitude_of_origin",0],
+        PARAMETER["central_meridian",-54],
+        PARAMETER["false_easting",5000000],
+        PARAMETER["false_northing",10000000],
+        UNIT["metre",1,
+        AUTHORITY["EPSG","9001"]],
+        AXIS["X",EAST],
+        AXIS["Y",NORTH],
+        AUTHORITY["EPSG","5880"]]
+
+..
+
+To view the proj4 format for the SRID 5880 in the table ``spatial_ref_sys`` use the query below:
+
+.. code-block:: sql
+
+    SELECT proj4text FROM spatial_ref_sys WHERE srid = 5880;
+
+..
+
+::
+    +proj=poly +lat_0=0 +lon_0=-54 +x_0=5000000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs
+..
 
 Function List
 -------------
