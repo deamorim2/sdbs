@@ -139,7 +139,7 @@ However, if you know what the SRID of the coordinates is supposed to be, you can
 Projections in Brazil
 ---------------------
 
-In Brazil, the official projection is SIRGAS 2000 or SRID 4674.
+In Brazil, the official projection is **SIRGAS 2000** or **SRID 4674**.
 
 For **proj4**, this projection is geocentric and the units are in degrees (longlat):
 
@@ -170,9 +170,9 @@ In the OGC WKT format, the SRID 4674 has the following parameters:
 Calculating Areas
 ^^^^^^^^^^^^^^^^^
 
-The Brazilian Isntitute of Geography and Statistics (IBGE) suggest the projection parameters below to calculate the area to the products of the Continuing Base in the scale of 1:250.000. 
+The Brazilian Institute of Geography and Statistics (IBGE) suggests the projection parameters below to calculate the area to the products of the Continuing Base in the scale of 1:250.000. 
 
-The projection is the Albers equal-area conic projection:
+Albers equal-area conic projection:
 
 * Longitude of center: -54°
 * Latitude of center: -12°
@@ -243,7 +243,7 @@ To insert the customized SRID above in the table ``spatial_ref_sys``, execute th
 Calculating Lengths
 ^^^^^^^^^^^^^^^^^^^
 
-The projection suggested by IBGE to calculate lenghts is the SIRGAS 2000/Brazil Polyconic(SRID 5880).
+The projection suggested by IBGE to calculate perimeters and lenghts is the SIRGAS 2000/Brazil Polyconic(SRID 5880).
 
 You can check this projection definition in the `epsg.io website <https://epsg.io/5880>`_ .
 
