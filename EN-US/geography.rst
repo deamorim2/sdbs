@@ -17,7 +17,7 @@ For example, here are the coordinates of Los Angeles and Paris.
 * Los Angeles: ``POINT(-118.4079 33.9434)``
 * Paris: ``POINT(2.3490 48.8533)``
  
-The following calculates the distance between Los Angeles and Paris using the standard PostGIS Cartesian :command:`ST_Distance(geometry, geometry)`.  Note that the SRID of 4326 declares a geographic spatial reference system.
+The following calculates the distance between Los Angeles and Paris using the standard PostGIS Cartesian ST_Distance_(geometry, geometry).  Note that the SRID of 4326 declares a geographic spatial reference system.
 
 .. code-block:: sql
 
@@ -49,7 +49,7 @@ Starting with version 1.5, PostGIS provides this functionality through the ``geo
   * Informix Spatial is a pure Cartesian extension to Informix, while Informix Geodetic is a pure geographic extension. 
   * Similar to SQL Server, PostGIS uses two types, "geometry" and "geography".
   
-Using the ``geography`` instead of ``geometry`` type, let's try again to measure the distance between Los Angeles and Paris. Instead of :command:`ST_GeometryFromText(text)`, we will use :command:`ST_GeographyFromText(text)`.
+Using the ``geography`` instead of ``geometry`` type, let's try again to measure the distance between Los Angeles and Paris. Instead of ST_GeometryFromText_ (text), we will use ST_GeographyFromText_ (text).
 
 .. code-block:: sql
 
@@ -64,7 +64,7 @@ Using the ``geography`` instead of ``geometry`` type, let's try again to measure
 
 A big number! All return values from ``geography`` calculations are in meters, so our answer is 9124km. 
 
-Older versions of PostGIS supported very basic calculations over the sphere using the :command:`ST_Distance_Spheroid(point, point, measurement)` function. However, :command:`ST_Distance_Spheroid` is substantially limited. The function only works on points and provides no support for indexing across the poles or international dateline.
+Older versions of PostGIS supported very basic calculations over the sphere using the ST_Distance_Spheroid_ (point, point, measurement)` function. However, ST_Distance_Spheroid_ is substantially limited. The function only works on points and provides no support for indexing across the poles or international dateline.
 
 The need to support non-point geometries becomes very clear when posing a question like "How close will a flight from Los Angeles to Paris come to Iceland?" 
 
@@ -110,7 +110,7 @@ The Cartesian approach to handling geographic coordinates breaks down entirely f
 Using Geography
 ---------------
 
-In order to load geometry data into a geography table, the geometry first needs to be projected into EPSG:4326 (longitude/latitude), then it needs to be changed into geography.  The :command:`ST_Transform(geometry,srid)` function converts coordinates to geographics and the :command:`Geography(geometry)` function "casts" them from geometry to geography.
+In order to load geometry data into a geography table, the geometry first needs to be projected into EPSG:4326 (longitude/latitude), then it needs to be changed into geography.  The ST_Transform_ (geometry,srid)` function converts coordinates to geographics and the Geography_ (geometry) function "casts" them from geometry to geography.
 
 .. code-block:: sql
 
@@ -132,23 +132,23 @@ The difference is under the covers: the geography index will correctly handle qu
 
 There are only a small number of native functions for the geography type:
  
-* :command:`ST_AsText(geography)` returns ``text``
-* :command:`ST_GeographyFromText(text)` returns ``geography``
-* :command:`ST_AsBinary(geography)` returns ``bytea``
-* :command:`ST_GeogFromWKB(bytea)` returns ``geography``
-* :command:`ST_AsSVG(geography)` returns ``text``
-* :command:`ST_AsGML(geography)` returns ``text``
-* :command:`ST_AsKML(geography)` returns ``text``
-* :command:`ST_AsGeoJson(geography)` returns ``text``
-* :command:`ST_Distance(geography, geography)` returns ``double``
-* :command:`ST_DWithin(geography, geography, float8)` returns ``boolean``
-* :command:`ST_Area(geography)` returns ``double``
-* :command:`ST_Length(geography)` returns ``double``
-* :command:`ST_Covers(geography, geography)` returns ``boolean``
-* :command:`ST_CoveredBy(geography, geography)` returns ``boolean``
-* :command:`ST_Intersects(geography, geography)` returns ``boolean``
-* :command:`ST_Buffer(geography, float8)` returns ``geography`` [#Casting_note]_
-* :command:`ST_Intersection(geography, geography)` returns ``geography`` [#Casting_note]_
+* ST_AsText_(geography) returns ``text``
+* ST_GeographyFromText_(text) returns ``geography``
+* ST_AsBinary_(geography) returns ``bytea``
+* ST_GeogFromWKB_(bytea) returns ``geography``
+* ST_AsSVG_(geography) returns ``text``
+* ST_AsGML_(geography) returns ``text``
+* ST_AsKML_(geography) returns ``text``
+* ST_AsGeoJson_(geography) returns ``text``
+* ST_Distance_(geography, geography) returns ``double``
+* ST_DWithin_(geography, geography, float8) returns ``boolean``
+* ST_Area_(geography) returns ``double``
+* ST_Length_(geography) returns ``double``
+* ST_Covers_(geography, geography) returns ``boolean``
+* ST_CoveredBy_(geography, geography) returns ``boolean``
+* ST_Intersects_(geography, geography) returns ``boolean``
+* ST_Buffer_(geography, float8) returns ``geography`` [#Casting_note]_
+* ST_Intersection_(geography, geography) returns ``geography`` [#Casting_note]_
  
 Creating a Geography Table
 --------------------------
@@ -188,7 +188,7 @@ While the basic functions for geography types can handle many use cases, there a
 
 The PostgreSQL syntax convention for casting is to append ``::typename`` to the end of the value you wish to cast. So, ``2::text`` with convert a numeric two to a text string '2'. And ``'POINT(0 0)'::geometry`` will convert the text representation of point into a geometry point.
 
-The :command:`ST_X(point)` function only supports the geometry type. How can we read the X coordinate from our geographies?
+The ST_X_(point) function only supports the geometry type. How can we read the X coordinate from our geographies?
 
 .. code-block:: sql
 
@@ -222,18 +222,27 @@ The conclusion?
 Function List
 -------------
 
-`ST_Distance(geometry, geometry) <http://postgis.net/docs/manual-2.1/ST_Distance.html>`_: For geometry type Returns the 2-dimensional Cartesian minimum distance (based on spatial ref) between two geometries in projected units. For geography type defaults to return spheroidal minimum distance between two geographies in meters.
+ST_Distance_ (geometry, geometry): For geometry type Returns the 2-dimensional Cartesian minimum distance (based on spatial ref) between two geometries in projected units. For geography type defaults to return spheroidal minimum distance between two geographies in meters.
 
-`ST_GeographyFromText(text) <http://postgis.net/docs/manual-2.1/ST_GeographyFromText.html>`_: Returns a specified geography value from Well-Known Text representation or extended (WKT).
+ST_GeographyFromText_ (text): Returns a specified geography value from Well-Known Text representation or extended (WKT).
 
-`ST_Transform(geometry, srid) <http://postgis.net/docs/manual-2.1/ST_Transform.html>`_: Returns a new geometry with its coordinates transformed to the SRID referenced by the integer parameter.
+ST_Transform_ (geometry, srid): Returns a new geometry with its coordinates transformed to the SRID referenced by the integer parameter.
 
-`ST_X(point) <http://postgis.net/docs/manual-2.1/ST_X.html>`_: Returns the X coordinate of the point, or NULL if not available. Input must be a point.
+ST_X_ (point): Returns the X coordinate of the point, or NULL if not available. Input must be a point.
 
 
 .. rubric:: Footnotes
 
 .. [#Casting_note] The buffer and intersection functions are actually wrappers on top of a cast to geometry, and are not carried out natively in spherical coordinates. As a result, they may fail to return correct results for objects with very large extents that cannot be cleanly converted to a planar representation.
  
-   For example, the :command:`ST_Buffer(geography,distance)` function transforms the geography object into a "best" projection, buffers it, and then transforms it back to geographics. If there is no "best" projection (the object is too large), the operation can fail or return a malformed buffer.
+   For example, the ST_Buffer_(geography,distance) function transforms the geography object into a "best" projection, buffers it, and then transforms it back to geographics. If there is no "best" projection (the object is too large), the operation can fail or return a malformed buffer.
+
+.. _ST_Distance: http://postgis.net/docs/ST_Distance.html
+
+.. _ST_GeographyFromText: http://postgis.net/docs/ST_GeographyFromText.html
+
+.. _ST_Transform: http://postgis.net/docs/ST_Transform.html
+
+.. _ST_X: http://postgis.net/docs/ST_X.html
+
 
