@@ -235,7 +235,7 @@ ST_X_ (point): Returns the X coordinate of the point, or NULL if not available. 
 
 .. note:: - The buffer and intersection functions are actually wrappers on top of a cast to geometry, and are not carried out natively in spherical coordinates. As a result, they may fail to return correct results for objects with very large extents that cannot be cleanly converted to a planar representation.
  
-          - For example, the ST_Buffer_(geography,distance) function transforms the geography object into a "best" projection, buffers it, and then transforms it back to geographics. If there is no "best" projection (the object is too large), the operation can fail or return a malformed buffer. 
+          - For example, the ST_Buffer_ (geography,distance) function transforms the geography object into a "best" projection, buffers it, and then transforms it back to geographics. If there is no "best" projection (the object is too large), the operation can fail or return a malformed buffer. 
 
 -----
 
@@ -250,4 +250,6 @@ ST_X_ (point): Returns the X coordinate of the point, or NULL if not available. 
 .. _ST_GeometryFromText: http://postgis.net/docs/ST_GeometryFromText.html
 
 .. _ST_Distance_Spheroid: http://postgis.net/docs/ST_Distance_Spheroid.html
+
+.. _ST_Buffer: http://postgis.net/docs/ST_Buffer.html
 
