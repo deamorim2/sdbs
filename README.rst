@@ -43,6 +43,17 @@ Part I - Introduction to PostGIS
 
 #. `Advanced Geometries Construction <./EN-US/advanced_geometry_construction.rst>`_
 
+#. `Nearest-Neighbour Searching/Spatial Operators <./EN-US/knn.rst>`_
+
+#. `Linear Referencing <./EN-US/linear_referencing.rst>`_
+
+#. `Projecting Data <./EN-US/projection.rst>`_
+
+#. `Geography <./EN-US/geography.rst>`_
+
+
+https://github.com/deamorim2/sdbs/blob/master/EN-US/knn.rst
+
 Part II - Spatial Database System Implementation
 -------------------------------------------------
 
@@ -51,6 +62,7 @@ Part II - Spatial Database System Implementation
 #. `Logical Scheme <./EN-US/logical_scheme.rst>`__
 
 #. `Physical Implementation in SDBS <./EN-US/physical_implementation_sdbs.rst>`__
+
 
 License
 =======
