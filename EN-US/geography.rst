@@ -219,6 +219,14 @@ The conclusion?
 
 **If you need to measure distance with a dataset that is geographically dispersed** (covering much of the world), **use the geography type.** The application complexity you save by working in ``geography`` will offset any performance issues. And casting to ``geometry`` can offset most functionality limitations.
 
+-----
+
+.. note:: - The buffer and intersection functions are actually wrappers on top of a cast to geometry, and are not carried out natively in spherical coordinates. As a result, they may fail to return correct results for objects with very large extents that cannot be cleanly converted to a planar representation.
+ 
+          - For example, the ST_Buffer_ (geography,distance) function transforms the geography object into a "best" projection, buffers it, and then transforms it back to geographics. If there is no "best" projection (the object is too large), the operation can fail or return a malformed buffer. 
+
+-----
+
 Function List
 -------------
 
@@ -229,15 +237,6 @@ ST_GeographyFromText_ (text): Returns a specified geography value from Well-Know
 ST_Transform_ (geometry, srid): Returns a new geometry with its coordinates transformed to the SRID referenced by the integer parameter.
 
 ST_X_ (point): Returns the X coordinate of the point, or NULL if not available. Input must be a point.
-
-
------
-
-.. note:: - The buffer and intersection functions are actually wrappers on top of a cast to geometry, and are not carried out natively in spherical coordinates. As a result, they may fail to return correct results for objects with very large extents that cannot be cleanly converted to a planar representation.
- 
-          - For example, the ST_Buffer_ (geography,distance) function transforms the geography object into a "best" projection, buffers it, and then transforms it back to geographics. If there is no "best" projection (the object is too large), the operation can fail or return a malformed buffer. 
-
------
 
 .. _ST_Distance: http://postgis.net/docs/ST_Distance.html
 
