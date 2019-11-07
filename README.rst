@@ -51,9 +51,6 @@ Part I - Introduction to PostGIS
 
 #. `Geography <./EN-US/geography.rst>`_
 
-
-https://github.com/deamorim2/sdbs/blob/master/EN-US/knn.rst
-
 Part II - Spatial Database System Implementation
 -------------------------------------------------
 
