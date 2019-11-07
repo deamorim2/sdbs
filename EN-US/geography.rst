@@ -132,23 +132,23 @@ The difference is under the covers: the geography index will correctly handle qu
 
 There are only a small number of native functions for the geography type:
  
-* ST_AsText_(geography) returns ``text``
-* ST_GeographyFromText_(text) returns ``geography``
-* ST_AsBinary_(geography) returns ``bytea``
-* ST_GeogFromWKB_(bytea) returns ``geography``
-* ST_AsSVG_(geography) returns ``text``
-* ST_AsGML_(geography) returns ``text``
-* ST_AsKML_(geography) returns ``text``
-* ST_AsGeoJson_(geography) returns ``text``
-* ST_Distance_(geography, geography) returns ``double``
-* ST_DWithin_(geography, geography, float8) returns ``boolean``
-* ST_Area_(geography) returns ``double``
-* ST_Length_(geography) returns ``double``
-* ST_Covers_(geography, geography) returns ``boolean``
-* ST_CoveredBy_(geography, geography) returns ``boolean``
-* ST_Intersects_(geography, geography) returns ``boolean``
-* ST_Buffer_(geography, float8) returns ``geography`` [#Casting_note]_
-* ST_Intersection_(geography, geography) returns ``geography`` [#Casting_note]_
+* ST_AsText_ (geography) returns ``text``
+* ST_GeographyFromText_ (text) returns ``geography``
+* ST_AsBinary_ (geography) returns ``bytea``
+* ST_GeogFromWKB_ (bytea) returns ``geography``
+* ST_AsSVG_ (geography) returns ``text``
+* ST_AsGML_ (geography) returns ``text``
+* ST_AsKML_ (geography) returns ``text``
+* ST_AsGeoJson_ (geography) returns ``text``
+* ST_Distance_ (geography, geography) returns ``double``
+* ST_DWithin_ (geography, geography, float8) returns ``boolean``
+* ST_Area_ (geography) returns ``double``
+* ST_Length_ (geography) returns ``double``
+* ST_Covers_ (geography, geography) returns ``boolean``
+* ST_CoveredBy_ (geography, geography) returns ``boolean``
+* ST_Intersects_ (geography, geography) returns ``boolean``
+* ST_Buffer_ (geography, float8) returns ``geography``
+* ST_Intersection_ (geography, geography) returns ``geography``
  
 Creating a Geography Table
 --------------------------
@@ -252,3 +252,32 @@ ST_X_ (point): Returns the X coordinate of the point, or NULL if not available. 
 
 .. _ST_Buffer: http://postgis.net/docs/ST_Buffer.html
 
+.. _ST_AsText: http://postgis.net/docs/ST_AsText.html
+
+.. _ST_AsBinary: http://postgis.net/docs/ST_AsBinary.html
+
+.. _ST_GeogFromWKB: http://postgis.net/docs/ST_GeogFromWKB.html
+
+.. _ST_AsSVG: http://postgis.net/docs/ST_AsSVG.html
+
+.. _ST_AsGML: http://postgis.net/docs/ST_AsGML.html
+
+.. _ST_AsKML: http://postgis.net/docs/ST_AsKML.html
+
+.. _ST_AsGeoJson: http://postgis.net/docs/ST_AsGeoJson.html
+
+.. _ST_Distance: http://postgis.net/docs/ST_Distance.html
+
+.. _ST_DWithin: http://postgis.net/docs/ST_DWithin.html
+
+.. _ST_Area: http://postgis.net/docs/ST_Area.html
+
+.. _ST_Length: http://postgis.net/docs/ST_Length.html
+
+.. _ST_Covers: http://postgis.net/docs/ST_Covers.html
+
+.. _ST_CoveredBy: http://postgis.net/docs/ST_CoveredBy.html
+
+.. _ST_Intersects: http://postgis.net/docs/ST_Intersects.html
+
+.. _ST_Intersection: http://postgis.net/docs/ST_Intersection.html
