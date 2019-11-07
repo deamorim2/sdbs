@@ -231,11 +231,13 @@ ST_Transform_ (geometry, srid): Returns a new geometry with its coordinates tran
 ST_X_ (point): Returns the X coordinate of the point, or NULL if not available. Input must be a point.
 
 
-.. rubric:: Footnotes
+-----
 
-.. [#Casting_note] The buffer and intersection functions are actually wrappers on top of a cast to geometry, and are not carried out natively in spherical coordinates. As a result, they may fail to return correct results for objects with very large extents that cannot be cleanly converted to a planar representation.
+.. note:: - The buffer and intersection functions are actually wrappers on top of a cast to geometry, and are not carried out natively in spherical coordinates. As a result, they may fail to return correct results for objects with very large extents that cannot be cleanly converted to a planar representation.
  
-   For example, the ST_Buffer_(geography,distance) function transforms the geography object into a "best" projection, buffers it, and then transforms it back to geographics. If there is no "best" projection (the object is too large), the operation can fail or return a malformed buffer.
+          - For example, the ST_Buffer_(geography,distance) function transforms the geography object into a "best" projection, buffers it, and then transforms it back to geographics. If there is no "best" projection (the object is too large), the operation can fail or return a malformed buffer. 
+
+-----
 
 .. _ST_Distance: http://postgis.net/docs/ST_Distance.html
 
