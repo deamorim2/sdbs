@@ -245,4 +245,7 @@ ST_X_ (point): Returns the X coordinate of the point, or NULL if not available. 
 
 .. _ST_X: http://postgis.net/docs/ST_X.html
 
+.. _ST_GeometryFromText: http://postgis.net/docs/ST_GeometryFromText.html
+
+.. _ST_Distance_Spheroid: http://postgis.net/docs/ST_Distance_Spheroid.html
 
