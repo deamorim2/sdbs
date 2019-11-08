@@ -244,6 +244,9 @@ Visualizing Geography Data
 
 You can use a GIS to view your geometry data, but to view your geography data you must be alert for some details, principally related to the projection used.
 
+Linear Features
+^^^^^^^^^^^^^^^
+
 An easy way to view the shortest path between global airports is accessing the `Great Circle Mapper <http://www.gcmap.com/>`_ website.
 
   Open the airports table in QGIS.
@@ -256,7 +259,7 @@ Add some basemap (`QuickMapServices QGIS Plugin <https://plugins.qgis.org/plugin
 
 ..
 
-  Open the DB Manager, execute the SQL instruction below and insert the layer in the view as ``LAX-CDG``.
+  Open the DB Manager, execute the SQL instruction below and add the layer in the view as ``LAX-CDG``.
   
 .. code-block:: sql
 
@@ -331,7 +334,7 @@ In this case, we will use the ST_Segmentize spatial function (geography geog, fl
 
 ..
 
-Be aware that this procedure works to visualize linear geography features in GIS, but it´s not a good practice to calculate the distance between these points as can be seen in the query bellow:
+Be aware that this procedure works to visualize linear geography features in GIS, but it´s not a good practice to calculate the distance between these points as you can see in the results of the query bellow:
 
 .. code-block:: sql
 
@@ -374,6 +377,10 @@ Be aware that this procedure works to visualize linear geography features in GIS
    geometry  | 9124671.97516477
  
  ..
+
+Polygonal Features
+^^^^^^^^^^^^^^^^^^^
+
 
 
 Function List
