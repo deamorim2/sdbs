@@ -334,7 +334,7 @@ In this case, we will use the ST_Segmentize_ spatial function (geography geog, f
 
 ..
 
-Be aware that this procedure works to visualize linear geography features in GIS, but it´s not a good practice to calculate the distance between these points as you can see in the results of the query bellow:
+Be aware that this procedure works to visualize linear geography features in GIS, but it´s not a good practice to calculate the distance between these points as you can see in the results of the query bellow, where the calculated distance is different for each approach:
 
 .. code-block:: sql
 
