@@ -250,8 +250,11 @@ An easy way to view the shortest path between global airports is accessing the `
 
 Add some basemap (`QuickMapServices QGIS Plugin <https://plugins.qgis.org/plugins/quick_map_services/>`_) to the view to help you to visualize the airports data.
 
+..
+
 .. image:: ./geography/qgis_01.png
 
+..
 
   Open the DB Manager, execute the SQL instruction below and insert the layer in the view as ``LAX-CDG``.
   
