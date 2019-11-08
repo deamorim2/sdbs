@@ -17,7 +17,7 @@ For example, here are the coordinates of Los Angeles and Paris.
 * Los Angeles: ``POINT(-118.4079 33.9434)``
 * Paris: ``POINT(2.3490 48.8533)``
  
-The following calculates the distance between Los Angeles and Paris using the standard PostGIS Cartesian :command:`ST_Distance(geometry, geometry)`.  Note that the SRID of 4326 declares a geographic spatial reference system.
+The following calculates the distance between Los Angeles and Paris using the standard PostGIS Cartesian ST_Distance_(geometry, geometry).  Note that the SRID of 4326 declares a geographic spatial reference system.
 
 .. code-block:: sql
 
@@ -49,7 +49,7 @@ Starting with version 1.5, PostGIS provides this functionality through the ``geo
   * Informix Spatial is a pure Cartesian extension to Informix, while Informix Geodetic is a pure geographic extension. 
   * Similar to SQL Server, PostGIS uses two types, "geometry" and "geography".
   
-Using the ``geography`` instead of ``geometry`` type, let's try again to measure the distance between Los Angeles and Paris. Instead of :command:`ST_GeometryFromText(text)`, we will use :command:`ST_GeographyFromText(text)`.
+Using the ``geography`` instead of ``geometry`` type, let's try again to measure the distance between Los Angeles and Paris. Instead of ST_GeometryFromText_ (text), we will use ST_GeographyFromText_ (text).
 
 .. code-block:: sql
 
@@ -64,7 +64,7 @@ Using the ``geography`` instead of ``geometry`` type, let's try again to measure
 
 A big number! All return values from ``geography`` calculations are in meters, so our answer is 9124km. 
 
-Older versions of PostGIS supported very basic calculations over the sphere using the :command:`ST_Distance_Spheroid(point, point, measurement)` function. However, :command:`ST_Distance_Spheroid` is substantially limited. The function only works on points and provides no support for indexing across the poles or international dateline.
+Older versions of PostGIS supported very basic calculations over the sphere using the ST_Distance_Spheroid_ (point, point, measurement)` function. However, ST_Distance_Spheroid_ is substantially limited. The function only works on points and provides no support for indexing across the poles or international dateline.
 
 The need to support non-point geometries becomes very clear when posing a question like "How close will a flight from Los Angeles to Paris come to Iceland?" 
 
@@ -110,7 +110,7 @@ The Cartesian approach to handling geographic coordinates breaks down entirely f
 Using Geography
 ---------------
 
-In order to load geometry data into a geography table, the geometry first needs to be projected into EPSG:4326 (longitude/latitude), then it needs to be changed into geography.  The :command:`ST_Transform(geometry,srid)` function converts coordinates to geographics and the :command:`Geography(geometry)` function "casts" them from geometry to geography.
+In order to load geometry data into a geography table, the geometry first needs to be projected into EPSG:4326 (longitude/latitude), then it needs to be changed into geography.  The ST_Transform_ (geometry,srid)` function converts coordinates to geographics and the Geography_ (geometry) function "casts" them from geometry to geography.
 
 .. code-block:: sql
 
@@ -130,25 +130,37 @@ Building a spatial index on a geography table is exactly the same as for geometr
 
 The difference is under the covers: the geography index will correctly handle queries that cover the poles or the international date-line, while the geometry one will not.
 
-There are only a small number of native functions for the geography type:
+There are only a small number of native functions for the geography type(postGIS 2.5):
  
-* :command:`ST_AsText(geography)` returns ``text``
-* :command:`ST_GeographyFromText(text)` returns ``geography``
-* :command:`ST_AsBinary(geography)` returns ``bytea``
-* :command:`ST_GeogFromWKB(bytea)` returns ``geography``
-* :command:`ST_AsSVG(geography)` returns ``text``
-* :command:`ST_AsGML(geography)` returns ``text``
-* :command:`ST_AsKML(geography)` returns ``text``
-* :command:`ST_AsGeoJson(geography)` returns ``text``
-* :command:`ST_Distance(geography, geography)` returns ``double``
-* :command:`ST_DWithin(geography, geography, float8)` returns ``boolean``
-* :command:`ST_Area(geography)` returns ``double``
-* :command:`ST_Length(geography)` returns ``double``
-* :command:`ST_Covers(geography, geography)` returns ``boolean``
-* :command:`ST_CoveredBy(geography, geography)` returns ``boolean``
-* :command:`ST_Intersects(geography, geography)` returns ``boolean``
-* :command:`ST_Buffer(geography, float8)` returns ``geography`` [#Casting_note]_
-* :command:`ST_Intersection(geography, geography)` returns ``geography`` [#Casting_note]_
+* ST_Area_ - Returns the area of the surface if it is a Polygon or MultiPolygon. For geometry, a 2D Cartesian area is determined with units specified by the SRID. For geography, area is determined on a curved surface with units in square meters.
+* ST_AsBinary_ - Return the Well-Known Binary (WKB) representation of the geometry/geography without SRID meta data.
+* ST_AsEWKT_ - Return the Well-Known Text (WKT) representation of the geometry with SRID meta data.
+* ST_AsGML_ - Return the geometry as a GML version 2 or 3 element.
+* ST_AsGeoJSON_ - Return the geometry as a GeoJSON element.
+* ST_AsKML_ - Return the geometry as a KML element. Several variants. Default version=2, default maxdecimaldigits=15
+* ST_AsSVG_ - Returns a Geometry in SVG path data given a geometry or geography object.
+* ST_AsText_ - Return the Well-Known Text (WKT) representation of the geometry/geography without SRID metadata.
+* ST_Azimuth_ - Returns the north-based azimuth as the angle in radians measured clockwise from the vertical on pointA to pointB.
+* ST_Buffer_ - (T)Returns a geometry covering all points within a given distancefrom the input geometry.
+* ST_Centroid_ - Returns the geometric center of a geometry.
+* ST_CoveredBy_ - Returns 1 (TRUE) if no point in Geometry/Geography A is outside Geometry/Geography B
+* ST_Covers_ - Returns 1 (TRUE) if no point in Geometry B is outside Geometry A
+* ST_DWithin_ - Returns true if the geometries are within the specified distance of one another. For geometry units are in those of spatial reference and for geography units are in meters and measurement is defaulted to use_spheroid=true (measure around spheroid), for faster check, use_spheroid=false to measure along sphere.
+* ST_Distance_ - For geometry type returns the 2D Cartesian distance between two geometries in projected units (based on spatial reference system). For geography type defaults to return minimum geodesic distance between two geographies in meters.
+* ST_GeogFromText_ - Return a specified geography value from Well-Known Text representation or extended (WKT).
+* ST_GeogFromWKB_ - Creates a geography instance from a Well-Known Binary geometry representation (WKB) or extended Well Known Binary (EWKB).
+* ST_GeographyFromText_ - Return a specified geography value from Well-Known Text representation or extended (WKT).
+* `= <https://postgis.net/docs/ST_Geometry_EQ.html>`_ - Returns TRUE if the coordinates and coordinate order geometry/geography A are the same as the coordinates and coordinate order of geometry/geography B.
+* ST_Intersection_ - (T)Returns a geometry that represents the shared portion of geomA and geomB.
+* ST_Intersects_ - Returns TRUE if the Geometries/Geography "spatially intersect in 2D" - (share any portion of space) and FALSE if they don't (they are Disjoint). For geography -- tolerance is 0.00001 meters (so any points that close are considered to intersect)
+* ST_Length_ - Returns the 2D length of the geometry if it is a LineString or MultiLineString. geometry are in units of spatial reference and geography are in meters (default spheroid)
+* ST_Perimeter_ - Return the length measurement of the boundary of an ST_Surface or ST_MultiSurface geometry or geography. (Polygon, MultiPolygon). geometry measurement is in units of spatial reference and geography is in meters.
+* ST_Project_ - Returns a POINT projected from a start point using a distance in meters and bearing (azimuth) in radians.
+* ST_Segmentize_ - Return a modified geometry/geography having no segment longer than the given distance.
+* ST_Summary_ - Returns a text summary of the contents of the geometry.
+* `<-> <https://postgis.net/docs/geometry_distance_knn.html>`_ - Returns the 2D distance between A and B.
+* `&& <https://postgis.net/docs/geometry_overlaps.html>`_ - Returns TRUE if A's 2D bounding box intersects B's 2D bounding box. 
+ 
  
 Creating a Geography Table
 --------------------------
@@ -188,7 +200,7 @@ While the basic functions for geography types can handle many use cases, there a
 
 The PostgreSQL syntax convention for casting is to append ``::typename`` to the end of the value you wish to cast. So, ``2::text`` with convert a numeric two to a text string '2'. And ``'POINT(0 0)'::geometry`` will convert the text representation of point into a geometry point.
 
-The :command:`ST_X(point)` function only supports the geometry type. How can we read the X coordinate from our geographies?
+The ST_X_(point) function only supports the geometry type. How can we read the X coordinate from our geographies?
 
 .. code-block:: sql
 
@@ -219,21 +231,227 @@ The conclusion?
 
 **If you need to measure distance with a dataset that is geographically dispersed** (covering much of the world), **use the geography type.** The application complexity you save by working in ``geography`` will offset any performance issues. And casting to ``geometry`` can offset most functionality limitations.
 
+-----
+
+.. note:: - The buffer and intersection functions are actually wrappers on top of a cast to geometry, and are not carried out natively in spherical coordinates. As a result, they may fail to return correct results for objects with very large extents that cannot be cleanly converted to a planar representation.
+ 
+          - For example, the ST_Buffer_ (geography,distance) function transforms the geography object into a "best" projection, buffers it, and then transforms it back to geographics. If there is no "best" projection (the object is too large), the operation can fail or return a malformed buffer. 
+
+-----
+
+Visualizing Geography Data
+--------------------------
+
+You can use a GIS to view your geometry data, but to view your geography data you must be alert for some details, principally related to the projection used.
+
+Linear Features
+^^^^^^^^^^^^^^^
+
+An easy way to view the shortest path between global airports is accessing the `Great Circle Mapper <http://www.gcmap.com/>`_ website.
+
+  Open the airports table in QGIS.
+
+Add some basemap (`QuickMapServices QGIS Plugin <https://plugins.qgis.org/plugins/quick_map_services/>`_) to the view to help you to visualize the airports data.
+
+..
+
+.. image:: ./geography/qgis_01.png
+
+..
+
+  Open the DB Manager, execute the SQL instruction below and add the layer in the view as ``LAX-CDG``.
+  
+.. code-block:: sql
+
+  SELECT 1 as id, ST_Makeline(
+  (SELECT geog
+  FROM airports
+  WHERE code = 'LAX')::geometry
+  ,
+  (SELECT geog
+  FROM airports
+  WHERE code = 'CDG')::geometry
+  )::geography as geog
+
+..
+
+.. image:: ./geography/qgis_02.png
+
+..
+
+The construction of the linear feature that presents the LAX-CDG air route was performed in some steps:
+
+#. Two queries were used to acquire the geography features of LAX and CDG airports;
+
+#. Casting of airport geography features to geometry type, as the spatial function ST_MakeLine_ (geometry, geometry) only works with geometry data and doesn't support geography data.
+
+#. Generation of a geometry linear feature from two geometry points features representing LAX and CDG airports.
+
+#. Casting of the geometry linear feature to geography linear feature.
+
+..
+
+.. image:: ./geography/qgis_03.png
+
+..
+
+Note that the LAX-CDG route, despite being in geography data format, presents a straight line as if the data were geometry.
+
+This is because QGIS creates this "line" from the computational path between the two airports.
+
+To solve this visualization "problem", it is necessary to "segmentize" the line-type geographic data by vertices that represent the path drawn between airports.
+
+In this case, we will use the ST_Segmentize spatial function (geography geog, float max_segment_length), which has support for geography data, with line segmentation in vertices with 10m spacing between them.
+
+.. code-block:: sql
+
+  SELECT 1 as id,
+  ST_Segmentize(
+
+  ST_Makeline(
+
+  (SELECT geog
+  FROM airports
+  WHERE code = 'LAX')::geometry
+
+  ,
+
+  (SELECT geog
+  FROM airports
+  WHERE code = 'CDG')::geometry
+
+  )::geography
+
+  ,10) as geog
+
+..
+
+  Add this new layer as LAX-CDG(geography).
+
+..
+
+.. image:: ./geography/qgis_03.png
+
+..
+
+Be aware that this procedure works to visualize linear geography features in GIS, but it´s not a good practice to calculate the distance between these points as you can see in the results of the query bellow:
+
+.. code-block:: sql
+
+  SELECT 'geography' as type,
+  ST_Length(
+  ST_Makeline(
+  (SELECT geog
+  FROM airports
+  WHERE code = 'LAX')::geometry
+  ,
+  (SELECT geog
+  FROM airports
+  WHERE code = 'CDG')::geometry
+  )::geography
+  ) as distance
+
+  UNION
+
+  SELECT 'geometry' as type,
+  ST_Length(
+  ST_Segmentize(
+  ST_Makeline(
+  (SELECT geog
+  FROM airports
+  WHERE code = 'LAX')::geometry
+  ,
+  (SELECT geog
+  FROM airports
+  WHERE code = 'CDG')::geometry
+  )::geography
+  ,10)
+  ) as distance;
+..
+
+::
+
+     type    |     distance
+  -----------+------------------
+   geography | 9124665.27317673
+   geometry  | 9124671.97516477
+ 
+ ..
+
+Polygonal Features
+^^^^^^^^^^^^^^^^^^^
+
+
+
 Function List
 -------------
 
-`ST_Distance(geometry, geometry) <http://postgis.net/docs/manual-2.1/ST_Distance.html>`_: For geometry type Returns the 2-dimensional Cartesian minimum distance (based on spatial ref) between two geometries in projected units. For geography type defaults to return spheroidal minimum distance between two geographies in meters.
+ST_Distance_ (geometry, geometry): For geometry type Returns the 2-dimensional Cartesian minimum distance (based on spatial ref) between two geometries in projected units. For geography type defaults to return spheroidal minimum distance between two geographies in meters.
 
-`ST_GeographyFromText(text) <http://postgis.net/docs/manual-2.1/ST_GeographyFromText.html>`_: Returns a specified geography value from Well-Known Text representation or extended (WKT).
+ST_GeographyFromText_ (text): Returns a specified geography value from Well-Known Text representation or extended (WKT).
 
-`ST_Transform(geometry, srid) <http://postgis.net/docs/manual-2.1/ST_Transform.html>`_: Returns a new geometry with its coordinates transformed to the SRID referenced by the integer parameter.
+ST_Transform_ (geometry, srid): Returns a new geometry with its coordinates transformed to the SRID referenced by the integer parameter.
 
-`ST_X(point) <http://postgis.net/docs/manual-2.1/ST_X.html>`_: Returns the X coordinate of the point, or NULL if not available. Input must be a point.
+ST_X_ (point): Returns the X coordinate of the point, or NULL if not available. Input must be a point.
 
+.. _ST_Distance: http://postgis.net/docs/ST_Distance.html
 
-.. rubric:: Footnotes
+.. _ST_GeographyFromText: http://postgis.net/docs/ST_GeographyFromText.html
 
-.. [#Casting_note] The buffer and intersection functions are actually wrappers on top of a cast to geometry, and are not carried out natively in spherical coordinates. As a result, they may fail to return correct results for objects with very large extents that cannot be cleanly converted to a planar representation.
- 
-   For example, the :command:`ST_Buffer(geography,distance)` function transforms the geography object into a "best" projection, buffers it, and then transforms it back to geographics. If there is no "best" projection (the object is too large), the operation can fail or return a malformed buffer.
+.. _ST_Transform: http://postgis.net/docs/ST_Transform.html
+
+.. _ST_X: http://postgis.net/docs/ST_X.html
+
+.. _ST_GeometryFromText: http://postgis.net/docs/ST_GeometryFromText.html
+
+.. _ST_Distance_Spheroid: http://postgis.net/docs/ST_Distance_Spheroid.html
+
+.. _ST_Buffer: http://postgis.net/docs/ST_Buffer.html
+
+.. _ST_AsText: http://postgis.net/docs/ST_AsText.html
+
+.. _ST_AsBinary: http://postgis.net/docs/ST_AsBinary.html
+
+.. _ST_GeogFromWKB: http://postgis.net/docs/ST_GeogFromWKB.html
+
+.. _ST_AsSVG: http://postgis.net/docs/ST_AsSVG.html
+
+.. _ST_AsGML: http://postgis.net/docs/ST_AsGML.html
+
+.. _ST_AsKML: http://postgis.net/docs/ST_AsKML.html
+
+.. _ST_AsGeoJson: http://postgis.net/docs/ST_AsGeoJson.html
+
+.. _ST_Distance: http://postgis.net/docs/ST_Distance.html
+
+.. _ST_DWithin: http://postgis.net/docs/ST_DWithin.html
+
+.. _ST_Area: http://postgis.net/docs/ST_Area.html
+
+.. _ST_Length: http://postgis.net/docs/ST_Length.html
+
+.. _ST_Covers: http://postgis.net/docs/ST_Covers.html
+
+.. _ST_CoveredBy: http://postgis.net/docs/ST_CoveredBy.html
+
+.. _ST_Intersects: http://postgis.net/docs/ST_Intersects.html
+
+.. _ST_Intersection: http://postgis.net/docs/ST_Intersection.html
+
+.. _ST_Azimuth: http://postgis.net/docs/ST_Azimuth.html
+
+.. _ST_Centroid: http://postgis.net/docs/ST_Centroid.html
+
+.. _ST_Perimeter: http://postgis.net/docs/ST_Perimeter.html
+
+.. _ST_Project: http://postgis.net/docs/ST_Project.html
+
+.. _ST_Segmentize: http://postgis.net/docs/ST_Segmentize.html
+
+.. _ST_Summary: http://postgis.net/docs/ST_Summary.html
+
+.. _ST_AsEWKT: http://postgis.net/docs/ST_AsEWKT.html
+
+.. _ST_Makeline: http://postgis.net/docs/ST_MakeLine.html
+
 
