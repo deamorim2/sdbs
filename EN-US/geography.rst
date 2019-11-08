@@ -149,7 +149,7 @@ There are only a small number of native functions for the geography type(postGIS
 * ST_Distance_ - For geometry type returns the 2D Cartesian distance between two geometries in projected units (based on spatial reference system). For geography type defaults to return minimum geodesic distance between two geographies in meters.
 * ST_GeogFromText_ - Return a specified geography value from Well-Known Text representation or extended (WKT).
 * ST_GeogFromWKB_ - Creates a geography instance from a Well-Known Binary geometry representation (WKB) or extended Well Known Binary (EWKB).
-* ST_GeographyFromText_ - Return a specified geography value from Well-Known Text representation or extended (WKT).
+* ST_GeographyFromText_ - Return a specified geography value from Well-Known Text representation or extended (WKT) - EWKT.
 * `= <https://postgis.net/docs/ST_Geometry_EQ.html>`_ - Returns TRUE if the coordinates and coordinate order geometry/geography A are the same as the coordinates and coordinate order of geometry/geography B.
 * ST_Intersection_ - (T)Returns a geometry that represents the shared portion of geomA and geomB.
 * ST_Intersects_ - Returns TRUE if the Geometries/Geography "spatially intersect in 2D" - (share any portion of space) and FALSE if they don't (they are Disjoint). For geography -- tolerance is 0.00001 meters (so any points that close are considered to intersect)
@@ -242,12 +242,12 @@ The conclusion?
 Visualizing Geography Data
 --------------------------
 
-You can use a GIS to view your geometry data, but to view your geography data you must be alert for some details, principally related to the projection used.
+An easy way to view correctly the shortest path (line) between global airports is accessing the `Great Circle Mapper <http://www.gcmap.com/>`_ website.
+
+But, to vizualize correctly this global data using a GIS is another history. You must be alert for some details, principally related to the projection used.
 
 Linear Features
 ^^^^^^^^^^^^^^^
-
-An easy way to view the shortest path between global airports is accessing the `Great Circle Mapper <http://www.gcmap.com/>`_ website.
 
   Open the airports table in QGIS.
 
@@ -301,7 +301,7 @@ This is because QGIS creates this "line" from the computational path between the
 
 To solve this visualization "problem", it is necessary to "segmentize" the line-type geographic data by vertices that represent the path drawn between airports.
 
-In this case, we will use the ST_Segmentize spatial function (geography geog, float max_segment_length), which has support for geography data, with line segmentation in vertices with 10m spacing between them.
+In this case, we will use the ST_Segmentize_ spatial function (geography geog, float max_segment_length), which has support for geography data, with line segmentation in vertices with 10m spacing between them.
 
 .. code-block:: sql
 
@@ -330,11 +330,11 @@ In this case, we will use the ST_Segmentize spatial function (geography geog, fl
 
 ..
 
-.. image:: ./geography/qgis_03.png
+.. image:: ./geography/qgis_04.png
 
 ..
 
-Be aware that this procedure works to visualize linear geography features in GIS, but it´s not a good practice to calculate the distance between these points as you can see in the results of the query bellow:
+Be aware that this procedure works to visualize linear geography features in GIS, but it´s not a good practice to calculate the distance between these points as you can see in the results of the query below, where the calculated distance is different for each approach:
 
 .. code-block:: sql
 
@@ -381,7 +381,51 @@ Be aware that this procedure works to visualize linear geography features in GIS
 Polygonal Features
 ^^^^^^^^^^^^^^^^^^^
 
+North Korea's `Hwasong-14 <https://en.wikipedia.org/wiki/Hwasong-14>`_ intercontinental ballistic missile has an estimated maximum range of 10,000 km.
 
+Let´s assume a buffer built from Pyongyang City(North Korea Capital). 
+
+.. code-block:: sql
+
+  SELECT 1 as id, ST_GeographyFromText('SRID=4326;POINT(125.738052 39.019444)') as geog;
+    
+..
+
+We can view the maximum range of this missile using the SQL instruction below:
+
+.. code-block:: sql
+
+  SELECT 1 as id, ST_Buffer(ST_GeographyFromText('SRID=4326;POINT(125.738052 39.019444)'),10000000) as geog;
+    
+..
+
+.. image:: ./geography/qgis_05.png
+
+..
+
+But, as you can see in the figure above, any planimetric projection, (3857, for example) doesn't support the geography data representation.
+
+To solve this, we have to change the view projection to SRID 3571: WGS 84 / North Pole LAEA Bering Sea
+
+..
+
+.. image:: ./geography/qgis_06.png
+
+..
+
+If we try to make a buffer from Pyongyang City using geometry data, the wrong choice, we have the result below:
+
+.. code-block:: sql
+
+  SELECT 1 as id, ST_Buffer(ST_GeomFromEWKT('SRID=4326;POINT(125.738052 39.019444)'),125) as geom;
+    
+..
+
+.. image:: ./geography/qgis_07.png
+
+..
+
+As we are working with geometry data, the buffer radius parameters must be inputed as decimal degrees. In this case, at this latitude, 10,000 km is around 125 decimal degrees.
 
 Function List
 -------------
