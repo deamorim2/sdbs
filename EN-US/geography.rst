@@ -130,25 +130,37 @@ Building a spatial index on a geography table is exactly the same as for geometr
 
 The difference is under the covers: the geography index will correctly handle queries that cover the poles or the international date-line, while the geometry one will not.
 
-There are only a small number of native functions for the geography type:
+There are only a small number of native functions for the geography type(postGIS 2.5):
  
-* ST_AsText_ (geography) returns ``text``
-* ST_GeographyFromText_ (text) returns ``geography``
-* ST_AsBinary_ (geography) returns ``bytea``
-* ST_GeogFromWKB_ (bytea) returns ``geography``
-* ST_AsSVG_ (geography) returns ``text``
-* ST_AsGML_ (geography) returns ``text``
-* ST_AsKML_ (geography) returns ``text``
-* ST_AsGeoJson_ (geography) returns ``text``
-* ST_Distance_ (geography, geography) returns ``double``
-* ST_DWithin_ (geography, geography, float8) returns ``boolean``
-* ST_Area_ (geography) returns ``double``
-* ST_Length_ (geography) returns ``double``
-* ST_Covers_ (geography, geography) returns ``boolean``
-* ST_CoveredBy_ (geography, geography) returns ``boolean``
-* ST_Intersects_ (geography, geography) returns ``boolean``
-* ST_Buffer_ (geography, float8) returns ``geography``
-* ST_Intersection_ (geography, geography) returns ``geography``
+* ST_Area_ - Returns the area of the surface if it is a Polygon or MultiPolygon. For geometry, a 2D Cartesian area is determined with units specified by the SRID. For geography, area is determined on a curved surface with units in square meters.
+* ST_AsBinary_ - Return the Well-Known Binary (WKB) representation of the geometry/geography without SRID meta data.
+* ST_AsEWKT_ - Return the Well-Known Text (WKT) representation of the geometry with SRID meta data.
+* ST_AsGML_ - Return the geometry as a GML version 2 or 3 element.
+* ST_AsGeoJSON_ - Return the geometry as a GeoJSON element.
+* ST_AsKML_ - Return the geometry as a KML element. Several variants. Default version=2, default maxdecimaldigits=15
+* ST_AsSVG_ - Returns a Geometry in SVG path data given a geometry or geography object.
+* ST_AsText_ - Return the Well-Known Text (WKT) representation of the geometry/geography without SRID metadata.
+* ST_Azimuth_ - Returns the north-based azimuth as the angle in radians measured clockwise from the vertical on pointA to pointB.
+* ST_Buffer_ - (T)Returns a geometry covering all points within a given distancefrom the input geometry.
+* ST_Centroid_ - Returns the geometric center of a geometry.
+* ST_CoveredBy_ - Returns 1 (TRUE) if no point in Geometry/Geography A is outside Geometry/Geography B
+* ST_Covers_ - Returns 1 (TRUE) if no point in Geometry B is outside Geometry A
+* ST_DWithin_ - Returns true if the geometries are within the specified distance of one another. For geometry units are in those of spatial reference and for geography units are in meters and measurement is defaulted to use_spheroid=true (measure around spheroid), for faster check, use_spheroid=false to measure along sphere.
+* ST_Distance_ - For geometry type returns the 2D Cartesian distance between two geometries in projected units (based on spatial reference system). For geography type defaults to return minimum geodesic distance between two geographies in meters.
+* ST_GeogFromText_ - Return a specified geography value from Well-Known Text representation or extended (WKT).
+* ST_GeogFromWKB_ - Creates a geography instance from a Well-Known Binary geometry representation (WKB) or extended Well Known Binary (EWKB).
+* ST_GeographyFromText_ - Return a specified geography value from Well-Known Text representation or extended (WKT).
+* = - Returns TRUE if the coordinates and coordinate order geometry/geography A are the same as the coordinates and coordinate order of geometry/geography B.
+* ST_Intersection_ - (T)Returns a geometry that represents the shared portion of geomA and geomB.
+* ST_Intersects_ - Returns TRUE if the Geometries/Geography "spatially intersect in 2D" - (share any portion of space) and FALSE if they don't (they are Disjoint). For geography -- tolerance is 0.00001 meters (so any points that close are considered to intersect)
+* ST_Length_ - Returns the 2D length of the geometry if it is a LineString or MultiLineString. geometry are in units of spatial reference and geography are in meters (default spheroid)
+* ST_Perimeter_ - Return the length measurement of the boundary of an ST_Surface or ST_MultiSurface geometry or geography. (Polygon, MultiPolygon). geometry measurement is in units of spatial reference and geography is in meters.
+* ST_Project_ - Returns a POINT projected from a start point using a distance in meters and bearing (azimuth) in radians.
+* ST_Segmentize_ - Return a modified geometry/geography having no segment longer than the given distance.
+* ST_Summary_ - Returns a text summary of the contents of the geometry.
+* `<-> <https://postgis.net/docs/geometry_distance_knn.html>`_ - Returns the 2D distance between A and B.
+* `&& <https://postgis.net/docs/geometry_overlaps.html>`_ - Returns TRUE if A's 2D bounding box intersects B's 2D bounding box. 
+ 
  
 Creating a Geography Table
 --------------------------
@@ -227,6 +239,16 @@ The conclusion?
 
 -----
 
+Visualizing Geography Data
+--------------------------
+
+You can use a GIS to view your geometry data, but to view your geography data you must be alert for some details, principally related to the projection used.
+
+An easy way to view the shortest path between global airports is accessing the `Great Circle Mapper <http://www.gcmap.com/>`_ website.
+
+
+
+
 Function List
 -------------
 
@@ -281,3 +303,17 @@ ST_X_ (point): Returns the X coordinate of the point, or NULL if not available. 
 .. _ST_Intersects: http://postgis.net/docs/ST_Intersects.html
 
 .. _ST_Intersection: http://postgis.net/docs/ST_Intersection.html
+
+.. _ST_Azimuth: http://postgis.net/docs/ST_Azimuth.html
+
+.. _ST_Centroid: http://postgis.net/docs/ST_Centroid.html
+
+.. _ST_Perimeter: http://postgis.net/docs/ST_Perimeter.html
+
+.. _ST_Project: http://postgis.net/docs/ST_Project.html
+
+.. _ST_Segmentize: http://postgis.net/docs/ST_Segmentize.html
+
+.. _ST_Summary: http://postgis.net/docs/ST_Summary.html
+
+
