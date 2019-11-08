@@ -301,7 +301,7 @@ This is because QGIS creates this "line" from the computational path between the
 
 To solve this visualization "problem", it is necessary to "segmentize" the line-type geographic data by vertices that represent the path drawn between airports.
 
-In this case, we will use the ST_Segmentize spatial function (geography geog, float max_segment_length), which has support for geography data, with line segmentation in vertices with 10m spacing between them.
+In this case, we will use the ST_Segmentize_ spatial function (geography geog, float max_segment_length), which has support for geography data, with line segmentation in vertices with 10m spacing between them.
 
 .. code-block:: sql
 
@@ -330,7 +330,7 @@ In this case, we will use the ST_Segmentize spatial function (geography geog, fl
 
 ..
 
-.. image:: ./geography/qgis_03.png
+.. image:: ./geography/qgis_04.png
 
 ..
 
