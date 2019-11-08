@@ -150,7 +150,7 @@ There are only a small number of native functions for the geography type(postGIS
 * ST_GeogFromText_ - Return a specified geography value from Well-Known Text representation or extended (WKT).
 * ST_GeogFromWKB_ - Creates a geography instance from a Well-Known Binary geometry representation (WKB) or extended Well Known Binary (EWKB).
 * ST_GeographyFromText_ - Return a specified geography value from Well-Known Text representation or extended (WKT).
-* = - Returns TRUE if the coordinates and coordinate order geometry/geography A are the same as the coordinates and coordinate order of geometry/geography B.
+* `= <https://postgis.net/docs/ST_Geometry_EQ.html>`_ - Returns TRUE if the coordinates and coordinate order geometry/geography A are the same as the coordinates and coordinate order of geometry/geography B.
 * ST_Intersection_ - (T)Returns a geometry that represents the shared portion of geomA and geomB.
 * ST_Intersects_ - Returns TRUE if the Geometries/Geography "spatially intersect in 2D" - (share any portion of space) and FALSE if they don't (they are Disjoint). For geography -- tolerance is 0.00001 meters (so any points that close are considered to intersect)
 * ST_Length_ - Returns the 2D length of the geometry if it is a LineString or MultiLineString. geometry are in units of spatial reference and geography are in meters (default spheroid)
@@ -315,5 +315,7 @@ ST_X_ (point): Returns the X coordinate of the point, or NULL if not available. 
 .. _ST_Segmentize: http://postgis.net/docs/ST_Segmentize.html
 
 .. _ST_Summary: http://postgis.net/docs/ST_Summary.html
+
+.. _ST_AsEWKT: http://postgis.net/docs/ST_AsEWKT.html
 
 
