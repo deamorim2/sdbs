@@ -246,7 +246,131 @@ You can use a GIS to view your geometry data, but to view your geography data yo
 
 An easy way to view the shortest path between global airports is accessing the `Great Circle Mapper <http://www.gcmap.com/>`_ website.
 
+  Open the airports table in QGIS.
 
+Add some basemap (`QuickMapServices QGIS Plugin <https://plugins.qgis.org/plugins/quick_map_services/>`_) to the view to help you to visualize the airports data.
+
+.. image:: ./geography/qgis_01.png
+
+
+  Open the DB Manager, execute the SQL instruction below and insert the layer in the view as ``LAX-CDG``.
+  
+.. code-block:: sql
+
+  SELECT 1 as id, ST_Makeline(
+  (SELECT geog
+  FROM airports
+  WHERE code = 'LAX')::geometry
+  ,
+  (SELECT geog
+  FROM airports
+  WHERE code = 'CDG')::geometry
+  )::geography as geog
+
+..
+
+.. image:: ./geography/qgis_02.png
+
+..
+
+The construction of the linear feature that presents the LAX-CDG air route was performed in some steps:
+
+#. Two queries were used to acquire the geography features of LAX and CDG airports;
+
+#. Casting of airport geography features to geometry type, as the spatial function ST_MakeLine_ (geometry, geometry) only works with geometry data and doesn't support geography data.
+
+#. Generation of a geometry linear feature from two geometry points features representing LAX and CDG airports.
+
+#. Casting of the geometry linear feature to geography linear feature.
+
+..
+
+.. image:: ./geography/qgis_03.png
+
+..
+
+Note that the LAX-CDG route, despite being in geography data format, presents a straight line as if the data were geometry.
+
+This is because QGIS creates this "line" from the computational path between the two airports.
+
+To solve this visualization "problem", it is necessary to "segmentize" the line-type geographic data by vertices that represent the path drawn between airports.
+
+In this case, we will use the ST_Segmentize spatial function (geography geog, float max_segment_length), which has support for geography data, with line segmentation in vertices with 10m spacing between them.
+
+.. code-block:: sql
+
+  SELECT 1 as id,
+  ST_Segmentize(
+
+  ST_Makeline(
+
+  (SELECT geog
+  FROM airports
+  WHERE code = 'LAX')::geometry
+
+  ,
+
+  (SELECT geog
+  FROM airports
+  WHERE code = 'CDG')::geometry
+
+  )::geography
+
+  ,10) as geog
+
+..
+
+  Add this new layer as LAX-CDG(geography).
+
+..
+
+.. image:: ./geography/qgis_03.png
+
+..
+
+Be aware that this procedure works to visualize linear geography features in GIS, but it´s not a good practice to calculate the distance between these points as can be seen in the query bellow:
+
+.. code-block:: sql
+
+  SELECT 'geography' as type,
+  ST_Length(
+  ST_Makeline(
+  (SELECT geog
+  FROM airports
+  WHERE code = 'LAX')::geometry
+  ,
+  (SELECT geog
+  FROM airports
+  WHERE code = 'CDG')::geometry
+  )::geography
+  ) as distance
+
+  UNION
+
+  SELECT 'geometry' as type,
+  ST_Length(
+  ST_Segmentize(
+  ST_Makeline(
+  (SELECT geog
+  FROM airports
+  WHERE code = 'LAX')::geometry
+  ,
+  (SELECT geog
+  FROM airports
+  WHERE code = 'CDG')::geometry
+  )::geography
+  ,10)
+  ) as distance;
+..
+
+::
+
+     type    |     distance
+  -----------+------------------
+   geography | 9124665.27317673
+   geometry  | 9124671.97516477
+ 
+ ..
 
 
 Function List
@@ -317,5 +441,7 @@ ST_X_ (point): Returns the X coordinate of the point, or NULL if not available. 
 .. _ST_Summary: http://postgis.net/docs/ST_Summary.html
 
 .. _ST_AsEWKT: http://postgis.net/docs/ST_AsEWKT.html
+
+.. _ST_Makeline: http://postgis.net/docs/ST_MakeLine.html
 
 
