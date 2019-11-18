@@ -102,7 +102,7 @@ We can use the ST_IsValid_ (geometry)` function to test our tables too:
 Repairing Invalidity
 --------------------
 
-First the bad news: there is no 100% guaranteed way to fix invalid geometries. The worst case scenario is identifying them with the ST_IsValid_ (geometry)` function, moving them to a side table, exporting that table, and repairing them externally.
+First the bad news: there is no 100% guaranteed way to fix invalid geometries. The worst case scenario is identifying them with the ST_IsValid_ (geometry) function, moving them to a side table, exporting that table, and repairing them externally.
 
 Here's an example of SQL to move invalid geometries out of the main table into a side table suitable for dumping to an external cleaning process.
 
