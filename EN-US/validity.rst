@@ -17,7 +17,7 @@ Some of the rules of polygon validity feel obvious, and others feel arbitrary (a
 * Rings may not self-intersect (they may neither touch nor cross one another).
 * Rings may not touch other rings, except at a point.
 
-The last two rules are in the arbitrary category. There are other ways to define polygons that are equally self-consistent but the rules above are the ones used by the :term:`OGC` :term:`SFSQL` standard that PostGIS conforms to.
+The last two rules are in the arbitrary category. There are other ways to define polygons that are equally self-consistent but the rules above are the ones used by the **OGC SFSQL** standard that PostGIS conforms to.
 
 The reason the rules are important is because algorithms for geometry calculations depend on consistent structure in the inputs. It is possible to build algorithms that have no structural assumptions, but those routines tend to be very slow, because the first step in any structure-free routine is to *analyze the inputs and build structure into them*.
 
@@ -53,7 +53,7 @@ What's going on here? The algorithm that calculates area assumes that rings to n
 Detecting Validity
 ------------------
 
-In the previous example we had one polygon that we **knew** was invalid. How do we detect invalidity in a table with millions of geometries? With the :command:`ST_IsValid(geometry)` function. Used against our figure-eight, we get a quick answer:
+In the previous example we had one polygon that we **knew** was invalid. How do we detect invalidity in a table with millions of geometries? With the ST_IsValid_ (geometry) function. Used against our figure-eight, we get a quick answer:
 
 .. code-block:: sql
 
@@ -65,7 +65,7 @@ In the previous example we had one polygon that we **knew** was invalid. How do 
 
   f
 
-Now we know that the feature is invalid, but we don't know why. We can use the :command:`ST_IsValidReason(geometry)` function to find out the source of the invalidity:
+Now we know that the feature is invalid, but we don't know why. We can use the ST_IsValidReason_ (geometry) function to find out the source of the invalidity:
 
 .. code-block:: sql
 
@@ -79,7 +79,7 @@ Now we know that the feature is invalid, but we don't know why. We can use the :
 
 Note that in addition to the reason (self-intersection) the location of the invalidity (coordinate (1 1)) is also returned.
 
-We can use the :command:`ST_IsValid(geometry)` function to test our tables too:
+We can use the ST_IsValid_ (geometry)` function to test our tables too:
 
 .. code-block:: sql
 
@@ -102,7 +102,7 @@ We can use the :command:`ST_IsValid(geometry)` function to test our tables too:
 Repairing Invalidity
 --------------------
 
-First the bad news: there is no 100% guaranteed way to fix invalid geometries. The worst case scenario is identifying them with the :command:`ST_IsValid(geometry)` function, moving them to a side table, exporting that table, and repairing them externally.
+First the bad news: there is no 100% guaranteed way to fix invalid geometries. The worst case scenario is identifying them with the ST_IsValid_ (geometry)` function, moving them to a side table, exporting that table, and repairing them externally.
 
 Here's an example of SQL to move invalid geometries out of the main table into a side table suitable for dumping to an external cleaning process.
 
@@ -117,17 +117,15 @@ Here's an example of SQL to move invalid geometries out of the main table into a
   DELETE FROM nyc_neighborhoods
   WHERE NOT ST_IsValid(geom);
 
-A good tool for visually repairing invalid geometry is OpenJump (http://openjump.org) which includes a validation routine under **Tools->QA->Validate Selected Layers**.
-
 Now the good news: a large proportion of invalidities **can be fixed inside the database** using either:
 
-* the :command:`ST_MakeValid` function or,
-* the :command:`ST_Buffer` function.
+* the ST_MakeValid_ function or,
+* the ST_Buffer_ function.
 
 ST_MakeValid
 ~~~~~~~~~~~~
 
-:command:`ST_MakeValid` attempts to repair invalidities without only minimal alterations to the input geometries. No vertices are dropped or moved, the structure of the object is simply re-arranged. This is a good thing for clean, but invalid data, and a bad thing for messy and invalid data. 
+ST_MakeValid_ attempts to repair invalidities without only minimal alterations to the input geometries. No vertices are dropped or moved, the structure of the object is simply re-arranged. This is a good thing for clean, but invalid data, and a bad thing for messy and invalid data. 
 
 .. code-block:: sql
 
@@ -143,12 +141,12 @@ ST_MakeValid
     ((1 1,1 2,2 2,2 1,1 1))
   )
 
-:command:`ST_MakeValid` successfully converts the figure-8 into a multi-polygon that represents the same area.
+ST_MakeValid_ successfully converts the figure-8 into a multi-polygon that represents the same area.
 
 ST_Buffer
 ~~~~~~~~~
 
-Cleaning using the buffer trick takes advantage of the way buffers are built: a buffered geometry is a brand new geometry, constructed by offsetting lines from the original geometry. If you offset the original lines by **nothing** (zero) then the new geometry will be structurally identical to the original one, but because it is built using the :term:`OGC` topology rules, it will be valid.
+Cleaning using the buffer trick takes advantage of the way buffers are built: a buffered geometry is a brand new geometry, constructed by offsetting lines from the original geometry. If you offset the original lines by **nothing** (zero) then the new geometry will be structurally identical to the original one, but because it is built using the **OGC** topology rules, it will be valid.
 
 For example, here's a classic invalidity -- the "banana polygon" -- a single ring that encloses an area but bends around to touch itself, leaving a "hole" which is not actually a hole.
 
@@ -159,7 +157,7 @@ For example, here's a classic invalidity -- the "banana polygon" -- a single rin
 .. image:: ./validity/banana.png
   :class: inline
 
-Running the zero-offset buffer on the polygon returns a valid :term:`OGC` polygon, consisting of an outer and inner ring that touch at one point.
+Running the zero-offset buffer on the polygon returns a valid **OGC** polygon, consisting of an outer and inner ring that touch at one point.
 
 .. code-block:: sql
 
@@ -174,7 +172,20 @@ Running the zero-offset buffer on the polygon returns a valid :term:`OGC` polygo
 
   POLYGON((0 0,0 4,4 4,4 0,2 0,0 0),(2 0,3 1,2 2,1 1,2 0))
 
-.. note::
+-----
 
-  The "banana polygon" (or "inverted shell") is a case where the :term:`OGC` topology model for valid geometry and the model used internally by ESRI differ. The ESRI model considers rings that touch to be invalid, and prefers the banana form for this kind of shape. The OGC model is the reverse. Neither is "correct", they are just different ways to model the same situation.
-  
+.. note:: - The "banana polygon" (or "inverted shell") is a case where the **OGC** topology model for valid geometry and the model used internally by ESRI differ. The ESRI model considers rings that touch to be invalid, and prefers the banana form for this kind of shape. The OGC model is the reverse. Neither is "correct", they are just different ways to model the same situation.
+
+-----
+
+
+.. _ST_Buffer: http://postgis.net/docs/ST_Buffer.html
+
+.. _ST_MakeValid: http://postgis.net/docs/ST_MakeValid.html 
+
+.. _ST_IsValid: http://postgis.net/docs/ST_IsValid.html 
+
+.. _ST_IsValidReason: http://postgis.net/docs/ST_IsValidReason.html
+
+
+
