@@ -27,9 +27,9 @@ For well-known text (WKT_) representation, the format for higher dimensional geo
 * LINESTRING M (1 1 0, 1 2 0, 1 3 1, 2 2 0)
 * POLYGON Z ((0 0 0, 0 1 0, 1 1 0, 1 0 0, 0 0 0))
  
-The ST_AsText() function will return the above representations when dealing with 3-D and 4-D geometries.
+The ST_AsText_ () function will return the above representations when dealing with 3-D and 4-D geometries.
 
-For well-known binary (WKB_) representation, the format for higher dimensional geometries is given by the ISO SQL/MM specification. The BNF form of the format is available from http://svn.osgeo.org/postgis/trunk/doc/bnf-wkb.txt.
+For well-known binary (WKB_) representation, the format for higher dimensional geometries is given by the ISO SQL/MM specification.
 
 In addition to higher-dimensional forms of the standard types, PostGIS includes a few new types that make sense in a 3-D space:
 
@@ -53,18 +53,20 @@ Since both these types are for modelling 3-D objects, it only really makes sense
 3-D Functions
 --------------
 
-There are a number of functions built to calculate relationships between 3-D objects:
+A large number of `functions <https://postgis.net/docs/PostGIS_Special_Functions_Index.html#PostGIS_3D_Functions>`_ support 3-D geometries.
 
-* ST_3DClosestPoint — Returns the 3-dimensional point on g1 that is closest to g2. This is the first point of the 3D shortest line.
-* ST_3DDistance — For geometry type Returns the 3-dimensional cartesian minimum distance (based on spatial ref) between two geometries in projected units.
-* ST_3DDWithin — For 3d (z) geometry type Returns true if two geometries 3d distance is within number of units.
-* ST_3DDFullyWithin — Returns true if all of the 3D geometries are within the specified distance of one another.
-* ST_3DIntersects — Returns TRUE if the Geometries "spatially intersect" in 3d - only for points and linestrings
-* ST_3DLongestLine — Returns the 3-dimensional longest line between two geometries
-* ST_3DMaxDistance — For geometry type Returns the 3-dimensional cartesian maximum distance (based on spatial ref) between two geometries in projected units.
-* ST_3DShortestLine — Returns the 3-dimensional shortest line between two geometries
+Some of them are built to calculate relationships between 3-D objects:
 
-For example, we can calculate the distance between our unit cube and a point using the ST_3DDistance function:
+* ST_3DClosestPoint_ — Returns the 3-dimensional point on g1 that is closest to g2. This is the first point of the 3D shortest line.
+* ST_3DDistance_ — For geometry type Returns the 3-dimensional cartesian minimum distance (based on spatial ref) between two geometries in projected units.
+* ST_3DDWithin_ — For 3d (z) geometry type Returns true if two geometries 3d distance is within number of units.
+* ST_3DDFullyWithin_ — Returns true if all of the 3D geometries are within the specified distance of one another.
+* ST_3DIntersects_ — Returns TRUE if the Geometries "spatially intersect" in 3d - only for points and linestrings
+* ST_3DLongestLine_ — Returns the 3-dimensional longest line between two geometries
+* ST_3DMaxDistance_ — For geometry type Returns the 3-dimensional cartesian maximum distance (based on spatial ref) between two geometries in projected units.
+* ST_3DShortestLine_ — Returns the 3-dimensional shortest line between two geometries
+
+For example, we can calculate the distance between our unit cube and a point using the ST_3DDistance_ function:
 
 .. code-block:: sql
 
@@ -147,3 +149,22 @@ The results should be the same. In general the N-D index is very slightly slower
 .. _WKT: https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
 
 .. _WKB: https://en.wikipedia.org/wiki/Well-known_binary
+
+.. _ST_3DClosestPoint: http://postgis.net/docs/ST_3DClosestPoint.html 
+
+.. _ST_3DDistance: http://postgis.net/docs/ST_3DDistance.html 
+
+.. _ST_3DDWithin: http://postgis.net/docs/ST_3DDWithin.html 
+
+.. _ST_3DDFullyWithin: http://postgis.net/docs/ST_3DDFullyWithin.html 
+
+.. _ST_3DIntersects: http://postgis.net/docs/ST_3DIntersects.html 
+
+.. _ST_3DLongestLine: http://postgis.net/docs/ST_3DLongestLine.html 
+
+.. _ST_3DMaxDistance: http://postgis.net/docs/ST_3DMaxDistance.html 
+
+.. _ST_3DShortestLine: http://postgis.net/docs/ST_3DShortestLine.html 
+
+.. _ST_AsText: http://postgis.net/docs/ST_AsText.html
+
