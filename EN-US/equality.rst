@@ -50,7 +50,7 @@ In this example, the polygons are only equal to themselves, not to other seeming
 Spatially Equal
 ^^^^^^^^^^^^^^^
 
-As we saw above, exact equality does not take into account the spatial nature of the geometries.  There is an function, aptly named :command:`ST_Equals`, available to test the spatial equality or equivalence of geometries.
+As we saw above, exact equality does not take into account the spatial nature of the geometries.  There is an function, aptly named ST_Equals_, available to test the spatial equality or equivalence of geometries.
 
 .. code-block:: sql
 
@@ -65,7 +65,7 @@ These results are more in line with our intuitive understanding of equality.  Po
 Equal Bounds
 ^^^^^^^^^^^^
 
-Exact equality requires, in the worst case, comparison of each and every vertex in the geometry to determine equality.  This can be slow, and may not be appropriate for comparing huge numbers of geometries.  To allow for speedier comparison, the equal bounds operator, :command:`=`, is provided.  This operates only on the bounding box (rectangle), ensuring that the geometries occupy the same two dimensional extent, but not necessarily the same space.
+Exact equality requires, in the worst case, comparison of each and every vertex in the geometry to determine equality.  This can be slow, and may not be appropriate for comparing huge numbers of geometries.  To allow for speedier comparison, the equal bounds operator, `= <https://postgis.net/docs/ST_Geometry_EQ.html>`_, is provided.  This operates only on the bounding box (rectangle), ensuring that the geometries occupy the same two dimensional extent, but not necessarily the same space.
 
 .. code-block:: sql
 
@@ -76,4 +76,6 @@ Exact equality requires, in the worst case, comparison of each and every vertex 
 .. image:: ./equality/start17.png
 
 As you can see, all of our spatially equal geometries also have equal bounds.  Unfortunately, Polygon 5 is also returned as equal under this test, because it shares the same bounding box as the other geometries.  Why is this useful, then?  Although this will be covered in detail later, the shot answer is that this enables the use of spatial indexing that can quickly reduce huge comparison sets into more manageable blocks when joining or filtering data.
+
+.. _ST_Equals: http://postgis.net/docs/ST_Equals.html
 
