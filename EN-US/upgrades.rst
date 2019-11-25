@@ -42,9 +42,11 @@ pg_upgrade
 
 The pg_upgrade_ utility allows PostgreSQL data directories to be upgraded without the requirement for a dump/restore step. The utility cannot handle changes to the data files themselves, but handles the more common and frequent changes to system tables that occur in PostgreSQL major upgrades.
 
-.. note:: 
+-----
 
-  The full instructions for running the upgrade process are in the pg_upgrade_ web page at the PostgreSQL site.
+.. note:: - The full instructions for running the upgrade process are in the pg_upgrade_ web page at the PostgreSQL site.
+
+-----
 
 The pg_upgrade_ program expects to have access to both versions of PostgreSQL it is working with, the old and the new version, so you will have to install them both. 
 
@@ -98,7 +100,7 @@ Major PostGIS Upgrades
 
 Major upgrades involve changes to the actual data format for the on-disk storage of geometry and geography data. As such, the data tables need to be re-written. The only way to achieve this is to dump (creating a neutral text-based output) and restore (writing the new table format to disk).
 
-To upgrade, you will have to dump your data first, as discussed in :ref:`backup`.
+To upgrade, you will have to dump your data first, as discussed in `backup`.
 
 With Data in Schemas
 ********************
