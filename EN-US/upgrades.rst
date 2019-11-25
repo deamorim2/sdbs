@@ -189,7 +189,7 @@ Loading ``legacy.sql`` reestablishes all the old function signatures as aliases 
 Default WKT and WKB
 ~~~~~~~~~~~~~~~~~~~
 
-Prior to PostGIS 2.0, the default forms of the ST_AsBinary() and ST_AsText() functions were the :term:`OGC` :term:`SFSQL` defined versions, which only supported two dimensions. Running ST_AsBinary() and ST_AsText() on 3-D and 4-D features just caused the extra dimensions to be stripped, and the returns were 2-D.
+Prior to PostGIS 2.0, the default forms of the ST_AsBinary() and ST_AsText() functions were the **OGC SFSQL** defined versions, which only supported two dimensions. Running ST_AsBinary() and ST_AsText() on 3-D and 4-D features just caused the extra dimensions to be stripped, and the returns were 2-D.
 
 For PostGIS 2.0, the ISO SQL/MM definitions of ST_AsBinary() and ST_AsText() are used. For 2-D features, the representations are the same, so no changes will be noticed. For 3-D and 4-D features, however, legal representations in ISO SQL/MM exist, so the dimensions will no longer be stripped, and ISO text and binary results will be returned.
 
