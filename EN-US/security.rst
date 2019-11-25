@@ -67,7 +67,7 @@ Now, when we login as app1, we can select rows from the ``nyc_streets`` table. H
   ERROR:  permission denied for relation spatial_ref_sys
   CONTEXT:  SQL statement "SELECT proj4text FROM spatial_ref_sys WHERE srid = 4326 LIMIT 1"
 
-The answer is contained in the error statement. Though our ``app1`` user can view the contents of the ``nyc_streets`` table fine, it cannot view the contents of ``spatial_ref_sys``, so the call to :command:`ST_Transform` fails. 
+The answer is contained in the error statement. Though our ``app1`` user can view the contents of the ``nyc_streets`` table fine, it cannot view the contents of ``spatial_ref_sys``, so the call to ST_Transform_ fails. 
 
 So, we need to also grant the ``postgis_reader`` role read access to all the PostGIS metadata tables:
 
