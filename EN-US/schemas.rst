@@ -3,7 +3,7 @@
 PostgreSQL Schemas
 ==================
 
-Production databases inevitably have a large number of tables and views, and managing them all in one schema can become unwieldy quickly. Fortunately, PostgreSQL_ includes the concept of a "_Schema".
+Production databases inevitably have a large number of tables and views, and managing them all in one schema can become unwieldy quickly. Fortunately, PostgreSQL_ includes the concept of a Schema_.
 
 Schemas are like folders, and can hold tables, views, functions, sequences and other relations.  Every database starts out with one schema, the ``public`` schema.  
 
@@ -11,7 +11,7 @@ Schemas are like folders, and can hold tables, views, functions, sequences and o
 
 Inside that schema, the default install of PostGIS creates the ``geometry_columns``, ``geography_columns`` and ``spatial_ref_sys`` metadata relations, as well as all the types and functions used by PostGIS. So users of PostGIS always need access to the public schema.
 
-In the public schema you can also see all the tables we have created so far in the workshop.
+In the public schema you can also see all the tables we have created so far in the tutorial.
 
 
 Why use Schemas?
@@ -45,7 +45,7 @@ Next, we will move the ``nyc_census_blocks`` table to the ``census`` schema:
 
   ALTER TABLE nyc_census_blocks SET SCHEMA census;
 
-If you're using the :command:`psql` command-line program, you'll notice that ``nyc_census_blocks`` has disappeared from your table listing now! If you're using PgAdmin, you might have to refresh your view to see the new schema and the table inside it.
+If you're using the ``psql`` command-line program, you'll notice that ``nyc_census_blocks`` has disappeared from your table listing now! If you're using PgAdmin, you might have to refresh your view to see the new schema and the table inside it.
 
 You can access tables inside schemas in two ways: 
 
@@ -84,7 +84,7 @@ Users like to create tables, and PostGIS users do so particularly: analysis oper
 
 By default, every role in Oracle is given a personal schema. This is a nice practice to use for PostgreSQL users too, and is easy to replicate using PostgreSQL roles, schemas, and search paths.
 
-Create a new user with table creation privileges (see :ref:`security` for information about the ``postgis_writer`` role), then create a schema with that user as the authorization:
+Create a new user with table creation privileges (see `security` for information about the ``postgis_writer`` role), then create a schema with that user as the authorization:
 
 .. code-block:: sql
 
