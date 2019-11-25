@@ -51,6 +51,22 @@ Part I - Introduction to PostGIS
 
 #. `Geography <./EN-US/geography.rst>`_
 
+#. `Validity <./EN-US/validity.rst>`_
+
+#. `Equality <./EN-US/equality.rst>`_
+
+#. `3-D Data <./EN-US/3d.rst>`_
+
+#. `History Tracking <./EN-US/history_tracking.rst>`_
+
+#. `Clustering Index <./EN-US/clusterindex.rst>`_
+
+#. `Security <./EN-US/security.rst>`_
+
+#. `Schemas <./EN-US/schemas.rst>`_
+
+#. `Upgrades <./EN-US/upgrades.rst>`_
+
 Part II - Spatial Database System Implementation
 -------------------------------------------------
 
