@@ -51,7 +51,7 @@ The application will have specific access to the ``nyc_streets`` table, but will
   -- Give that role to the web app
   GRANT postgis_reader TO app1;
 
-Now, when we login as app1, we can select rows from the ``nyc_streets`` table. However, we cannot run an :command:`ST_Transform` call! Why not?
+Now, when we login as app1, we can select rows from the ``nyc_streets`` table. However, we cannot run an `ST_Transform` call! Why not?
 
 .. code-block:: sql
 
