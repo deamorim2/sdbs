@@ -33,7 +33,7 @@ Part I - Introduction to PostGIS
 
 #. `Dimensionally Extended 9-Intersection Model (DE-9IM) <./EN-US/de9im.rst>`_
 
-#. `Spatial Relationships <./EN-US/spatial_relationship.rst>`_
+#. `Spatial Relationships <./EN-US/spatial_relationships.rst>`_
 
 #. `Spatial Joins <./EN-US/spatial_joins.rst>`_
 
