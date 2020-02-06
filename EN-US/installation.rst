@@ -6,7 +6,7 @@ Software Installation
 PostgreSQL
 ----------
 
-  Go to https://www.postgresql.org/download/, download and install the PostgreSQL 9.5.19 release for your operating system.
+  Go to https://www.postgresql.org/download/, download and install the PostgreSQL 9.5.12.1 release for your operating system.
 
   Run the installer file
 
