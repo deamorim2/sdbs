@@ -132,17 +132,13 @@ QGIS
 
 .. figure:: ./installation/install_qgis_02.png
    
-  Enter the directory where QGIS will be installed and click the *Next>* button
+  Leave only *QGIS* checked and Click *Install* button to begin installation
 
 .. figure:: ./installation/install_qgis_03.png
    
-  Leave only *QGIS* checked and Click *Install* button to begin installation
-
-.. figure:: ./installation/install_qgis_04.png
-   
   Click the *Finish* button to complete the installation.
 
-.. figure:: ./installation/install_qgis_05.png
+.. figure:: ./installation/install_qgis_04.png
    
 --------------
 
