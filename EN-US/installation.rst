@@ -55,6 +55,33 @@ PostgreSQL
 
 --------------
 
+PgAdmin
+-------
+
+  Go to https://www.pgadmin.org/, or click in this link https://drive.google.com/drive/folders/19phLtUVCx-S0dx_3N3MpRc4iUUXpK1bt?usp=sharing , download and install the PgAdmin 4 release for your operating system.
+
+  Run the installer file
+
+  Click the *Next>* button to proceed with the installation.
+
+.. figure:: ./installation/install_pgadmin4_01.png
+  
+  Select the "I Accept the Agreement" option and then click the *Next>* button
+  
+.. figure:: ./installation/install_pgadmin4_02.png
+  
+  Click the *Install* button to proceed with the installation.
+
+.. figure:: ./installation/install_pgadmin4_03.png
+
+  Click the *Finish* button to Launch pgAdmin 4.
+
+.. figure:: ./installation/install_pgadmin4_04.png
+
+
+--------------
+
+
 PostGIS
 -------
 
