@@ -167,6 +167,19 @@ Using a spatial join, we can answer the question in one step, retrieving informa
     -------------+-----------------------------------+-----------
      Broad St    | Battery Park City-Lower Manhattan | Manhattan
 
+.. code-block:: sql
+
+   SELECT subways.name AS subway_name, neighborhoods.name AS neighborhood_name, neighborhoods.boroname AS borough
+   FROM nyc_neighborhoods AS neighborhoods
+   JOIN nyc_subway_stations AS subways ON ST_Within(subways.geom, neighborhoods.geom)
+   WHERE subways.name = 'Broad St';
+
+::
+
+     subway_name |         neighborhood_name         |  borough
+    -------------+-----------------------------------+-----------
+     Broad St    | Battery Park City-Lower Manhattan | Manhattan
+
 We could have joined every subway station to its containing neighborhood, but in this case we wanted information about just one.  Any function that provides a true/false relationship between two tables can be used to drive a spatial join, but the most commonly used ones are: ST_Intersects_, ST_Contains_, and ST_DWithin_.
 
 Join and Summarize
