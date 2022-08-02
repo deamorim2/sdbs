@@ -167,6 +167,8 @@ Using a spatial join, we can answer the question in one step, retrieving informa
     -------------+-----------------------------------+-----------
      Broad St    | Battery Park City-Lower Manhattan | Manhattan
 
+You can use the ST_Within Spatial Relationship as well to run this query, but you have to reverse the geometry columns in the Spatial Relationship function:
+
 .. code-block:: sql
 
    SELECT subways.name AS subway_name, neighborhoods.name AS neighborhood_name, neighborhoods.boroname AS borough
