@@ -62,7 +62,7 @@ Create the new table using the ST_Union_ aggregate:
    
    -- Make the tracts table
    CREATE TABLE nyc_census_tract_geoms AS
-   SELECT ST_Union(geom)::Geometry(MultiPolygon,26918) AS geom, SubStr(blkid,1,11) AS tractid
+   SELECT ST_Union((geom)::Geometry(MultiPolygon,26918)) AS geom, SubStr(blkid,1,11) AS tractid
    FROM nyc_census_blocks
    GROUP BY tractid;
      
