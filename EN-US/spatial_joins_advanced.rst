@@ -94,7 +94,7 @@ To fix this, we must UPDATE the nyc_census_tract_geoms's geometry attribute with
  SET geom = a.geom
  FROM
  (
- SELECT tractid, ST_Union(geom)::Geometry(MultiPolygon,26918) AS geom
+ SELECT tractid, ST_Multi(ST_Union(geom))::Geometry(MultiPolygon,26918) AS geom
  FROM
  ( 
  SELECT tractid, ST_Multi(ST_MakePolygon(ST_ExteriorRing((ST_Dump(geom)).geom))) as geom
