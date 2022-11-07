@@ -17,6 +17,8 @@ PostgreSQL
   Select the directory where the program **PostgreSQL** will be installed and then click the *Next>* button
   
 .. figure:: ./installation/install_postgresql_02.png
+
+.. figure:: ./installation/install_postgresql_02a.png
   
   Select the directory where the database data and the database files system setup will be installed and press the *Next>* button
   
@@ -40,6 +42,8 @@ PostgreSQL
   Select *locale* with ``C`` and then click the *Next>* button
 
 .. figure:: ./installation/install_postgresql_06.png
+
+.. figure:: ./installation/install_postgresql_06a.png
   
   Click the *Next>* Button to Begin PostgreSQL Installation
 
@@ -54,33 +58,6 @@ PostgreSQL
 .. note:: - If you want to install the latest version of PostGIS, check the option to run *stack builder* and proceed with installation by checking the option for spatial extent. In our case, we will install a specific version of PostGIS, so uncheck this option.
 
 --------------
-
-PgAdmin
--------
-
-  Go to https://www.pgadmin.org/, or click in this link https://drive.google.com/drive/folders/19phLtUVCx-S0dx_3N3MpRc4iUUXpK1bt?usp=sharing , download and install the PgAdmin 4 release for your operating system.
-
-  Run the installer file
-
-  Click the *Next>* button to proceed with the installation.
-
-.. figure:: ./installation/install_pgadmin4_01.png
-  
-  Select the "I Accept the Agreement" option and then click the *Next>* button
-  
-.. figure:: ./installation/install_pgadmin4_02.png
-  
-  Click the *Install* button to proceed with the installation.
-
-.. figure:: ./installation/install_pgadmin4_03.png
-
-  Click the *Finish* button to Launch pgAdmin 4.
-
-.. figure:: ./installation/install_pgadmin4_04.png
-
-
---------------
-
 
 PostGIS
 -------
@@ -100,6 +77,8 @@ PostGIS
   Enter the directory where PostgreSQL is installed and click the *Next>* button.
 
 .. figure:: ./installation/install_postgis_03.png
+
+.. figure:: ./installation/install_postgis_03a.png
    
   Click the *Yes* button to proceed with the installation.
 
@@ -131,6 +110,8 @@ QGIS
   Click the *I Agree* button
 
 .. figure:: ./installation/install_qgis_02.png
+
+.. figure:: ./installation/install_qgis_02a.png
    
   Leave only *QGIS* checked and Click *Install* button to begin installation
 
