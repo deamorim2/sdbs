@@ -82,7 +82,7 @@ PostGIS
 
 .. figure:: ./installation/install_postgis_03.png
 
-Press the *Next>* button
+  Click the *Yes* button to proceed with the installation.
 
 .. figure:: ./installation/install_postgis_03a.png
    
@@ -113,15 +113,15 @@ QGIS
 
 .. figure:: ./installation/install_qgis_01.png
 
-  Click the *I Agree* button
+  Check the box to accept the terms of installation and Click the *Next* button
 
 .. figure:: ./installation/install_qgis_02.png
 
-Press the *Next>* button
+  Press the *Next>* button
 
 .. figure:: ./installation/install_qgis_02a.png
    
-  Leave only *QGIS* checked and Click *Install* button to begin installation
+  Click *Install* button to begin installation
 
 .. figure:: ./installation/install_qgis_03.png
    
