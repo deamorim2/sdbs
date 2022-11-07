@@ -41,7 +41,7 @@ PostgreSQL
 
 .. figure:: ./installation/install_postgresql_05.png
 
-  Select *locale* with ``C`` and then click the *Next>* button
+  Select *locale* with ``C`` and then click the *Next>* button
 
 .. figure:: ./installation/install_postgresql_06.png
 
@@ -49,11 +49,11 @@ PostgreSQL
 
 .. figure:: ./installation/install_postgresql_06a.png
   
-  Click the *Next>* Button to Begin PostgreSQL Installation
+  Click the *Next>* Button to Begin PostgreSQL Installation
 
 .. figure:: ./installation//install_postgresql_07.png
  
-  Uncheck the option to run Stack Builder and click the *Finish* button to finish PostgreSQL installation.
+  Uncheck the option to run Stack Builder and click the *Finish* button to finish PostgreSQL installation.
 
 .. figure:: ./installation/install_postgresql_08.png
 
@@ -68,17 +68,17 @@ PostGIS
 
   Go to http://postgis.net/install/, or click in this link https://drive.google.com/drive/folders/19phLtUVCx-S0dx_3N3MpRc4iUUXpK1bt?usp=sharing , download and install the PostGIS 3.3.1 version for PostgreSQL 14 for your operating system.
 
-  Run the installer file
+  Run the installer file
 
-  Click the *I Agree* button to proceed with the installation.
+  Click the *I Agree* button to proceed with the installation.
 
 .. figure:: ./installation/install_postgis_01.png
 
-  Leave *PostGIS* checked and click the *Next>* button
+  Leave *PostGIS* checked and click the *Next>* button
 
 .. figure:: ./installation/install_postgis_02.png
    
-  Enter the directory where PostgreSQL is installed and click the *Next>* button.
+  Enter the directory where PostgreSQL is installed and click the *Next>* button.
 
 .. figure:: ./installation/install_postgis_03.png
 
@@ -86,19 +86,19 @@ PostGIS
 
 .. figure:: ./installation/install_postgis_03a.png
    
-  Click the *Yes* button to proceed with the installation.
+  Click the *Yes* button to proceed with the installation.
 
 .. figure:: ./installation/install_postgis_04.png
    
-  Click the *Yes* button to proceed with the installation.
+  Click the *Yes* button to proceed with the installation.
 
 .. figure:: ./installation/install_postgis_05.png
   
-  Click the *Yes* button to proceed with the installation.
+  Click the *Yes* button to proceed with the installation.
 
 .. figure:: ./installation/install_postgis_06.png
    
-  Click the *Close* button to finish the installation.
+  Click the *Close* button to finish the installation.
 
 .. figure:: ./installation/install_postgis_07.png
    
@@ -107,13 +107,13 @@ QGIS
 
   Go to https://www.qgis.org/en/site/index.html , or click in this link https://drive.google.com/drive/folders/19phLtUVCx-S0dx_3N3MpRc4iUUXpK1bt?usp=sharing , download and install LTR version 3.22 for your operating system.
 
-  Run the installer file
+  Run the installer file
 
-  Click the *Next* button to proceed with the installation.
+  Click the *Next* button to proceed with the installation.
 
 .. figure:: ./installation/install_qgis_01.png
 
-  Check the box to accept the terms of installation and Click the *Next* button
+  Check the box to accept the terms of installation and Click the *Next* button
 
 .. figure:: ./installation/install_qgis_02.png
 
@@ -121,11 +121,11 @@ QGIS
 
 .. figure:: ./installation/install_qgis_02a.png
    
-  Click *Install* button to begin installation
+  Click *Install* button to begin installation
 
 .. figure:: ./installation/install_qgis_03.png
    
-  Click the *Finish* button to complete the installation.
+  Click the *Finish* button to complete the installation.
 
 .. figure:: ./installation/install_qgis_04.png
    
