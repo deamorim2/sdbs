@@ -18,6 +18,8 @@ PostgreSQL
   
 .. figure:: ./installation/install_postgresql_02.png
 
+Press the *Next>* button
+
 .. figure:: ./installation/install_postgresql_02a.png
   
   Select the directory where the database data and the database files system setup will be installed and press the *Next>* button
@@ -42,6 +44,8 @@ PostgreSQL
   Select *locale* with ``C`` and then click the *Next>* button
 
 .. figure:: ./installation/install_postgresql_06.png
+
+Press the *Next>* button
 
 .. figure:: ./installation/install_postgresql_06a.png
   
@@ -78,6 +82,8 @@ PostGIS
 
 .. figure:: ./installation/install_postgis_03.png
 
+Press the *Next>* button
+
 .. figure:: ./installation/install_postgis_03a.png
    
   Click the *Yes* button to proceed with the installation.
@@ -110,6 +116,8 @@ QGIS
   Click the *I Agree* button
 
 .. figure:: ./installation/install_qgis_02.png
+
+Press the *Next>* button
 
 .. figure:: ./installation/install_qgis_02a.png
    
