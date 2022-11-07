@@ -18,7 +18,7 @@ PostgreSQL
   
 .. figure:: ./installation/install_postgresql_02.png
 
-Press the *Next>* button
+  Press the *Next>* button
 
 .. figure:: ./installation/install_postgresql_02a.png
   
@@ -45,7 +45,7 @@ Press the *Next>* button
 
 .. figure:: ./installation/install_postgresql_06.png
 
-Press the *Next>* button
+  Press the *Next>* button
 
 .. figure:: ./installation/install_postgresql_06a.png
   
