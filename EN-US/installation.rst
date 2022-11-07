@@ -14,7 +14,7 @@ PostgreSQL
 
 .. figure:: ./installation/install_postgresql_01.png
   
-  Select the directory where the program **PostgreSQL** will be installed and then click the *Next>* button
+   Select the directory where the program **PostgreSQL** will be installed and then click the *Next>* button
   
 .. figure:: ./installation/install_postgresql_02.png
 
