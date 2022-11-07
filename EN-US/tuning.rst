@@ -104,25 +104,6 @@ Starting with PostgreSQL 9.1 wal_buffers defaults to being 1/32 of the size of s
 
 .. image:: ./tuning/conf07.png
 
-checkpoint_segments
--------------------
-
-This value sets the maximum number of log file segments (typically 16MB) that can be filled between automatic WAL checkpoints.  A WAL checkpoint is a point in the sequence of WAL transactions at which it is guaranteed that the data files have been updated with all information before the checkpoint.  At this time all dirty data pages are flushed to disk and a checkpoint record is written to the log file.  This allows the crash recovery process to find the latest checkpoint record and apply all following log segments to complete the data recovery.
-
-Because the checkpoint process requires the flushing of all dirty data pages to disk, it creates a significant I/O load.  The same argument from above applies; geospatial data is large enough to unbalance non-geospatial optimizations.  Increasing this value will prevent excessive checkpoints, though it may cause the server to restart more slowly in the event of a crash.
-
-  *Default value*: 3
-
-  *Recommended value*: 6
-
-.. image:: ./tuning/conf08.png
-
---------
-
-.. note:: - If you have trouble restarting the server, uncheck this option.
-
---------
-
 random_page_cost
 ----------------
 
