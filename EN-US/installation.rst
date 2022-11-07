@@ -6,7 +6,7 @@ Software Installation
 PostgreSQL
 ----------
 
-  Go to https://www.postgresql.org/download/, or click in this link https://drive.google.com/drive/folders/19phLtUVCx-S0dx_3N3MpRc4iUUXpK1bt?usp=sharing , download and install the PostgreSQL 9.5.12.1 release for your operating system.
+  Go to https://www.postgresql.org/download/, or click in this link https://drive.google.com/drive/folders/19phLtUVCx-S0dx_3N3MpRc4iUUXpK1bt?usp=sharing , download and install the PostgreSQL 14.5.1 release for your operating system.
 
   Run the installer file
 
