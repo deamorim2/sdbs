@@ -76,6 +76,8 @@ The opposite of ST_Disjoint_ is ST_Intersects_, ST_Crosses_, and ST_Overlaps_ te
 
 ST_Intersects_ (geometry A, geometry B) returns t (TRUE) if the two shapes have any space in common, i.e., if their boundaries or interiors intersect.
 
+OBS.: ST_Touches_ tests, except when only their boundaries intersects (FF*******).
+
 Let's take our Broad Street subway station and determine its neighborhood using the ST_Intersects_ function:
 
 .. code-block:: sql
