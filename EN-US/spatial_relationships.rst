@@ -69,14 +69,12 @@ ST_Intersects, ST_Distance, ST_DWithin and ST_Equals
 ST_Intersects
 -------------
 
-The opposite of ST_Disjoint_ is ST_Intersects_, ST_Crosses_, and ST_Overlaps_ tests whether the interiors of the geometries intersect. 
+The opposite of ST_Disjoint_ is ST_Intersects_. 
 
 .. figure:: ./spatial_relationships/st_intersects.png
    :align: center
 
 ST_Intersects_ (geometry A, geometry B) returns t (TRUE) if the two shapes have any space in common, i.e., if their boundaries or interiors intersect.
-
-OBS.: ST_Touches_ tests, except when only their boundaries intersects (FF*******).
 
 Let's take our Broad Street subway station and determine its neighborhood using the ST_Intersects_ function:
 
