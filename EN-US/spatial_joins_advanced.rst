@@ -90,23 +90,19 @@ To fix this, we must UPDATE the nyc_census_tract_geoms's geometry attribute with
 
 .. code-block:: sql
 
- UPDATE nyc_census_tract_geoms cnt
- SET geom = a.geom
- FROM
- (
- SELECT tractid, ST_Union(geom)::Geometry(MultiPolygon,26918) AS geom
- FROM
- ( 
- SELECT tractid, ST_Multi(ST_MakePolygon(ST_ExteriorRing((ST_Dump(geom)).geom))) as geom
- FROM
- (
- SELECT tractid, (ST_Dump(geom)).geom as geom
- FROM nyc_census_tract_geoms
- ) as a
- ) as a
- GROUP BY tractid
- ) as a
- WHERE cnt.tractid = a.tractid;
+UPDATE nyc_census_tract_geoms cnt
+SET geom = a.geom
+FROM
+(
+SELECT tractid, ST_Multi(ST_MakePolygon(ST_ExteriorRing((ST_Dump(geom)).geom))) as geom
+FROM
+(
+SELECT tractid, (ST_Dump(geom)).geom as geom
+FROM nyc_census_tract_geoms
+) as a
+WHERE ST_NumInteriorRings(geom) >= 1
+) as a
+WHERE a.tractid = cnt.tractid;
 
 Join the Attributes to the Spatial Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
