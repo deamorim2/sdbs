@@ -168,7 +168,7 @@ In the OGC WKT format, the SRID 4674 has the following parameters:
 Calculating Areas
 ^^^^^^^^^^^^^^^^^
 
-The Brazilian Institute of Geography and Statistics (IBGE) suggests the projection parameters below to calculate the area to the products of the Continuing Base in the scale of 1:250.000. 
+The Brazilian Institute of Geography and Statistics (IBGE) suggests the `projection parameters <https://geoftp.ibge.gov.br/cartas_e_mapas/bases_cartograficas_continuas/bc250/versao2021/informacoes_tecnicas/bc250_documentacao_tecnica.pdf>`_ below to calculate the area to the products of the Continuing Base in the scale of 1:250.000. 
 
 Albers equal-area conic projection:
 
