@@ -65,7 +65,7 @@ These results are more in line with our intuitive understanding of equality.  Po
 Equal Bounds
 ^^^^^^^^^^^^
 
-Exact equality requires, in the worst case, comparison of each and every vertex in the geometry to determine equality.  This can be slow, and may not be appropriate for comparing huge numbers of geometries.  To allow for speedier comparison, the equal bounds operator, `~= <https://postgis.net/docs/ST_Geometry_EQ.html>`_, is provided.  This operates only on the bounding box (rectangle), ensuring that the geometries occupy the same two dimensional extent, but not necessarily the same space.
+Exact equality requires, in the worst case, comparison of each and every vertex in the geometry to determine equality.  This can be slow, and may not be appropriate for comparing huge numbers of geometries.  To allow for speedier comparison, the equal bounds operator, `~= <https://www.postgis.net/docs/ST_Geometry_Same.html>`_, is provided.  This operates only on the bounding box (rectangle), ensuring that the geometries occupy the same two dimensional extent, but not necessarily the same space.
 
 .. code-block:: sql
 
