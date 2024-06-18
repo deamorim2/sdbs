@@ -69,7 +69,7 @@ Exact equality requires, in the worst case, comparison of each and every vertex 
 
 .. code-block:: sql
 
-  SELECT a.name, b.name, CASE WHEN a.poly = b.poly 
+  SELECT a.name, b.name, CASE WHEN a.poly ~= b.poly 
       THEN 'Equal Bounds' ELSE 'Non-equal Bounds' end
     FROM polygons as a, polygons as b;
 
