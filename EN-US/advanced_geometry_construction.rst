@@ -321,7 +321,7 @@ And now we are ready to go!
   SELECT 
     ascii(route) AS gid, -- QGIS likes numeric primary keys
     route, 
-    walk_subway(gid, route) AS geom 
+    walk_subway(gid::integer, route::text) AS geom 
   FROM first_stops;
 
   -- Do some housekeeping too 
