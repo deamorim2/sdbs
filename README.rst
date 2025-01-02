@@ -79,7 +79,7 @@ Part II - Spatial Database System Implementation
 Part III - Spatial Database Analytics
 -------------------------------------------------
 
-#. `Conceptual Model for Spatial Data <./EN-US/conceptual_model_spatial_data.rst>`__
+#. `DuckDB`__
 
 License
 =======
