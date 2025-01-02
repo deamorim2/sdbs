@@ -79,7 +79,7 @@ Part II - Spatial Database System Implementation
 Part III - Spatial Database Analytics
 -------------------------------------------------
 
-#. `DuckDB`__
+#. `DuckDB`
 
 License
 =======
