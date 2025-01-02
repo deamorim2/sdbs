@@ -76,6 +76,10 @@ Part II - Spatial Database System Implementation
 
 #. `Physical Implementation in SDBS <./EN-US/physical_implementation_sdbs.rst>`__
 
+Part III - Spatial Database Analytics
+-------------------------------------------------
+
+#. `Conceptual Model for Spatial Data <./EN-US/conceptual_model_spatial_data.rst>`__
 
 License
 =======
