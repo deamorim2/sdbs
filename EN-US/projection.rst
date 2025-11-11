@@ -170,6 +170,8 @@ Calculating Areas
 
 The projection suggested by IBGE to calculate areas is the SIRGAS 2000/Brazil Albers (SRID EPSG:10857).
 
+You can check this projection definition in the `epsg.io website <https://epsg.io/10857>`_ .
+
 The Brazilian Institute of Geography and Statistics (IBGE) suggests the `projection parameters <https://biblioteca.ibge.gov.br/visualizacao/livros/liv102169.pdf>`_ below to calculate the area to the products of the Malha Municipal Digital e Áreas Territoriais 2024 - Notas metodológicas 01/2025 - Informações Técnicas e Legais para a Utilização dos Dados Publicados. 
 
 Albers equal-area conic projection:
@@ -179,7 +181,22 @@ Albers equal-area conic projection:
 * Standard Parallel 1: -2°
 * Standard Parallel 2: -22°
 
-Here are these parameters converted in **proj4** format:
+
+
+..
+
+Sometimes, you have to use some customized projection. To do this in PostGIS, you have to insert this projection in the postgis ``spatial_ref_sys`` table.
+
+To insert the customized SRID above in the table ``spatial_ref_sys``, execute the SQL instruction below:
+
+.. code-block:: sql
+
+
+    INSERT into spatial_ref_sys (srid, auth_name, auth_srid, proj4text, srtext) values ( 10857, 'EPSG', 10857, '+proj=aea +lat_0=-12 +lon_0=-54 +lat_1=-2 +lat_2=-22 +x_0=5000000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs', 'PROJCS["SIRGAS 2000 / Brazil Albers",GEOGCS["SIRGAS 2000",DATUM["Sistema_de_Referencia_Geocentrico_para_las_AmericaS_2000",SPHEROID["GRS 1980",6378137,298.257222101],TOWGS84[0,0,0,0,0,0,0]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4674"]],PROJECTION["Albers_Conic_Equal_Area"],PARAMETER["latitude_of_center",-12],PARAMETER["longitude_of_center",-54],PARAMETER["standard_parallel_1",-2],PARAMETER["standard_parallel_2",-22],PARAMETER["false_easting",5000000],PARAMETER["false_northing",10000000],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","10857"]]');
+
+..
+
+To insert the customized SRID above in the QGIS, here are these parameters converted in **proj4** format:
 
 ::
 
@@ -213,19 +230,6 @@ And now in the **OGC WKT** format:
     AXIS["Easting",EAST],
     AXIS["Northing",NORTH],
     AUTHORITY["EPSG","10857"]]
-
-..
-
-Sometimes, you have to use some customized projection. To do this in PostGIS, you have to insert this projection in the postgis ``spatial_ref_sys`` table.
-
-To insert the customized SRID above in the table ``spatial_ref_sys``, execute the SQL instruction below:
-
-.. code-block:: sql
-
-
-    INSERT into spatial_ref_sys (srid, auth_name, auth_srid, proj4text, srtext) values ( 10857, 'EPSG', 10857, '+proj=aea +lat_0=-12 +lon_0=-54 +lat_1=-2 +lat_2=-22 +x_0=5000000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs', 'PROJCS["SIRGAS 2000 / Brazil Albers",GEOGCS["SIRGAS 2000",DATUM["Sistema_de_Referencia_Geocentrico_para_las_AmericaS_2000",SPHEROID["GRS 1980",6378137,298.257222101],TOWGS84[0,0,0,0,0,0,0]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4674"]],PROJECTION["Albers_Conic_Equal_Area"],PARAMETER["latitude_of_center",-12],PARAMETER["longitude_of_center",-54],PARAMETER["standard_parallel_1",-2],PARAMETER["standard_parallel_2",-22],PARAMETER["false_easting",5000000],PARAMETER["false_northing",10000000],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","10857"]]');
-
-..
 
 ------
 
