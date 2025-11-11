@@ -168,7 +168,9 @@ In the OGC WKT format, the SRID 4674 has the following parameters:
 Calculating Areas
 ^^^^^^^^^^^^^^^^^
 
-The Brazilian Institute of Geography and Statistics (IBGE) suggests the `projection parameters <https://geoftp.ibge.gov.br/cartas_e_mapas/bases_cartograficas_continuas/bc250/versao2021/informacoes_tecnicas/bc250_documentacao_tecnica.pdf>`_ below to calculate the area to the products of the Continuing Base in the scale of 1:250.000. 
+The projection suggested by IBGE to calculate areas is the SIRGAS 2000/Brazil Albers(SRID EPSG:10857).
+
+The Brazilian Institute of Geography and Statistics (IBGE) suggests the `projection parameters <https://biblioteca.ibge.gov.br/visualizacao/livros/liv102169.pdf>`_ below to calculate the area to the products of the Malha Municipal Digital e Áreas Territoriais 2024 - Notas metodológicas 01/2025 - Informações Técnicas e Legais para a Utilização dos Dados Publicados. 
 
 Albers equal-area conic projection:
 
@@ -181,7 +183,7 @@ Here are these parameters converted in **proj4** format:
 
 ::
 
-    +proj=aea +lat_1=-2 +lat_2=-22 +lat_0=-12 +lon_0=-54 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs
+    +proj=aea +lat_0=-12 +lon_0=-54 +lat_1=-2 +lat_2=-22 +x_0=5000000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs
 
 ..
 
@@ -189,27 +191,28 @@ And now in the **OGC WKT** format:
 
 ::
 
-    PROJCS["Brazil_Albers_Equal_Area_Conic",
+    PROJCS["SIRGAS 2000 / Brazil Albers",
         GEOGCS["SIRGAS 2000",
             DATUM["Sistema_de_Referencia_Geocentrico_para_las_AmericaS_2000",
-                SPHEROID["GRS 1980",6378137,298.257222101,
-                    AUTHORITY["EPSG","7019"]],
-                TOWGS84[0,0,0,0,0,0,0],
-                AUTHORITY["EPSG","6674"]],
+                SPHEROID["GRS 1980",6378137,298.257222101],
+                TOWGS84[0,0,0,0,0,0,0]],
             PRIMEM["Greenwich",0,
                 AUTHORITY["EPSG","8901"]],
             UNIT["degree",0.0174532925199433,
                 AUTHORITY["EPSG","9122"]],
             AUTHORITY["EPSG","4674"]],
-        PROJECTION["Albers_Conic_Equal_Area"],
-        PARAMETER["False_Easting",0],
-        PARAMETER["False_Northing",0],
-        PARAMETER["longitude_of_center",-54],
-        PARAMETER["Standard_Parallel_1",-2],
-        PARAMETER["Standard_Parallel_2",-22],
-        PARAMETER["latitude_of_center",-12],
-        UNIT["Meter",1],
-        AUTHORITY["IBGE","55555"]]
+    PROJECTION["Albers_Conic_Equal_Area"],
+    PARAMETER["latitude_of_center",-12],
+    PARAMETER["longitude_of_center",-54],
+    PARAMETER["standard_parallel_1",-2],
+    PARAMETER["standard_parallel_2",-22],
+    PARAMETER["false_easting",5000000],
+    PARAMETER["false_northing",10000000],
+    UNIT["metre",1,
+        AUTHORITY["EPSG","9001"]],
+    AXIS["Easting",EAST],
+    AXIS["Northing",NORTH],
+    AUTHORITY["EPSG","10857"]]
 
 ..
 
@@ -220,15 +223,7 @@ To insert the customized SRID above in the table ``spatial_ref_sys``, execute th
 .. code-block:: sql
 
 
-    INSERT into spatial_ref_sys (srid, auth_name, auth_srid, proj4text, srtext)
-    values
-    (
-    55555,
-    'IBGE',
-    55555,
-    '+proj=aea +lat_1=-2 +lat_2=-22 +lat_0=-12 +lon_0=-54 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ',
-    'PROJCS["Brazil_Albers_Equal_Area_Conic",GEOGCS["SIRGAS 2000",DATUM["Sistema_de_Referencia_Geocentrico_para_las_AmericaS_2000",SPHEROID["GRS 1980",6378137,298.257222101,AUTHORITY["EPSG","7019"]],TOWGS84[0,0,0,0,0,0,0],AUTHORITY["EPSG","6674"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4674"]],PROJECTION["Albers_Conic_Equal_Area"],PARAMETER["False_Easting",0],PARAMETER["False_Northing",0],PARAMETER["longitude_of_center",-54],PARAMETER["Standard_Parallel_1",-2],PARAMETER["Standard_Parallel_2",-22],PARAMETER["latitude_of_center",-12],UNIT["Meter",1],AUTHORITY["IBGE","55555"]]'
-    );
+    INSERT into spatial_ref_sys (srid, auth_name, auth_srid, proj4text, srtext) values ( 10857, 'EPSG', 10857, '+proj=aea +lat_0=-12 +lon_0=-54 +lat_1=-2 +lat_2=-22 +x_0=5000000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs', 'PROJCS["SIRGAS 2000 / Brazil Albers",GEOGCS["SIRGAS 2000",DATUM["Sistema_de_Referencia_Geocentrico_para_las_AmericaS_2000",SPHEROID["GRS 1980",6378137,298.257222101],TOWGS84[0,0,0,0,0,0,0]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4674"]],PROJECTION["Albers_Conic_Equal_Area"],PARAMETER["latitude_of_center",-12],PARAMETER["longitude_of_center",-54],PARAMETER["standard_parallel_1",-2],PARAMETER["standard_parallel_2",-22],PARAMETER["false_easting",5000000],PARAMETER["false_northing",10000000],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","10857"]]');
 
 ..
 
