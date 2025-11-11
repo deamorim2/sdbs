@@ -168,7 +168,7 @@ In the OGC WKT format, the SRID 4674 has the following parameters:
 Calculating Areas
 ^^^^^^^^^^^^^^^^^
 
-The projection suggested by IBGE to calculate areas is the SIRGAS 2000/Brazil Albers(SRID EPSG:10857).
+The projection suggested by IBGE to calculate areas is the SIRGAS 2000/Brazil Albers (SRID EPSG:10857).
 
 The Brazilian Institute of Geography and Statistics (IBGE) suggests the `projection parameters <https://biblioteca.ibge.gov.br/visualizacao/livros/liv102169.pdf>`_ below to calculate the area to the products of the Malha Municipal Digital e Áreas Territoriais 2024 - Notas metodológicas 01/2025 - Informações Técnicas e Legais para a Utilização dos Dados Publicados. 
 
@@ -232,7 +232,7 @@ To insert the customized SRID above in the table ``spatial_ref_sys``, execute th
 Calculating Lengths
 ^^^^^^^^^^^^^^^^^^^
 
-The projection suggested by IBGE to calculate perimeters and lenghts is the SIRGAS 2000/Brazil Polyconic(SRID 5880).
+The projection suggested by IBGE to calculate perimeters and lenghts is the SIRGAS 2000/Brazil Polyconic (SRID EPSG:5880).
 
 You can check this projection definition in the `epsg.io website <https://epsg.io/5880>`_ .
 
