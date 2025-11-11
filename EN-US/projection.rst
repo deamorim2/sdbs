@@ -229,10 +229,6 @@ To insert the customized SRID above in the table ``spatial_ref_sys``, execute th
 
 ------
 
-.. note:: - There is no SRID 55555 in the **proj4** with theses parameters.
-
------
-
 Calculating Lengths
 ^^^^^^^^^^^^^^^^^^^
 
